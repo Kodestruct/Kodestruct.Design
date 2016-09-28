@@ -1,0 +1,6 @@
+d120pcf,1/2-in. Backing,Backing1_2,5
+d120pcf,5/8-in. Backing,Backing5_8,6.3
+d120pcf,3/8-in. Exposed Aggregate Face,ExposedAggregate3_8,3.8
+d140pcf,1/2-in. Backing,Backing1_2,5.8
+d140pcf,5/8-in. Backing,Backing5_8,7.3
+d140pcf,3/8-in. Exposed Aggregate Face,ExposedAggregate3_8,4.4

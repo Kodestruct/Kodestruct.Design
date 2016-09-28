@@ -1,0 +1,5 @@
+SteelMomentResistingFrame,0.028,0.8
+ConcreteMomentResistingFrame,0.016,0.9
+SteelEccentricallyBracedFrame,0.03,0.75
+SteelBucklingRestrainedBracedFrame,0.03,0.75
+OtherStructuralSystem,0.02,0.75

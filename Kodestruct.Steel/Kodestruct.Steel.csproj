@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6CC168AC-FF6F-433E-A338-49D8D5C82570}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kodestruct.Steel</RootNamespace>
+    <AssemblyName>Kodestruct.Steel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kodestruct.Common, Version=0.0.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kodestruct.Common.0.0.1.1\lib\net45\Kodestruct.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeCompactnessDoubleAngle.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\CircularHss\ChsSlender.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\CircularHss\ChsShapeFactory.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\I\IShapeFactory.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\I\IShapeSlenderElements.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\RectangularHss\RhsShapeFactory.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\RectangularHss\RhsNonSlender.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\DoublySymmetricIBeamMajorAxis.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\SinglySymmetricIBeamMajorAxis.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\SolidShapes\Y.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\TeeAndDoubleAngle\F9-Tee.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AISC\AISC360v10\G_Shear\ShearMemberBox.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\BasePlateEccentricallyLoaded.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\BasePlateTensionLoaded.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\Types\BasePlateCircularHss.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\BasePlateConcentricallyLoaded.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\Types\BasePlateIShape.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\Types\BasePlateRectangularHss.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\Types\BasePlateTypeBase.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\WebOpenings\Composite\CompositeIBeamWebOpeningIteration.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\WebOpenings\Steel\SteelIBeamWebOpening.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsLongitudinalPlate.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsTransversePlate.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\LimitStates\ChsCapPlateYielding.cs" />
+    <Compile Include="AISC\Entities\Enums\HssPlateConnection\HssConcentratedForceType.cs" />
+    <Compile Include="AISC\Entities\Enums\HssPlateConnection\TransversePlateType.cs" />
+    <Compile Include="AISC\Interfaces\HssPlateConnection\IHssCapPlateConnection.cs" />
+    <Compile Include="AISC\Interfaces\HssPlateConnection\IHssTransversePlateConnection.cs" />
+    <Compile Include="AISC\Interfaces\HssPlateConnection\IHssLongitudinalPlateConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsTransversePlatePunching.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsTransversePlateSideYielding.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\RhsCapPlate.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\RhsLongitudinalThroughPlate.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\RhsLongitudinalPlate.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\RhsTransversePlate.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\Base\ChsTrussBranchPunching.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\Base\ChsTrussBranchConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\Base\ChsTrussConnectionQf.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\Base\ChsTrussConnectionShapeProps.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\Base\ChsTrussConnectionUtilization.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\ChsTrussOverlapConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\ChsTrussTConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\ChsTrussXConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\ChsTrussYConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\ChsTrussGappedKConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\TypeGroups\ChsTrussKConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Chs\TypeGroups\ChsTrussTYConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Common\HssTrussChordUtilization.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\HssTrussConnectionFactory.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\Base\RhsTrussBranchConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\Base\RhsTrussConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\Base\RhsTrussConnectionQf.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\Base\RhsTrussConnectionShapeProps.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\Base\RhsTrussConnectionUtilization.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AISC\Entities\Enums\HssTrussConnectionClassification.cs" />
+    <Compile Include="AISC\Entities\Enums\HssTrussConnectionMemberType.cs" />
+    <Compile Include="AISC\Entities\FloorVibrations\EffectiveWeight.cs" />
+    <Compile Include="AISC\Entities\FloorVibrations\EffectiveWidth.cs" />
+    <Compile Include="AISC\Interfaces\IRhsTrussBranchConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\RhsTrussGappedKConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\RhsTrussOverlapConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\RhsTrussTConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\RhsTrussXConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\RhsTrussYConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\TypeGroups\RhsTYXTrussBranchConnection.cs" />
+    <Compile Include="AISC\Entities\Enums\BasePlateShape.cs" />
+    <Compile Include="AISC\Entities\Enums\AxialForceType.cs" />
+    <Compile Include="AISC\Entities\Enums\FloorVibrations\AdjacentSpanWeightIncreaseType.cs" />
+    <Compile Include="AISC\Entities\Enums\FloorVibrations\BeamFloorLocationType.cs" />
+    <Compile Include="AISC\Entities\Composite\ModularRatio.cs" />
+    <Compile Include="AISC\Entities\Enums\FloorVibrations\JoistToGirderConnectionType.cs" />
+    <Compile Include="AISC\Entities\FloorVibrations\FloorVibrationBeamGirderPanel.cs" />
+    <Compile Include="AISC\Entities\FloorVibrations\FloorVibrationBeamSingle.cs" />
+    <Compile Include="AISC\Entities\UFM\Base\UFMCase.cs" />
+    <Compile Include="AISC\Entities\UFM\UFMCase3NoGussetToColumnConnection.cs" />
+    <Compile Include="AISC\Entities\UFM\UFMGeneralMomentAtColumnGussetInterface.cs" />
+    <Compile Include="AISC\Entities\UFM\UFMGeneralMomentAtBeamGussetInterface.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\WebOpenings\Base\IWebOpening.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\WebOpenings\Base\WebOpeningBase.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\WebOpenings\Composite\CompositeIBeamWebOpening.cs" />
+    <Compile Include="AISC\Entities\Sections\ChannelSection.cs" />
+    <Compile Include="AISC\Entities\Sections\DoubleAngleSection.cs" />
+    <Compile Include="AISC\Entities\Sections\BoxSection.cs" />
+    <Compile Include="AISC\Entities\Sections\AngleSection.cs" />
+    <Compile Include="AISC\Entities\Sections\SectionSolid.cs" />
+    <Compile Include="AISC\Entities\Sections\TeeSection.cs" />
+    <Compile Include="AISC\Exceptions\FlexuralBendinAxisException.cs" />
+    <Compile Include="AISC\Interfaces\IBasePlate.cs" />
+    <Compile Include="AISC\Interfaces\IShapeCompactness.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\EffectiveNetArea.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLagFactor.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagFactorBase.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase8.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase7.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase6.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase5.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase4.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase3.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase2.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\ShearLag\ShearLagCase1.cs" />
+    <Compile Include="AISC\AISC360v10\D_Tension\TensionMember.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\BaseClasses\TorsionalBuckling\ColumnFlexuralAndTorsionalBucklingDoublySymmetric.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\BaseClasses\TorsionalBuckling\ColumnFlexuralAndTorsionalBuckling.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\BaseClasses\TorsionalBuckling\ColumnFlexuralAndTorsionalBucklingSinglySymmetric.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\BaseClasses\FlexuralBucking\ColumnFlexuralBuckling.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\TeeAndDoubleAngle\ColumnTee.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\CircularHss\ChsSlender_Qa.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\CircularHss\ChsSlender_Qs.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\CircularHss\ChsNonSlender.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\CompressionMemberFactory.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\L\ColumnSingleAngle.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\I\IShapeSlenderElements_Qa.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\I\IShapeSlenderElements_Qs.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\I\IShapeCompact.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\General\ColumnGeneral.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\SolidShapes\Rectangle\CompressionMemberRectangle.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\RectangularHss\RhsSlender-Qa.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\RectangularHss\RhsSlender-Qs.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\RectangularHss\RhsSlender.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\BaseClasses\SteelColumn.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberDoubleAngleBase.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\CircularHss\Y.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F4-I NoncompactWeb\I-NoncompactWebCompactFlange.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F5-I SlenderWeb\I-SlenderWebCompactFlange.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\L\LTB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\L\LSLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\RectangularHss\F7-RectangularHss.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\TeeAndDoubleAngle\F9-DoubleAngle.cs" />
+    <Compile Include="AISC\AISC360v10\G_Shear\ShearMemberCircular.cs" />
+    <Compile Include="AISC\AISC360v10\G_Shear\IShearMember.cs" />
+    <Compile Include="AISC\AISC360v10\G_Shear\ShearMemberFactory.cs" />
+    <Compile Include="AISC\AISC360v10\G_Shear\ShearMemberGeneral.cs" />
+    <Compile Include="AISC\AISC360v10\G_Shear\ShearMemberWithoutStiffeners.cs" />
+    <Compile Include="AISC\AISC360v10\G_Shear\ShearMemberWithStiffeners.cs" />
+    <Compile Include="AISC\AISC360v10\H_Combination\Combination.cs" />
+    <Compile Include="AISC\AISC360v10\I_Composite\Anchor\HeadedAnchorGroupFactor.cs" />
+    <Compile Include="AISC\AISC360v10\I_Composite\Anchor\HeadedAnchorPlacementFactor.cs" />
+    <Compile Include="AISC\AISC360v10\I_Composite\Anchor\HeadedAnchorShearStrength.cs" />
+    <Compile Include="AISC\AISC360v10\I_Composite\Flexure\CompositeBeamSection.cs" />
+    <Compile Include="AISC\AISC360v10\I_Composite\Flexure\Deflection\MomentOfInertia.cs" />
+    <Compile Include="AISC\AISC360v10\I_Composite\Flexure\EffectiveSlabWidth.cs" />
+    <Compile Include="AISC\AISC360v10\I_Composite\Flexure\Strength\FlexuralStrength.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\AffectedElementInCompression.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\AffectedElementInFlexure.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\AffectedElementInTension.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\Base\AffectedElement.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\AffectedElementInFlexureAndShear.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\AffectedElementInShear.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\Base\VonMisesYieldCriterion.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BeamCope\BeamCopeBase.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BeamCope\BeamCopeDouble.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BeamCope\BeamCopeFactory.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BeamCope\BeamCopeSingle.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BeamCope\BeamUncoped.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BeamCope\GeneralCase.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\AreaCalculations\ShearAreaCalculator.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BoltGroupBearingStrength.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\GussetPlate\GussetConfigurationCompactness.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\GussetPlate\GussetPlateEffectiveCompressionLength.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\GussetPlate\WhitmoreSectionWidth.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\MinimumThicknessOfMaterialSupportingFilletWeld.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\PlateFlexuralBuckling.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\DoubleAngle\DoubleAngleConnection.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\Seated\SeatedConnection.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\Seated\TriangularSeatStiffenerStrength.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\Seated\TriangularSeatStiffenerForces.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\Seated\TriangularSeatStiffenerDimensonalLimits.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\Seated\SupportingVericalWeldStrength.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\SinglePlate\ExtendedPlateMaximumPlateThickness.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\SinglePlate\ExtendedPlateStabilizerPlate.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\SinglePlate\ExtendedSinglePlate.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\SinglePlate\ExtendedSinglePlateBuckling.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\SinglePlate\StabilizedExtendedPlateTorsion.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\Fillet\EffectiveWeldLength.cs" />
+    <Compile Include="AISC\Entities\Enums\FlexuralAndTorsionalBracingType.cs" />
+    <Compile Include="AISC\Entities\Enums\GussetPlateConfiguration.cs" />
+    <Compile Include="AISC\Entities\Enums\DeckAtBeamCondition.cs" />
+    <Compile Include="AISC\Entities\Enums\HeadedAnchorWeldCase.cs" />
+    <Compile Include="AISC\Entities\Enums\ShearAreaCase.cs" />
+    <Compile Include="AISC\Exceptions\ComboForceException.cs" />
+    <Compile Include="AISC\Interfaces\IBeamCope.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BlockShear.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\BoltHoleBearingStrength.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\ConcentratedForces\FlangeLocalBending.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\ConcentratedForces\WebCompressionBuckling.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\ConcentratedForces\WebLocalCrippling.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\ConcentratedForces\WebLocalYielding.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\ConcentratedForces\WebPanelZoneShear.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\ConcentratedForces\WebSideswayBuckling.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\PryingAction\PryingActionAnalysis.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\PryingAction\PryingActionDesign.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\PryingAction\PryingAction.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\BearingAtBoltHoles.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\Bolt.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\BoltHole.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\IBoltMaterial.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\BoltBearingThreadedGeneral.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\BoltGeneral.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Material\BoltA307Material.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\Bearing\BoltBearing.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\SlipCritical\EdgeDistance.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\SpacingAndEdgeDistance.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\BoltBearingGroupB.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\BoltBearingGroupA.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\Bearing\BoltBearingInteraction.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\SlipCritical\BoltFactorForFillers.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\SlipCritical\BoltFillers.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Material\BoltGroupAMaterial.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Material\BoltGroupBMaterial.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\SlipCritical\BoltSlipCoefficient.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\SlipCritical\BoltSlipCritical.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\BoltFactory.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\BoltGroup.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\BoltSlipCriticalGroupB.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\BoltSlipCriticalGroupA.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\SlipCritical\BoltSlipCriticalInteraction.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\SlipCritical\BoltSlipResistance.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Base\BoltStrings.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\Cb.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\DoublySymmetricI.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMember.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberAngleBase.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberBase.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberChsBase.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-aw.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-compactness.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-compFlange.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-FL.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-hc.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-Iyc.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-kc.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-Rpc.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-Rpg.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-Rpt.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberI-rt.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberIBase.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberRhs-compactness.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberRhsBase.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\FlexuralMemberTeeBase.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\BaseClasses\LateralTorsionalBuckling.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\Channel\F2-Channel.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\CircularHss\F8-CircularHSS.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\CircularHss\WLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\FlexuralMemberFactory.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F2-I DoublySymmetricCompact\I DoublySymmetricCompact.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F2-I DoublySymmetricCompact\LTB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F2-I DoublySymmetricCompact\Y.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F3-I DoublySymmetricCompactWebOnly\FLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F3-I DoublySymmetricCompactWebOnly\I-DoublySymmetricCompactWebNoncompactFlange.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F4-I NoncompactWeb\CFY.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F4-I NoncompactWeb\FLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F4-I NoncompactWeb\I-NoncompactWeb.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F4-I NoncompactWeb\LTB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F4-I NoncompactWeb\TFY.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F5-I SlenderWeb\CFY.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F5-I SlenderWeb\FLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F5-I SlenderWeb\I-SlenderWeb.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F5-I SlenderWeb\LTB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F5-I SlenderWeb\TFY.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F6-IWeakAxis\FLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F6-IWeakAxis\I-WeakAxis.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\I\F6-IWeakAxis\Y.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\L\F10-Angle.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\L\Y.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\RectangularHss\FLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\RectangularHss\Y.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\RectangularHss\SectionProperties.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\RectangularHss\WLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\SolidShapes\LTB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\SolidShapes\F11-SolidShape.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\TeeAndDoubleAngle\FLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\TeeAndDoubleAngle\LTB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\TeeAndDoubleAngle\LSLB.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\TeeAndDoubleAngle\Y.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\CompactnessBase.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\CompactnessClassAxialCompression.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\CompactnessClassFlexure.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Data\CompactnessData.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ElementLocation.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Interfaces\ICompactnessElement.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Interfaces\IShapeCompactness.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeISymmetry.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeCompactnessAngle.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeCompactnessBase.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeCompactnessChannel.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeCompactnessHollow.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeCompactnessIShape.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeCompactnessTee.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\StiffenedElementCompactness.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\01-WebOfDoublySymI.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\02-WebOfChannel.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\03-WebOfSinglySymI.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\04-FlangeOfRhs.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\05-FlangePlate.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\06-WallOfChs.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\07-WebOfRhs.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\08-WebOfBox.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Stiffened\09-FlangeOBoxs.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\StressType.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Symmetry.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\UnstiffenedElementCompactness.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\01-FlangeOfRolledIShape.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\02-PlateProjectedFromRolledIShape.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\03-OutstandingLegOfAnglesWithContContact.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\04-FlangeOfChannel.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\05-FlangeOfTee.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\06-FlangeOfBuiltUpI.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\07-PlateProjectedFromBuiltUpIShape.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\08-AngleLegProjectedFromBuiltUpIShape.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\09-LegOfSingleAngle.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\10-LegOfDoubleAngleWithSeparation.cs" />
+    <Compile Include="AISC\AISC360v10\B_General\Compactness\Unstiffened\11-StemOfTee.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Bolt\Material\ThreadedBoltMaterial.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\Base\DirectionOfTensionLoading.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\Base\TypeOfCompressionLoading.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\Base\Weld.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\CJPGrooveWeld.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\FilletWeld.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\Fillet\FilletWeldBase.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\Fillet\MinimumLength.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\Fillet\MinimumWeldSize.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\Groove\GrooveWeld.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\PJPGrooveWeld.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\PlugWeld.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\FilletWeldGroup.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\Weld\WeldFactory.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsCapPlate.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\Base\ChsStressInteractionQf.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\LimitStates\ChsLongitudinalPlateShear.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\LimitStates\ChsLongitudinalTYXAxial.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\Base\ChsToPlateConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\LimitStates\ChsTransversePlateTandXAxial.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Base\HssToPlateConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Base\HssUtilizationRatioU.cs" />
+    <Compile Include="AISC\Interfaces\HssPlateConnection\IHssConcentratedForceConnection.cs" />
+    <Compile Include="AISC\Entities\Enums\HssPlateConnection\HssPlateOrientation.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\Base\RhsBeta.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsCapPlate.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\Base\RhsStressInteractionQf.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\Base\RhsEffectivePlateWidthBep.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsLongitudinalPlateShear.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsLongitudinalPlateTYXAxial.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsLongitudinalThruPlateTYXAxial.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\Base\RhsToPlateConnection.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsTransversePlateCripplingCross.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsTransversePlatePlateYielding.cs" />
+    <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsTransversePlateCripplingTee.cs" />
+    <Compile Include="AISC\Entities\Connections\Bolts\BoltGroupGeneral.cs" />
+    <Compile Include="AISC\Entities\Connections\Bolts\BoltHoleDeformationType.cs" />
+    <Compile Include="AISC\Entities\Connections\Bolts\BoltPoint.cs" />
+    <Compile Include="AISC\Entities\Connections\ConnectionGroup\Elastic.cs" />
+    <Compile Include="AISC\Entities\Enums\BeamCopeCase.cs" />
+    <Compile Include="AISC\Entities\Enums\BendingAxis.cs" />
+    <Compile Include="AISC\Entities\Enums\BoltMaterialId.cs" />
+    <Compile Include="AISC\Entities\Enums\BoltType.cs" />
+    <Compile Include="AISC\Entities\Enums\CombinationCaseId.cs" />
+    <Compile Include="AISC\Entities\Enums\LocalBucklingCaseId.cs" />
+    <Compile Include="AISC\Entities\Enums\LocalBucklingClassification.cs" />
+    <Compile Include="AISC\Entities\Enums\ShearNonCircularCase.cs" />
+    <Compile Include="AISC\Entities\Enums\StressDistibutionType.cs" />
+    <Compile Include="AISC\Entities\Enums\WeldGroupPattern.cs" />
+    <Compile Include="AISC\Entities\Enums\WeldLoadType.cs" />
+    <Compile Include="AISC\Entities\Enums\WeldType.cs" />
+    <Compile Include="AISC\Entities\Connections\ConnectionGroup\InstantaneousCenter.cs" />
+    <Compile Include="AISC\Entities\Materials\WeldMaterial.cs" />
+    <Compile Include="AISC\Entities\Welds\BaseClasses\WeldBase.cs" />
+    <Compile Include="AISC\Entities\Welds\BaseClasses\WeldSegmentBase.cs" />
+    <Compile Include="AISC\Entities\Welds\FilletWeldLoadDeformationGroupBase.cs" />
+    <Compile Include="AISC\Entities\Welds\Interfaces\IWeld.cs" />
+    <Compile Include="AISC\Entities\Welds\Interfaces\IWeldElement.cs" />
+    <Compile Include="AISC\Entities\Welds\WeldTypes\Fillet\FilletWeldElement.cs" />
+    <Compile Include="AISC\Entities\Welds\WeldTypes\Fillet\FilletWeldLine.cs" />
+    <Compile Include="AISC\Exceptions\CompressionFiberPositionException.cs" />
+    <Compile Include="AISC\Exceptions\DuplicateWeldLineException.cs" />
+    <Compile Include="AISC\Exceptions\LimitStateNotApplicableException.cs" />
+    <Compile Include="AISC\Exceptions\SectionNullException.cs" />
+    <Compile Include="AISC\Exceptions\SectionWrongTypeException.cs" />
+    <Compile Include="AISC\Exceptions\ShapeParameterNotApplicableException.cs" />
+    <Compile Include="AISC\Exceptions\WeldLegNotSpecifiedException.cs" />
+    <Compile Include="AISC\Exceptions\WeldSegmentsNotDefinedException.cs" />
+    <Compile Include="AISC\Interfaces\IBolt.cs" />
+    <Compile Include="AISC\Interfaces\IBoltBearing.cs" />
+    <Compile Include="AISC\Interfaces\IBoltSlipCritical.cs" />
+    <Compile Include="AISC\Interfaces\IDesignElement.cs" />
+    <Compile Include="AISC\Interfaces\IReversibleAxialForceMember.cs" />
+    <Compile Include="AISC\Interfaces\ISteelBeamFlexure.cs" />
+    <Compile Include="AISC\Interfaces\ISteelCompressionMember.cs" />
+    <Compile Include="AISC\Interfaces\ISteelFlexuralMember.cs" />
+    <Compile Include="AISC\Interfaces\ISteelMaterial.cs" />
+    <Compile Include="AISC\Interfaces\ISteelMember.cs" />
+    <Compile Include="AISC\Interfaces\ISteelSection.cs" />
+    <Compile Include="AISC\Interfaces\ISteelTensionMember.cs" />
+    <Compile Include="AISC\Interfaces\IWeld.cs" />
+    <Compile Include="AISC\Entities\Connections\Bolts\BoltBase.cs" />
+    <Compile Include="AISC\Entities\Connections\Bolts\BoltFayingSurface.cs" />
+    <Compile Include="AISC\Entities\Connections\Bolts\BoltHoleType.cs" />
+    <Compile Include="AISC\Entities\Connections\Bolts\BoltThreadType.cs" />
+    <Compile Include="AISC\Entities\Enums\Forces\StructuralCapacityBase.cs" />
+    <Compile Include="AISC\Entities\Materials\PlateMaterial.cs" />
+    <Compile Include="AISC\Entities\Materials\ShapeMaterial.cs" />
+    <Compile Include="AISC\Entities\Materials\SteelMaterial.cs" />
+    <Compile Include="AISC\Entities\Materials\SteelMaterialCatalog.cs" />
+    <Compile Include="AISC\Entities\Members\SteelAxialMember.cs" />
+    <Compile Include="AISC\Entities\Members\SteelBeamColumn.cs" />
+    <Compile Include="AISC\Entities\Members\SteelFlexuralMember.cs" />
+    <Compile Include="AISC\Entities\Members\SteelMemberBase.cs" />
+    <Compile Include="AISC\Entities\Sections\ChsSection.cs" />
+    <Compile Include="AISC\Entities\Sections\GeneralSection.cs" />
+    <Compile Include="AISC\Entities\Sections\HssSection.cs" />
+    <Compile Include="AISC\Entities\Sections\PipeSection.cs" />
+    <Compile Include="AISC\Entities\Sections\PlateSection.cs" />
+    <Compile Include="AISC\Entities\Sections\RhsSection.cs" />
+    <Compile Include="AISC\Entities\Sections\SectionI.cs" />
+    <Compile Include="AISC\Entities\Sections\SteelSectionBase.cs" />
+    <Compile Include="AISC\Entities\Materials\SteelConstants.cs" />
+    <Compile Include="AISC\Entities\SteelDesignElement.cs" />
+    <Compile Include="AISC\Entities\SteelLimitStateValue.cs" />
+    <Compile Include="AISC\Entities\UFM\UFMCase1NonconcentricBraceForce.cs" />
+    <Compile Include="AISC\Entities\UFM\UFMCase2ReducedVerticalBraceShearForceBCConnection.cs" />
+    <Compile Include="AISC\Entities\UFM\UFMCaseNoMomentsAtInterfaces.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE" />
+    <None Include="NOTICE" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\AISC360_10_MaterialProperties.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Kodestruct.Steel.nuspec" />
+    <None Include="Kodestruct.Steel.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AISC\AISC360v10\C_Stability\" />
+    <Folder Include="AISC\AISC360v10\I_Composite\Axial\" />
+    <Folder Include="AISC\AISC360v10\K_HSS\MomentConnections\" />
+    <Folder Include="AISC\Entities\Materials\Plate\" />
+    <Folder Include="AISC\Entities\Materials\Shape\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AISC360_10TableJ3_4_Minimum Edge Distance.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AISC360_10TableJ3_3NominalHoleDimensions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AISC_DG11_VibrationLimits.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AISC_DG11_ModalDamping.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,121 @@
+Assembly fixed seats,Assembly area or theater with fixed seats (fastened to floor),60,NP,
+Assembly with movable seats,Assembly area or theater lobby,100,NP,
+Assembly lobby,Assembly area or theater with movable seats,100,NP,
+Assembly platform,Assembly area or theater platform,100,NP,
+Stage floor,Assembly area or theater stage floor,150,NP,
+Dining,Dining room or restaurant,100,NP,
+
+Bowling alley,Bowling alley, poolroom, or similar,75,NP,
+Ballroom,Dance hall or ballroom,100,NP,
+Gym,Gym,100,NP,
+Bleachers,Reviewing stand, grandstand, or bleachers,100,NP,
+Stadium seats,Stadium or arena with fixed seats (fastened to the floor),60,NP,
+
+Library reading room,Library. Reading room,60,P,
+Library stack room,Library. Stack room,150,NP,(nonmobile or double-faced library book stacks with stack unit height <= 90 in., shelf depth <= 12 in. each face, aisle width >= 36 in)
+
+
+Office file room,Office building. File and computer room,150,NP,(needs to be verified with actual loads based on anticipated occupancy)
+Office lobby,Office building. Lobby,100,P,
+Office,Office building. Office space,50,P,
+
+Office access system,Access floor system for Office use,50,P,
+Office access system computer,Access floor system for Computer use,100,P,
+
+
+Classroom,Classroom,40,P,
+Classroom above 12 grade,Classroom for students above the 12th grade,50,P,(since the codes generally classify this occupnacy same as office)
+
+
+Light factory,Light manufacturing,125,NP,
+Heavy factory,Heavy manufacturing,250,NP,
+
+Factory catwalk,Factory or Industrial. Catwalks for maintenance access,40,P,
+Factory walkway,Factory or Industrial. Walkways and elevated platforms,60,P,
+
+
+Prison,Cell block,40,P,
+
+
+Hospital operating room,Hospital operating room or laboratory,60,P,
+Hospital room,Hospital patient room,40,P,
+
+Ambulatory care room,Ambulatory health care office,50,P,(since the codes generally classify this occupnacy same as office)
+Ambulatory care lobby,Ambulatory health care, lobby,100,P,(since the codes generally classify this occupnacy same as office)
+
+
+
+Retail first floor,Retail (first floor),100,P,
+Retail upper floor,Retail (upper floor),75,P,
+Wholesale store,Wholesale store,125,NP,
+
+
+House,One- and two- family dwelling. Room or other area,40,P,
+
+House attic,Residential uninhabitable attics without storage,10,P,
+House habitable attic,Residential uninhabitable attics with storage,20,P,
+House attic with storage,Residential habitable attics and sleeping areas,30,P,
+
+Residence,Residential private room,40,P,
+Residence public room,Residential public room,100,NP,
+
+Passenger garage,Garage (passenger vehicles only),40,NP,
+Truck garage,Garage (trucks and buses),0,NP,AASHTO
+
+Storage light,Storage light,125,NP,
+Storage heavy,Storage heavy,250,NP,
+Storage above,Storage area above ceiling,20,P,
+
+Corridor first floor,First floor cooridor,100,P,
+
+Office corridor upper floor,Corridor in upper floor of office building,80,P,
+Library corridor upper floor,Corridor in upper floor of library,80,P,
+Prison corridor,Corridor in  penal institution,100,P,
+Hospital corridor upper floor,Corridor in upper floor of hospital,80,P,
+Residential corridor for public use,Corridor in  residential occupancy (serving public rooms),100,P,
+School corridor upper floor,Corridor in upper floor of school,80,P,
+
+
+Ballroom corridor upper ,Corridor of upper floor of dance hall,  ballroom or gymnasium,100,NP,(same as the occupancy it is serving)
+Ballroom bowling alley upper ,Corridor of upper floor of bowling alley, poolroom, or similar ,75,NP,(same as the occupancy it is serving)
+
+Single family residence corridor,Corridor of upper floor of single-family dwelling,40,P,(same as the occupancy it is serving)
+Multiple family residence corridor,Corridor of upper floor of non single-family residential occupancy serving private rooms,40,P,(same as the occupancy it is serving)
+
+Retail corridor upper floor,Corridor of retail at upper floor,75,P,(same as the occupancy it is serving)
+Wholesale corridor upper floor,Corridor of wholesale store,125,NP,(same as the occupancy it is serving)
+
+Light storage corridor,Corridor of  light storage,125,NP,(same as the occupancy it is serving)
+Heavy storage corridor,Corridor of  heavy storage,250,NP,(same as the occupancy it is serving)
+
+Ambulatory care corridor upper floor,Corridor of  upper floor of ambulatory health care occupancy,50,P,(same as the occupancy it is serving)
+
+Fire escape single family house,Fire escape of single-family dwelling,40,P,
+Fire escape residence,Fire escape of other residential occupancy,100,P,
+
+Stair of single family house,Stair of single-family dwelling,40,P,
+Stair,Stair of other occupancy,100,P,
+
+Roof,Ordinary flat, pitched, or curved  roof,20,P,
+Roof garden,Roof garden,100,P,
+
+Public roof library,Roof used for assebly adjacent to library reading room,60,P,
+Public roof assembly,Roof used for assebly adjacent to assembly area lobby,100,NP,
+Public roof bowling alley,Roof used for assebly adjacent to bowling alley, poolroom, or similar,75,NP,
+Public roof ballroom,Roof used for assebly adjacent to dance hall or ballroom,100,NP,
+Public roof gym,Roof used for assebly adjacent to gym,100,NP,
+Public roof bleachers,Roof used for assebly adjacent to reviewing stand, grandstand, or bleachers,100,NP,
+Public roof stadium,Roof used for assebly adjacent to stadium or arena with fixed seats,60,NP,
+Fabric roof,Fabric canopy construction supported by a skeleton structure,5,P,
+
+
+Yard,Pedestrian yard or terrace,100,NP,
+Sidewalk,Sidewalk, drivewaay or area subject to trucking,250,NP,
+Roof garden,Roof used for roof garden,100,P,
+Helipad,Helipad,60,P,(can be non-reducible 40 psf where the design basis helicopter has a maximum take-off weight of 3,000 lbs or less)
+
+
+Balcony residence,Balcony serving one- and two- family residence,60,P,
+
+Balcony private,Balcony  serving private rooms in a residential occupancy,60,P,
+Balcony public,Balcony  serving public rooms in a residential occupancy,100,P,

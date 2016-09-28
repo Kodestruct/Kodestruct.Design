@@ -1,0 +1,14 @@
+  <>  <>  <>  l_u/d < 7   <>  <7<=l_u/d <=14.3 > <>  <l_u/d >14.3>  <>
+<BC>  <Load>  <Bracing>  <N of loads>  <lu_factor>  <dFactor>  <lu_factor> <dFactor>  <lu_factor>  <dFactor>
+Cantilever,UniformlyDistributed,Unbraced,1,1.33,0,0.9,3,0.9,3
+Cantilever,Concentrated,Unbraced,1,1.87,0,1.44,3,1.44,3
+SingleSpan,UniformlyDistributed,Unbraced,1,2.06,0,1.63,3,1.63,3
+SingleSpan,Concentrated,Unbraced,1,1.8,0,1.37,3,1.37,3
+SingleSpan,Concentrated,Unbraced,2,2.06,0,1.63,3,1.84,0
+SingleSpan,Concentrated,BracedAtConcentratedLoads,1,1.11,0,1.11,0,1.11,0
+SingleSpan,Concentrated,BracedAtConcentratedLoads,2,1.68,0,1.68,0,1.68,0
+SingleSpan,Concentrated,BracedAtConcentratedLoads,3,1.54,0,1.54,0,1.54,0
+SingleSpan,Concentrated,BracedAtConcentratedLoads,4,1.68,0,1.68,0,1.68,0
+SingleSpan,Concentrated,BracedAtConcentratedLoads,5,1.73,0,1.73,0,1.73,0
+SingleSpan,Concentrated,BracedAtConcentratedLoads,6,1.78,0,1.78,0,1.78,0
+SingleSpan,Concentrated,BracedAtConcentratedLoads,7,1.84,0,1.84,0,1.84,0

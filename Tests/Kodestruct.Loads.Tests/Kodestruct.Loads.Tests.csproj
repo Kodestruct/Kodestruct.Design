@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43E64F2B-5EF7-4E1C-BFF8-CCFEDB6CD127}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kodestruct.Loads.Tests</RootNamespace>
+    <AssemblyName>Kodestruct.Loads.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kodestruct.Common, Version=0.0.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Kodestruct.Common.0.0.1.1\lib\net45\Kodestruct.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ASCE7\ASCE7_10\C01_General\RiskCategory.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\SolidConcreteTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\ConcreteOnMetalDeckTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\PrecastPanelTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\ClayMasonryTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\CMUTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\ComponentDeadWeightTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\GFRCTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\RoofMetalDeckTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\WoodDoubleFloorTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\WoodFramingTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C04_LiveLoads\LiveLoadTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C11_SeismicLoads\AsceApproximatePeriodTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\ToleranceTestBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ASCE7\ASCE7_10\C02_Combinations\" />
+    <Folder Include="ASCE7\ASCE7_10\C05_FloodLoads\" />
+    <Folder Include="ASCE7\ASCE7_10\C07_SnowLoads\" />
+    <Folder Include="ASCE7\ASCE7_10\C10_IceLoads\" />
+    <Folder Include="ASCE7\ASCE7_10\C12_SeismicBuilding\" />
+    <Folder Include="ASCE7\ASCE7_10\C26_Wind\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kodestruct.Loads\Kodestruct.Loads.csproj">
+      <Project>{dbebe4a9-448f-4181-92ee-a34d23f34013}</Project>
+      <Name>Kodestruct.Loads</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Kodestruct.Loads.Tests.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

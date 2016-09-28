@@ -1,0 +1,8 @@
+Structural system,0.01
+Ceiling and ductwork,0.01
+Electronic office fitout,0.005
+Paper office fitout,0.01
+Church finishes,0
+School finishes,0
+Mall finishes,0
+Drywall partitions in bay,0.02

@@ -1,0 +1,15 @@
+MWFRS,Main Wind Force Resisting System (MWFRS),0.85
+CC,Components and Cladding,0.85
+ArchRoof,Arched roof,0.85
+ChimneySquare,Chimney, tank, or similar (Square),0.9
+ChimneyHex,Chimney, tank, or similar (Hexagonal),0.95
+ChimneyRound,Chimney, tank, or similar (Round),0.95
+FreestandingWall,Freestanding wall,0.85
+FreestandingSign,Freestanding sign,0.85
+AttachedSign,Attached sign,0.85
+Lattice,Lattice framework,0.85
+OpenSign,Open sign,0.85
+TrussedTower,Trussed tower (Triangular, square, rectangular),0.85
+TrussedTowerOther,Trussed tower (Other cross section),0.95
+
+

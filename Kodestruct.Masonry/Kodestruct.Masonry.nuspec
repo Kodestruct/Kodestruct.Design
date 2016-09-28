@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata>
+    <dependencies>
+      <group targetFramework="net45">
+        <dependency id="Kodestruct.Common" version="0.0.1.5" />
+      </group>
+    </dependencies>
+    <id>Kodestruct.Masonry</id>
+    <version>0.0.1.1</version>
+    <title>Kodestruct.Masonry</title>
+    <authors>Kodestruct Inc</authors>
+    <description>Structural engineering automation library. Components for reinforced and unreinforced masonry element design per ACI 530 standard.</description>
+    <language>en-US</language>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>http://www.Kodestruct.com</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <developmentDependency>false</developmentDependency>
+    <copyright>Copyright Kodestruct Inc © 2015</copyright>
+  </metadata>
+  <files>
+    <file src="D:\Kodestruct\SourceDynamo2\Kodestruct.Design\Kodestruct.Masonry\bin\Release\Kodestruct.Masonry.dll" target="lib\net45" />
+  </files>
+</package>

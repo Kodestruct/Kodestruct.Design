@@ -1,0 +1,93 @@
+A. BEARING WALL SYSTEMS,,,,,,,,,,,
+A1, Special reinforced concrete shear walls,14.2,5,2.5,5,NL ,NL ,160,160,100,lm
+A2, Ordinary reinforced concrete shear walls,14.2,4,2.5,4,NL ,NL ,NP ,NP ,NP ,l
+A3, Detailed plain concrete shear walls,14.2,2,2.5,2,NL ,NP ,NP ,NP ,NP ,l
+A4, Ordinary plain concrete shear walls,14.2,1.5,2.5,1.5,NL ,NP ,NP ,NP ,NP ,l
+A5, Intermediate precast shear walls,14.2,4,2.5,4,NL ,NL ,40k ,40k ,40k ,l
+A6, Ordinary precast shear walls,14.2,3,2.5,3,NL ,NP ,NP ,NP ,NP ,l
+A7, Special reinforced masonry shear walls ,14.4,5,2.5,3.5,NL ,NL ,160,160,100,x
+A8, Intermediate reinforced masonry shear walls ,14.4,3.5,2.5,2.25,NL ,NL ,NP ,NP ,NP ,x
+A9, Ordinary reinforced masonry shear walls ,14.4,2,2.5,1.75,NL ,160,NP ,NP ,NP ,x
+A10, Detailed plain masonry shear walls ,14.4,2,2.5,1.75,NL ,NP ,NP ,NP ,NP ,x
+A11, Ordinary plain masonry shear walls ,14.4,1.5,2.5,1.25,NL ,NP ,NP ,NP ,NP ,x
+A12, Prestressed masonry shear walls ,14.4,1.5,2.5,1.75,NL ,NP ,NP ,NP ,NP ,x
+A13, Ordinary reinforced AAC masonry shear walls ,14.4,2,2.5,2,NL ,35,NP ,NP ,NP ,x
+A14, Ordinary plain AAC masonry shear walls ,14.4,1.5,2.5,1.5,NL ,NP ,NP ,NP ,NP ,x
+A15, Light-frame (wood) walls sheathed with wood structural panels rated for shear resistance or steel sheets ,14.1 and 14.5 ,6.5,3,4,NL ,NL ,65,65,65,x
+A16, Light-frame (cold-formed steel) walls sheathed with wood structural panels rated for shear resistance or steel sheets,14.1,6.5,3,4,NL ,NL ,65,65,65,x
+A17, Light-frame walls with shear panels of all other materials ,14.1 and 14.5 ,2,2.5,2,NL ,NL ,35,NP ,NP ,x
+A18, Light-frame (cold-formed steel) wall systems using flat strap bracing ,14.1,4,2,3.5,NL ,NL ,65,65,65,x
+B. BUILDING FRAME SYSTEMS,,,,,,,,,,,
+B1, Steel eccentrically braced frames ,14.1,8,2,4,NL ,NL ,160,160,100,x
+B2, Steel special concentrically braced frames ,14.1,6,2,5,NL ,NL ,160,160,100,x
+B3, Steel ordinary concentrically braced frames ,14.1,3.25,2,3.25,NL ,NL ,35j ,35j ,NPj ,x
+B4, Special reinforced concrete shear walls,14.2,6,2.5,5,NL ,NL ,160,160,100,lm
+B5, Ordinary reinforced concrete shear walls,14.2,5,2.5,4.5,NL ,NL ,NP ,NP ,NP ,l
+B6, Detailed plain concrete shear walls,14.2 and 14.2.2.8 ,2,2.5,2,NL ,NP ,NP ,NP ,NP ,l
+B7, Ordinary plain concrete shear walls,14.2,1.5,2.5,1.5,NL ,NP ,NP ,NP ,NP ,l
+B8, Intermediate precast shear walls,14.2,5,2.5,4.5,NL ,NL ,40k ,40k ,40k ,l
+B9, Ordinary precast shear walls,14.2,4,2.5,4,NL ,NP ,NP ,NP ,NP ,l
+B10, Steel and concrete composite eccentrically braced frames ,14.3,8,2 .5 ,4,NL ,NL ,160,160,100,x
+B11, Steel and concrete composite special concentrically braced frames ,14.3,5,2,4.5,NL ,NL ,160,160,100,x
+B12, Steel and concrete composite ordinary braced frames ,14.3,3,2,3,NL ,NL ,NP ,NP ,NP ,x
+B13, Steel and concrete composite plate shear walls ,14.3,6.5,2.5,5.5,NL ,NL ,160,160,100,x
+B14, Steel and concrete composite special shear walls ,14.3,6,2.5,5,NL ,NL ,160,160,100,x
+B15, Steel and concrete composite ordinary shear walls ,14.3,5,2.5,4.5,NL ,NL ,NP ,NP ,NP ,x
+B16, Special reinforced masonry shear walls ,14.4,5.5,2.5,4,NL ,NL ,160,160,100,x
+B17, Intermediate reinforced masonry shear walls ,14.4,4,2.5,4,NL ,NL ,NP ,NP ,NP ,x
+B18, Ordinary reinforced masonry shear walls ,14.4,2,2.5,2,NL ,160,NP ,NP ,NP ,x
+B19, Detailed plain masonry shear walls ,14.4,2,2.5,2,NL ,NP ,NP ,NP ,NP ,x
+B20, Ordinary plain masonry shear walls ,14.4,1.5,2.5,1.25,NL ,NP ,NP ,NP ,NP ,x
+B21, Prestressed masonry shear walls ,14.4,1.5,2.5,1.75,NL ,NP ,NP ,NP ,NP ,x
+B22, Light-frame (wood) walls sheathed with wood structural panels rated for shear resistance,14.5,7,2.5,4.5,NL ,NL ,65,65,65,x
+B23, Light-frame (cold-formed steel) walls sheathed with wood structural panels rated for shear resistance or steel sheets,14.1,7,2.5,4.5,NL ,NL ,65,65,65,x
+B24, Light-frame walls with shear panels of all other materials ,14.1 and 14.5 ,2.5,2.5,2.5,NL ,NL ,35,NP ,NP ,x
+B25, Steel buckling-restrained braced frames ,14.1,8,2.5,5,NL ,NL ,160,160,100,x
+B26, Steel special plate shear walls,14.1,7,2,6,NL ,NL ,160,160,100,x
+C. MOMENT-RESISTING FRAME SYSTEMS,,,,,,,,,,,
+C1, Steel special moment frames ,14.1 and 12.2.5.5 ,8,3,5.5,NL ,NL ,NL,NL ,NL ,x
+C2, Steel special truss moment frames ,14.1,7,3,5.5,NL ,NL ,160,100,NP ,x
+C3, Steel intermediate moment frames ,12.2.5.7 and 14.1,4.5,3,4,NL ,NL ,35h,NPh ,NPh ,x
+C4, Steel ordinary moment frames ,12.2.5.6 and 14.1 ,3.5,3,3,NL ,NL ,NPi ,NPi ,NPi ,x
+C5, Special reinforced concrete moment frames,12.2.5.5 and 14.2 ,8,3,5.5,NL ,NL ,NL ,NL ,NL ,n
+C6, Intermediate reinforced concrete moment frames ,14.2,5,3,4.5,NL ,NL ,NP ,NP ,NP ,x
+C7, Ordinary reinforced concrete moment frames ,14.2,3,3,2.5,NL ,NP ,NP ,NP ,NP ,x
+C8, Steel and concrete composite special moment frames ,12.2.5.5 and 14.3 ,8,3,5.5,NL ,NL ,NL ,NL ,NL ,x
+C9, Steel and concrete composite intermediate moment frames ,14.3,5,3,4.5,NL ,NL ,NP ,NP ,NP ,x
+C10, Steel and concrete composite partially restrained moment frames ,14.3,6,3,5.5,160,160,100,NP ,NP ,x
+C11, Steel and concrete composite ordinary moment frames ,14.3,3,3,2.5,NL ,NP ,NP ,NP ,NP ,x
+C12, Cold-formed steel—special bolted moment frame,14.1,3.5,3o ,3.5,35,35,35,35,35,p
+D. DUAL SYSTEMS WITH SPECIAL MOMENT FRAMES CAPABLE OF RESISTING AT LEAST 25% OF PRESCRIBED SEISMIC FORCES,,,,,,,,,,,12.2.5.1
+D1, Steel eccentrically braced frames ,14.1,8,2.5,4,NL ,NL ,NL ,NL ,NL ,x
+D2, Steel special concentrically braced frames ,14.1,7,2.5,5.5,NL ,NL ,NL ,NL ,NL ,x
+D3, Special reinforced concrete shear walls,14.2,7,2.5,5.5,NL ,NL ,NL ,NL ,NL ,l
+D4, Ordinary reinforced concrete shear walls,14.2,6,2.5,5,NL ,NL ,NP ,NP ,NP ,l
+D5, Steel and concrete composite eccentrically braced frames ,14.3,8,2.5,4,NL ,NL ,NL ,NL ,NL ,x
+D6, Steel and concrete composite special concentrically braced frames ,14.3,6,2.5,5,NL ,NL ,NL ,NL ,NL ,x
+D7, Steel and concrete composite plate shear walls ,14.3,7.5,2.5,6,NL ,NL ,NL ,NL ,NL ,x
+D8, Steel and concrete composite special shear walls ,14.3,7,2.5,6,NL ,NL ,NL ,NL ,NL ,x
+D9, Steel and concrete composite ordinary shear walls ,14.3,6,2.5,5,NL ,NL ,NP ,NP ,NP ,x
+D10, Special reinforced masonry shear walls ,14.4,5.5,3,5,NL ,NL ,NL ,NL ,NL ,x
+D11, Intermediate reinforced masonry shear walls ,14.4,4,3,3.5,NL ,NL ,NP ,NP ,NP ,x
+D12, Steel buckling-restrained braced frames ,14.1,8,2.5,5,NL ,NL ,NL ,NL ,NL ,x
+D13, Steel special plate shear walls ,14.1,8,2.5,6.5,NL ,NL ,NL ,NL ,NL ,x
+E. DUAL SYSTEMS WITH INTERMEDIATE MOMENT FRAMES CAPABLE OF RESISTING AT LEAST 25% OF PRESCRIBED SEISMIC FORCES,,,,,,,,,,,12.2.5.1
+E1, Steel special concentrically braced frames,14.1,6,2.5,5,NL ,NL,35,NP ,NP ,f
+E2, Special reinforced concrete shear walls,14.2,6.5,2.5,5,NL ,NL,160,100,100,l
+E3, Ordinary reinforced masonry shear walls ,14.4,3,3,2.5,NL ,160,NP,NP ,NP ,x
+E4, Intermediate reinforced masonry shear walls ,14.4,3.5,3,3,NL ,NL,NP,NP ,NP ,x
+E5, Steel and concrete composite special concentrically braced frames ,14.3,5.5,2.5,4.5,NL ,NL,160,100,NP ,x
+E6, Steel and concrete composite ordinary braced frames ,14.3,3.5,2.5,3,NL ,NL,NP,NP ,NP ,x
+E7, Steel and concrete composite ordinary shear walls ,14.3,5,3,4.5,NL ,NL,NP,NP ,NP ,x
+E8, Ordinary reinforced concrete shear walls,14.2,5.5,2.5,4.5,NL ,NL,NP,NP ,NP ,l
+F. SHEAR WALL-FRAME INTERACTIVE SYSTEM WITH ORDINARY REINFORCED CONCRETE MOMENT FRAMES AND ORDINARY REINFORCED CONCRETE SHEAR WALLS,,,,,,,,,,,12.2.5.8 and 14.2
+F1,Shear wall-frame interactive system with ordinary reinforced concrete moment frames and ordinary reinforced concrete shear walls,12.2.5.8 and 14.2,4.5,2.5,4,NL,NP,NP,NP,NP,x
+G. CANTILEVERED COLUMN SYSTEMS,,,,,,,,,,,12.2.5.2
+G1, Steel special cantilever column systems ,14.1,2.5,1.25,2.5,35,35,35,35,35,x
+G3, Special reinforced concrete moment frames ,12.2.5.5 and 14.2 ,2.5,1.25,2.5,35,35,35,35,35,n
+G2, Steel ordinary cantilever column systems ,14.1,1.25,1.25,1.25,35,35,NPi ,NPi ,NPi ,x
+G4, Intermediate reinforced concrete moment frames ,14.2,1.5,1.25,1.5,35,35,NP ,NP ,NP ,x
+G5, Ordinary reinforced concrete moment frames ,14.2,1,1.25,1,35,NP ,NP ,NP ,NP ,x
+G6, Timber frames ,14.5,1.5,1.5,1.5,35,35,35,NP ,NP ,x
+H. STEEL SYSTEMS NOT SPECIFICALLY DETAILED FOR SEISMIC RESISTANCE  EXCLUDING CANTILEVER COLUMN SYSTEMS,,,,,,,,,,,
+H1,Steel systems not specifically detailed for seismic resistance excluding cantilever column systems,14.1,3,3,3,NL,NL,NP,NP,NP,x

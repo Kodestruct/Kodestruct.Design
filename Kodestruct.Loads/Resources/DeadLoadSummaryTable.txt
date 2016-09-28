@@ -1,0 +1,119 @@
+<ID>  <Description>  <Weight>  <Notes>  <Unit thickness>  <ClassName>  <Reference>
+AcousticalFiberBoard,Acoustical fiber board ,1,,,,ASCE7-10 Table C3-1
+GypsumBoard,Gypsum board,0.55,(assumed as 0.55 psf per 0.125-in. thickness),0.125,ComponentGeneral,ASCE7-10 Table C3-1
+CementBoard,Cement board,0.75,(assumed as 0.75 psf per 0.125-in. thickness),0.125,ComponentGeneral,ASCE7-10 Table C3-1
+Plaster,Plaster on tile or concrete ,5,,,,ASCE7-10 Table C3-1
+PlasterOnWoodLath,Plaster on wood lath ,8,,,,ASCE7-10 Table C3-1
+MechanicalDucts,Mechanical duct allowance ,4,,,,ASCE7-10 Table C3-1
+SuspendedSteelChannelSystem,Suspended steel channel system ,2,,,,ASCE7-10 Table C3-1
+SuspendedMetalLathAndCementPlaster,Suspended metal lath and cement plaster ,15,,,,ASCE7-10 Table C3-1
+SuspendedMetalLathAndGypsumPlaster,Suspended metal lath and gypsum plaster ,10,,,,ASCE7-10 Table C3-1
+WoodFurringSuspensionSystem,Wood furring suspension system ,2.5,,,,ASCE7-10 Table C3-1
+AsbestosCementShingles,Asbestos-cement shingles ,4,,,,ASCE7-10 Table C3-1
+AsphaltShingles,Asphalt shingles ,2,,,,ASCE7-10 Table C3-1
+SlateThin,Slate- 0.1875-in. roofing,7,,,,ASCE7-10 Table C3-1
+SlateThick,Slate- 0.25-in. roofing,10,,,,ASCE7-10 Table C3-1
+WoodShingles,Wood shingles ,3,,,,ASCE7-10 Table C3-1
+CementTile,Cement tile ,16,,,,ASCE7-10 Table C3-1
+CorrugatedAsbestosCementRoofing,Corrugated asbestos-cement roofing ,4,,,,ASCE7-10 Table C3-1
+BookTile2In,Book tile- 2-in. ,12,,,,ASCE7-10 Table C3-1
+BookTile3In,Book tile- 3-in. ,20,,,,ASCE7-10 Table C3-1
+LudowiciTile,Ludowici  tile,10,,,,ASCE7-10 Table C3-1
+RomanTile,Roman  tile,12,,,,ASCE7-10 Table C3-1
+SpanishTile,Spanish  tile,19,,,,ASCE7-10 Table C3-1
+TileMortar,Tile mortar,10,,,,ASCE7-10 Table C3-1
+Roofing3Ply,Three-ply ready roofing ,1,,,,ASCE7-10 Table C3-1
+Felt4PlyAndGravel,Four-ply felt and gravel ,5.5,,,,ASCE7-10 Table C3-1
+Felt5PlyAndGravel,Five-ply felt and gravel ,6,,,,ASCE7-10 Table C3-1
+BituminousGravel,Bituminous- gravel-covered ,5.5,,,,ASCE7-10 Table C3-1
+BituminousSmoothSurface,Bituminous- smooth surface ,1.5,,,,ASCE7-10 Table C3-1
+LiquidAppliedRoof,Liquid applied ,1,,,,ASCE7-10 Table C3-1
+SinglePlySheetRoof,Single-ply- sheet ,0.7,,,,ASCE7-10 Table C3-1
+RoofMetalDeck,Roof deck,VAR,,,ComponentRoofDeck,ASCE7-10 Table C3-1
+StandingSeamRoof,Standing-seam roofing,1.5,,,,ASCE7-10 Table C3-1
+Copper,Copper or tin ,1,,,,ASCE7-10 Table C3-1
+WoodDecking2In,Decking- 2-in. wood (Douglas fir) ,5,,,,ASCE7-10 Table C3-1
+WoodDecking3In,Decking- 3-in. wood (Douglas fir) ,8,,,,ASCE7-10 Table C3-1
+Fiberboard,Fiberboard- 0.5-in. ,0.75,,,,ASCE7-10 Table C3-1
+Plywood,Plywood,0.4,(assumed as 0.4 psf per 0.125-in. thickness),0.125,ComponentGeneral,ASCE7-10 Table C3-1
+WoodSheathing,Wood sheathing,3,(assumed as 3 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+CellularGlass,Cellular glass ,0.7,(assumed as 0.7 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+FibrousGlass,Fibrous glass ,1.1,(assumed as 1.1 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+Fiberboard,Fiberboard ,1.5,(assumed as 1.5 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+Perlite,Perlite ,0.8,(assumed as 0.8 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+PolystyreneFoam,Polystyrene foam ,0.2,(assumed as 0.2 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+UrethaneFoamWithSkin,Urethane foam with skin ,0.5,(assumed as 0.5 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+RigidInsulation05In,Rigid insulation- 0.5-in. ,0.75,,,,ASCE7-10 Table C3-1
+CinderConcrete,Cinder concrete- per inch ,9,,,,ASCE7-10 Table C3-1
+LightweightConcrete,Lightweight concrete- per inch ,8,,,,ASCE7-10 Table C3-1
+Sand,Sand- per inch ,8,,,,ASCE7-10 Table C3-1
+StoneConcrete,Stone concrete- per inch ,12,,,,ASCE7-10 Table C3-1
+UngroutedCMULW,Ungrouted CMU (density=105 pcf),VAR,,,ComponentCMUUngrouted105,ASCE7-10 Table C3-1
+UngroutedCMUMW,Ungrouted CMU (density=125 pcf),VAR,,,ComponentCMUUngrouted125,ASCE7-10 Table C3-1
+UngroutedCMUNW,Ungrouted CMU (density=135 pcf),VAR,,,ComponentCMUUngrouted135,ASCE7-10 Table C3-1
+PartiallyGroutedCMULW,Partially-grouted CMU (density=105 pcf),VAR,,,ComponentCMUPartialGrouted105,ASCE7-10 Table C3-1
+PartiallyGroutedCMUMW,Partially-grouted CMU (density=125 pcf),VAR,,,ComponentCMUPartialGrouted125,ASCE7-10 Table C3-1
+PartiallyGroutedCMUNW,Partially-grouted CMU (density=135 pcf),VAR,,,ComponentCMUPartialGrouted135,ASCE7-10 Table C3-1
+FullyGroutedCMULW,Fully-grouted CMU (density=105 pcf),VAR,,,ComponentCMUGrouted105,ASCE7-10 Table C3-1
+FullyGroutedCMUMW,Fully-grouted CMU (density=125 pcf),VAR,,,ComponentCMUGrouted125,ASCE7-10 Table C3-1
+FullyGroutedCMUNW,Fully-grouted CMU (density=135 pcf),VAR,,,ComponentCMUGrouted135,ASCE7-10 Table C3-1
+SolidCMULW,Solid CMU unit (density=105 pcf),VAR,,,ComponentCMUSolid105,ASCE7-10 Table C3-1
+SolidCMUMW,Solid CMU unit (density=125 pcf),VAR,,,ComponentCMUSolid125,ASCE7-10 Table C3-1
+SolidCMUNW,Solid CMU unit (density=135 pcf),VAR,,,ComponentCMUSolid135,ASCE7-10 Table C3-1
+ClayMasonryWythe,Clay masonry wythe,VAR,,,ComponentClayBrick,ASCE7-10 Table C3-1
+WoodFraming,Wood framing,VAR,,,ComponentWoodFraming,ASCE7-10 Table C3-1
+MetalStudsAt24In,6-in. or 8-in. metal studs at 24-in. o.c.,1.1,,,,ASCE7-10 Table C3-1
+MetalStudsAt16In,6-in. or 8-in. metal studs at 16-in. o.c.,1.7,,,,ASCE7-10 Table C3-1
+GypsumSheathing,Gypsum sheathing (0.5 in.),2,,,ComponentGeneral,ASCE7-10 Table C3-1
+PlywoodSheathing,Plywood sheathing,0.4,(assumed as 0.4 psf per 0.125-in. thickness ),0.125,,ASCE7-10 Table C3-1
+WoodSheathing,Wood sheathing,3,(assumed as 3 psf per inch thickness),1,,ASCE7-10 Table C3-1
+MetalDeckWall,Metal deck wall,3,,,,ASCE7-10 Table C3-1
+WoodShingles,Wood shingles ,3,,,,ASCE7-10 Table C3-1
+CellularGlassInsulation,Cellular glass  insulation,0.7,(assumed as 0.7 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+FibrousGlassInsulation,Fibrous glass  insulation,1.1,(assumed as 1.1 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+FiberboardInsulation,Fiberboard  insulation,1.5,(assumed as 1.5 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+PerliteInsulation,Perlite  insulation,0.8,(assumed as 0.8 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+PolystyreneFoamInsulation,Polystyrene foam  insulation,0.2,(assumed as 0.2 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+UrethaneFoamWithSkinInsulation,Urethane foam with skin  insulation,0.5,(assumed as 0.5 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+RigidInsulation,Rigid insulation- 0.5-in. ,0.75,,,,ASCE7-10 Table C3-1
+GFRCPanels,GFRC Panels,VAR,,,ComponentGFRC,AISC  Design Guide 22
+GFRCSystem,GFRC system (with insulation- gyp. sheathing- metal studs- and hardware),25,,,,AISC  Design Guide 22
+PrecastConcretePanels,Precast Concrete Panels ,VAR,,,ComponentPrecastPanel,AISC  Design Guide 22
+CurtainWallFraming,Curtain-wall Framing,1.1,,,,AISC  Design Guide 22 (assuming 4 ft spacing of mullions)
+StorefrontFraming,Storefront Framing,0.7,,,,AISC  Design Guide 22 (assuming 4 ft spacing of mullions)
+InsulatingGlass,Insulating glass (1-in. thick),6.8,,,,AISC  Design Guide 22
+SolidGlass,Solid glass,13.5,(assumed as 13.5 psf per inch thickness),1,ComponentGeneral,AISC  Design Guide 22
+AluminumCurtainWall,Aluminum Curtain Wall,10,,,,AISC  Design Guide 22
+MetalInsulatedPanelThin,1-0.75-in. metal insulated panel,2,,,,AISC  Design Guide 22
+MetalInsulatedPanelThick,4-in. metal insulated panel,4,,,,AISC  Design Guide 22
+EIFSMaterial,EIFS self-weight,1,,,,AISC  Design Guide 22
+EIFSWall,EIFS (with gyp. sheathing- metal studs- and hardware),10,,,,AISC  Design Guide 22
+AsphaltBlock,Asphalt block (2-in.)- 0.5-in. mortar ,30,,,,ASCE7-10 Table C3-1
+CementFinishOnConcreteFill,Cement finish (1-in.) on stone–concrete fill ,32,,,,ASCE7-10 Table C3-1
+TileOnThickMortar,Ceramic or quarry tile (0.75-in.) on 0.5-in. mortar bed ,16,,,,ASCE7-10 Table C3-1
+TileOnThinMortar,Ceramic or quarry tile (0.75-in.) on 1-in. mortar bed ,23,,,,ASCE7-10 Table C3-1
+ConcreteFillFinish,Concrete fill finish,12,(assumed as 12 psf per inch thickness),1,ComponentGeneral,ASCE7-10 Table C3-1
+ExteriorPavers,Exterior pavers (1 0.5-in.) on 3-in. mortar bed,58,,,,
+HardwoodFlooring,Hardwood flooring- 7/8-in. ,4,,,,ASCE7-10 Table C3-1
+LinoleumOrAsphaltTile,Linoleum or asphalt tile- 0.25-in. ,1,,,,ASCE7-10 Table C3-1
+MarbleAndMortar,Marble and mortar on stone–concrete fill ,33,,,,ASCE7-10 Table C3-1
+Slate,Slate (per mm thickness) ,15,,,,ASCE7-10 Table C3-1
+SolidFlatTileOn1InMortarBase,Solid flat tile on 1-in. mortar base ,23,,,,ASCE7-10 Table C3-1
+Subflooring,Subflooring- 0.75-in. ,3,,,,ASCE7-10 Table C3-1
+Terrazzo,Terrazzo (1-0.5-in.) directly on slab ,19,,,,ASCE7-10 Table C3-1
+TerrazzoOnThickFill,Terrazzo (1-in.) on stone–concrete fill ,32,,,,ASCE7-10 Table C3-1
+TerrazzoOnThinFill,Terrazzo (1-in.)- 2-in. stone concrete ,32,,,,ASCE7-10 Table C3-1
+WoodBlock,Wood block (3-in.) on mastic- no fill ,10,,,,ASCE7-10 Table C3-1
+WoodBlockOnMortar,Wood block (3-in.) on 0.5-in. mortar base ,16,,,,ASCE7-10 Table C3-1
+WoodFraming,Wood framing,VAR,,,ComponentWoodFraming,
+DoubleWoodFloor,Double wood floor,VAR,,,ComponentDoubleWoodFloor,ASCE7-10 Table C3-1
+SolidConcreteSlab,Solid concrete slab,12.5,(assumed as 12.5 psf per inch thickness),1,ComponentGeneral,
+Deck1_5InLWFill,1.5-in. composite metal deck with lightweight concrete fill,VAR,,,ComponentDeckWithLWFill1_5,Manufacturer data
+Deck2InLWFill,2-in. composite metal deck with lightweight concrete fill,VAR,,,ComponentDeckWithLWFill2,Manufacturer data
+Deck3InLWFill,3-in. composite metal deck with lightweight concrete fill,VAR,,,ComponentDeckWithLWFill3,Manufacturer data
+Deck1_5InNWFill,1.5-in. composite metal deck with normalweight concrete fill,VAR,,,ComponentDeckWithNWFill1_5,Manufacturer data
+Deck2InNWFill,2-in. composite metal deck with normalweight concrete fill,VAR,,,ComponentDeckWithNWFill2,Manufacturer data
+Deck3InNWFill,3-in. composite metal deck with normalweight concrete fill,VAR,,,ComponentDeckWithNWFill3,Manufacturer data
+Deck,Composite metal deck (unfilled),VAR,,,ComponentCompositeFloorDeck,Manufacturer data
+Custom,Custom component,VAR,,,ComponentCustom,
+

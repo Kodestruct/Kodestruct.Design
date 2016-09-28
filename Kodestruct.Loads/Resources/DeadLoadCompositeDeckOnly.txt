@@ -1,0 +1,15 @@
+d1_5,p1.5x6,Gage22,2
+d1_5,p1.5x6,Gage20,2.4
+d1_5,p1.5x6,Gage 18,3
+d1_5,p1.5x6,Gage16,3.6
+d2,p2x12,Gage22,1.8
+d2,p2x12,Gage20,2.2
+d2,p2x12,Gage 18,2.8
+d2,p2x12,Gage16,3.4
+d3,p3x12,Gage22,2
+d3,p3x12,Gage20,2.4
+d3,p3x12,Gage 18,3
+d3,p3x12,Gage16,3.6
+
+
+

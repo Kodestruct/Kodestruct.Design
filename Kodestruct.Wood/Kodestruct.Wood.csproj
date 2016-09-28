@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69A15B6B-BFC5-455C-A080-A994F503AD35}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kodestruct.Wood</RootNamespace>
+    <AssemblyName>Kodestruct.Wood</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kodestruct.Common, Version=0.0.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kodestruct.Common.0.0.1.1\lib\net45\Kodestruct.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NDS\Entities\CommercialGrade.cs" />
+    <Compile Include="NDS\Entities\CommercialGradeSouthern.cs" />
+    <Compile Include="NDS\Entities\GluLamType.cs" />
+    <Compile Include="NDS\Entities\LoadCombinationType.cs" />
+    <Compile Include="NDS\Entities\MemberMaterialCategory.cs" />
+    <Compile Include="NDS\Entities\ReferenceDesignValueType.cs" />
+    <Compile Include="NDS\Entities\ReferenceSourceCase.cs" />
+    <Compile Include="NDS\Entities\RoundTimberType.cs" />
+    <Compile Include="NDS\Entities\SawnLumberType.cs" />
+    <Compile Include="NDS\Entities\ServiceMoistureConditions.cs" />
+    <Compile Include="NDS\Entities\SizeClassification.cs" />
+    <Compile Include="NDS\Entities\WoodMemberType.cs" />
+    <Compile Include="NDS\Interfaces\ISawnLumberMember.cs" />
+    <Compile Include="NDS\Interfaces\IWoodLaminatedMaterial.cs" />
+    <Compile Include="NDS\Interfaces\IWoodSection.cs" />
+    <Compile Include="NDS\Interfaces\IWoodSolidMaterial.cs" />
+    <Compile Include="NDS\Interfaces\IWoodSolidSection.cs" />
+    <Compile Include="NDS\Entities\Material\CommercialGradeStringConverter.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\BeamStabilityFactor.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\EffectiveLength.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\LateralBracingCondition.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\LoadType.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\SlendernessRatio.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\SupportCondition.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Column\BucklingStress.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Column\ColumnStabilityFactor.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\TemperatureFactor.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\WoodBeam.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\WoodColumn.cs" />
+    <Compile Include="NDS\NDS_2015\Entities\WoodMember.cs" />
+    <Compile Include="NDS\NDS_2015\Material\Solid\4A_VisuallyGradedDimensionLumber.cs" />
+    <Compile Include="NDS\NDS_2015\Material\Solid\4B_SouthernPine.cs" />
+    <Compile Include="NDS\NDS_2015\Material\Solid\WoodSolidMaterial.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\BeamStability.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\BucklingStiffness.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\ColumnStability.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\FlatUse.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\FormatConversion.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\Incising.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\RepetitiveMember.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\Resistance.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\Size.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\Temperature.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\TimeEffect.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\WetService.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\Base\AdjustedValues.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\DimensionalLumber.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\Base\SawnLumberMember.cs" />
+    <Compile Include="NDS\NDS_2015\SawnLumber\Timber.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NDS\NDS_2015\Resources\ReferenceValuesTable4A.txt" />
+    <Content Include="NDS\NDS_2015\Resources\ReferenceValuesTable4B.txt" />
+    <EmbeddedResource Include="Resources\NDS2015_Suppl_Table4A.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\NDS2015_Table4A_SizeFactor.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\NDS2015_Table3_3_3Effective Length.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="LICENSE" />
+    <None Include="NOTICE" />
+    <None Include="packages.config" />
+    <None Include="Kodestruct.Wood.licenseheader" />
+    <None Include="Kodestruct.Wood.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NDS\NDS_2015\GluLam\" />
+    <Folder Include="NDS\NDS_2015\Material\Laminated\" />
+    <Folder Include="NDS\NDS_2015\RoundTimber\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,21 @@
+Residential building,Residential building,II
+Commercial building,Commercial building,II
+Industrial building,Industrial building,II
+Theater or hall,Theater or hall,III
+Assembly use,Assembly use,III
+Elementary school,Elementary school,III
+Prison,Prison,III
+Small healthcare facility,Small healthcare facility,III
+Power generating station,Power generating station,III
+Water treatment plant,Water treatment plant,III
+Sewage treatment plant,Sewage treatment plant,III
+Telecommunication center,Major telecommunication center,III
+Building containing toxic materials,Building containing toxic materials,III
+Building containing highly toxic materials,Building containing highly toxic materials,IV
+Hospital,Hospital,IV
+Police station,Police station,IV
+Fire station,Fire station,IV
+Emergency communication center,Emergency communication center,IV
+Building affecting availability of essential facility,Building affecting availability of essential facility,IV
+Building that is normally  unoccupied ,Building that is normally  unoccupied ,I
+

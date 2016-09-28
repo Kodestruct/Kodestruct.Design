@@ -1,0 +1,7 @@
+C01,1.1,Regular structure
+C02,1.1,Structure kept just above freezing
+C03,1.3,Structure  kept below freezing
+C04,0.85,Continuously heated greenhouse
+C05,1.2,Open structure
+C06,1.2,Unheated structure
+C07,1.1,Structure having  cold ventilated roof

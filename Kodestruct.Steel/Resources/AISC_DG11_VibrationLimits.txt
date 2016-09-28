@@ -1,0 +1,7 @@
+<OccupancyId><P_o><AccelerationLimit>
+Office,65,0.005
+Residence,65,0.005
+Chirch,65,0.005
+Shopping mall,65,0.015
+FootBridgeIndoor,92,0.05
+FootBridgeOutdoor,92,0.05

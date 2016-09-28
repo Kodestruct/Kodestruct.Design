@@ -1,0 +1,6 @@
+TwoDimensionalRidge,UpwindOfCrest,1.5
+TwoDimensionalEscarpment,UpwindOfCrest,1.5
+ThreeDimensionalAxisymHill,UpwindOfCrest,1.5
+TwoDimensionalRidge,DownwindOfCrest,1.5
+TwoDimensionalEscarpment,DownwindOfCrest,4
+ThreeDimensionalAxisymHill,DownwindOfCrest,1.5

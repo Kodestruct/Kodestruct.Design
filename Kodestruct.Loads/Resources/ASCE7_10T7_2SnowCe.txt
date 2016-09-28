@@ -1,0 +1,12 @@
+B,FullyExposed,0.9
+C,FullyExposed,0.9
+D,FullyExposed,0.8
+AboveTreelineMountain,FullyExposed,0.7
+B,PartiallyExposed,1
+C,PartiallyExposed,1
+D,PartiallyExposed,0.9
+AboveTreelineMountain,PartiallyExposed,0.8
+B,Sheltered,1.2
+C,Sheltered,1.1
+D,Sheltered,1
+AboveTreelineMountain,Sheltered,-1

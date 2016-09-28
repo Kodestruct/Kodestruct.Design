@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBEBE4A9-448F-4181-92EE-A34D23F34013}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kodestruct.Loads</RootNamespace>
+    <AssemblyName>Kodestruct.Loads</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kodestruct.Common, Version=0.0.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kodestruct.Common.0.0.1.1\lib\net45\Kodestruct.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ASCE7\ASCE7v10\C02_Combinations\CombinationResult.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C02_Combinations\CombinedEffects.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C02_Combinations\LoadCombination.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\Base\BuildingComponentBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\BuildingElementComponent.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\ComponentAssembly.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\Base\ComponentReportEntry.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\Exceptions\DeadLoadIdNotFoundException.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\Exceptions\DeadLoadInvalidParametersException.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\GroundSnow.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\WindStructureGeneral\FreestandingWallOrSignPressure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\WindStructureGeneral\FreestandingWallOrSignPressureCoefficient.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\WindStructureGeneral\WindStructureGeneral.cs" />
+    <Compile Include="ASCE7\Entities\IBuildingComponent.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\BlockGroutingType.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\CMUBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\CMUGroutedBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\CMUPartialGroutedBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\CMUSolidBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\CMUUngroutedBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUGrouted105.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUGrouted125.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUGrouted135.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUPartialGrouted105.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUPartialGrouted125.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUPartialGrouted135.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUSolid105.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUSolid125.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUSolid135.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUUngrouted105.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUUngrouted125.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\ComponentCMUUngrouted135.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\ComponentClayBrick.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\ComponentCompositeFloorDeck.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\ComponentCustom.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\ComponentDoubleWoodFloor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\ComponentGFRC.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\ComponentPrecastPanel.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\ComponentRoofDeck.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\ComponentWoodFraming.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\ComponentDeckWithLWFill1_5.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\ComponentDeckWithLWFill2.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\ComponentDeckWithLWFill3.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\ComponentDeckWithNWFill1_5.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\ComponentDeckWithNWFill2.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\ComponentDeckWithNWFill3.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\ConcreteWeightType.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\DeckDepthType.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\DeckProfileType.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\DeckWithConcreteBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\DeckWithConcreteLightweightBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\MetalDeckWithFill\DeckWithConcreteNormalBase.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\WoodFramingBase.cs" />
+    <Compile Include="ASCE7\Entities\FreestandingWallLoadCase.cs" />
+    <Compile Include="ASCE7\Exceptions\ParameterNotFoundInTable.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C01_General\RiskCategory.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C01_General\Structure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\DesignThickness.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\HeightFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\IceCrossSectionArea.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\IceWeight.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\ImportanceFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\IceStructure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C04_LiveLoads\LiveLoadBuilding.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\BaseClasses\LateralSystem.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\Building.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\BuildingLateralSystem.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\ElementNotFoundInResourceTableException.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\FundametalPeriod.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\Period\ApproximatePeriod.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\Period\ApproximatePeriodGeneral.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\Period\ApproximatePeriodLowRiseMF.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\Period\ApproximatePeriodShearWall.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\Period\ApproximatePeriodShearWallInfo.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\StorySeismicData.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\StorySeismicLoad.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\UpperBoundCoefficientCu.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\ELFProcedure\BaseShear.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\ELFProcedure\BuildingPeriodExponent_k.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\ELFProcedure\SeismicLateralForceResistingStructure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\ELFProcedure\SeismicLoads.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\ELFProcedure\SeismicResponseCoefficientCs.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\General\General.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\General\ImportanceFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\General\SdcBasedOn02Sec.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\General\SdcBasedOn1Sec.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\General\SeismicDesignCategory.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\GroundMotion\DataFileRead\DataPointReader.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\GroundMotion\DataFileRead\GroundMotionParameterType.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\GroundMotion\DataFileRead\SeismicGroundMotionDataPoint.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\GroundMotion\DataFileRead\SeismicGroundMotionMapDataReader.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\GroundMotion\DesignGroundMotionParameters.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\GroundMotion\MappedParametersExtractor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\GroundMotion\SeismicLocation.cs" />
+    <Compile Include="ASCE7\Entities\SeismicSiteCoefficient.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\GroundMotion\SiteCoefficients.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\ExposureFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\FlatRoofLoad.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\ImportanceFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\MinimumSnowLoad.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\SlopedRoofLoad.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\SnowSlopeFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\SnowStructure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C07_SnowLoads\ThermalFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Base\ExposureConstants.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Base\InternalPressureCoefficient.cs" />
+    <Compile Include="ASCE7\Entities\TerrainExposureConstant.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Base\WindStructure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Base\WindStructureDirectionalityFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Base\WindStructureDynamicProperties.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Base\WindStructureGustFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Base\WindStructureToppographicKzt.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\BuildingDirectionalProcedureElement.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\WindDamping.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\CC\CCPressureResult.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\CC\ComponentOrCladding.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\CC\Pressure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\CC\WallExternalPressureCoefficient.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\MWFRS\Mwfrs.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\MWFRS\Pressure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\MWFRS\WallExternalPressureCoefficient.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\VelocityPressureExposureCoefficientKz.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\VelocityPressure_qz.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\DirectionalProcedure\WindPressure.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\InternalPressureCoefficient.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\Building\WindBuilding.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\SiteParameters\Gamma.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\SiteParameters\K1.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\SiteParameters\K2.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\SiteParameters\K3.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\SiteParameters\Mu.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\SiteParameters\Speed.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\SiteParameters\TopographicFactor.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C26_Wind\SiteParameters\WindLocation.cs" />
+    <Compile Include="ASCE7\Entities\StructureDynamicClassification.cs" />
+    <Compile Include="ASCE7\Entities\WindStructureTypeForDirectionality.cs" />
+    <Compile Include="ASCE7\Entities\BuildingRiskCategory.cs" />
+    <Compile Include="ASCE7\Entities\WindExposureCategory.cs" />
+    <Compile Include="ASCE7\Entities\IceElementType.cs" />
+    <Compile Include="ASCE7\Entities\IcePlateOrientation.cs" />
+    <Compile Include="ASCE7\Entities\MapInfo\S1Data.cs" />
+    <Compile Include="ASCE7\Entities\MapInfo\SSData.cs" />
+    <Compile Include="ASCE7\Entities\MapInfo\TLData.cs" />
+    <Compile Include="ASCE7\Entities\SeismicApproximatePeriodProcedure.cs" />
+    <Compile Include="ASCE7\Entities\SeismicDesignCategory.cs" />
+    <Compile Include="ASCE7\Entities\SeismicSystemTypeForApproximateAnalysis.cs" />
+    <Compile Include="ASCE7\Entities\SiteClass.cs" />
+    <Compile Include="ASCE7\Entities\SnowMapId.cs" />
+    <Compile Include="ASCE7\Entities\SnowRoofExposure.cs" />
+    <Compile Include="ASCE7\Entities\SnowRoofHeatingType.cs" />
+    <Compile Include="ASCE7\Entities\SnowRoofSurfaceType.cs" />
+    <Compile Include="ASCE7\Entities\TopographicLocation.cs" />
+    <Compile Include="ASCE7\Entities\TopographyType.cs" />
+    <Compile Include="ASCE7\Entities\WindEnclosureType.cs" />
+    <Compile Include="ASCE7\Entities\WindEnvelopeCase.cs" />
+    <Compile Include="ASCE7\Entities\WindEnvelopeSurface.cs" />
+    <Compile Include="ASCE7\Entities\WindMaterialDampingType.cs" />
+    <Compile Include="ASCE7\Entities\WindPressureType.cs" />
+    <Compile Include="ASCE7\Entities\WindStructureDynamicResponseType.cs" />
+    <Compile Include="ASCE7\Entities\WindVelocityLocation.cs" />
+    <Compile Include="ASCE7\Entities\WindWallCladdingZone.cs" />
+    <Compile Include="ASCE7\Entities\WindFace.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ASCE7\ASCE7v10\C07_SnowLoads\MapData\GroundSnowData.xml" />
+    <Resource Include="ASCE7\ASCE7v10\C07_SnowLoads\MapData\SnowRegionData.xml" />
+    <Resource Include="ASCE7\ASCE7v10\C07_SnowLoads\MapData\StateRegionDataNY.xml" />
+    <Content Include="Resources\ASCE7-10F26_5-1WindZones.txt" />
+    <None Include="LICENSE" />
+    <None Include="NOTICE" />
+    <None Include="packages.config" />
+    <None Include="Resources\ASCE7_10F26_6_1Kd.txt" />
+    <None Include="Resources\ASCE7_10F26_8_1Gamma.txt" />
+    <None Include="Resources\ASCE7_10F26_8_1K1OverHToLh.txt" />
+    <None Include="Resources\ASCE7_10F26_8_1Mu.txt" />
+    <None Include="Resources\ASCE7_10Figure29_4_1Signs.txt" />
+    <None Include="Resources\ASCE7_10Figure29_4_1SignsCaseC.txt" />
+    <Content Include="Resources\ASCE7_10T11_4_1AND2.txt" />
+    <Content Include="Resources\ASCE7_10T12_2_1.txt" />
+    <Content Include="Resources\ASCE7_10T12_8_1.txt" />
+    <Content Include="Resources\ASCE7_10T12_8_2.txt" />
+    <Content Include="Resources\ASCE7_10T1_5_1RiskCategories.txt" />
+    <Content Include="Resources\ASCE7_10T26_9_1.txt" />
+    <None Include="Resources\ASCE7_10T4_1LiveLoads.txt" />
+    <None Include="Resources\ASCE7_10T7_2SnowCe.txt" />
+    <None Include="Resources\ASCE7_10T7_3SnowCt.txt" />
+    <Content Include="Resources\DeadLoadClayBrick.txt" />
+    <Content Include="Resources\DeadLoadCMU.txt" />
+    <Content Include="Resources\DeadLoadCompositeDeckOnly.txt" />
+    <Content Include="Resources\DeadLoadDeckWithConcrete.txt" />
+    <Content Include="Resources\DeadLoadGFRC.txt" />
+    <Content Include="Resources\DeadLoadRoofDeck.txt" />
+    <Content Include="Resources\DeadLoadSummaryTable.txt" />
+    <Content Include="Resources\DeadLoadWoodFraming.txt" />
+    <None Include="Kodestruct.Loads.licenseheader" />
+    <None Include="Kodestruct.Loads.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ASCE7\ASCE7v10\C05_FloodLoads\" />
+    <Folder Include="ASCE7\ASCE7v10\C26_Wind\Assets\" />
+    <Folder Include="ASCE7\Interfaces\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

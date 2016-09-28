@@ -1,0 +1,9 @@
+TwoDimensionalRidge,B,1.3
+TwoDimensionalEscarpment,B,0.75
+ThreeDimensionalAxisymHill,B,0.95
+TwoDimensionalRidge,C,1.45
+TwoDimensionalEscarpment,C,0.85
+ThreeDimensionalAxisymHill,C,1.05
+TwoDimensionalRidge,D,1.55
+TwoDimensionalEscarpment,D,0.95
+ThreeDimensionalAxisymHill,D,1.15

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{381FDBB2-3657-41D3-967F-E9C1F2649FD9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kodestruct.Concrete.ACI318_14.Tests</RootNamespace>
+    <AssemblyName>Kodestruct.Concrete.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Kodestruct.Common, Version=0.0.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Kodestruct.Common.0.0.1.1\lib\net45\Kodestruct.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.0.5813.39031, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Compression\AciCompressionSquareColumnTests.cs" />
+    <Compile Include="ConcreteTestBase.cs" />
+    <Compile Include="Flexure\CrackedMomentOfInertiaTests.cs" />
+    <Compile Include="Flexure\FlexuralTestsCommon.cs" />
+    <Compile Include="Flexure\RebarInput.cs" />
+    <Compile Include="Flexure\AciFlexureRectangularBeamTests.cs" />
+    <Compile Include="General\Rebar\AciRebarSectionTests.cs" />
+    <Compile Include="Prestressed\PrestressedBeamTestBase.cs" />
+    <Compile Include="Prestressed\PrestressedBeamTests.cs" />
+    <Compile Include="Prestressed\PrestressedGeneralTestsBase.cs" />
+    <Compile Include="Prestressed\PrestressedRectangularTestsBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shear\AciTwoWayShearTests.cs" />
+    <Compile Include="Shear\ShearTestsCommon.cs" />
+    <Compile Include="Shear\AciConcreteShearRectangularBeamTests.cs" />
+    <Compile Include="SplicesAndDevelopment\Tension\HookStub.cs" />
+    <Compile Include="SplicesAndDevelopment\Tension\StandardHookTests.cs" />
+    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmenKtrTests.cs" />
+    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentCbTests.cs" />
+    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentCommonTests.cs" />
+    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentksiTests.cs" />
+    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentStub.cs" />
+    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentTests.cs" />
+    <Compile Include="ToleranceTestBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="General\Concrete\" />
+    <Folder Include="SplicesAndDevelopment\Common\" />
+    <Folder Include="SplicesAndDevelopment\Compression\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kodestruct.Concrete\Kodestruct.Concrete.csproj">
+      <Project>{5774fabd-0f85-451d-ab52-9cc1ef9ed518}</Project>
+      <Name>Kodestruct.Concrete</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

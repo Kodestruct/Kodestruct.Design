@@ -1,0 +1,25 @@
+<BlockGroutingType> <Density> <Grout spacing> <4 in. block> <6 in. block> <8 in. block> <10 in. block> <12 in. block>
+Hollow,105 pcf,0,22,24,31,37,43
+Hollow,125 pcf,0,26,28,36,44,50
+Hollow,135 pcf,0,29,30,39,47,54
+FullGrout,105 pcf,0,,55,75,95,115
+FullGrout,125 pcf,0,,59,81,102,123
+FullGrout,135 pcf,0,,62,83,105,127
+PartialGrout,105 pcf,48,,29,38,47,55
+PartialGrout,105 pcf,40,,30,40,49,57
+PartialGrout,105 pcf,32,,32,42,52,61
+PartialGrout,105 pcf,24,,34,46,57,67
+PartialGrout,105 pcf,16,,40,53,66,79
+PartialGrout,125 pcf,48,,33,44,54,62
+PartialGrout,125 pcf,40,,34,45,56,65
+PartialGrout,125 pcf,32,,36,47,58,68
+PartialGrout,125 pcf,24,,39,51,63,75
+PartialGrout,125 pcf,16,,44,59,73,87
+PartialGrout,135 pcf,48,,36,47,57,66
+PartialGrout,135 pcf,40,,37,48,59,69
+PartialGrout,135 pcf,32,,38,50,62,72
+PartialGrout,135 pcf,24,,41,54,67,78
+PartialGrout,135 pcf,16,,46,61,76,90
+Solid,105 pcf,0,32,51,69,87,105
+Solid,125 pcf,0,38,60,81,102,124
+Solid,135 pcf,0,41,64,87,110,133

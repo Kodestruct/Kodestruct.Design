@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Loads</id>
-    <version>0.0.1.2</version>
+    <version>0.0.1.4</version>
     <title>Kodestruct.Loads</title>
     <authors>Kodestruct Inc</authors>
     <description>Structural engineering automation library. Components for minimum load calculations for buildings and structures per ASCE 7 standard.</description>

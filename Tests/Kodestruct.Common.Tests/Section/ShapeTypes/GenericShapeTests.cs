@@ -1,5 +1,5 @@
 #region Copyright
-   /*Copyright (C) 2015 Kodestruct Inc
+/*Copyright (C) 2015 Kodestruct Inc
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
    limitations under the License.
    */
 #endregion
- 
+
 using System.Collections.Generic;
 using NUnit.Framework;
 using Kodestruct.Common.Mathematics;
@@ -25,8 +25,16 @@ using Kodestruct.Common.Section.Interfaces;
 namespace Kodestruct.Common.Tests.Section.ShapeTypes
 {
     [TestFixture]
-    public class GenericShapeTests
+    public class GenericShapeTests : ToleranceTestBase
     {
+        public GenericShapeTests()
+        {
+            tolerance = 0.02; //2% can differ from rounding
+        }
+
+
+        double tolerance;
+
         [Test]
         public void SliceTopReturnsPolygonForRectangle()
         {
@@ -39,7 +47,27 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             };
             var rect = new GenericShape(Points);
             IMoveableSection sect = rect.GetTopSliceSection(1, SlicingPlaneOffsetType.Top);
-            Assert.AreEqual(1.0,sect.YMax);
+            Assert.AreEqual(1.0, sect.YMax);
+        }
+
+        [Test]
+        public void GenericShapeCalculatesMomentOfInertia()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-1, -2),
+                new Point2D(-1, 2),
+                new Point2D(1, 2),
+                new Point2D(1, -2)
+            };
+            var rect = new GenericShape(Points);
+            double refValue = 2.0 * System.Math.Pow(4.0, 3.0) / 12.0;
+            double I_x = rect.I_x;
+
+
+            double actualTolerance = EvaluateActualTolerance(I_x, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
         }
     }
 }

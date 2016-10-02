@@ -69,5 +69,25 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             Assert.LessOrEqual(actualTolerance, tolerance);
 
         }
+
+        [Test]
+        public void GenericShapeCalculatesMomentOfInertiaWithShiftedCoordinates()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-1, 0),
+                new Point2D(-1, 4),
+                new Point2D(1, 4),
+                new Point2D(1, 0)
+            };
+            var rect = new GenericShape(Points);
+            double refValue = 2.0 * System.Math.Pow(4.0, 3.0) / 12.0;
+            double I_x = rect.I_x;
+
+
+            double actualTolerance = EvaluateActualTolerance(I_x, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+        }
     }
 }

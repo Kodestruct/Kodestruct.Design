@@ -27,9 +27,9 @@ namespace Kodestruct.Concrete.ACI
     public interface IRebar
     {
         double Area { get; set; }
-        RebarDesignation Designation { get; set; }
+        //RebarDesignation Designation { get; set; }
         double Diameter { get; set; }
-        string ID { get; set; }
+        //string ID { get; set; }
         double GetDesignStress();
         double GetDesignForce();
         double GetStress(double Strain);

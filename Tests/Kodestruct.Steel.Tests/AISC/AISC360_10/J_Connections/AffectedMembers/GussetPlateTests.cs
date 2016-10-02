@@ -36,5 +36,19 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
             Assert.AreEqual(7,KL);
         }
 
+        [Test]
+        public void GussetReturnsCompactness()
+        {
+            double t_g      =  0.5;
+            double c_Gusset =  2.0;
+            double F_y      =  36.0;
+            double E        =  29000.0;
+            double l_1      =  2.0;
+
+            AffectedElement el = new AffectedElement();
+            bool IsGussetPlateConfigurationCompact = el.IsGussetPlateConfigurationCompact(t_g, c_Gusset, F_y, E, l_1);
+            Assert.AreEqual(true, IsGussetPlateConfigurationCompact);
+        }
+
     }
 }

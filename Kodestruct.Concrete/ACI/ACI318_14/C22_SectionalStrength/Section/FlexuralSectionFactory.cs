@@ -24,6 +24,7 @@ using Kodestruct.Common.CalculationLogger;
 using Kodestruct.Common.Mathematics;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI318_14.Materials;
+using Kodestruct.Common.Section.General;
 
 namespace Kodestruct.Concrete.ACI318_14
 {
@@ -109,6 +110,25 @@ namespace Kodestruct.Concrete.ACI318_14
 
             CalcLog log = new CalcLog();
             ConcreteSectionFlexure beam = new ConcreteSectionFlexure(Section, LongitudinalBars, log);
+            return beam;
+        }
+
+        /// <summary>
+        /// Concrete generic shape
+        /// </summary>
+        /// <param name="PolygonPoints">Points representing closed polyline describing the outline of concrete shape</param>
+        /// <param name="Concrete">Concrete material</param>
+        /// <param name="RebarPoints">Points representing vertical rebar. Rebar points have associated rebar material and location</param>
+        /// <param name="b_w">Section width (required for shear strength calculations)</param>
+        /// <param name="d">Distance from tension rebar centroid to the furthermost compressed point (required for shear strength calculations)</param>
+        /// <returns></returns>
+       public ConcreteSectionFlexure GetGeneralSection(List<Point2D> PolygonPoints, 
+            ConcreteMaterial Concrete, List<RebarPoint> RebarPoints, double b_w, double d)
+        {
+            CalcLog log = new CalcLog();
+            var GenericShape = new GenericShape(PolygonPoints);
+            CrossSectionGeneralShape Section = new CrossSectionGeneralShape(Concrete, null, GenericShape, b_w, d);
+            ConcreteSectionFlexure beam = new ConcreteSectionFlexure(Section, RebarPoints, log);
             return beam;
         }
     }

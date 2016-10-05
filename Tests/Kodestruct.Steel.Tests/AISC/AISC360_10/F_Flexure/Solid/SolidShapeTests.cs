@@ -12,6 +12,7 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Common.Section.SectionTypes;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
@@ -31,19 +32,19 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
         private void CreateBeam()
         {
             FlexuralMemberFactory factory = new FlexuralMemberFactory();
-            AiscShapeFactory AiscShapeFactory = new AiscShapeFactory();
-            ISection section = AiscShapeFactory.GetShape("HSS8X6X.500", ShapeTypeSteel.RectangularHSS);
-            SteelMaterial mat = new SteelMaterial(46.0, 29000);
+
+            ISection section = new SectionRectangular(0.5, 30.0);
+            SteelMaterial mat = new SteelMaterial(36.0, 29000);
             beam = factory.GetBeam(section, mat, null, MomentAxis.XAxis, FlexuralCompressionFiberPosition.Top);
 
         }
         [Test]
-        public void RectangularHSSReturnsFlexuralYieldingStrength()
+        public void RectangularSolidShapeReturnsFlexuralYieldingStrength()
         {
             SteelLimitStateValue Y =
              beam.GetFlexuralYieldingStrength(FlexuralCompressionFiberPosition.Top);
             double phiM_n = Y.Value;
-            double refValue = 30.5 * 46 * 0.9; // Z_x*F_y*0.9
+            double refValue = 0.5*(30.0*30.0)/4.0 * 36 * 0.9; // Z_x*F_y*0.9
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);

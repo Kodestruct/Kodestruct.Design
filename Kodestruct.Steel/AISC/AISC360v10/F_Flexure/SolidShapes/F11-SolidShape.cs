@@ -127,6 +127,13 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
 
         #region Steel Flexural Member Limit States
 
+        public override SteelLimitStateValue GetFlexuralYieldingStrength(FlexuralCompressionFiberPosition CompressionLocation)
+        {
+            double Mp = GetM_p();
+            double phiMp = 0.9 * Mp;
+            SteelLimitStateValue ls = new SteelLimitStateValue(-1, true);
+            return ls;
+        }
 
         public override SteelLimitStateValue GetFlexuralLateralTorsionalBucklingStrength(double C_b, double L_b, FlexuralCompressionFiberPosition CompressionLocation,
             FlexuralAndTorsionalBracingType BracingType)

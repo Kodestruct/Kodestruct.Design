@@ -1,5 +1,5 @@
 #region Copyright
-   /*Copyright (C) 2015 Kodestruct Inc
+/*Copyright (C) 2015 Kodestruct Inc
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
    limitations under the License.
    */
 #endregion
- 
+
 using System;
 using System.Collections.Generic;
 using MoreLinq;
@@ -57,20 +57,20 @@ namespace Kodestruct.Common.Section.General
         }
 
 
-        public GenericShape( List<Point2D> Vertices)
+        public GenericShape(List<Point2D> Vertices)
             : base(null)
         {
             this.Vertices = Vertices;
 
         }
-        private List<Point2D>  vertices;
+        private List<Point2D> vertices;
 
-        public List<Point2D>  Vertices
+        public List<Point2D> Vertices
         {
             get { return vertices; }
             set { vertices = value; }
         }
-        
+
         //private List<ISectionSlice> slices;
 
         //public List<ISectionSlice> Slices
@@ -78,7 +78,7 @@ namespace Kodestruct.Common.Section.General
         //    get { return slices; }
         //    set { slices = value; }
         //}
-        
+
         //public void AddRectangularSlice(double width, double MinY, double MaxY)
         //{
         //    SectionSliceRectangular slice = new SectionSliceRectangular(width, MinY, MaxY);
@@ -87,9 +87,9 @@ namespace Kodestruct.Common.Section.General
 
         public double YMax
         {
-            get 
+            get
             {
-                if (Vertices!=null)
+                if (Vertices != null)
                 {
                     Point2D YmaxPoint = Vertices.MaxBy(v => v.Y);
                     return YmaxPoint.Y;
@@ -101,7 +101,7 @@ namespace Kodestruct.Common.Section.General
 
         public double YMin
         {
-            get 
+            get
             {
                 if (Vertices != null)
                 {
@@ -119,7 +119,7 @@ namespace Kodestruct.Common.Section.General
                 if (Vertices != null)
                 {
                     Point2D XmaxPoint = Vertices.MaxBy(v => v.X);
-                    return  XmaxPoint.Y;
+                    return XmaxPoint.Y;
                 }
 
                 return 0.0;
@@ -133,7 +133,7 @@ namespace Kodestruct.Common.Section.General
                 if (Vertices != null)
                 {
                     Point2D XMinPoint = Vertices.MinBy(v => v.X);
-                    return  XMinPoint.X;
+                    return XMinPoint.X;
                 }
                 return 0.0;
             }
@@ -277,7 +277,7 @@ namespace Kodestruct.Common.Section.General
         //    get { return Cw; }
         //    set { Cw = value; }
         //}
-        
+
         //#endregion
 
 
@@ -287,7 +287,7 @@ namespace Kodestruct.Common.Section.General
         //    throw new NotImplementedException();
         //}
 
-
+        double _I_x;
         /// <summary>
         /// Generic shape moment of inertia:
         /// Calculate per equation listed here:
@@ -295,7 +295,54 @@ namespace Kodestruct.Common.Section.General
         /// </summary>
         public double I_x
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                _I_x = CalculateI_x();
+                return _I_x;
+            }
+        }
+
+        private double CalculateI_x()
+        {
+            double I_x = 0.0;
+
+            if (Vertices.Count > 1.0)
+            {
+
+
+                for (int i = 0; i < Vertices.Count; i++)
+                {
+                    if (i != Vertices.Count - 1)
+                    {
+
+
+                        double y_i = Vertices[i].Y;
+                        double y_ip1 = Vertices[i + 1].Y;
+                        double x_i = Vertices[i].X;
+                        double x_ip1 = Vertices[i + 1].X;
+                        I_x = I_x + GetSegmentContribution(y_i, y_ip1, x_i, x_ip1);
+                    }
+                    else
+                    {
+                        double y_i = Vertices[i].Y;
+                        double y_ip1 = Vertices[0].Y;
+                        double x_i = Vertices[i].X;
+                        double x_ip1 = Vertices[0].X;
+                        I_x = I_x + GetSegmentContribution(y_i, y_ip1, x_i, x_ip1);
+                    }
+                    
+                }
+
+                I_x = Math.Abs(I_x / 12.0);
+            }
+            return I_x;
+        }
+
+        private double GetSegmentContribution(double y_i, double y_ip1, double x_i, double x_ip1)
+        {
+            //https://en.wikipedia.org/wiki/Second_moment_of_area
+            double I_x =  (Math.Pow(y_i, 2.0) + y_i * y_ip1 + Math.Pow(y_ip1, 2.0)) * (x_i * y_ip1 - x_ip1 * y_i);
+            return I_x;
         }
     }
 }

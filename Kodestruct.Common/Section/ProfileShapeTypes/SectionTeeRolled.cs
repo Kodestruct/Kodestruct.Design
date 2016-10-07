@@ -88,7 +88,8 @@ namespace Kodestruct.Common.Section.SectionTypes
                 new Point2D(0, b_f - FlangeOverhang / 2.0));
 
             CompoundShapePart RightFlange = new CompoundShapePart(FlangeThickness, FlangeOverhang,
-                new Point2D(0, FlangeOverhang/2.0));
+                new Point2D(0, FlangeOverhang / 2.0));
+
 
             PartWithDoubleFillet LeftFillet = new PartWithSingleFillet(r, FlangeThickness, new Point2D(0, b_f - FlangeOverhang ), false);
             PartWithDoubleFillet RightFillet = new PartWithSingleFillet(r, FlangeThickness, new Point2D(0, FlangeOverhang), true);

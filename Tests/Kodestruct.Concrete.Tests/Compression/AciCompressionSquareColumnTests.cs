@@ -109,7 +109,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
 
             ConcreteSectionFlexure flexureMember = flexureFactory.GetRectangularSectionFourSidesDistributed(b, h, 4, 0, 2.5, 2.5, mat, rebarMat);
 
-            ConcreteSectionCompression column = compressionFactory.GetCompressionMember(flexureMember, CompressionMemberType.NonPrestressedWithTies);
+            ConcreteSectionCompression column = compressionFactory.GetCompressionMemberFromFlexuralSection(flexureMember, CompressionMemberType.NonPrestressedWithTies);
 
             return column;
 

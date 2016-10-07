@@ -93,7 +93,20 @@ namespace Kodestruct.Common.Section
                 return centroid; }
             set { centroid = value; }
         }
-        
+
+        private double centroidYAxisRect;
+
+        private double CentroidYAxisRect
+        {
+            get
+            {
+                basicPropertiesCalculated = false;
+                CalculateBasicProperties();
+
+                return centroidYAxisRect;
+            }
+            set { centroidYAxisRect = value; }
+        }
         public CompoundShape(): this(null)
         {
            
@@ -188,11 +201,12 @@ namespace Kodestruct.Common.Section
         private void CalculateBasicProperties()
         {
             CalculateMinAndMaxCoordinates();
-            CalculateCentroid();
+            CalculateCentroidForXAxisRectangles();
+            CalculateCentroidForYAxisRectangles();
             basicPropertiesCalculated = true;
         }
 
-        private void CalculateCentroid()
+        private void CalculateCentroidForXAxisRectangles()
         {
 
             double sumOfAreasX=0;
@@ -222,6 +236,28 @@ namespace Kodestruct.Common.Section
             double cX = sumOfAreaTimesX / sumOfAreasY;
 
             Centroid = new Point2D(cX, cY);
+
+        }
+
+        private void CalculateCentroidForYAxisRectangles()
+        {
+
+            double sumOfAreasX = 0;
+            double sumOfAreas = 0;
+            double sumOfAreaTimesY = 0;
+     
+
+            foreach (var r in RectanglesYAxis)
+            {
+                double thisArea = r.b * r.h;
+                sumOfAreas += thisArea;
+                //we still use Y because the shape is symmetrical
+                sumOfAreaTimesY += thisArea * r.Centroid.Y;
+
+            }
+            double cY = sumOfAreaTimesY / sumOfAreas;
+
+            CentroidYAxisRect = cY;
 
         }
 

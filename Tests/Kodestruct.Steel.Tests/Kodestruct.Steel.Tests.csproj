@@ -71,6 +71,7 @@
     <Compile Include="AISC\AISC360_10\E_Compression\RectangularHSS\CompressionRhsTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Angle\AngleTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW12.cs" />
+    <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\W18WeakAxis.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Solid\SolidShapeTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\SteelBeamFactoryTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW18.cs" />

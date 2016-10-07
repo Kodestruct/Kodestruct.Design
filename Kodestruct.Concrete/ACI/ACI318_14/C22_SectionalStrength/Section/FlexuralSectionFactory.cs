@@ -123,7 +123,7 @@ namespace Kodestruct.Concrete.ACI318_14
         /// <param name="d">Distance from tension rebar centroid to the furthermost compressed point (required for shear strength calculations)</param>
         /// <returns></returns>
        public ConcreteSectionFlexure GetGeneralSection(List<Point2D> PolygonPoints, 
-            ConcreteMaterial Concrete, List<RebarPoint> RebarPoints, double b_w, double d)
+            IConcreteMaterial Concrete, List<RebarPoint> RebarPoints, double b_w, double d)
         {
             CalcLog log = new CalcLog();
             var GenericShape = new GenericShape(PolygonPoints);

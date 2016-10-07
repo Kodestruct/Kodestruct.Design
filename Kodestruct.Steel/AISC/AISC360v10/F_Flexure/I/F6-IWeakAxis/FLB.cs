@@ -69,7 +69,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
                 tf = Get_tfBottom();
             }
 
-            double Mp = Zy * Fy;
+            double Mp = Z_y * F_y;
             double lambdapf = compactness.GetFlangeLambda_p( StressType.Flexure);
             double lambdarf = compactness.GetFlangeLambda_r(StressType.Flexure);
 
@@ -79,12 +79,12 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
                     Mn = double.PositiveInfinity;
                     break;
                 case CompactnessClassFlexure.Noncompact:
-                    Mn = Mp - (Mp - 0.7 * Fy * Sy) * ((lambda - lambdapf) / (lambdarf - lambdapf)); //(F6-2)
+                    Mn = Mp - (Mp - 0.7 * F_y * S_y) * ((lambda - lambdapf) / (lambdarf - lambdapf)); //(F6-2)
                     break;
                 case CompactnessClassFlexure.Slender:
 
                     double Fcr = 0.69 * E / Math.Pow(b / tf, 2.0); //(F6-4)
-                    Mn = Fcr * Sy; //(F6-3)
+                    Mn = Fcr * S_y; //(F6-3)
                     break;
             }
             double phiM_n = 0.9 * Mn;

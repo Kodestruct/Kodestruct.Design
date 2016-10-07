@@ -8,9 +8,9 @@
     <description>Structural engineering automation library. Components for structural steel element and connection design for buildings and other structures, per AISC 360 standard.</description>
     <language>en-US</language>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
-    <projectUrl>http://www.Kodestruct.com</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <developmentDependency>false</developmentDependency>
+    <releaseNotes>Fix to predicted floor vibrations</releaseNotes>
     <copyright>Copyright Kodestruct Inc © 2015</copyright>
     <frameworkAssemblies />
     <dependencies>

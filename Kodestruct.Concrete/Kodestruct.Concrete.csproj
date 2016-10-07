@@ -115,7 +115,7 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\ConcreteSectionTorsion.cs" />
     <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionLapSplice.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseI_cracked.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseIM_cr.cs" />
+    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseM_cr.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\EffectiveMomentOfInertia.cs" />
     <Compile Include="ACI\Entities\Rebar\Material\RebarMaterialGeneral.cs" />
     <Compile Include="ACI\Entities\Rebar\RebarLine.cs" />

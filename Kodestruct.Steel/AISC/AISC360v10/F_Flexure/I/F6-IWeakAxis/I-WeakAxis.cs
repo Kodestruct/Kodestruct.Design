@@ -66,17 +66,53 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
         {
 
             E = Section.Material.ModulusOfElasticity;
-            Fy = Section.Material.YieldStress;
-            Zy = Section.Shape.Z_y;
-            Sy = Math.Min(Section.Shape.S_yLeft, Section.Shape.S_yRight);
+            F_y = Section.Material.YieldStress;
+            Z_y = Section.Shape.Z_y;
+            S_y = Math.Min(Section.Shape.S_yLeft, Section.Shape.S_yRight);
 
            }
 
-        double E;
-        double Fy;
-        double Zy;
-        double Sy;
 
+        private double _E;
+
+        public double E
+        {
+            get {
+                GetSectionValues();
+                return _E; }
+            set { _E = value; }
+        }
+
+        private double _F_y;
+
+        public double F_y
+        {
+            get {
+                GetSectionValues();
+                return _F_y; }
+            set { _F_y = value; }
+        }
+
+        private double _Z_y;
+
+        public double Z_y
+        {
+            get {
+                GetSectionValues();
+                return _Z_y; }
+            set { _Z_y = value; }
+        }
+
+        private double _S_y;
+
+        public double S_y
+        {
+            get {
+                GetSectionValues();
+                return _S_y; }
+            set { _S_y = value; }
+        }
+        
 
     }
 }

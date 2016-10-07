@@ -35,7 +35,7 @@ namespace Kodestruct.Concrete.ACI318_14
 
         public  ConcreteCompressionStrengthResult GetDesignMomentWithCompressionStrength( double P_u,
             FlexuralCompressionFiberPosition FlexuralCompressionFiberPosition,
-            ConfinementReinforcementType ConfinementReinforcementType)
+            ConfinementReinforcementType ConfinementReinforcementType, bool CapAxialForceAtMaximum = false)
         {
             double P_o = GetMaximumForce();
             StrengthReductionFactorFactory ff = new StrengthReductionFactorFactory();
@@ -44,7 +44,15 @@ namespace Kodestruct.Concrete.ACI318_14
 
             if (P_u > phiP_n)
             {
-                throw new Exception("Axial forces exceeds maximum axial force.");
+                if (CapAxialForceAtMaximum == false)
+                {
+                    throw new Exception("Axial forces exceeds maximum axial force.");
+                }
+                else
+                {
+                    P_u = phiP_n;
+                }
+                
             }
             IStrainCompatibilityAnalysisResult nominalResult = this.GetNominalMomentResult(P_u,FlexuralCompressionFiberPosition);
             ConcreteCompressionStrengthResult result = new ConcreteCompressionStrengthResult(nominalResult, FlexuralCompressionFiberPosition, this.Section.Material.beta1);

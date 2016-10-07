@@ -92,7 +92,7 @@ namespace Kodestruct.Common.Section
             foreach (var r in RectanglesYAxis)
             {
                 double thisA = r.GetArea();
-                double thisYbar = (r.Centroid.Y - this.Centroid.X);
+                double thisYbar = (r.Centroid.Y - this.CentroidYAxisRect);
                 double thisIy = r.GetMomentOfInertia() + thisA * Math.Pow(thisYbar, 2);
                 _Iy = _Iy + thisIy;
             }

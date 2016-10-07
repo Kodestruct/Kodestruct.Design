@@ -39,7 +39,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             SteelLimitStateValue ls = new SteelLimitStateValue();
             double phiM_n = 0.0;
             double Mp = GetMinorNominalPlasticMoment();
-            double My = 1.6 * Fy * Sy;
+            double My = 1.6 * F_y * S_y;
             
 
 

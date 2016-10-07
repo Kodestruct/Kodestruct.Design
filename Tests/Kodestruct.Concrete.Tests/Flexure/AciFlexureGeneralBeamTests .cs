@@ -8,6 +8,7 @@ using Kodestruct.Concrete.ACI;
 using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Common.Mathematics;
 using Kodestruct.Concrete.ACI.Entities;
+using Kodestruct.Concrete.ACI318_14.Materials;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
 {
@@ -39,8 +40,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             };
             //GetGeneralSection(List<Point2D> PolygonPoints, 
             //ConcreteMaterial Concrete, List<RebarPoint> RebarPoints, double b_w, double d)
-            ConcreteSectionFlexure = sf.GetGeneralSection(PolyPoints, mat, RebarPoints, 12.0, 9.0);
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 20, 4000, new RebarInput(4, 2.5));
+            ConcreteSectionFlexure beam = sf.GetGeneralSection(PolyPoints, mat, RebarPoints, 12.0, 9.0);
             IStrainCompatibilityAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Top);
             double M_n = MResult.Moment;
 

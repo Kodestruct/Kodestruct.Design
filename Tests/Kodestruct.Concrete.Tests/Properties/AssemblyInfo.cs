@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kodestruct Inc")]
 [assembly: AssemblyProduct("Kodestruct.Concrete.Tests")]
-[assembly: AssemblyCopyright("Copyright Kodestruct Inc ©  2016")]
+[assembly: AssemblyCopyright("Copyright Konstantin Udilovich ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

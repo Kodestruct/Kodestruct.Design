@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kodestruct Inc")]
 [assembly: AssemblyProduct("Kodestruct.Steel")]
-[assembly: AssemblyCopyright("Copyright Kodestruct Inc © 2015")]
+[assembly: AssemblyCopyright("Copyright Konstantin Udilovich © 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

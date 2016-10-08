@@ -25,9 +25,9 @@ using Kodestruct.Common.Section.Interfaces;
 namespace Kodestruct.Common.Tests.Section.ShapeTypes
 {
     [TestFixture]
-    public class GenericShapeTests : ToleranceTestBase
+    public class PolygonShapeTests : ToleranceTestBase
     {
-        public GenericShapeTests()
+        public PolygonShapeTests()
         {
             tolerance = 0.02; //2% can differ from rounding
         }
@@ -45,13 +45,13 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
                 new Point2D(1, 1),
                 new Point2D(1, -1)
             };
-            var rect = new GenericShape(Points);
+            var rect = new PolygonShape(Points);
             IMoveableSection sect = rect.GetTopSliceSection(1, SlicingPlaneOffsetType.Top);
             Assert.AreEqual(1.0, sect.YMax);
         }
 
         [Test]
-        public void GenericShapeCalculatesMomentOfInertia()
+        public void PolygonShapeCalculatesMomentOfInertia()
         {
             var Points = new List<Point2D>
             {
@@ -60,7 +60,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
                 new Point2D(1, 2),
                 new Point2D(1, -2)
             };
-            var rect = new GenericShape(Points);
+            var rect = new PolygonShape(Points);
             double refValue = 2.0 * System.Math.Pow(4.0, 3.0) / 12.0;
             double I_x = rect.I_x;
 
@@ -71,7 +71,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
         }
 
         [Test]
-        public void GenericShapeCalculatesMomentOfInertiaWithShiftedCoordinates()
+        public void PolygonShapeCalculatesMomentOfInertiaWithShiftedCoordinates()
         {
             var Points = new List<Point2D>
             {
@@ -80,7 +80,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
                 new Point2D(1, 4),
                 new Point2D(1, 0)
             };
-            var rect = new GenericShape(Points);
+            var rect = new PolygonShape(Points);
             double refValue = 2.0 * System.Math.Pow(4.0, 3.0) / 12.0;
             double I_x = rect.I_x;
 
@@ -91,7 +91,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
         }
 
         [Test]
-        public void GenericShapeCalculatesYMaxAndYmin()
+        public void PolygonShapeCalculatesYMaxAndYmin()
         {
             var Points = new List<Point2D>
             {
@@ -100,7 +100,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
                 new Point2D(1, 4),
                 new Point2D(1, 0)
             };
-            var rect = new GenericShape(Points);
+            var rect = new PolygonShape(Points);
             double refValueMax = 4.0;
             double Ymax = rect.YMax;
 
@@ -118,7 +118,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
         }
 
         [Test]
-        public void GenericShapeCalculates_y_bar()
+        public void PolygonShapeCalculates_y_bar()
         {
             var Points = new List<Point2D>
             {
@@ -127,12 +127,33 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
                 new Point2D(1, 4),
                 new Point2D(1, 0)
             };
-            var rect = new GenericShape(Points);
+            var rect = new PolygonShape(Points);
             double refValue = 2.0;
             double y_bar = rect.y_Bar;
 
 
             double actualTolerance = EvaluateActualTolerance(y_bar, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+
+        }
+
+        [Test]
+        public void PolygonShapeCalculatesArea()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-1, 0),
+                new Point2D(-1, 4),
+                new Point2D(1, 4),
+                new Point2D(1, 0)
+            };
+            var rect = new PolygonShape(Points);
+            double refValue = 8.0;
+            double A = rect.A;
+
+
+            double actualTolerance = EvaluateActualTolerance(A, refValue);
             Assert.LessOrEqual(actualTolerance, tolerance);
 
 

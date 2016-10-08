@@ -25,7 +25,7 @@ using Paths = System.Collections.Generic.List<System.Collections.Generic.List<Cl
 
 namespace Kodestruct.Common.Section.General
 {
-    public partial class GenericShape : SectionBase, ISliceableSection, IMoveableSection
+    public partial class PolygonShape : SectionBase, ISliceableSection, IMoveableSection
     {
         //Generic shape implements ISliceableSection methods
         //which are used for sectional analysis such as strain compatibility 
@@ -112,7 +112,7 @@ namespace Kodestruct.Common.Section.General
 	        c.Execute(ClipType.ctIntersection, solution, 
 	        PolyFillType.pftEvenOdd, PolyFillType.pftEvenOdd);
 
-            GenericShape shape = new GenericShape(solution);
+            PolygonShape shape = new PolygonShape(solution);
             return shape; 
 
             #endregion
@@ -235,7 +235,7 @@ namespace Kodestruct.Common.Section.General
 
         private IMoveableSection getSliceOfArea(double Area, SLiceType sliceType)
         {
-            double ConvergenceTolerance = this.A * 0.0001;
+            double ConvergenceTolerance = this._A * 0.0001;
             double targetAreaDelta = 0.0;
             double AxisLocationDistanceMin = 0.0;
             double AxisLocationDistanceMax = this.YMax - this.YMin;

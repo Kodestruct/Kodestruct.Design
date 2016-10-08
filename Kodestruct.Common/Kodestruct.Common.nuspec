@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Common</id>
-    <version>0.0.1.5</version>
+    <version>0.0.1.6</version>
     <title>Kodestruct.Common</title>
     <authors>Konstantin Udilovich</authors>
     <description>Structural engineering automation library. Components common to different material standards for buildings and other structures, including section properties and shared entities.</description>
@@ -11,8 +11,8 @@
     <projectUrl>http://www.Kodestruct.com</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <developmentDependency>false</developmentDependency>
-    <releaseNotes>Updates to I_y</releaseNotes>
-    <copyright>Copyright Kodestruct Inc © 2015</copyright>
+    <releaseNotes>Updates to centroid with respect to Y-axis</releaseNotes>
+    <copyright>Copyright Konstantin Udilovich © 2015</copyright>
     <frameworkAssemblies />
     <dependencies>
       <group targetFramework="net45">

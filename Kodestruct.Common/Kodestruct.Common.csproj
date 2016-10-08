@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -136,10 +136,9 @@
     <Compile Include="Section\ProfileShapeTypes\Angle\AnglePrincialAxisProperties.cs" />
     <Compile Include="Section\ProfileShapeTypes\Compound\CompoundShapeSlicing.cs" />
     <Compile Include="Section\ProfileShapeTypes\Compound\PartWithSingleFillet.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Generic\GenericShape.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Generic\GenericShapeCentroid.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Generic\GenericShapeSlicing.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Generic\SectionSliceRectangular.cs" />
+    <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShape.cs" />
+    <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShapeCentroid.cs" />
+    <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShapeSlicing.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionIWithReinfWebOpening.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionOfPlateWithHoles.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionTeeRolled.cs" />

@@ -92,7 +92,7 @@ namespace Kodestruct.Common.Section.SectionTypes
 
                 double alpha_Rad = _angle_alpha.ToRadians();
 
-                double x_c = Centroid.X - XMin;
+                double x_c = CentroidYAxisRect - XMin;
                 double y_c = Centroid.Y - YMin;
 
                 double cos_a = Math.Cos(alpha_Rad);

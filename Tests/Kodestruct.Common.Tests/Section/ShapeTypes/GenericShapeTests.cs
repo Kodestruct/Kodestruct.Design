@@ -89,5 +89,53 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             Assert.LessOrEqual(actualTolerance, tolerance);
 
         }
+
+        [Test]
+        public void GenericShapeCalculatesYMaxAndYmin()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-1, 0),
+                new Point2D(-1, 4),
+                new Point2D(1, 4),
+                new Point2D(1, 0)
+            };
+            var rect = new GenericShape(Points);
+            double refValueMax = 4.0;
+            double Ymax = rect.YMax;
+
+
+            double actualTolerance1 = EvaluateActualTolerance(Ymax, refValueMax);
+            Assert.LessOrEqual(actualTolerance1, tolerance);
+
+            double refValueMin = 0.0;
+            double YMin = rect.YMin;
+
+
+            double actualTolerance2 = EvaluateActualTolerance(YMin, refValueMin);
+            Assert.LessOrEqual(actualTolerance2, tolerance);
+
+        }
+
+        [Test]
+        public void GenericShapeCalculates_y_bar()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-1, 0),
+                new Point2D(-1, 4),
+                new Point2D(1, 4),
+                new Point2D(1, 0)
+            };
+            var rect = new GenericShape(Points);
+            double refValue = 2.0;
+            double y_bar = rect.y_Bar;
+
+
+            double actualTolerance = EvaluateActualTolerance(y_bar, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+
+        }
     }
 }

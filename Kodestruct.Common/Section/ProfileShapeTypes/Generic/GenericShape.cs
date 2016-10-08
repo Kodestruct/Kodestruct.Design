@@ -165,6 +165,25 @@ namespace Kodestruct.Common.Section.General
         }
 
 
+        protected double _x_Bar;
+
+        public override double x_Bar
+        {
+            get {
+                _x_Bar = this.GetElasticCentroidCoordinate().X;
+                return _x_Bar; }
+        }
+
+        protected double _y_Bar;
+
+        public override double y_Bar
+        {
+            get
+            {
+                _y_Bar = this.GetElasticCentroidCoordinate().Y;
+                return _y_Bar;
+            }
+        }
 
         //#region Secton Property Overrides
         //private double A;

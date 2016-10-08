@@ -36,7 +36,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
         public void SectionAngle6X4X1_2Returns_x_bar()
         {
             SectionAngle angle = new SectionAngle("", 6, 4, 0.5, AngleRotation.FlatLegBottom, AngleOrientation.LongLegVertical);
-            double x_bar = angle.x_Bar;
+            double x_bar = angle.CentroidYAxisRect;
             double refValue = 0.9868;
 
             double actualTolerance = EvaluateActualTolerance(x_bar, refValue);

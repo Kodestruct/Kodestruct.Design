@@ -39,10 +39,10 @@ namespace Kodestruct.Common.Section
             double centroidUpper = shapeTop.Centroid.X;
             double centroidLower = shapeBottom.Centroid.X;
 
-            double XShift = centroidLower - centroidUpper;
+            double XShift = shapeTop.CentroidYAxisRect - shapeBottom.CentroidYAxisRect;
 
             List<CompoundShapePart> shapeTopShiftedRectangles = (List<CompoundShapePart>)shapeTop.GetCompoundRectangleYAxisList().Select(
-                c => { c.InsertionPoint = new Mathematics.Point2D(c.InsertionPoint.X, c.InsertionPoint.Y + XShift); return c; }).ToList();
+                c => { c.InsertionPoint = new Mathematics.Point2D(c.InsertionPoint.X, c.InsertionPoint.Y - XShift); return c; }).ToList();
             var combinedRectanglesA = shapeTopShiftedRectangles.Concat(shapeBottom.GetCompoundRectangleYAxisList());
             List<CompoundShapePart> combinedRectangles = new List<CompoundShapePart>(combinedRectanglesA);
             List<Segment> uniqueSegments = FindUniqueSegments(combinedRectangles);

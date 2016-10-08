@@ -96,7 +96,7 @@ namespace Kodestruct.Common.Section
 
         private double centroidYAxisRect;
 
-        private double CentroidYAxisRect
+        public double CentroidYAxisRect
         {
             get
             {

@@ -158,5 +158,30 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
 
 
         }
+
+        [Test]
+        public void PolygonShapeReturnsTopSliceOfArea()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-1, 0),
+                new Point2D(-1, 4),
+                new Point2D(1, 4),
+                new Point2D(1, 0)
+            };
+            var rect = new PolygonShape(Points);
+            var slicedShape = rect.GetTopSliceOfArea(2.0);
+
+            double refValue = 2.0;
+            double A = slicedShape.A;
+
+
+            double actualTolerance = EvaluateActualTolerance(A, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+
+        }
+
+        //compressedSection = this.Section.SliceableShape.GetTopSliceOfArea(RequiredConcreteArea);
     }
 }

@@ -107,7 +107,8 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             IConcreteMaterial mat = GetConcreteMaterial(f_c);
             IRebarMaterial rebarMat = new MaterialAstmA615(A615Grade.Grade60);
 
-            ConcreteSectionFlexure flexureMember = flexureFactory.GetRectangularSectionFourSidesDistributed(b, h, 4, 0, 2.5, 2.5, mat, rebarMat);
+            ConcreteSectionFlexure flexureMember = flexureFactory.GetRectangularSectionFourSidesDistributed(b, h, 4, 0, 2.5, 2.5, 
+                mat, rebarMat,ConfinementReinforcementType.Ties);
 
             ConcreteSectionCompression column = compressionFactory.GetCompressionMemberFromFlexuralSection(flexureMember, CompressionMemberType.NonPrestressedWithTies);
 

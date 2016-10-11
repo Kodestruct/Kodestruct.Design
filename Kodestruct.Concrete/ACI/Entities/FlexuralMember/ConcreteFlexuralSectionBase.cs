@@ -33,18 +33,18 @@ namespace Kodestruct.Concrete.ACI
     public abstract partial class ConcreteFlexuralSectionBase : ConcreteSectionLongitudinalReinforcedBase
     {
 
-        public ConcreteFlexuralSectionBase(IConcreteSection Section, List<RebarPoint> LongitudinalBars, ICalcLog log, double ConvergenceToleranceStrain = 0.000002)
+        public ConcreteFlexuralSectionBase(IConcreteSection Section, List<RebarPoint> LongitudinalBars, ICalcLog log, 
+            ConfinementReinforcementType ConfinementReinforcementType = ConfinementReinforcementType.Ties, double ConvergenceToleranceStrain = 0.000002)
             : base(Section, LongitudinalBars, log)
         {
             this.ConvergenceToleranceStrain = ConvergenceToleranceStrain;
-
+            this.ConfinementReinforcementType = ConfinementReinforcementType;
         }
 
         double ConvergenceToleranceStrain;
+        ConfinementReinforcementType ConfinementReinforcementType { get; set; }
 
-
-        public ConcreteFlexuralStrengthResult GetDesignFlexuralStrength(FlexuralCompressionFiberPosition FlexuralCompressionFiberPosition,
-            ConfinementReinforcementType ConfinementReinforcementType)
+        public ConcreteFlexuralStrengthResult GetDesignFlexuralStrength(FlexuralCompressionFiberPosition FlexuralCompressionFiberPosition)
         {
             IStrainCompatibilityAnalysisResult nominalResult = this.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition);
             ConcreteFlexuralStrengthResult result = new ConcreteFlexuralStrengthResult(nominalResult, FlexuralCompressionFiberPosition, this.Section.Material.beta1);

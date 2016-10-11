@@ -11,12 +11,15 @@ namespace Kodestruct.Concrete.ACI318_14
 {
     public partial class ReinforcedConcreteBeamNonprestressed
     {
-        public ReinforcedConcreteBeamNonprestressed(IConcreteSection Section, ICalcLog log)
+        public ReinforcedConcreteBeamNonprestressed(IConcreteSection Section, ConfinementReinforcementType ConfinementReinforcementType, ICalcLog log)
         {
             this.ConcreteSection = Section;
             this.Log = log;
+            this.ConfinementReinforcementType = ConfinementReinforcementType;
         }
 
+
+       ConfinementReinforcementType ConfinementReinforcementType {get; set;}
         private IConcreteSection concreteSection;
 
         public IConcreteSection ConcreteSection
@@ -36,8 +39,8 @@ namespace Kodestruct.Concrete.ACI318_14
 
         public ConcreteFlexuralStrengthResult GetFlexuralDesignStrength(List<RebarPoint> LongitudinalBars, FlexuralCompressionFiberPosition CompressionFiber, ConfinementReinforcementType ConfinementReinforcementType)
         {
-            ConcreteSectionFlexure s = new ConcreteSectionFlexure(this.ConcreteSection, LongitudinalBars, Log);
-            return s.GetDesignFlexuralStrength(CompressionFiber, ConfinementReinforcementType);
+            ConcreteSectionFlexure s = new ConcreteSectionFlexure(this.ConcreteSection, LongitudinalBars, Log,ConfinementReinforcementType );
+            return s.GetDesignFlexuralStrength(CompressionFiber);
         }
 
 

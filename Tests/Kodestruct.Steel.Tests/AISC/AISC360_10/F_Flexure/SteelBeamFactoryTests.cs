@@ -73,6 +73,28 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
         }
 
         [Test]
+        public void IShapeReturnsWeakAxisYieldStrength()
+        {
+
+            FlexuralMemberFactory factory = new FlexuralMemberFactory();
+            AiscShapeFactory AiscShapeFactory = new AiscShapeFactory();
+            ISection r = AiscShapeFactory.GetShape("W18X35");
+
+
+            SteelMaterial mat = new SteelMaterial(50.0, 29000);
+            ISteelBeamFlexure beam12 = factory.GetBeam(r, mat, null, MomentAxis.YAxis, FlexuralCompressionFiberPosition.Left);
+
+            SteelLimitStateValue Y =
+            beam12.GetFlexuralYieldingStrength(FlexuralCompressionFiberPosition.Top);
+            double phiM_n = Y.Value;
+            double refValue = 0.9*8.06 * 50; // phi*Z_y*Fy
+            double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
+
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
+        [Test]
         public void RectangleShapeReturnsYieldStrength()
         {
 

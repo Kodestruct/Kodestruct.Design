@@ -128,7 +128,10 @@ namespace Kodestruct.Common.Section
         {
             get 
             {
-                _S_yLeft = _I_y / _x_Bar;
+                if (_S_yLeft == 0)
+                {
+                    _S_yLeft = _I_y / _x_Bar;
+                }
                 return _S_yLeft; 
             }
 
@@ -140,7 +143,10 @@ namespace Kodestruct.Common.Section
         {
             get
             {
-                _S_yRight = _I_y / (_B-_x_Bar);
+                if (_S_yRight == 0)
+                {
+                    _S_yRight = _I_y / (_B - _x_Bar);
+                }
                 return _S_yRight;
             }
         }

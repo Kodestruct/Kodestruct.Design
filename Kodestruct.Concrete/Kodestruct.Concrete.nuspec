@@ -15,7 +15,7 @@
     <frameworkAssemblies />
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="Kodestruct.Common" version="0.0.1.1" />
+        <dependency id="Kodestruct.Common" version="0.0.1.5" />
       </group>
     </dependencies>
   </metadata>

@@ -30,7 +30,7 @@ namespace Kodestruct.Concrete.ACI
     /// <summary>
     /// Base class used for calculating nominal flexural strength. Utilized by beam or column sections
     /// </summary>
-    public abstract partial class ConcreteFlexuralSectionBase : ConcreteSectionLongitudinalReinforcedBase, IConcreteFlexuralMember
+    public abstract partial class ConcreteFlexuralSectionBase : ConcreteSectionLongitudinalReinforcedBase
     {
 
         public ConcreteFlexuralSectionBase(IConcreteSection Section, List<RebarPoint> LongitudinalBars, ICalcLog log, double ConvergenceToleranceStrain = 0.000002)

@@ -31,6 +31,6 @@ namespace Kodestruct.Concrete.ACI318_14
         NonPrestressedWithSpirals,
         PrestressedWithTies,
         PrestressedWithSpirals,
-        Composite
+        //Composite
     }
 }

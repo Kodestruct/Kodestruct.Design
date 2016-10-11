@@ -126,7 +126,7 @@ namespace Kodestruct.Concrete.ACI318_14
             IConcreteMaterial Concrete, List<RebarPoint> RebarPoints, double b_w, double d)
         {
             CalcLog log = new CalcLog();
-            var GenericShape = new GenericShape(PolygonPoints);
+            var GenericShape = new PolygonShape(PolygonPoints);
             CrossSectionGeneralShape Section = new CrossSectionGeneralShape(Concrete, null, GenericShape, b_w, d);
             ConcreteSectionFlexure beam = new ConcreteSectionFlexure(Section, RebarPoints, log);
             return beam;

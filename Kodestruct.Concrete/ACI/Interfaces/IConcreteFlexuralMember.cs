@@ -32,5 +32,7 @@ namespace Kodestruct.Concrete.ACI
         ConcreteFlexuralStrengthResult GetDesignFlexuralStrength(FlexuralCompressionFiberPosition FlexuralCompressionFiberPosition,
             ConfinementReinforcementType ConfinementReinforcementType);
 
+        double GetCrackedMomentOfInertia(FlexuralCompressionFiberPosition compFiberPosition);
+        double GetCrackingMoment(FlexuralCompressionFiberPosition compFiberPosition);
     }
 }

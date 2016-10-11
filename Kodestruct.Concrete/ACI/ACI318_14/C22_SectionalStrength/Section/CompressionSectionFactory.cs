@@ -61,7 +61,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14
         ConfinementReinforcementType ConfinementReinforcement,double b_w=0.0, double d=0.0,  bool IsPrestressed = false)
         {
             CalcLog log = new CalcLog();
-            var GenericShape = new GenericShape(PolygonPoints);
+            var GenericShape = new PolygonShape(PolygonPoints);
             if (b_w ==0.0)
             {
                 b_w = GenericShape.XMax - GenericShape.XMin;

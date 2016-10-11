@@ -29,8 +29,8 @@ namespace Kodestruct.Concrete.ACI318_14
     {
 
         public PrestressedConcreteSection(IPrestressedConcreteSection Section, List<RebarPoint> LongitudinalBars,
-            CrossSectionLocationType LocationType, MemberClass MemberClass, ICalcLog log)
-            : base(Section,LongitudinalBars, log)
+            CrossSectionLocationType LocationType, MemberClass MemberClass, ICalcLog log, ConfinementReinforcementType ConfinementReinforcementType)
+            : base(Section,LongitudinalBars, log, ConfinementReinforcementType)
         {
             this.crossSectionLocationType = LocationType;
             this.memberClass = MemberClass;

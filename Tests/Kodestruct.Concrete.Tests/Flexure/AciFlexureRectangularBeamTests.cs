@@ -33,7 +33,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         public void SimpleBeamFlexuralCapacityTopReturnsDesignValue()
         {
             ConcreteSectionFlexure beam = GetConcreteBeam(12, 20, 4000, new RebarInput(4, 2.5));
-            ConcreteFlexuralStrengthResult MResult = beam.GetDesignFlexuralStrength(FlexuralCompressionFiberPosition.Top, ConfinementReinforcementType.Ties);
+            ConcreteFlexuralStrengthResult MResult = beam.GetDesignFlexuralStrength(FlexuralCompressionFiberPosition.Top);
             double M_n = MResult.phiM_n/1000/12.0;
 
             double refValue = 253.0;

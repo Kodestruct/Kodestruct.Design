@@ -58,10 +58,10 @@ namespace Kodestruct.Concrete.ACI.ACI318_14
 
         public ConcreteSectionCompression GetGeneralCompressionMember(List<Point2D> PolygonPoints, List<RebarPoint> LongitudinalBars,
         IConcreteMaterial ConcreteMaterial, IRebarMaterial RebarMaterial,
-        ConfinementReinforcementType ConfinementReinforcement,double b_w=0.0, double d=0.0,  bool IsPrestressed = false)
+        ConfinementReinforcementType ConfinementReinforcement, double b_w=0.0, double d=0.0,  bool IsPrestressed = false)
         {
             CalcLog log = new CalcLog();
-            var GenericShape = new GenericShape(PolygonPoints);
+            var GenericShape = new PolygonShape(PolygonPoints);
             if (b_w ==0.0)
             {
                 b_w = GenericShape.XMax - GenericShape.XMin;
@@ -72,7 +72,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14
                 d = GenericShape.YMax - GenericShape.YMin;
             }
             CrossSectionGeneralShape Section = new CrossSectionGeneralShape(ConcreteMaterial, null, GenericShape, b_w, d);
-            ConcreteSectionFlexure flexuralSection = new ConcreteSectionFlexure(Section, LongitudinalBars, log);
+            ConcreteSectionFlexure flexuralSection = new ConcreteSectionFlexure(Section, LongitudinalBars, log, ConfinementReinforcement);
 
             return GetCompressionMemberFromFlexuralSection(flexuralSection, ConfinementReinforcement, IsPrestressed);
 

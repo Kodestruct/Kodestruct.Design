@@ -25,7 +25,7 @@ using Paths = System.Collections.Generic.List<System.Collections.Generic.List<Cl
 
 namespace Kodestruct.Common.Section.General
 {
-    public partial class GenericShape : SectionBase, ISliceableSection, IMoveableSection
+    public partial class PolygonShape : SectionBase, ISliceableSection, IMoveableSection
     {
         //Generic shape implements ISliceableSection methods
         //which are used for sectional analysis such as strain compatibility 
@@ -112,8 +112,17 @@ namespace Kodestruct.Common.Section.General
 	        c.Execute(ClipType.ctIntersection, solution, 
 	        PolyFillType.pftEvenOdd, PolyFillType.pftEvenOdd);
 
-            GenericShape shape = new GenericShape(solution);
-            return shape; 
+            if (solution.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                PolygonShape shape = new PolygonShape(solution);
+                return shape; 
+            }
+            
+            
 
             #endregion
         }
@@ -132,6 +141,10 @@ namespace Kodestruct.Common.Section.General
         }
         public virtual IMoveableSection GetTopSliceSection(double PlaneOffset, SlicingPlaneOffsetType OffsetType)
         {
+            if (PlaneOffset>= this.YMax-YMin)
+            {
+                return null;
+            }
             List<Point2D> rectPoints = null;
             switch (OffsetType)
             {
@@ -175,6 +188,11 @@ namespace Kodestruct.Common.Section.General
 
         public virtual IMoveableSection GetBottomSliceSection(double PlaneOffset, SlicingPlaneOffsetType OffsetType)
         {
+            if (PlaneOffset >= this.YMax - YMin)
+            {
+                return null;
+            }
+
             List<Point2D> rectPoints = null;
             switch (OffsetType)
             {
@@ -216,7 +234,7 @@ namespace Kodestruct.Common.Section.General
 
         public virtual IMoveableSection GetTopSliceOfArea(double Area)
         {
-            return getSliceOfArea(Area, SLiceType.Bottom);
+            return getSliceOfArea(Area, SLiceType.Top);
         }
 
         //variables used to store iteration data for finding a slice of a given area;
@@ -261,14 +279,40 @@ namespace Kodestruct.Common.Section.General
         private double TopAreaDeltaCalculationFunction(double SliceAxisY)
         {
             cutSection = this.GetTopSliceSection(SliceAxisY, SlicingPlaneOffsetType.Top);
-            double SliceArea = cutSection.A;
+
+            double SliceArea = 0;
+            if (cutSection!=null)
+            {
+                SliceArea = cutSection.A; 
+            }
+            else
+            {
+                if (SliceAxisY== this.YMax - this.YMin)
+                {
+                    SliceArea = this.A;
+                }
+            }
+
             return targetArea - SliceArea;
         }
 
         private double BottomAreaDeltaCalculationFunction(double SliceAxisY)
         {
             cutSection = this.GetBottomSliceSection(SliceAxisY, SlicingPlaneOffsetType.Top);
-            double SliceArea = cutSection.A;
+            
+            double SliceArea = 0;
+            if (cutSection != null)
+            {
+                SliceArea = cutSection.A;
+            }
+            else
+            {
+                if (SliceAxisY == this.YMax - this.YMin)
+                {
+                    SliceArea = this.A;
+                }
+            }
+
             return targetArea - SliceArea;
         }
 

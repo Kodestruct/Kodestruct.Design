@@ -29,8 +29,8 @@ namespace Kodestruct.Concrete.ACI
     public abstract partial class PrestressedBeamSectionBase: ConcreteFlexuralSectionBase, IConcreteFlexuralMember
     {
         public PrestressedBeamSectionBase(IConcreteSection Section,
-            List<RebarPoint> LongitudinalBars, ICalcLog log)
-            : base(Section, LongitudinalBars, log)
+            List<RebarPoint> LongitudinalBars, ICalcLog log, ConfinementReinforcementType ConfinementReinforcementType)
+            : base(Section, LongitudinalBars, log, ConfinementReinforcementType)
         {
 
         }

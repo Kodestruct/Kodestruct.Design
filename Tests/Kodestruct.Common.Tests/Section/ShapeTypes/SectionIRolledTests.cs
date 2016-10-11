@@ -39,7 +39,8 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
 
         double tolerance;
 
-         [Test]
+
+    [Test]
          public void SectionIRolledReturnsArea()
          {
              SectionIRolled shape = new SectionIRolled(null, 17.7, 6.0, 0.425, 0.3, 0.827);
@@ -90,4 +91,5 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
              Assert.LessOrEqual(actualTolerance, tolerance);
          }
     }
+    
 }

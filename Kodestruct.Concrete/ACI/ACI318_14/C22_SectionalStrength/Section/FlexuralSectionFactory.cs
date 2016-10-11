@@ -32,7 +32,8 @@ namespace Kodestruct.Concrete.ACI318_14
     {
 
         public ConcreteSectionFlexure GetRectangularSectionFourSidesDistributed(double b, double h,
-    double A_sTopBottom, double A_sLeftRight, double c_centTopBottom, double c_centLeftRight, IConcreteMaterial mat, IRebarMaterial rebarMaterial)
+    double A_sTopBottom, double A_sLeftRight, double c_centTopBottom, double c_centLeftRight, IConcreteMaterial mat, IRebarMaterial rebarMaterial,
+            ConfinementReinforcementType ConfinementReinforcementType)
         {
 
             double YTop = h / 2.0 - c_centTopBottom;
@@ -62,22 +63,22 @@ namespace Kodestruct.Concrete.ACI318_14
             CrossSectionRectangularShape section = new CrossSectionRectangularShape(mat, null, b, h);
             CalcLog log = new CalcLog();
 
-            ConcreteSectionFlexure sectionFlexure = new ConcreteSectionFlexure(section, LongitudinalBars, log);
+            ConcreteSectionFlexure sectionFlexure = new ConcreteSectionFlexure(section, LongitudinalBars, log, ConfinementReinforcementType);
             return sectionFlexure;
         }
 
        public ConcreteSectionFlexure GetNonPrestressedDoublyReinforcedRectangularSection(double b, double h, 
-            double A_s1,double A_s2,double c_cntr1,double c_cntr2, 
-            ConcreteMaterial concreteMaterial, IRebarMaterial rebarMaterial)
+            double A_s1,double A_s2,double c_cntr1,double c_cntr2,
+            ConcreteMaterial concreteMaterial, IRebarMaterial rebarMaterial, ConfinementReinforcementType ConfinementReinforcementType)
         {
-            return GetNonPrestressedDoublyReinforcedRectangularSection(b, h, A_s1, A_s2, c_cntr1, c_cntr2, 0, 0, 0, 0, concreteMaterial, rebarMaterial);
+            return GetNonPrestressedDoublyReinforcedRectangularSection(b, h, A_s1, A_s2, c_cntr1, c_cntr2, 0, 0, 0, 0, concreteMaterial, rebarMaterial, ConfinementReinforcementType);
         }
 
 
         public ConcreteSectionFlexure GetNonPrestressedDoublyReinforcedRectangularSection(double b, double h, 
             double A_s1,double A_s2,double c_cntr1,double c_cntr2, 
-            double A_s_prime1,double A_s_prime2, double c_cntr_prime1, double c_cntr_prime2, 
-            ConcreteMaterial concrete, IRebarMaterial rebar)
+            double A_s_prime1,double A_s_prime2, double c_cntr_prime1, double c_cntr_prime2,
+            ConcreteMaterial concrete, IRebarMaterial rebar, ConfinementReinforcementType ConfinementReinforcementType)
         {
             CrossSectionRectangularShape Section = new CrossSectionRectangularShape(concrete, null, b, h);
              List<RebarPoint> LongitudinalBars = new List<RebarPoint>();
@@ -109,7 +110,7 @@ namespace Kodestruct.Concrete.ACI318_14
             }
 
             CalcLog log = new CalcLog();
-            ConcreteSectionFlexure beam = new ConcreteSectionFlexure(Section, LongitudinalBars, log);
+            ConcreteSectionFlexure beam = new ConcreteSectionFlexure(Section, LongitudinalBars, log, ConfinementReinforcementType);
             return beam;
         }
 
@@ -120,15 +121,17 @@ namespace Kodestruct.Concrete.ACI318_14
         /// <param name="Concrete">Concrete material</param>
         /// <param name="RebarPoints">Points representing vertical rebar. Rebar points have associated rebar material and location</param>
         /// <param name="b_w">Section width (required for shear strength calculations)</param>
+        /// <param name="ConfinementReinforcementType"></param>
         /// <param name="d">Distance from tension rebar centroid to the furthermost compressed point (required for shear strength calculations)</param>
         /// <returns></returns>
-       public ConcreteSectionFlexure GetGeneralSection(List<Point2D> PolygonPoints, 
-            IConcreteMaterial Concrete, List<RebarPoint> RebarPoints, double b_w, double d)
+       public ConcreteSectionFlexure GetGeneralSection(List<Point2D> PolygonPoints,
+            IConcreteMaterial Concrete, List<RebarPoint> RebarPoints, double b_w, double d, 
+           ConfinementReinforcementType ConfinementReinforcementType= ConfinementReinforcementType.NoReinforcement)
         {
             CalcLog log = new CalcLog();
-            var GenericShape = new GenericShape(PolygonPoints);
+            var GenericShape = new PolygonShape(PolygonPoints);
             CrossSectionGeneralShape Section = new CrossSectionGeneralShape(Concrete, null, GenericShape, b_w, d);
-            ConcreteSectionFlexure beam = new ConcreteSectionFlexure(Section, RebarPoints, log);
+            ConcreteSectionFlexure beam = new ConcreteSectionFlexure(Section, RebarPoints, log,  ConfinementReinforcementType);
             return beam;
         }
     }

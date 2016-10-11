@@ -11,20 +11,86 @@ namespace Kodestruct.Concrete.ACI318_14
 {
     public class ConcreteSectionCompression : ConcreteCompressionSectionBase
     {
+        public ConcreteSectionCompression(IConcreteSectionWithLongitudinalRebar Section, 
+        ConfinementReinforcementType ConfinementReinforcementType,
+         ICalcLog log, bool IsPrestressed =false )
+            : base(Section.Section, Section.LongitudinalBars, log)
+        {
+            switch (ConfinementReinforcementType)
+            {
+                case ConfinementReinforcementType.Spiral:
+                    this.CompressionMemberType = IsPrestressed == false ? CompressionMemberType.NonPrestressedWithSpirals : CompressionMemberType.PrestressedWithSpirals;
+                    break;
+                case ConfinementReinforcementType.Ties:
+                    this.CompressionMemberType = IsPrestressed == false ? CompressionMemberType.NonPrestressedWithTies : CompressionMemberType.PrestressedWithTies;
+                    break;
+                case ConfinementReinforcementType.NoReinforcement:
+                    throw new Exception("Invalid type of ConfinementReinforcementType variable. Specify either ties or spirals. Alternatively use nodes for plain concrete design");
+                    break;
+                this.CompressionMemberType = IsPrestressed == false ? CompressionMemberType.NonPrestressedWithTies : CompressionMemberType.PrestressedWithTies;
+                    break;
+            }
+        }
+
         public ConcreteSectionCompression(IConcreteSection Section,
             List<RebarPoint> LongitudinalBars, CompressionMemberType CompressionMemberType, ICalcLog log)
             : base(Section, LongitudinalBars, log)
         {
             this.CompressionMemberType = CompressionMemberType;
+            switch (CompressionMemberType)
+            {
+                case CompressionMemberType.NonPrestressedWithTies:
+                    ConfinementReinforcementType = ACI.ConfinementReinforcementType.Ties;
+                    break;
+                case CompressionMemberType.NonPrestressedWithSpirals:
+                    ConfinementReinforcementType = ConfinementReinforcementType.Spiral;
+                    break;
+                case CompressionMemberType.PrestressedWithTies:
+                    ConfinementReinforcementType = ConfinementReinforcementType.Ties;
+                    break;
+                case CompressionMemberType.PrestressedWithSpirals:
+                    ConfinementReinforcementType = ConfinementReinforcementType.Spiral;
+                    break;
+                default:
+                    ConfinementReinforcementType = ACI.ConfinementReinforcementType.Ties;
+                    break;
+            }
         }
 
         public ConcreteSectionCompression(ConcreteSectionFlexure FlexuralSection, CompressionMemberType CompressionMemberType, ICalcLog log)
             : base(FlexuralSection.Section, FlexuralSection.LongitudinalBars, log)
         {
             this.CompressionMemberType = CompressionMemberType;
+
+            switch (CompressionMemberType)
+            {
+                case CompressionMemberType.NonPrestressedWithTies:
+                    ConfinementReinforcementType = ACI.ConfinementReinforcementType.Ties;
+                    break;
+                case CompressionMemberType.NonPrestressedWithSpirals:
+                    ConfinementReinforcementType = ConfinementReinforcementType.Spiral;
+                    break;
+                case CompressionMemberType.PrestressedWithTies:
+                    ConfinementReinforcementType = ConfinementReinforcementType.Ties;
+                    break;
+                case CompressionMemberType.PrestressedWithSpirals:
+                    ConfinementReinforcementType = ConfinementReinforcementType.Spiral;
+                    break;
+                default:
+                    ConfinementReinforcementType = ACI.ConfinementReinforcementType.Ties;
+                    break;
+            }
         }
 
 
+        private ConfinementReinforcementType _ConfinementReinforcementType;
+
+        public ConfinementReinforcementType ConfinementReinforcementType
+        {
+        get { return _ConfinementReinforcementType;}
+        set { _ConfinementReinforcementType = value;}
+        }
+	
         private CompressionMemberType compressionMemberType;
 
         public CompressionMemberType CompressionMemberType
@@ -35,7 +101,7 @@ namespace Kodestruct.Concrete.ACI318_14
 
         public  ConcreteCompressionStrengthResult GetDesignMomentWithCompressionStrength( double P_u,
             FlexuralCompressionFiberPosition FlexuralCompressionFiberPosition,
-            ConfinementReinforcementType ConfinementReinforcementType, bool CapAxialForceAtMaximum = false)
+             bool CapAxialForceAtMaximum = true)
         {
             double P_o = GetMaximumForce();
             StrengthReductionFactorFactory ff = new StrengthReductionFactorFactory();
@@ -84,9 +150,9 @@ namespace Kodestruct.Concrete.ACI318_14
                 case CompressionMemberType.PrestressedWithSpirals:
                     C = 0.85;
                     break;
-                case CompressionMemberType.Composite:
-                    C = 0.85;
-                    break;
+                //case CompressionMemberType.Composite:
+                //    C = 0.85;
+                //    break;
                 default:
                     C = 0.8;
                     break;

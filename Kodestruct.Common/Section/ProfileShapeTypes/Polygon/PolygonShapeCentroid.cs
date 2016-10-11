@@ -22,7 +22,7 @@ using Kodestruct.Common.Section.Interfaces;
 
 namespace Kodestruct.Common.Section.General
 {
-    public partial class GenericShape : SectionBase, ISliceableSection, IMoveableSection
+    public partial class PolygonShape : SectionBase, ISliceableSection, IMoveableSection
     {
         //Centroid is correctly located ONLY for non self intersecting polygon
         //http://en.wikipedia.org/wiki/Centroid#Centroid_of_polygon

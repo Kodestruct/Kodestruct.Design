@@ -194,7 +194,8 @@ namespace Kodestruct.Common.Section
 
         public virtual double y_Bar
         {
-            get { return _y_Bar; }
+            get { 
+                return _y_Bar; }
         }
 
         protected double _x_pBar;

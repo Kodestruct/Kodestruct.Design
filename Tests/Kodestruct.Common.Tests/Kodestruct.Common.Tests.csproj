@@ -60,8 +60,9 @@
     <Compile Include="Section\ShapeTypes\SectionChannelRolledTests.cs" />
     <Compile Include="Section\ShapeTypes\CompoundShapePropertyTests.cs" />
     <Compile Include="Section\ShapeTypes\CompoundShapeSlicingTests.cs" />
-    <Compile Include="Section\ShapeTypes\GenericShapeTests.cs" />
+    <Compile Include="Section\ShapeTypes\PolygonShapeTests.cs" />
     <Compile Include="Section\ShapeTypes\SectionDoubleStackedTests.cs" />
+    <Compile Include="Section\ShapeTypes\SectionITests.cs" />
     <Compile Include="Section\ShapeTypes\SectionIRolledTests.cs" />
     <Compile Include="Section\ShapeTypes\SectionIWithReinfWebOpeningTests.cs" />
     <Compile Include="Section\ShapeTypes\ShapeRectangularTests.cs" />

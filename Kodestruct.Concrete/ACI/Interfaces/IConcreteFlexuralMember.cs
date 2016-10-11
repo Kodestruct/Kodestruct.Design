@@ -29,8 +29,8 @@ namespace Kodestruct.Concrete.ACI
     public interface IConcreteFlexuralMember
     {
         IStrainCompatibilityAnalysisResult GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition CompressionFiberPosition);
-        ConcreteFlexuralStrengthResult GetDesignFlexuralStrength(FlexuralCompressionFiberPosition FlexuralCompressionFiberPosition,
-            ConfinementReinforcementType ConfinementReinforcementType);
-
+        ConcreteFlexuralStrengthResult GetDesignFlexuralStrength(FlexuralCompressionFiberPosition compFiberPosition);
+        double GetCrackedMomentOfInertia(FlexuralCompressionFiberPosition compFiberPosition);
+        double GetCrackingMoment(FlexuralCompressionFiberPosition compFiberPosition);
     }
 }

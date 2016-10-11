@@ -33,8 +33,8 @@ namespace Kodestruct.Concrete.ACI318_14
         ///  Constructor used for flexure and axial load analysis.
         /// </summary>
         public ConcreteSectionFlexure(IConcreteSection Section,
-            List<RebarPoint> LongitudinalBars, ICalcLog log)
-            : base(Section, LongitudinalBars, log)
+            List<RebarPoint> LongitudinalBars, ICalcLog log, ConfinementReinforcementType ConfinementReinforcementType)
+            : base(Section, LongitudinalBars, log, ConfinementReinforcementType)
         {
             
         }

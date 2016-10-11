@@ -51,14 +51,18 @@ namespace Kodestruct.Concrete.ACI
             double RequiredConcreteArea = 0;
             IMoveableSection compressedSection = null;
 
+            RequiredConcreteArea = RebarResultant / (0.85 * fc);
+            if (RequiredConcreteArea > this.Section.SliceableShape.A)
+            {
+                //TODO: go directly to strain compatibility solution
+            }
             switch (CompressionFiberPosition)
             {
                 case FlexuralCompressionFiberPosition.Top:
-                    RequiredConcreteArea = RebarResultant / (0.85 * fc);
+                    
                     compressedSection = this.Section.SliceableShape.GetTopSliceOfArea(RequiredConcreteArea);
                     break;
                 case FlexuralCompressionFiberPosition.Bottom:
-                    RequiredConcreteArea = RebarResultant / (0.85 * fc);
                     compressedSection = this.Section.SliceableShape.GetBottomSliceOfArea(RequiredConcreteArea);
                     break;
                 default:

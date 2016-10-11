@@ -47,7 +47,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             phiM_n = 0.9*M_n;
 
             ls.IsApplicable = true;
-            ls.Value = M_n;
+            ls.Value = phiM_n;
             return ls;
         }
     }

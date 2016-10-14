@@ -116,7 +116,20 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Combination
                  break;
 	        }
 
-            return InteractionRatio;
+            List<double> IndividualIRs = new List<double>
+            {
+
+                 N ,
+                 T ,
+                 Mx,
+                 My,
+                 V ,
+                 InteractionRatio
+            };
+            //Summation of interaction ratios cannot be better than any individual one
+            double IR_Adjusted = IndividualIRs.Max();
+
+            return IR_Adjusted;
         }
     }
 }

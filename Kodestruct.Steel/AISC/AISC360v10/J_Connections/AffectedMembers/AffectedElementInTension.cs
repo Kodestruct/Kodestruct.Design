@@ -76,8 +76,8 @@ namespace Kodestruct.Steel.AISC360v10.Connections.AffectedElements
             double F_y = Section.Material.YieldStress;
             double F_u = Section.Material.UltimateStress;
 
-            double phiR_nY = GetTensionYieldingStrength(F_y, A_e);
-            double phiR_nU = GetTensileRuptureStrength(F_y, A_e);
+            double phiR_nY = GetTensionYieldingStrength(F_y, A_g);
+            double phiR_nU = GetTensileRuptureStrength(F_u, A_e);
 
             double phiR_n = Math.Min(phiR_nY, phiR_nU);
             return phiR_n;
@@ -94,7 +94,7 @@ namespace Kodestruct.Steel.AISC360v10.Connections.AffectedElements
         private double GetTensionYieldingStrength(double F_y, double A_g)
         {
             double R_n = F_y * A_g; // (J4-1)
-            double phi = 1.0;
+            double phi = 0.9;
             return phi * R_n;
         }
 

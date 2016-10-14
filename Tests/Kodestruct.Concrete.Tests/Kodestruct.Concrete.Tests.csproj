@@ -93,6 +93,7 @@
     <Folder Include="SplicesAndDevelopment\Compression\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Kodestruct.Concrete.Tests.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

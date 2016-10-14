@@ -1,5 +1,5 @@
 #region Copyright
-   /*Copyright (C) 2015 Kodestruct Inc
+   /*Copyright (C) 2015 Konstantin Udilovich
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
    limitations under the License.
    */
 #endregion
+ 
 using System;
 using System.Collections.Generic;
 using System.Linq;

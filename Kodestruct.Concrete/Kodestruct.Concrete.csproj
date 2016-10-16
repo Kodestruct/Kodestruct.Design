@@ -108,10 +108,14 @@
     </Compile>
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\OneWayShearReinforcedSectionNonPrestressed.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\TotalOneWayShearStrength.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\ConcentricPunchingStress.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\ConcreteSectionTwoWayShear.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PerimeterFactory.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PerimeterLineSegment.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PunchingPerimeterConfiguration.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PunchingPerimeterData.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\PunchingShearStrength.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\PunchingShearWithMoment.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\ConcreteSectionTorsion.cs" />
     <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionLapSplice.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseI_cracked.cs" />

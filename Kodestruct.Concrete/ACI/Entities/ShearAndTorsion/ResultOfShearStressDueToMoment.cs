@@ -11,23 +11,28 @@ namespace Kodestruct.Concrete.ACI.Entities
         public double v_max { get; set; }
         public double v_min { get; set; }
 
-        public double J_x { get; set; }
-        public double J_y { get; set; }
-        public double theta { get; set; }
+        public double gamma_vx { get; set; }
+        public double gamma_vy { get; set; }
 
-        public ResultOfShearStressDueToMoment(double v_max, double v_min, double J_x, double J_y, double theta)
-        {
-            this.v_max =v_max ;
-            this.v_min =v_min ;
-            this.J_x   =J_x   ;
-            this.J_y   =J_y   ;
-            this.theta = theta;
-        }
+        //public double J_x { get; set; }
+        //public double J_y { get; set; }
+        //public double theta { get; set; }
 
-        public ResultOfShearStressDueToMoment(double v_max, double v_min)
+        //public ResultOfShearStressDueToMoment(double v_max, double v_min, double J_x, double J_y, double theta)
+        //{
+        //    this.v_max =v_max ;
+        //    this.v_min =v_min ;
+        //    this.J_x   =J_x   ;
+        //    this.J_y   =J_y   ;
+        //    this.theta = theta;
+        //}
+
+        public ResultOfShearStressDueToMoment(double v_max, double v_min, double gamma_vx, double gamma_vy)
         {
             this.v_max = v_max;
             this.v_min = v_min;
+            this.gamma_vx = gamma_vx;
+            this.gamma_vy = gamma_vy;
         }
     }
 }

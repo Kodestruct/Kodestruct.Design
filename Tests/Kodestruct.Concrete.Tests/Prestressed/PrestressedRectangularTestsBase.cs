@@ -1,3 +1,5 @@
+//Sample license text.
+
 //using NUnit.Framework;
 //using Rhino.Mocks;
 //using System.Collections.Generic;

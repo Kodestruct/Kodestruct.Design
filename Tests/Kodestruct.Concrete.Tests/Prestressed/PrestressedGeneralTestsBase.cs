@@ -1,3 +1,5 @@
+//Sample license text.
+
 //using System.Collections.Generic;
 //using NUnit.Framework;
 //using Kodestruct.Analytics.ACI318_14.Tests.Prestressed;

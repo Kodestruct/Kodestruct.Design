@@ -1,5 +1,5 @@
 #region Copyright
-   /*Copyright (C) 2015 Kodestruct Inc
+   /*Copyright (C) 2015 Konstantin Udilovich
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
    limitations under the License.
    */
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -116,7 +117,20 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Combination
                  break;
 	        }
 
-            return InteractionRatio;
+            List<double> IndividualIRs = new List<double>
+            {
+
+                 N ,
+                 T ,
+                 Mx,
+                 My,
+                 V ,
+                 InteractionRatio
+            };
+            //Summation of interaction ratios cannot be better than any individual one
+            double IR_Adjusted = IndividualIRs.Max();
+
+            return IR_Adjusted;
         }
     }
 }

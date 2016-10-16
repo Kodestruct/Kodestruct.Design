@@ -75,6 +75,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Kodestruct.Analysis.Tests.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

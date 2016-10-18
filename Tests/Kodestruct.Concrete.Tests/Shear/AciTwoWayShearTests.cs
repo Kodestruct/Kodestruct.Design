@@ -27,8 +27,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double d = 4.75;
             double b_1 = 26.0;
             double b_2 = 12.0;
-            List<PerimeterLineSegment> segments = f.GetPerimeterSegments(PunchingPerimeterConfiguration.Interior, b_1, b_2, d);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat,segments,d,b_1,b_2,true, PunchingPerimeterConfiguration.Interior);
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData segments = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, b_1, b_2, d,0,0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, segments, d, b_1, b_2, true, PunchingPerimeterConfiguration.Interior, ColumnCenter);
             double phi_v_c = sec.GetTwoWayStrengthForUnreinforcedConcrete()/1000.0; //convert to kips
             
             double refValue = 71.3/d/95.0; //from example
@@ -37,6 +38,30 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Assert.LessOrEqual(actualTolerance, tolerance);
 
         
+        }
+        /// <summary>
+        /// MacGregor, Wight. Reinforced concrete. 6th edition
+        /// Example 13-13
+        /// </summary>
+        [Test]
+        public void SlabPunchingMomentAndShearReturnsStress()
+        {
+            IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
+            PerimeterFactory f = new PerimeterFactory();
+            double d = 5.5;
+            double cx = 12.0;
+            double cy = 16.0;
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 0.0,ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior, ColumnCenter);
+            double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0,599.7,31.3,false).v_max / 1000.0; //note: moment is adjusted to be at column centroid
+
+            double refValue = 0.144; //from example
+            double actualTolerance = EvaluateActualTolerance(phi_v_c, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+
         }
     }
 }

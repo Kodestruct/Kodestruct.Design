@@ -26,6 +26,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 {
     public class PerimeterFactory
     {
+
         /// <summary>
         /// Returns the list of lines for calculation of punching shear perimeter properties
         /// </summary>
@@ -33,8 +34,19 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         /// <param name="c_x">Column dimension parallel to X-axis</param>
         /// <param name="c_y">Column dimension  parallel to Y-axis</param>
         /// <param name="d"> Effective depth of punching shear perimeter</param>
+        /// <param name="b_xCant">Slab cantilever extension beyond column face (along axis X)</param>
+        /// <param name="b_yCant">Slab cantilever extension beyond column face (along axis Y)</param>
         /// <returns></returns>
-        public List<PerimeterLineSegment> GetPerimeterSegments(PunchingPerimeterConfiguration Configuration, double c_x, double c_y, double d)
+        public PunchingPerimeterData GetPerimeterData(PunchingPerimeterConfiguration Configuration, double c_x, double c_y, double d,
+    double b_xCant, double b_yCant, Point2D ColumnCenter)
+        {
+            throw new NotImplementedException();
+
+        }
+
+
+         List<PerimeterLineSegment> GetPerimeterSegments(PunchingPerimeterConfiguration Configuration, double c_x, double c_y, double d, 
+            double b_xCant =0, double b_yCant = 0)
         {
             double b_x; // punching perimeter dimension perpendicular to free edge
             double b_y; // punching perimeter dimension parallel to free edge 
@@ -56,7 +68,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 	        }
             else if (Configuration == PunchingPerimeterConfiguration.EdgeLeft || Configuration == PunchingPerimeterConfiguration.EdgeRight)
             {
-                b_x = c_x + d / 2.0;
+                b_x = c_x + d / 2.0+b_xCant;
                 b_y = c_y + d;
 
                 p1 = new Point2D(-b_x / 2.0, -b_y / 2.0);
@@ -67,7 +79,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             else if (Configuration == PunchingPerimeterConfiguration.EdgeTop || Configuration == PunchingPerimeterConfiguration.EdgeBottom)
             {
                 b_x = c_x + d;
-                b_y = c_y + d / 2.0;
+                b_y = c_y + d / 2.0+b_yCant;
             }
             else
             {

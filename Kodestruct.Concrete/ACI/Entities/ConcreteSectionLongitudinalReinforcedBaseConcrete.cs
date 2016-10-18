@@ -47,11 +47,12 @@ namespace Kodestruct.Concrete.ACI
         protected double GetCompressionBlockDepth(double RebarResultant, FlexuralCompressionFiberPosition CompressionFiberPosition)
         {
 
-            double fc = Section.Material.SpecifiedCompressiveStrength;
+            //double fc = Section.Material.SpecifiedCompressiveStrength;
             double RequiredConcreteArea = 0;
             IMoveableSection compressedSection = null;
 
-            RequiredConcreteArea = RebarResultant / (0.85 * fc);
+            double WhitneyBlockStress = GetWhitneyBlockStress();
+            RequiredConcreteArea = RebarResultant / (WhitneyBlockStress);
             if (RequiredConcreteArea > this.Section.SliceableShape.A)
             {
                 //TODO: go directly to strain compatibility solution
@@ -74,6 +75,13 @@ namespace Kodestruct.Concrete.ACI
 
 
             return a;
+        }
+
+        protected virtual double GetWhitneyBlockStress()
+        {
+            double fc = Section.Material.SpecifiedCompressiveStrength;
+            return 0.85 * fc;
+
         }
 
         protected double GetDistanceToNeutralAxis(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition CompressionFiberPosition)
@@ -127,7 +135,8 @@ namespace Kodestruct.Concrete.ACI
             double A = compressedPortion.A;
             double fc = Section.Material.SpecifiedCompressiveStrength;
 
-            double ConcreteResultantForce = A * 0.85 * fc;
+            double WhitneyBlockStress = GetWhitneyBlockStress();
+            double ConcreteResultantForce = A * WhitneyBlockStress;
             ConcreteCompressionContribution.Force = ConcreteResultantForce;
 
 

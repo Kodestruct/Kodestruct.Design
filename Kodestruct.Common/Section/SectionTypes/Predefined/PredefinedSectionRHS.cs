@@ -40,14 +40,16 @@ namespace Kodestruct.Common.Section.Predefined
             this._t_nom = section.tnom;
             OverrideCentroids();
         }
-        //public PredefinedSectionRHS(double B, double H, double CornerRadiusOutside, ISection section)
-        //    : base(section)
-        //{
-        //    this._B=B;
-        //    this._H=H;
-        //    this.cornerRadiusOutside=CornerRadiusOutside;
+        public PredefinedSectionRHS(double B, double H, double t_des, double t_nom, ISection section)
+            : base(section)
+        {
+            this._B = B;
+            this._H = H;
+            this._t_des = t_des;
+            this._t_nom = t_nom;
+            //this.cornerRadiusOutside = CornerRadiusOutside;
 
-        //}
+        }
         private void OverrideCentroids()
         {
            _x_Bar = B / 2;
@@ -84,7 +86,24 @@ namespace Kodestruct.Common.Section.Predefined
 
         public ISection GetWeakAxisClone()
         {
-            throw new NotImplementedException();
+            PredefinedSectionRHS clone = new PredefinedSectionRHS(this.H, this.B, this.t_des, this.t_nom,
+                new SectionTube("",this.B,this.H,this.t_nom,this.t_des));
+
+            clone._I_x = this.I_y;
+            clone._I_y = this.I_x;
+            clone._S_x_Top = this.S_yRight;
+            clone._S_xBot = this.S_yLeft;
+            clone._S_yLeft = this.S_xTop;
+            clone._S_yRight = this.S_xBot;
+            clone._Z_x = this.Z_y;
+            clone._Z_y = this.Z_x;
+            clone._r_x = this.r_y;
+            clone._r_y = this.r_x;
+            clone.elasticCentroidCoordinate.X = this.y_Bar;
+            clone.elasticCentroidCoordinate.Y = this.x_Bar;
+            clone.plasticCentroidCoordinate.X = this.y_pBar;
+            clone.plasticCentroidCoordinate.Y = this.x_pBar;
+            return clone;
         }
 
         //public override ISection Clone()

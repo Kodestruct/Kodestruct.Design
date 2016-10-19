@@ -33,6 +33,7 @@ using Kodestruct.Common.Section.Predefined;
 using Kodestruct.Steel.AISC.AISC360v10.B_General;
 using Kodestruct.Common;
 using Kodestruct.Steel.AISC.Steel.Entities.Sections;
+using Kodestruct.Common.Section.SectionTypes;
  
  
 
@@ -145,6 +146,33 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
                     SteelSectionI SectionI = new SteelSectionI(IShape, Material);
 
                     beam = new BeamIWeakAxis(SectionI, IsRolledMember, Log);
+                }
+                else if (Shape is ISectionChannel)
+                {
+                    ISectionChannel ChannelShape = Shape as ISectionChannel;
+                    SteelChannelSection SectionChannel = new SteelChannelSection(ChannelShape, Material);
+                    beam = new BeamChannelWeakAxis(SectionChannel, IsRolledMember, Log);
+                }
+
+                else if (Shape is ISectionPipe)
+                {
+                    ISectionPipe SectionPipe = Shape as ISectionPipe;
+                    SteelPipeSection PipeSection = new SteelPipeSection(SectionPipe, Material);
+                    beam = new BeamCircularHss(PipeSection, Log);
+                }
+
+                else if (Shape is ISectionTube)
+                {
+                    ISectionTube TubeShape = Shape as ISectionTube;
+                    ISectionTube TubeShapeClone = TubeShape.GetWeakAxisClone();
+                    SteelRhsSection RectHSS_Section = new SteelRhsSection(TubeShapeClone, Material);
+                    beam = new BeamRectangularHss(RectHSS_Section, compressionFiberPosition, MomentAxis, Log);
+                }
+                else if (Shape is ISectionAngle)
+                {
+                    ISectionAngle SectionAngle = Shape as ISectionAngle;
+                    SteelAngleSection AngleSection = new SteelAngleSection(SectionAngle.GetWeakAxisClone() as ISectionAngle, Material);
+                    beam = new BeamCircularHss(AngleSection, Log);
                 }
                 else
                 {

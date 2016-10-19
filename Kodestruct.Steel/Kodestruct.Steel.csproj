@@ -66,6 +66,7 @@
     <Compile Include="AISC\AISC360v10\E_Compression\I\IShapeSlenderElements.cs" />
     <Compile Include="AISC\AISC360v10\E_Compression\RectangularHss\RhsShapeFactory.cs" />
     <Compile Include="AISC\AISC360v10\E_Compression\RectangularHss\RhsNonSlender.cs" />
+    <Compile Include="AISC\AISC360v10\F_Flexure\Channel\F6-WeakAxis.cs" />
     <Compile Include="AISC\AISC360v10\F_Flexure\I\DoublySymmetricIBeamMajorAxis.cs" />
     <Compile Include="AISC\AISC360v10\F_Flexure\I\SinglySymmetricIBeamMajorAxis.cs" />
     <Compile Include="AISC\AISC360v10\F_Flexure\SolidShapes\Y.cs" />

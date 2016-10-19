@@ -148,7 +148,30 @@ namespace Kodestruct.Common.Section.Predefined
 
         public ISection GetWeakAxisClone()
         {
-            throw new NotImplementedException();
+            PredefinedSectionAngle clone = new PredefinedSectionAngle(b,t,d,
+              I_w, 
+              I_z, 
+              S_w, 
+              S_z, 
+              r_w, 
+              r_z,
+              new SectionAngle("",this.b,d,t, Common.AngleRotation.FlatLegBottom, Common.AngleOrientation.ShortLegVertical)
+                );
+           clone._I_x      = this.I_y            ;
+           clone._I_y      = this.I_x            ;
+           clone._S_x_Top    = this.S_yRight         ;
+           clone._S_xBot    = this.S_yLeft          ;
+           clone._S_yLeft   = this.S_xTop       ;
+           clone._S_yRight  = this.S_xBot        ;
+           clone._Z_x= this.Z_y      ;
+           clone._Z_y= this.Z_x      ;
+           clone._r_x     = this.r_y           ;
+           clone._r_y     = this.r_x           ;
+           clone.elasticCentroidCoordinate.X = this.y_Bar;
+           clone.elasticCentroidCoordinate.Y = this.x_Bar;
+           clone.plasticCentroidCoordinate.X     = this.y_pBar           ;
+           clone.plasticCentroidCoordinate.Y    = this.x_pBar  ;
+           return clone;
         }
 
         //public override ISection Clone()

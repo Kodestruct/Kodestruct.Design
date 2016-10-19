@@ -24,6 +24,7 @@ using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Steel.AISC.Interfaces;
  using Kodestruct.Common.CalculationLogger;
 using Kodestruct.Steel.AISC.AISC360v10.General.Compactness;
+using Kodestruct.Steel.AISC.AISC360v10.B_General;
  
  
 
@@ -35,43 +36,23 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
         {
             // compactness criteria is selected by the most slender flange
 
+            bool LimitStateApplicable = DetermineIfFLBLimitStateIsApplicable();
+
             double Mn = 0;
 
-            ShapeCompactness.IShapeMember compactnessTop = new ShapeCompactness.IShapeMember(Section, IsRolledMember, FlexuralCompressionFiberPosition.Top);
-            CompactnessClassFlexure flangeCompactnessTop = compactnessTop.GetFlangeCompactnessFlexure();
+            CompactnessResult compactnessResult = GetShapeCompactness();
+            IShapeCompactness thisShapeCompactness = compactnessResult.ShapeCompactness;
+            CompactnessClassFlexure flangeCompactness = compactnessResult.FlangeCompactness;
 
-            ShapeCompactness.IShapeMember compactnessBot= new ShapeCompactness.IShapeMember(Section, IsRolledMember, FlexuralCompressionFiberPosition.Top);
-            CompactnessClassFlexure flangeCompactnessBot= compactnessTop.GetFlangeCompactnessFlexure();
+            double b = compactnessResult.b;
+            double tf = compactnessResult.tf;
+            double lambda = compactnessResult.lambda;
 
-            double lambda = 0.0;
-            double lambdaTop = compactnessTop.GetCompressionFlangeLambda();
-            double lambdaBot = compactnessBot.GetCompressionFlangeLambda();
 
-            CompactnessClassFlexure flangeCompactness;
-            ShapeCompactness.IShapeMember compactness;
-            double b = 0;
-            double tf = 0.0;
-
-            if (lambdaTop>lambdaBot)
-            {
-                compactness = compactnessTop;
-                flangeCompactness = flangeCompactnessTop;
-                lambda = lambdaTop;
-                b = GetBfTop();
-                tf = Get_tfTop();
-            }
-            else
-            {
-                compactness = compactnessBot;
-                flangeCompactness = flangeCompactnessBot;
-                lambda = lambdaBot;
-                b = GetBfBottom();
-                tf = Get_tfBottom();
-            }
 
             double Mp = Z_y * F_y;
-            double lambdapf = compactness.GetFlangeLambda_p( StressType.Flexure);
-            double lambdarf = compactness.GetFlangeLambda_r(StressType.Flexure);
+            double lambdapf = thisShapeCompactness.GetFlangeLambda_p( StressType.Flexure);
+            double lambdarf = thisShapeCompactness.GetFlangeLambda_r(StressType.Flexure);
 
             switch (flangeCompactness)
             {
@@ -89,6 +70,66 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             }
             double phiM_n = 0.9 * Mn;
             return phiM_n;
+        }
+
+        protected virtual CompactnessResult GetShapeCompactness()
+        {
+            ShapeCompactness.IShapeMember compactnessTop = new ShapeCompactness.IShapeMember(Section, IsRolledMember, FlexuralCompressionFiberPosition.Top);
+            CompactnessClassFlexure flangeCompactnessTop = compactnessTop.GetFlangeCompactnessFlexure();
+
+            ShapeCompactness.IShapeMember compactnessBot = new ShapeCompactness.IShapeMember(Section, IsRolledMember, FlexuralCompressionFiberPosition.Top);
+            CompactnessClassFlexure flangeCompactnessBot = compactnessTop.GetFlangeCompactnessFlexure();
+
+            double lambda = 0.0;
+            double lambdaTop = compactnessTop.GetCompressionFlangeLambda();
+            double lambdaBot = compactnessBot.GetCompressionFlangeLambda();
+
+            CompactnessClassFlexure flangeCompactness;
+            ShapeCompactness.IShapeMember thisShapeCompactness;
+
+
+            double b = 0;
+            double tf = 0.0;
+
+            if (lambdaTop > lambdaBot)
+            {
+                thisShapeCompactness = compactnessTop;
+                flangeCompactness = flangeCompactnessTop;
+                lambda = lambdaTop;
+                b = GetBfTop();
+                tf = Get_tfTop();
+            }
+            else
+            {
+                thisShapeCompactness = compactnessBot;
+                flangeCompactness = flangeCompactnessBot;
+                lambda = lambdaBot;
+                b = GetBfBottom();
+                tf = Get_tfBottom();
+            }
+
+            return new CompactnessResult()
+                { ShapeCompactness=thisShapeCompactness,
+                    FlangeCompactness = flangeCompactness,
+                    b = b,
+                    tf = tf,
+                    lambda = lambda
+                };
+        }
+        protected virtual bool DetermineIfFLBLimitStateIsApplicable()
+
+        {
+            return true;
+        }
+
+        protected class CompactnessResult
+        {
+            public IShapeCompactness ShapeCompactness { get; set; }
+            public CompactnessClassFlexure FlangeCompactness { get; set; }
+
+           public double b { get; set; }
+           public double tf { get; set; }
+           public double lambda { get; set; }
         }
     }
 }

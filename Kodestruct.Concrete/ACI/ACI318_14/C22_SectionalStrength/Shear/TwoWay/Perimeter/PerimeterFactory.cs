@@ -56,42 +56,113 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             Point2D p4 = null;
 
 
-            if (Configuration == PunchingPerimeterConfiguration.Interior)
-	        {
-		        b_x = c_x + d;
-                b_y = c_y + d;
-
-                p1 = new Point2D(-b_x / 2.0, -b_y / 2.0);
-                p2 = new Point2D(-b_x / 2.0, b_y / 2.0);
-                p3 = new Point2D(b_x / 2.0, b_y / 2.0);
-                p4 = new Point2D(b_x / 2.0, -b_y / 2.0);
-	        }
-            else if (Configuration == PunchingPerimeterConfiguration.EdgeLeft || Configuration == PunchingPerimeterConfiguration.EdgeRight)
+            switch (Configuration)
             {
-                b_x = c_x + d / 2.0+b_xCant;
-                b_y = c_y + d;
+                case PunchingPerimeterConfiguration.Interior:
+                     b_x = c_x +d;
+                     b_y = c_y +d;
 
-                p1 = new Point2D(-b_x / 2.0, -b_y / 2.0);
-                p2 = new Point2D(-b_x / 2.0, b_y / 2.0);
-                p3 = new Point2D(b_x / 2.0, b_y / 2.0);
-                p4 = new Point2D(b_x / 2.0, -b_y / 2.0);
+                    p1 = new Point2D(  -b_x / 2.0, -b_y / 2.0);
+                    p2 = new Point2D(  -b_x / 2.0, b_y / 2.0);
+                    p3 = new Point2D(  b_x / 2.0, b_y / 2.0);
+                    p4 = new Point2D(  b_x / 2.0, -b_y / 2.0);
+
+                    break;
+                case PunchingPerimeterConfiguration.EdgeLeft:
+                    b_y = c_y +d;
+
+                    p1 = new Point2D(-c_x/2-b_xCant, -b_y / 2.0);
+                    p2 = new Point2D(-c_x/2-b_xCant , b_y / 2.0);
+                    p3 = new Point2D(c_x/2+d/2, b_y / 2.0);
+                    p4 = new Point2D(c_x / 2.0+d/2, -b_y / 2.0);
+                    break;
+                case PunchingPerimeterConfiguration.EdgeRight:
+                    b_y = c_y +d;
+
+                    p1 = new Point2D(-c_x / 2.0- d/2.0, -b_y / 2.0);
+                    p2 = new Point2D(-c_x / 2.0- d/2.0, b_y / 2.0);
+                    p3 = new Point2D(c_x / 2.0+ b_xCant, b_y / 2.0);
+                    p4 = new Point2D(c_x / 2.0+ b_xCant, -b_y / 2.0);
+                    break;
+                case PunchingPerimeterConfiguration.EdgeTop:
+                    b_x = c_x +d;
+                    p1 = new Point2D(-b_x / 2.0, -c_y / 2.0- d/2.0);
+                    p2 = new Point2D(-b_x / 2.0, c_y / 2.0+ b_yCant);
+                    p3 = new Point2D(b_x / 2.0, c_y / 2.0+ b_yCant);
+                    p4 = new Point2D(b_x / 2.0, -c_y / 2.0- d/2.0);
+                    break;
+                case PunchingPerimeterConfiguration.EdgeBottom:
+                    b_x = c_x + d;
+                    p1 = new Point2D(-b_x / 2.0, -c_y / 2.0- b_yCant); 
+                    p2 = new Point2D(-b_x / 2.0, c_y / 2.0+d/2);
+                    p3 = new Point2D(b_x / 2.0, c_y / 2.0+d/2);
+                    p4 = new Point2D(b_x / 2.0, -c_y / 2.0- b_yCant);
+                    break;
+                case PunchingPerimeterConfiguration.CornerLeftTop:
+                    p1 = new Point2D(-c_x / 2.0- b_xCant, -c_y / 2.0- d/2.0);
+                    p2 = new Point2D(-c_x / 2.0- b_xCant, c_y / 2.0+ b_yCant);
+                    p3 = new Point2D(c_x/2+d/2.0, c_y / 2.0+ b_yCant);
+                    p4 = new Point2D(c_x / 2.0+d/2, -c_y / 2.0- d/2.0);
+                    break;
+                case PunchingPerimeterConfiguration.CornerRightTop:
+                    p1 = new Point2D(-c_x / 2.0- d/2.0, -c_y / 2.0- d/2.0);
+                    p2 = new Point2D(-c_x / 2.0- d/2.0, c_y / 2.0+ b_yCant);
+                    p3 = new Point2D(c_x / 2.0+ b_xCant, c_y / 2.0+ b_yCant);
+                    p4 = new Point2D(c_x / 2.0 + b_xCant, -c_y / 2.0 - d / 2.0);
+                    break;
+                case PunchingPerimeterConfiguration.CornerRightBottom:
+                    p1 = new Point2D(-c_x / 2.0- d/2.0, -c_y / 2.0- b_yCant);
+                    p2 = new Point2D(-c_x / 2.0- d/2.0, c_y / 2.0+d/2);
+                    p3 = new Point2D(c_x / 2.0+ b_xCant, c_y / 2.0+d/2);
+                    p4 = new Point2D(c_x / 2.0+ b_xCant, -c_y / 2.0- b_yCant);
+                    break;
+                case PunchingPerimeterConfiguration.CornerLeftBottom:
+                    p1 = new Point2D(-c_x / 2.0- b_xCant,  -c_y / 2.0- b_yCant);
+                    p2 = new Point2D(-c_x / 2.0- b_xCant, +c_y / 2.0+d/2);
+                    p3 = new Point2D(c_x/2+d/2.0, c_y / 2.0+ b_yCant);
+                    p4 = new Point2D(c_x / 2.0+d/2, -c_y / 2.0- b_yCant);
+                    break;
+                default:
+                    break;
             }
-            else if (Configuration == PunchingPerimeterConfiguration.EdgeTop || Configuration == PunchingPerimeterConfiguration.EdgeBottom)
-            {
-                b_x = c_x + d;
-                b_y = c_y + d / 2.0+b_yCant;
-            }
-            else
-            {
-                b_x = c_x + d / 2.0;
-                b_y = c_y + d/2.0;
-            }
+            #region Coordinates obsolete
+            //if (Configuration == PunchingPerimeterConfiguration.Interior)
+            //{
+            //    b_x = c_x +d/2;
+            //    b_y = c_y +d/2;
+
+            //    p1 = new Point2D(-b_x / 2.0, -b_y / 2.0);
+            //    p2 = new Point2D(-b_x / 2.0, b_y / 2.0);
+            //    p3 = new Point2D(b_x / 2.0, b_y / 2.0);
+            //    p4 = new Point2D(b_x / 2.0, -b_y / 2.0);
+            //}
+            //else if (Configuration == PunchingPerimeterConfiguration.EdgeLeft || Configuration == PunchingPerimeterConfiguration.EdgeRight)
+            //{
+            //    b_x = c_x +d/2 / 2.0 + b_xCant;
+            //    b_y = c_y +d/2;
+
+            //    p1 = new Point2D(-b_x / 2.0, -b_y / 2.0);
+            //    p2 = new Point2D(-b_x / 2.0, b_y / 2.0);
+            //    p3 = new Point2D(b_x / 2.0, b_y / 2.0);
+            //    p4 = new Point2D(b_x / 2.0, -b_y / 2.0);
+            //}
+            //else if (Configuration == PunchingPerimeterConfiguration.EdgeTop || Configuration == PunchingPerimeterConfiguration.EdgeBottom)
+            //{
+            //    b_x = c_x +d/2;
+            //    b_y = c_y +d/2 / 2.0 + b_yCant;
+            //}
+            //else
+            //{
+            //    b_x = c_x +d/2 / 2.0;
+            //    b_y = c_y +d/2 / 2.0;
+            //}
 
 
-            p1 = new Point2D(-b_x / 2.0, -b_y / 2.0);
-            p2 = new Point2D(-b_x / 2.0, b_y / 2.0);
-            p3 = new Point2D(b_x / 2.0, b_y / 2.0);
-            p4 = new Point2D(b_x / 2.0, -b_y / 2.0);
+            //p1 = new Point2D(-b_x / 2.0, -b_y / 2.0);
+            //p2 = new Point2D(-b_x / 2.0, b_y / 2.0);
+            //p3 = new Point2D(b_x / 2.0, b_y / 2.0);
+            //p4 = new Point2D(b_x / 2.0, -b_y / 2.0); 
+            #endregion
 
             switch (Configuration)
             {

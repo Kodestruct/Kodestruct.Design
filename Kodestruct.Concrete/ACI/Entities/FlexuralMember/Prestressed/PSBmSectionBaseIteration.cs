@@ -35,7 +35,10 @@ namespace Kodestruct.Concrete.ACI
             double c = StrainDistributionHeight * 0.6; 
             //this is AASHTO criteria for when it's OK to use assumption that
             //mild rebar yields, beyond that need to use strain compatibility
-            double epsilon_c = StrainUltimateConcrete.Value;
+            
+            
+            //double epsilon_c = StrainUltimateConcrete.Value;
+            double epsilon_c = MaxConcreteStrain;
             double epsilon_s = epsilon_c - (epsilon_c / c) * StrainDistributionHeight;
 
             LinearStrainDistribution strainDistribution = null;

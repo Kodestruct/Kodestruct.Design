@@ -122,6 +122,9 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionShapeFactory.cs" />
     <Compile Include="ACI\Interfaces\IConcreteTorsionalShape.cs" />
     <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionLapSplice.cs" />
+    <Compile Include="ACI\ACI530\ReinforcedCMU\CMUSectionLongitunallyReinforced.cs" />
+    <Compile Include="ACI\Entities\ConcreteCompressionMaterialSectionBase.cs" />
+    <Compile Include="ACI\Entities\Concrete\CMUMaterial.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseI_cracked.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseM_cr.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\EffectiveMomentOfInertia.cs" />
@@ -133,6 +136,9 @@
     <Compile Include="ACI\ACI318_14\C_21_StrengthReductionFactors\StrengthReductionFactorFactory.cs" />
     <Compile Include="ACI\Entities\ShearAndTorsion\TorsionalElementType.cs" />
     <Compile Include="ACI\Entities\ShearAndTorsion\TorsionalReinforcementType.cs" />
+    <Compile Include="ACI\Interfaces\IConcreteCompressionMaterial.cs" />
+    <Compile Include="ACI\Interfaces\IConcreteCompressionSection.cs" />
+    <Compile Include="ACI\Interfaces\IConcreteCompressionMember.cs" />
     <Compile Include="ACI\Interfaces\IStrainCompatibilityAnalysisResult.cs" />
     <Compile Include="ACI\Entities\CompressionMember\ConcreteCompressionStrengthResult.cs" />
     <Compile Include="ACI\Entities\CompressionMember\ConcreteSectionCompressionAnalysisResult.cs" />

@@ -22,7 +22,7 @@ using System.Text;
 
 namespace Kodestruct.Wood.NDS.Entities
 {
-    public enum ServiceMoistureConditions
+    public enum MoistureCondition
     {
         Wet,
         Dry

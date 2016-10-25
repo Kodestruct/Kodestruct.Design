@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MoreLinq;
 using Kodestruct.Common.CalculationLogger.Interfaces;
 using Kodestruct.Common.Entities;
 using Kodestruct.Common.Section.Interfaces;
@@ -109,18 +110,23 @@ namespace Kodestruct.Concrete.ACI
 
         private RebarPointResult GetMaxSteelStrainPoint(List<RebarPointResult> rebarResult)
         {
-            RebarPointResult maxStrainPoint= null;
-            double MaxSteelStrain = double.NegativeInfinity;
-            foreach (var bar in rebarResult)
-            {
-                if (bar.Strain >=MaxSteelStrain)
-	        {
-		         maxStrainPoint = bar;
-	        }
-                    }
-                    return maxStrainPoint;
-                }
+            //Find minimum value because of sign convention
+            RebarPointResult minStrainPoint = null;
+            var MinStrainBar = rebarResult.MinBy(b => b.Strain);
 
+            return MinStrainBar;
+            //RebarPointResult maxStrainPoint= null;
+            //double MaxSteelStrain = double.NegativeInfinity;
+            //foreach (var bar in rebarResult)
+            //{
+            //    if (bar.Strain >=MaxSteelStrain)
+            //{
+            //     maxStrainPoint = bar;
+            //}
+            //        }
+            //        return maxStrainPoint;
+
+        }
 
     }
 }

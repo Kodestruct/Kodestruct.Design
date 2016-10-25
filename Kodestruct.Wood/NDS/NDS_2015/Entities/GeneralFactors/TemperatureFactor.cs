@@ -29,7 +29,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
     {
 
         public virtual double GetTemperatureFactorCt(ReferenceDesignValueType ValueType, double Temperature,
-            ServiceMoistureConditions Conditions)
+            MoistureCondition Conditions)
         {
             double T =Temperature;
             double Ct=1.0;
@@ -53,7 +53,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
 	    }
                     else
 	        {
-                     if (Conditions == ServiceMoistureConditions.Dry)
+                     if (Conditions == MoistureCondition.Dry)
 	                    {
 		                        if (T<=100)
 	                                {

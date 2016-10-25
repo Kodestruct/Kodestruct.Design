@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using Kodestruct.Common.CalculationLogger.Interfaces;
 using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Concrete.ACI;
+using Kodestruct.Common.Mathematics;
 
 namespace Kodestruct.Concrete.ACI318_14
 {
@@ -116,16 +117,19 @@ namespace Kodestruct.Concrete.ACI318_14
             set { compressionMemberType = value; }
         }
 
-        public  ConcreteCompressionStrengthResult GetDesignMomentWithCompressionStrength( double P_u,
+        public  ConcreteCompressionStrengthResult GetDesignMomentWithCompressionStrength( double phiP_n,
             FlexuralCompressionFiberPosition FlexuralCompressionFiberPosition,
              bool CapAxialForceAtMaximum = true)
         {
-            double P_o = GetMaximumForce();
-            StrengthReductionFactorFactory ff = new StrengthReductionFactorFactory();
-            double phiAxial = ff.Get_phiFlexureAndAxial(FlexuralFailureModeClassification.CompressionControlled, ConfinementReinforcementType, 0, 0);
-            double phiP_n = phiAxial * P_o;
 
-            if (P_u > phiP_n)
+            this.phiP_n = phiP_n; //store value for iteration
+            this.FlexuralCompressionFiberPosition = FlexuralCompressionFiberPosition;
+            double P_o = GetMaximumForce();
+            StrengthReductionFactorFactory f = new StrengthReductionFactorFactory();
+            double phiAxial = f.Get_phiFlexureAndAxial(FlexuralFailureModeClassification.CompressionControlled, ConfinementReinforcementType, 0, 0);
+            double phiP_nMax = phiAxial * P_o;
+
+            if (phiP_n > phiP_nMax)
             {
                 if (CapAxialForceAtMaximum == false)
                 {
@@ -133,18 +137,45 @@ namespace Kodestruct.Concrete.ACI318_14
                 }
                 else
                 {
-                    P_u = phiP_n;
+                    phiP_n = phiP_n;
                 }
                 
             }
-            IStrainCompatibilityAnalysisResult nominalResult = this.GetNominalMomentResult(P_u,FlexuralCompressionFiberPosition);
+
+            //Estimate resistance factor to adjust from phiP_n to P_n
+            double phiMin =  0.65;
+            double phiMax =  0.9;
+
+            double ConvergenceTolerance = 0.0001;
+            double targetPhiFactorDifference = 0.0;
+            //Find P_n by guessing a phi-factor and calculating the result
+            double phiIterated = RootFinding.Brent(new FunctionOfOneVariable(phiFactorDifferenceCalculation), phiMax, phiMin, ConvergenceTolerance, targetPhiFactorDifference);
+            double P_nActual = phiP_n / phiIterated;
+
+            //Calculate final results using the estimated value of phi
+            IStrainCompatibilityAnalysisResult nominalResult = this.GetNominalMomentResult(P_nActual, FlexuralCompressionFiberPosition);
+            ConcreteCompressionStrengthResult result = new ConcreteCompressionStrengthResult(nominalResult, FlexuralCompressionFiberPosition, this.Section.Material.beta1);
+            FlexuralFailureModeClassification failureMode = f.GetFlexuralFailureMode(result.epsilon_t, result.epsilon_ty);
+            double phiFinal = f.Get_phiFlexureAndAxial(failureMode, ConfinementReinforcementType, result.epsilon_t, result.epsilon_ty);
+            double phiM_n = phiFinal * nominalResult.Moment;
+            result.phiM_n = phiM_n; result.FlexuralFailureModeClassification = failureMode;
+            return result;
+        }
+
+        double phiP_n; //stored value for iteration
+        FlexuralCompressionFiberPosition FlexuralCompressionFiberPosition; //stored value for iteration
+
+        private double phiFactorDifferenceCalculation(double phi)
+        {
+            double P_nIter = phiP_n / phi;
+
+            IStrainCompatibilityAnalysisResult nominalResult = this.GetNominalMomentResult(P_nIter, FlexuralCompressionFiberPosition);
             ConcreteCompressionStrengthResult result = new ConcreteCompressionStrengthResult(nominalResult, FlexuralCompressionFiberPosition, this.Section.Material.beta1);
             StrengthReductionFactorFactory f = new StrengthReductionFactorFactory();
             FlexuralFailureModeClassification failureMode = f.GetFlexuralFailureMode(result.epsilon_t, result.epsilon_ty);
-            double phi = f.Get_phiFlexureAndAxial(failureMode, ConfinementReinforcementType, result.epsilon_t, result.epsilon_ty);
-            double phiM_n = phi * nominalResult.Moment;
-            result.phiM_n = phiM_n; result.FlexuralFailureModeClassification = failureMode;
-            return result;
+            double phiActual = f.Get_phiFlexureAndAxial(failureMode, ConfinementReinforcementType, result.epsilon_t, result.epsilon_ty);
+
+            return phi - phiActual;
         }
 
 

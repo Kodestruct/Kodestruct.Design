@@ -62,14 +62,16 @@ namespace Kodestruct.Concrete.ACI
             if (FlexuralCompressionFiberPosition == FlexuralCompressionFiberPosition.Top)
             {
                 this.a = strainDistribution.NeutralAxisTopDistance * beta1;
-                epsilon_t = strainDistribution.BottomFiberStrain;
+                //epsilon_t = strainDistribution.BottomFiberStrain;
+               
             }
             else
             {
                 this.a = (d - strainDistribution.NeutralAxisTopDistance) * beta1;
-                epsilon_t = strainDistribution.TopFiberStrain;
-            }
+                //epsilon_t = strainDistribution.TopFiberStrain;
 
+            }
+            epsilon_t = nominalResult.ControllingTensionBar.Strain;
             IRebarMaterial controllingBarMaterial = nominalResult.ControllingTensionBar.Point.Rebar.Material;
             epsilon_ty = controllingBarMaterial.YieldStrain;
         }

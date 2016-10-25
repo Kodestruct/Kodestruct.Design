@@ -164,7 +164,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
                 else if (Shape is ISectionTube)
                 {
                     ISectionTube TubeShape = Shape as ISectionTube;
-                    ISectionTube TubeShapeClone = TubeShape.GetWeakAxisClone();
+                    ISectionTube TubeShapeClone = (ISectionTube)TubeShape.GetWeakAxisClone();
                     SteelRhsSection RectHSS_Section = new SteelRhsSection(TubeShapeClone, Material);
                     beam = new BeamRectangularHss(RectHSS_Section, compressionFiberPosition, MomentAxis, Log);
                 }

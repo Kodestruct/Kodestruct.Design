@@ -39,6 +39,13 @@ namespace Kodestruct.Concrete.ACI318_14
             this.RebarMaterial = TransverseRebarMaterial;
         }
 
+        public OneWayShearReinforcedSectionNonPrestressed(double d, IRebarMaterial TransverseRebarMaterial, double s)
+        {
+            this.d = d;
+            this.s = s;
+            this.RebarMaterial = TransverseRebarMaterial;
+        }
+
         
                 double d; 
                 double A_v; 
@@ -53,6 +60,12 @@ namespace Kodestruct.Concrete.ACI318_14
             return phi * V_s;
         }
 
+        public double GetRequiredShearReinforcementArea(double V_s)
+        {
+            double f_yt = rebarMaterial.YieldStress;
+            double A_v = ((V_s * s) / (f_yt * d));
+            return A_v;
+        }
         private IRebarMaterial rebarMaterial;
 
         public IRebarMaterial RebarMaterial

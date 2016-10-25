@@ -37,35 +37,44 @@ namespace Kodestruct.Concrete.ACI318_14
         public double Get_phiFlexureAndAxial(FlexuralFailureModeClassification failureMode,
             ConfinementReinforcementType ConfinementReinforcementType, double epsilon_t, double epsilon_ty)
         {
-            epsilon_t = Math.Abs(epsilon_t);
-            switch (failureMode)
+            if (epsilon_t >= 0)
             {
-                case FlexuralFailureModeClassification.CompressionControlled:
-                    if (ConfinementReinforcementType == ACI.ConfinementReinforcementType.Spiral)
-                    {
-                        return 0.75;
-                    }
-                    else
-                    {
+                return 0.65;
+            }
+            else
+            {
+
+
+                epsilon_t = Math.Abs(epsilon_t);
+                switch (failureMode)
+                {
+                    case FlexuralFailureModeClassification.CompressionControlled:
+                        if (ConfinementReinforcementType == ACI.ConfinementReinforcementType.Spiral)
+                        {
+                            return 0.75;
+                        }
+                        else
+                        {
+                            return 0.65;
+                        }
+                        break;
+                    case FlexuralFailureModeClassification.Transition:
+                        if (ConfinementReinforcementType == ACI.ConfinementReinforcementType.Spiral)
+                        {
+                            return 0.75 + 0.15 * (epsilon_t - epsilon_ty) / (0.005 - epsilon_ty);
+                        }
+                        else
+                        {
+                            return 0.65 + 0.25 * (epsilon_t - epsilon_ty) / (0.005 - epsilon_ty);
+                        }
+                        break;
+                    case FlexuralFailureModeClassification.TensionControlled:
+                        return 0.9;
+                        break;
+                    default:
                         return 0.65;
-                    }
-                    break;
-                case FlexuralFailureModeClassification.Transition:
-                    if (ConfinementReinforcementType == ACI.ConfinementReinforcementType.Spiral)
-                    {
-                        return 0.75 + 0.15 * (epsilon_t - epsilon_ty) / (0.005 - epsilon_ty);
-                    }
-                    else
-                    {
-                        return 0.65 + 0.25 * (epsilon_t - epsilon_ty) / (0.005 - epsilon_ty);
-                    }
-                    break;
-                case FlexuralFailureModeClassification.TensionControlled:
-                    return 0.9;
-                    break;
-                default:
-                    return 0.65;
-                    break;
+                        break;
+                }
             }
 
         }
@@ -78,19 +87,22 @@ namespace Kodestruct.Concrete.ACI318_14
         /// <returns></returns>
         public FlexuralFailureModeClassification GetFlexuralFailureMode(double epsilon_t, double epsilon_ty)
         {
-            double epsilon_tAbs = Math.Abs(epsilon_t);
-            if (epsilon_tAbs <= epsilon_ty)
-            {
-                return FlexuralFailureModeClassification.CompressionControlled;
-            }
-            else if (epsilon_tAbs > epsilon_ty && epsilon_tAbs < 0.005)
-            {
-                return FlexuralFailureModeClassification.Transition;
-            }
-            else
-            {
-                return FlexuralFailureModeClassification.TensionControlled;
-            }
+
+
+                double epsilon_tAbs = Math.Abs(epsilon_t);
+                if (epsilon_tAbs <= epsilon_ty)
+                {
+                    return FlexuralFailureModeClassification.CompressionControlled;
+                }
+                else if (epsilon_tAbs > epsilon_ty && epsilon_tAbs < 0.005)
+                {
+                    return FlexuralFailureModeClassification.Transition;
+                }
+                else
+                {
+                    return FlexuralFailureModeClassification.TensionControlled;
+                }
+            
         }
 
         /// <summary>

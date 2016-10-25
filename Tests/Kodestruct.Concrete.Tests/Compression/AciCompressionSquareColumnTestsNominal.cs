@@ -14,15 +14,9 @@ using Kodestruct.Concrete.ACI.Entities;
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
     [TestFixture]
-    public class AciCompressionSquareColumnTests : ConcreteTestBase
+    public partial class AciCompressionSquareColumnTests : ConcreteTestBase
     {
 
-        public AciCompressionSquareColumnTests()
-        {
-            tolerance = 0.03; //3% can differ from rounding
-        }
-
-        double tolerance;
 
         //EXAMPLE 11-1 Calculation of an Interaction Diagram
 
@@ -31,11 +25,17 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
             double P_u = 417000.0;
-            double M_n = col.GetNominalMomentResult(P_u, FlexuralCompressionFiberPosition.Top).Moment;
+            var nominalResult = col.GetNominalMomentResult(P_u, FlexuralCompressionFiberPosition.Top);
+            double M_n = nominalResult.Moment;
             double refValue = 4630*1000; //from MacGregor
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
+            //ConcreteCompressionStrengthResult result = new ConcreteCompressionStrengthResult(nominalResult, FlexuralCompressionFiberPosition.Top, col.Section.Material.beta1);
+            //StrengthReductionFactorFactory f = new StrengthReductionFactorFactory();
+            //FlexuralFailureModeClassification failureMode = f.GetFlexuralFailureMode(result.epsilon_t, result.epsilon_ty);
+
             Assert.LessOrEqual(actualTolerance, tolerance);
+
         }
 
         [Test]

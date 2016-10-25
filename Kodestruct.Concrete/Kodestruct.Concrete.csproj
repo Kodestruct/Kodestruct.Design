@@ -117,6 +117,10 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\PunchingShearStrength.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\PunchingShearWithMoment.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\ConcreteSectionTorsion.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionGeneric.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionRectangularNonPrestressed.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionShapeFactory.cs" />
+    <Compile Include="ACI\Interfaces\IConcreteTorsionalShape.cs" />
     <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionLapSplice.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseI_cracked.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseM_cr.cs" />

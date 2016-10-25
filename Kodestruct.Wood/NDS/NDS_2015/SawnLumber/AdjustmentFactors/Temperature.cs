@@ -27,7 +27,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
     public partial class SawnLumberMember : WoodMember
     {
         public double GetTemperatureFactorCt(ReferenceDesignValueType ValueType, double Temperature,
-             ServiceMoistureConditions Conditions)
+             MoistureCondition Conditions)
         {
             return base.GetTemperatureFactorCt(ValueType, Temperature, Conditions);
         }

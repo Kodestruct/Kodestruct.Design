@@ -38,46 +38,46 @@ namespace Kodestruct.Concrete.ACI
         public IRebar Rebar { get; set; }
         public RebarCoordinate Coordinate { get; set; }
 
-        List<RebarStrain> strains;
+        //List<RebarStrain> strains;
         
-        public void AddRebarStrain(double Strain, string LoadcaseName)
-        {
-            if (this.strains == null)
-            {
-                strains = new List<RebarStrain>();
-            }
-            else
-            {
-                var casesWithThisName = strains.Where(c => c.LoadCaseName == LoadcaseName).ToList();
-                if (casesWithThisName!=null)
-                {
-                    throw new Exception(String.Format("Strain with loadcase {0} already exists", LoadcaseName));
-                }
-            }
-            strains.Add(new RebarStrain(Strain,LoadcaseName));
+        //public void AddRebarStrain(double Strain, string LoadcaseName)
+        //{
+        //    if (this.strains == null)
+        //    {
+        //        strains = new List<RebarStrain>();
+        //    }
+        //    else
+        //    {
+        //        var casesWithThisName = strains.Where(c => c.LoadCaseName == LoadcaseName).ToList();
+        //        if (casesWithThisName!=null)
+        //        {
+        //            throw new Exception(String.Format("Strain with loadcase {0} already exists", LoadcaseName));
+        //        }
+        //    }
+        //    strains.Add(new RebarStrain(Strain,LoadcaseName));
            
-        }
+        //}
         
-        public double GetStress(string LoadCaseName)
-        {
-            double fs;
-            RebarStrain caseWithThisName = strains.Where(c => c.LoadCaseName == LoadCaseName).First();
-            if (caseWithThisName !=null)
-            {
-                fs = Rebar.Material.GetStress(caseWithThisName.Strain);
-            }
-            else
-            {
-                throw new Exception (string.Format("No strain data found for load case name {0}.",LoadCaseName));
-            }
-            return fs;
-        }
-        public double GetForce(string LoadCaseName)
-        {
-            double f = GetStress(LoadCaseName);
-            double A = Rebar.Area;
-            return f * A;
-        }
+        //public double GetStress(string LoadCaseName)
+        //{
+        //    double fs;
+        //    RebarStrain caseWithThisName = strains.Where(c => c.LoadCaseName == LoadCaseName).First();
+        //    if (caseWithThisName !=null)
+        //    {
+        //        fs = Rebar.Material.GetStress(caseWithThisName.Strain);
+        //    }
+        //    else
+        //    {
+        //        throw new Exception (string.Format("No strain data found for load case name {0}.",LoadCaseName));
+        //    }
+        //    return fs;
+        //}
+        //public double GetForce(string LoadCaseName)
+        //{
+        //    double f = GetStress(LoadCaseName);
+        //    double A = Rebar.Area;
+        //    return f * A;
+        //}
         
     }
 }

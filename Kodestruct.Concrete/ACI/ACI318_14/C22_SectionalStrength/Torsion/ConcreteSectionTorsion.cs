@@ -71,7 +71,7 @@ namespace Kodestruct.Concrete.ACI318_14
             double A_oh = Shape.GetA_oh();
             double IR1 = Math.Sqrt(Math.Pow((((V_u) / (b * d))), 2) + Math.Pow((((T_u * p_h)) / (1.7 * Math.Pow(A_oh, 2))), 2));
             double IR2 = ((V_c) / (b * d)) + 8 * Sqrt_f_c;
-            double IR = Math.Min(IR1, IR2);
+            double IR = Math.Max(IR1, IR2);
 
             return IR;
         }

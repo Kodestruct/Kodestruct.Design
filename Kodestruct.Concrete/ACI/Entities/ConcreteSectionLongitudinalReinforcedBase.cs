@@ -203,7 +203,7 @@ namespace Kodestruct.Concrete.ACI
                 if (barResult.Strain < 0)
                 {
                     resultant.Force += barResult.Force;
-                    resultant.Moment += Math.Abs(barResult.Force * barResult.DistanceToNeutralAxis);
+                    resultant.Moment += barResult.Force * barResult.DistanceToNeutralAxis;
                 }
             }
             else
@@ -211,7 +211,7 @@ namespace Kodestruct.Concrete.ACI
                 if (barResult.Strain > 0)
                 {
                     resultant.Force += barResult.Force;
-                    resultant.Moment += Math.Abs(barResult.Force * barResult.DistanceToNeutralAxis);
+                    resultant.Moment += barResult.Force * barResult.DistanceToNeutralAxis;
                 }
             }
         }

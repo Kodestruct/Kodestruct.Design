@@ -33,7 +33,7 @@ namespace Kodestruct.Concrete.ACI
             {
                 ForceMomentContribution forceContrib = new ForceMomentContribution();
                     forceContrib.Force = a.Force + b.Force;
-                    forceContrib.Moment = a.Moment + b.Moment;
+                    forceContrib.Moment = Math.Abs(a.Moment) + Math.Abs(b.Moment);
                 return forceContrib;
             }
         }

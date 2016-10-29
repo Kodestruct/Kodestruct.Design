@@ -158,7 +158,8 @@ namespace Kodestruct.Concrete.ACI318_14
             FlexuralFailureModeClassification failureMode = f.GetFlexuralFailureMode(result.epsilon_t, result.epsilon_ty);
             double phiFinal = f.Get_phiFlexureAndAxial(failureMode, ConfinementReinforcementType, result.epsilon_t, result.epsilon_ty);
             double phiM_n = phiFinal * nominalResult.Moment;
-            result.phiM_n = phiM_n; result.FlexuralFailureModeClassification = failureMode;
+            result.phiM_n = phiM_n; 
+            result.FlexuralFailureModeClassification = failureMode;
             return result;
         }
 

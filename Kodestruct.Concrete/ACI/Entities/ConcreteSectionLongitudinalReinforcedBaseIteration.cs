@@ -30,8 +30,12 @@ namespace Kodestruct.Concrete.ACI
     {
         protected virtual SectionAnalysisResult GetSectionResult(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
         {
-            ForceMomentContribution CForceRebarResultant = GetCompressionForceConcreteResultant(StrainDistribution, compFiberPosition);
-            ForceMomentContribution CForceConcreteResultant = GetCompressionForceRebarResultant(StrainDistribution, compFiberPosition);
+            double CompressedBarCentroidCoordinate=0;  //Calculate the Coordinate of rebar resultant
+            ForceMomentContribution CForceRebarResultant = GetCompressionForceRebarResultant(StrainDistribution, compFiberPosition);
+            double CompressedRebarArea = GetCompressedRebarArea(CForceRebarResultant);
+            ForceMomentContribution CForceConcreteResultant = GetCompressionForceConcreteResultant(StrainDistribution, compFiberPosition, 
+                CompressedRebarArea, CompressedBarCentroidCoordinate);
+
             
             ForceMomentContribution CForceResultant = CForceRebarResultant + CForceConcreteResultant;
 
@@ -41,7 +45,7 @@ namespace Kodestruct.Concrete.ACI
                 AxialForce = CForceResultant.Force + TForceResultant.Force,
                 CForce = CForceResultant.Force,
                 TForce = TForceResultant.Force,
-                Moment = CForceResultant.Moment+ TForceResultant.Moment,
+                Moment = Math.Abs(CForceResultant.Moment)+ Math.Abs(TForceResultant.Moment),
                 Rotation = 0,
                 StrainDistribution = StrainDistribution,
                 CompressionRebarResults = CForceRebarResultant.RebarResults,
@@ -50,9 +54,23 @@ namespace Kodestruct.Concrete.ACI
             return result;
         }
 
-        protected virtual ForceMomentContribution GetCompressionForceConcreteResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
+        private double GetCompressedRebarArea(ForceMomentContribution CForceRebarResultant)
         {
-            ForceMomentContribution concreteContrib = GetConcreteForceResultant(StrainDistribution, compFiberPosition);
+            double A = 0;
+            foreach (var bar in CForceRebarResultant.RebarResults)
+            {
+                if (bar.Stress!=0)
+                {
+                    A = A + bar.Point.Rebar.Area;
+                }
+            }
+            return A;
+        }
+
+        protected virtual ForceMomentContribution GetCompressionForceConcreteResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition,
+            double CompressedRebarArea, double CompressedBarCentroidCoordinate)
+        {
+            ForceMomentContribution concreteContrib = GetConcreteForceResultant(StrainDistribution, compFiberPosition, CompressedRebarArea,  CompressedBarCentroidCoordinate);
 
             return concreteContrib;
         }
@@ -69,7 +87,8 @@ namespace Kodestruct.Concrete.ACI
             return rebarContribution;
         }
 
-        ForceMomentContribution GetConcreteForceResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
+        ForceMomentContribution GetConcreteForceResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition,
+            double CompressedRebarArea, double CompressedBarCentroidCoordinate)
         {
             ForceMomentContribution concreteForceResultant = null;
 
@@ -83,7 +102,7 @@ namespace Kodestruct.Concrete.ACI
                 {
                     if (StrainDistribution.TopFiberStrain == this.MaxConcreteStrain)
                     {
-                        concreteForceResultant = GetConcreteWhitneyForceResultant(StrainDistribution, compFiberPosition);
+                        concreteForceResultant = GetConcreteWhitneyForceResultant(StrainDistribution, compFiberPosition, CompressedRebarArea,  CompressedBarCentroidCoordinate);
                     }
                     else
                     {
@@ -101,7 +120,7 @@ namespace Kodestruct.Concrete.ACI
                 {
                     if (StrainDistribution.BottomFiberStrain == this.MaxConcreteStrain)
                     {
-                        concreteForceResultant = GetConcreteWhitneyForceResultant(StrainDistribution,compFiberPosition);
+                        concreteForceResultant = GetConcreteWhitneyForceResultant(StrainDistribution, compFiberPosition, CompressedRebarArea, CompressedBarCentroidCoordinate);
                     }
                     else
                     {
@@ -118,12 +137,17 @@ namespace Kodestruct.Concrete.ACI
 
      
 
-        protected IMoveableSection GetCompressedConcreteSection(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPos, double SlicingPlaneOffset)
+        protected IMoveableSection GetCompressedConcreteSection(LinearStrainDistribution StrainDistribution, 
+            FlexuralCompressionFiberPosition compFiberPos, double SlicingPlaneOffset)
         {
             IMoveableSection compressedPortion = null;
             ISliceableSection sec = this.Section.SliceableShape as ISliceableSection;
 
-            if (StrainDistribution.TopFiberStrain >= 0 && StrainDistribution.BottomFiberStrain >= 0)
+            //if (StrainDistribution.TopFiberStrain >= 0 && StrainDistribution.BottomFiberStrain >= 0)
+            //{
+            double SectionHeight = sec.YMax - sec.YMin;
+
+            if (SlicingPlaneOffset>SectionHeight)
             {
                 compressedPortion = this.Section.SliceableShape;
             }

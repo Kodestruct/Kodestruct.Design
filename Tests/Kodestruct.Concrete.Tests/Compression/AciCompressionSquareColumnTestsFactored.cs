@@ -85,6 +85,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
 
-    
+
+
     }
 }

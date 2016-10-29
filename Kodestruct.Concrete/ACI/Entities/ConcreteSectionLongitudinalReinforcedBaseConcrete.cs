@@ -101,7 +101,8 @@ namespace Kodestruct.Concrete.ACI
             return c;
         }
 
-        protected ForceMomentContribution GetConcreteWhitneyForceResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
+        protected ForceMomentContribution GetConcreteWhitneyForceResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition, 
+            double CompressedRebarArea, double CompressedRebarCentroidCoordinate)
         {
             ForceMomentContribution ConcreteCompressionContribution = new ForceMomentContribution();
 
@@ -123,16 +124,22 @@ namespace Kodestruct.Concrete.ACI
                 }
             }
 
+            if (a>h)
+            {
+                a = h;
+            }
 
             double CentroidYToTopEdge = (Section.SliceableShape.YMax-Section.SliceableShape.YMin)-Section.SliceableShape.y_Bar;
-            double neutralAxisToBottomOfCompressedShapeOffset = CentroidYToTopEdge - a;
+            //double neutralAxisToBottomOfCompressedShapeOffset = CentroidYToTopEdge - a;
             IMoveableSection compressedPortion = null;
             ISliceableSection sec = this.Section.SliceableShape as ISliceableSection;
             if (sec != null)
             {
                 compressedPortion = GetCompressedConcreteSection(StrainDistribution,compFiberPosition, a);
             }
-            double A = compressedPortion.A;
+            //this analysis subtracts the area of bars from the section but the location of the centroid of the 
+            //compressed section is not modified
+            double A = compressedPortion.A - CompressedRebarArea;
             double fc = Section.Material.SpecifiedCompressiveStrength;
 
             double WhitneyBlockStress = GetWhitneyBlockStress();
@@ -140,7 +147,7 @@ namespace Kodestruct.Concrete.ACI
             ConcreteCompressionContribution.Force = ConcreteResultantForce;
 
 
-            double concreteForceCentroidDistance = compressedPortion.GetElasticCentroidCoordinate().Y;
+            double concreteForceCentroidDistance = Section.SliceableShape.GetElasticCentroidCoordinate().Y - compressedPortion.GetElasticCentroidCoordinate().Y;
             ConcreteCompressionContribution.Moment = concreteForceCentroidDistance * ConcreteResultantForce;
 
             return ConcreteCompressionContribution;

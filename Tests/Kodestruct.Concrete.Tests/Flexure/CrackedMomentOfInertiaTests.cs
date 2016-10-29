@@ -20,7 +20,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         [Test]
         public void CrackedMomentOfInertiaReturnsValue()
         {
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 22, 3000, new RebarInput(1.8, 2.5), new RebarInput(0.6, 19.5));
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 22, 3000, true, new RebarInput(1.8, 2.5), new RebarInput(0.6, 19.5));
             double Icr = beam.GetCrackedMomentOfInertia(FlexuralCompressionFiberPosition.Top);
 
             double refValue = 3770.0;
@@ -35,7 +35,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         [Test]
         public void CrackingMomentReturnsValue()
         {
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 22, 3000, new RebarInput(1.8, 2.5), new RebarInput(0.6, 19.5));
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 22, 3000,true, new RebarInput(1.8, 2.5), new RebarInput(0.6, 19.5));
             double Mcr = beam.GetCrackingMoment(FlexuralCompressionFiberPosition.Top)/1000.00; //to get to kip*in
              
             double refValue = 33.2*12;

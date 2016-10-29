@@ -19,7 +19,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         [Test]
         public void SimpleBeamFlexuralCapacityTopReturnsNominalValue()
         {
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 20, 4000, new RebarInput(4, 2.5));
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 20, 4000, true, new RebarInput(4, 2.5));
             IStrainCompatibilityAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Top);
             double M_n = MResult.Moment;
 
@@ -33,7 +33,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         [Test]
         public void SimpleBeamFlexuralCapacityTopReturnsDesignValue()
         {
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 20, 4000, new RebarInput(4, 2.5));
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 20, 4000, true, new RebarInput(4, 2.5));
             ConcreteFlexuralStrengthResult MResult = beam.GetDesignFlexuralStrength(FlexuralCompressionFiberPosition.Top);
             double M_n = MResult.phiM_n/1000/12.0;
 
@@ -45,13 +45,13 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         }
 
         [Test]
-        public void SimpleBeamFlexuralCapacityTopReturnsRebarStrainValue()
+        public void SimpleBeamFlexuralCapacityCompressionTopBarsReturnsNominalValue()
         {
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, new RebarInput(1, 1));
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, true, new RebarInput(1, 1));
             IStrainCompatibilityAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Top);
-            double M_n = MResult.Moment;
+            double M_n = MResult.Moment/12000.0;
 
-            double refValue = 615883; 
+            double refValue = 51.32; 
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);
@@ -61,13 +61,13 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
 
 
          [Test]
-        public void SimpleBeamFlexuralCapacityBottomReturnsValue()
+        public void SimpleBeamFlexuralCapacityCompressionBottomReturnsNominalValue()
         {
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, new RebarInput(1, 11));
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, false, new RebarInput(1, 1));
             IStrainCompatibilityAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Bottom);
-            double M_n = MResult.Moment;
+            double M_n = MResult.Moment/12000.0;
 
-            double refValue = 615883;
+            double refValue = 51.32; 
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);
@@ -75,7 +75,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
 
          public void TwoLayerBeamFlexuralCapacityReturnsValue()
         {
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, new RebarInput(1, 1), new RebarInput(1, 3));
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000,true, new RebarInput(1, 1), new RebarInput(1, 3));
             IStrainCompatibilityAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Top);
             double phiMn = MResult.Moment;
             Assert.AreEqual(1023529, Math.Round(phiMn, 0));
@@ -83,7 +83,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
 
          public void ThreeLayerBeamFlexuralCapacityReturnsValue()
         {
-            ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, new RebarInput(1, 1), new RebarInput(1, 3), new RebarInput(1, 7));
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, true, new RebarInput(1, 1), new RebarInput(1, 3), new RebarInput(1, 7));
             IStrainCompatibilityAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Top);
             double phiMn = MResult.Moment;
             Assert.AreEqual(1101327, Math.Round(phiMn, 0));

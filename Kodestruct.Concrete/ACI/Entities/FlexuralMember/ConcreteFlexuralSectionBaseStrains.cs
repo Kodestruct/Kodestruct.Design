@@ -118,12 +118,12 @@ namespace Kodestruct.Concrete.ACI
         }
 
         protected virtual SectionAnalysisResult FindMomentResultInPresenceOfAxialForce(FlexuralCompressionFiberPosition CompressionFiberPosition,
-          double P,   double MaxSteelStrain,  double StrainConvergenceTolerance = 0.00001)
+          double P,   double MaxSteelLimitingStrainInTension,  double StrainConvergenceTolerance = 0.0000001)
         {
             currentCompressionFiberPosition = CompressionFiberPosition; //store this off because it will be necessary during iteration
             StrainHeight = GetStrainDistributionHeight(CompressionFiberPosition);//store this off because it will be necessary during iteration
 
-            double StrainMin = MaxSteelStrain;
+            double StrainMin = MaxSteelLimitingStrainInTension;
             //double StrainMax = StrainUltimateConcrete.Value;
             double StrainMax = MaxConcreteStrain;
 
@@ -190,14 +190,43 @@ namespace Kodestruct.Concrete.ACI
             return finalResult;
         }
 
-        FlexuralCompressionFiberPosition currentCompressionFiberPosition = FlexuralCompressionFiberPosition.Top;
+        FlexuralCompressionFiberPosition currentCompressionFiberPosition;
 
-        double StrainHeight;
+
+        private double strainHeight;
+
+        public double StrainHeight
+        {
+            get {
+                if (strainHeight == 0)
+                {
+                    return GetStrainHeight();
+                }
+                return strainHeight; }
+            set { strainHeight = value; }
+        }
+
+        private double GetStrainHeight()
+        {
+            double YMax=0;
+            double YMin = 0;
+
+            if (currentCompressionFiberPosition == FlexuralCompressionFiberPosition.Top)
+            {
+                YMax = this.Section.SliceableShape.YMax;
+                YMin = LongitudinalBars.Min(b => b.Coordinate.Y);
+            }
+            else
+            {
+                YMax = this.Section.SliceableShape.YMin;
+                YMin = LongitudinalBars.Max(b => b.Coordinate.Y);
+            }
+            return YMax - YMin;
+        }
+        
 
         private double DeltaTCCalculationFunction(double SteelStrain)
         {
-            //function of CurrentCompressionFiberPosition
-            //1. create trial strain
             LinearStrainDistribution iteratedStrainDistribution = null;
             switch (currentCompressionFiberPosition)
             {
@@ -221,7 +250,7 @@ namespace Kodestruct.Concrete.ACI
 
 
 
-        private double SectionAxialForceResultantFunction(double SteelStrain)
+        public double SectionAxialForceResultantFunction(double SteelStrain)
         {
             //Create trial strain
             LinearStrainDistribution iteratedStrainDistribution = null;

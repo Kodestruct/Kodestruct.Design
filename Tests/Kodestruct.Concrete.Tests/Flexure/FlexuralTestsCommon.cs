@@ -67,19 +67,33 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             return section;
         }
 
-        public ConcreteSectionFlexure GetConcreteBeam(double Width, double Height, double fc, params RebarInput[] rebarInput)
+        public ConcreteSectionFlexure GetConcreteBeam(double Width, double Height, double fc,bool IsBottomReinforced,
+            params RebarInput[] rebarInput)
         {
 
             IConcreteSection Section = GetRectangularSection(Width, Height, fc);
 
             List<RebarPoint> LongitudinalBars = new List<RebarPoint>();
-            foreach (var bar in rebarInput)
+            if (IsBottomReinforced == true)
             {
-                Rebar thisBar = new Rebar(bar.Area, new MaterialAstmA615(A615Grade.Grade60));
-                RebarPoint point = new RebarPoint(thisBar, new RebarCoordinate() { X = 0, Y = -Height / 2.0 + bar.Cover });
-                LongitudinalBars.Add(point);
-            }
 
+
+                foreach (var bar in rebarInput)
+                {
+                    Rebar thisBar = new Rebar(bar.Area, new MaterialAstmA615(A615Grade.Grade60));
+                    RebarPoint point = new RebarPoint(thisBar, new RebarCoordinate() { X = 0, Y = -Height / 2.0 + bar.Cover });
+                    LongitudinalBars.Add(point);
+                }
+            }
+            else
+            {
+                foreach (var bar in rebarInput)
+                {
+                    Rebar thisBar = new Rebar(bar.Area, new MaterialAstmA615(A615Grade.Grade60));
+                    RebarPoint point = new RebarPoint(thisBar, new RebarCoordinate() { X = 0, Y = Height / 2.0 - bar.Cover });
+                    LongitudinalBars.Add(point);
+                }
+            }
             ConcreteSectionFlexure beam = new ConcreteSectionFlexure(Section,LongitudinalBars, log, ConfinementReinforcementType.NoReinforcement);
             return beam;
         }

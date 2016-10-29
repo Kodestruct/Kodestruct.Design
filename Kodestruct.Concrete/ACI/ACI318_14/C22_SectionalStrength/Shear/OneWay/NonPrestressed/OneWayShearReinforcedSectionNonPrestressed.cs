@@ -63,7 +63,9 @@ namespace Kodestruct.Concrete.ACI318_14
         public double GetRequiredShearReinforcementArea(double V_s)
         {
             double f_yt = rebarMaterial.YieldStress;
-            double A_v = ((V_s * s) / (f_yt * d));
+            StrengthReductionFactorFactory f = new StrengthReductionFactorFactory();
+            double phi = f.Get_phi_ShearReinforced();
+            double A_v = ((V_s * s) / (f_yt*phi * d));
             return A_v;
         }
         private IRebarMaterial rebarMaterial;

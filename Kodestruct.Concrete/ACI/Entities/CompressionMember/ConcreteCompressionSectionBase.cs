@@ -39,11 +39,11 @@ namespace Kodestruct.Concrete.ACI
         }
 
 
-        public IStrainCompatibilityAnalysisResult GetNominalMomentResult(double P_u,
+        public IStrainCompatibilityAnalysisResult GetNominalMomentResult(double P_nominal,
             FlexuralCompressionFiberPosition CompressionFiberPosition)
         {
-            double MaxSteelStrain = CalculateMaximumSteelStrain(CompressionFiberPosition);
-            SectionAnalysisResult IteratedResult = FindMomentResultInPresenceOfAxialForce(CompressionFiberPosition, P_u, MaxSteelStrain);
+            double MaxSteelLimitingStrainInTension = CalculateMaximumSteelStrain(CompressionFiberPosition);
+            SectionAnalysisResult IteratedResult = FindMomentResultInPresenceOfAxialForce(CompressionFiberPosition, P_nominal, MaxSteelLimitingStrainInTension);
             IStrainCompatibilityAnalysisResult result = GetResult(IteratedResult);
             return result;
         }

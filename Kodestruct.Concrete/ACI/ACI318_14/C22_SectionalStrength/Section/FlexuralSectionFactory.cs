@@ -33,7 +33,7 @@ namespace Kodestruct.Concrete.ACI318_14
 
         public ConcreteSectionFlexure GetRectangularSectionFourSidesDistributed(double b, double h,
     double A_sTopBottom, double A_sLeftRight, double c_centTopBottom, double c_centLeftRight, IConcreteMaterial mat, IRebarMaterial rebarMaterial,
-            ConfinementReinforcementType ConfinementReinforcementType)
+            ConfinementReinforcementType ConfinementReinforcementType, int NumberOfSubdivisions =0)
         {
 
             double YTop = h / 2.0 - c_centTopBottom;
@@ -46,18 +46,44 @@ namespace Kodestruct.Concrete.ACI318_14
             Point2D P3 = new Point2D(XRight, YBottom);
             Point2D P4 = new Point2D(XLeft, YBottom);
 
-            RebarLine topLine = new RebarLine(A_sTopBottom, P1, P2, rebarMaterial, false);
-            RebarLine bottomLine = new RebarLine(A_sTopBottom, P3, P4, rebarMaterial, false);
 
-            RebarLine leftLine = new RebarLine(A_sLeftRight, P2, P3, rebarMaterial, true);
-            RebarLine rightLine = new RebarLine(A_sLeftRight, P4, P1, rebarMaterial, true);
+            
+            RebarLine topLine   =null;
+            RebarLine bottomLine=null;
+
+            RebarLine leftLine  =null;
+            RebarLine rightLine =null;
+
+            if (NumberOfSubdivisions == 0)
+            {
+                    topLine = new RebarLine(A_sTopBottom, P1, P2, rebarMaterial, false);
+                    bottomLine = new RebarLine(A_sTopBottom, P3, P4, rebarMaterial, false);
+                    if (A_sLeftRight>0)
+                    {
+                        leftLine = new RebarLine(A_sLeftRight, P2, P3, rebarMaterial, true);
+                        rightLine = new RebarLine(A_sLeftRight, P4, P1, rebarMaterial, true); 
+                    }
+
+            }
+            else
+            {
+                    topLine = new RebarLine(A_sTopBottom, P1, P2, rebarMaterial, false,   false,  NumberOfSubdivisions);
+                    bottomLine = new RebarLine(A_sTopBottom, P3, P4, rebarMaterial, false,false,  NumberOfSubdivisions);
+                    if (A_sLeftRight > 0)
+                    {
+                        leftLine = new RebarLine(A_sLeftRight, P2, P3, rebarMaterial, true, false, NumberOfSubdivisions);
+                        rightLine = new RebarLine(A_sLeftRight, P4, P1, rebarMaterial, true, false, NumberOfSubdivisions);
+                    }
+            }
+
 
             List<RebarPoint> LongitudinalBars = new List<RebarPoint>();
 
-            LongitudinalBars.AddRange(topLine.RebarPoints);
-            LongitudinalBars.AddRange(bottomLine.RebarPoints);
-            LongitudinalBars.AddRange(leftLine.RebarPoints);
-            LongitudinalBars.AddRange(rightLine.RebarPoints);
+
+            if (topLine!= null   )    LongitudinalBars.AddRange(topLine.RebarPoints);
+            if (bottomLine!= null)    LongitudinalBars.AddRange(bottomLine.RebarPoints);
+            if (leftLine!= null  )    LongitudinalBars.AddRange(leftLine.RebarPoints);
+            if (rightLine!= null )    LongitudinalBars.AddRange(rightLine.RebarPoints);
 
 
             CrossSectionRectangularShape section = new CrossSectionRectangularShape(mat, null, b, h);

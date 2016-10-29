@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compression\AciCompressionSquareColumnSPColTests.cs" />
     <Compile Include="Compression\AciCompressionSquareColumnTestsFactored.cs" />
     <Compile Include="Compression\AciCompressionSquareColumnTestsNominal.cs" />
     <Compile Include="ConcreteTestBase.cs" />

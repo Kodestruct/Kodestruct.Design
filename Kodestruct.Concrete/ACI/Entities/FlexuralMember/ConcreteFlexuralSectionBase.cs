@@ -62,6 +62,7 @@ namespace Kodestruct.Concrete.ACI
             (FlexuralCompressionFiberPosition CompressionFiberPosition )
         {
 
+            currentCompressionFiberPosition = CompressionFiberPosition;
 
             //Step 1: Assume strain distribution with all bars below section centroid yielding
             LinearStrainDistribution TrialStrainDistribution =  GetInitialStrainEstimate(CompressionFiberPosition);

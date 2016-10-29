@@ -19,7 +19,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         /// MacGregor, Wight. Reinforced concrete. 6th edition
         /// Example 13-11
         /// </summary>
-        [Test]
+        //[Test]
         public void SlabPunchingConcentricReturnsValue()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -43,7 +43,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         /// MacGregor, Wight. Reinforced concrete. 6th edition
         /// Example 13-13
         /// </summary>
-        [Test]
+        //[Test]
         public void SlabPunchingMomentAndShearReturnsStress()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);

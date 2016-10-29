@@ -160,7 +160,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
         }
 
         [Test]
-        public void PolygonShapeReturnsTopSliceOfArea()
+        public void PolygonShapeReturnsTopSliceOfArea1()
         {
             var Points = new List<Point2D>
             {
@@ -177,6 +177,29 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
 
 
             double actualTolerance = EvaluateActualTolerance(A, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+
+        }
+
+        [Test]
+        public void PolygonShapeReturnsTopSliceOfArea2()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-6.0, 0),
+                new Point2D(-6.0, 12.0),
+                new Point2D(6.0, 12.0),
+                new Point2D(6.0, 0)
+            };
+            var rect = new PolygonShape(Points);
+            var slicedShape = rect.GetTopSliceOfArea(17.64);
+
+            double refValue = 1.47;
+            double y = slicedShape.YMax-slicedShape.YMin;
+
+
+            double actualTolerance = EvaluateActualTolerance(y, refValue);
             Assert.LessOrEqual(actualTolerance, tolerance);
 
 

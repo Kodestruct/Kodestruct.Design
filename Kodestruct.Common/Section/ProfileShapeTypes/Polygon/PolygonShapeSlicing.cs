@@ -118,7 +118,7 @@ namespace Kodestruct.Common.Section.General
             }
             else
             {
-                PolygonShape shape = new PolygonShape(solution);
+                PolygonShape shape = new PolygonShape(solution,true);
                 return shape; 
             }
             
@@ -127,13 +127,16 @@ namespace Kodestruct.Common.Section.General
             #endregion
         }
 
+        double ScaleFactor = 10000000;
+
         private List<List<ClipperLib.IntPoint>> GetPolyPaths(List<Point2D> CuttingRectanglePoints)
         {
+            //Because clipper library uses integers, scale all the points by a scale  factor
             int NumberOfPoints = CuttingRectanglePoints.Count;
             Path cutPath = new Path(NumberOfPoints);
             foreach (var p in CuttingRectanglePoints)
             {
-                cutPath.Add(new IntPoint(p.X, p.Y));
+                cutPath.Add(new IntPoint(p.X * ScaleFactor, p.Y * ScaleFactor));
             }
             Paths subj = new Paths(1);
             subj.Add(cutPath);

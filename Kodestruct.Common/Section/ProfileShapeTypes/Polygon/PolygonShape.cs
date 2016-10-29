@@ -44,14 +44,14 @@ namespace Kodestruct.Common.Section.General
         }
 
 
-        public PolygonShape(List<List<IntPoint>> Polygon)
+        public PolygonShape(List<List<IntPoint>> Polygon, bool ScaleDowm)
         {
-
+            
             List<Point2D> newVertices = new List<Point2D>();
 
             foreach (var pathPoint in Polygon[0])
             {
-                Point2D pt = new Point2D(pathPoint.X, pathPoint.Y);
+                Point2D pt = new Point2D(pathPoint.X/ScaleFactor, pathPoint.Y/ScaleFactor);
                 newVertices.Add(pt);
             }
             Vertices = newVertices;
@@ -199,7 +199,7 @@ namespace Kodestruct.Common.Section.General
                 area = area + (Vertices[j].X + Vertices[i].X) * (Vertices[j].Y - Vertices[i].Y);
                 j = i;  //j is previous vertex to i
             }
-            return area / 2.0;
+            return Math.Abs(area / 2.0);
         }
 
 

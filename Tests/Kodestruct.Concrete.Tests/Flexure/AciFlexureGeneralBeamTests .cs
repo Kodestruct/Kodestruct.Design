@@ -28,13 +28,13 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             List<Point2D> PolyPoints = new List<Point2D>()
             {
                 new Point2D(-6.0,0.0),
-                new Point2D(-6.0,20.0),
-                new Point2D(6.0,20.0),
+                new Point2D(-6.0,12.0),
+                new Point2D(6.0,12.0),
                 new Point2D(6.0,0)
             };
 
-            Rebar thisBar = new Rebar(2.5, new MaterialAstmA615(A615Grade.Grade60));
-            var coord = new RebarCoordinate(0,4.0);
+            Rebar thisBar = new Rebar(1.0, new MaterialAstmA615(A615Grade.Grade60));
+            var coord = new RebarCoordinate(0,1.0);
             List<RebarPoint> RebarPoints = new List<RebarPoint>()
             {
                 new RebarPoint(thisBar,coord)
@@ -43,9 +43,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             //ConcreteMaterial Concrete, List<RebarPoint> RebarPoints, double b_w, double d)
             ConcreteSectionFlexure beam = sf.GetGeneralSection(PolyPoints, mat, RebarPoints, 12.0, 9.0);
             IStrainCompatibilityAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Top);
-            double M_n = MResult.Moment;
+            double M_n = MResult.Moment / 12000;
 
-            double refValue = 291000*12.0;
+            double refValue = 51.32;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);

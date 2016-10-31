@@ -131,7 +131,10 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
         {
             double Mp = GetM_p();
             double phiMp = 0.9 * Mp;
-            SteelLimitStateValue ls = new SteelLimitStateValue(-1, true);
+            double M_y = this.GetM_y();
+            double phiMy = 0.9 * 1.6 * M_y;
+            double Y = Math.Min(phiMp, phiMy);
+            SteelLimitStateValue ls = new SteelLimitStateValue(Y, true);
             return ls;
         }
 

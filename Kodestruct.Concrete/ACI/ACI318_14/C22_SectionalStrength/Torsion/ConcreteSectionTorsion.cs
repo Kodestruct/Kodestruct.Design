@@ -47,7 +47,7 @@ namespace Kodestruct.Concrete.ACI318_14
         }
 
         
-        public double GetRequiredTorsionTransverseReinforcementArea(double T_u, double f_yt,
+        public double GetRequiredTorsionLongitudinalReinforcementArea(double T_u, double f_y,
     double theta = 45.0)
         {
             double A_o = Shape.GetA_oh();
@@ -55,8 +55,8 @@ namespace Kodestruct.Concrete.ACI318_14
             double thetaRad = theta.ToRadians();
             double phi = 0.75;
             //(22.7.6.1b)
-            double A_tReq = ((T_u * p_h) / (phi * 2 * A_o * f_yt)) * 1.0 / (Math.Tan(thetaRad));
-            return A_tReq;
+            double A_lReq = ((T_u * p_h) / (phi * 2 * A_o * f_y)) * 1.0 / (Math.Tan(thetaRad));
+            return A_lReq;
         }
 
         public double GetThreshholdTorsion(double N_u)

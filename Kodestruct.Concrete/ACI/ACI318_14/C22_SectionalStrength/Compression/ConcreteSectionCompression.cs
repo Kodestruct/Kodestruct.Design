@@ -182,7 +182,7 @@ namespace Kodestruct.Concrete.ACI318_14
 
 
         //Table 22.4.2.1
-        protected double GetMaximumForce()
+        public double GetMaximumForce()
         {
             double C;
             switch (CompressionMemberType)

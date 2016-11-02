@@ -91,8 +91,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
                 RebarPoint point2 = new RebarPoint(thisBar2, new RebarCoordinate() { X = 0, Y = h / 2.0 - 2.5 });
                 LongitudinalBars.Add(point2);
 
-                ConcreteSectionCompression column = GetConcreteCompressionMember(b, h, f_c, LongitudinalBars, CompressionMemberType.NonPrestressedWithTies);
+                //ConcreteSectionCompression column = GetConcreteCompressionMember(b, h, f_c, LongitudinalBars, CompressionMemberType.NonPrestressedWithTies);
+                ConcreteSectionCompression column = GetConcreteCompressionMember(b, h, f_c, LongitudinalBars, ConfinementReinforcementType.Ties);
                 return column;
+
 
         }
 
@@ -111,17 +113,19 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             ConcreteSectionFlexure flexureMember = flexureFactory.GetRectangularSectionFourSidesDistributed(b, h, 4, 0, 2.5, 2.5, 
                 mat, rebarMat,ConfinementReinforcementType.Ties);
 
-            ConcreteSectionCompression column = compressionFactory.GetCompressionMemberFromFlexuralSection(flexureMember, CompressionMemberType.NonPrestressedWithTies);
+            ConcreteSectionCompression column = compressionFactory.GetCompressionMemberFromFlexuralSection(flexureMember, ConfinementReinforcementType.Ties);
 
             return column;
 
         }
 
-        public ConcreteSectionCompression GetConcreteCompressionMember(double Width, double Height, double fc, List<RebarPoint> LongitudinalBars, CompressionMemberType CompressionMemberType)
+        public ConcreteSectionCompression GetConcreteCompressionMember(double Width, double Height, double fc, List<RebarPoint> LongitudinalBars, ConfinementReinforcementType ConfinementReinforcementType)
         {
             CalcLog log = new CalcLog();
             IConcreteSection Section = GetRectangularSection(Width, Height, fc);
-            ConcreteSectionCompression column = new ConcreteSectionCompression(Section, LongitudinalBars, CompressionMemberType, log);
+            //ConcreteSectionCompression column = new ConcreteSectionCompression(Section, LongitudinalBars,ConfinementReinforcementType, log);
+            IConcreteFlexuralMember fs = new ConcreteSectionFlexure(Section, LongitudinalBars, new CalcLog(), ConfinementReinforcementType);
+            ConcreteSectionCompression column = new ConcreteSectionCompression(fs as IConcreteSectionWithLongitudinalRebar, ConfinementReinforcementType, log);
             return column;
         }
     }

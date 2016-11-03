@@ -114,5 +114,13 @@ namespace Kodestruct.Concrete.ACI318_14
             return 0.75;
         }
 
+        /// <summary>
+        /// Strength reduction factor for torsion
+        /// </summary>
+        /// <returns></returns>
+        public double Get_phi_Torsion()
+        {
+            return 0.75;
+        }
     }
 }

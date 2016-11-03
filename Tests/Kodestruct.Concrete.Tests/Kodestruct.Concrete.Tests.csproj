@@ -88,6 +88,8 @@
     <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentStub.cs" />
     <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentTests.cs" />
     <Compile Include="ToleranceTestBase.cs" />
+    <Compile Include="Torsion\AciConcreteTorsionRectangularBeamTests.cs" />
+    <Compile Include="Torsion\TorsionTestsCommon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="General\Concrete\" />

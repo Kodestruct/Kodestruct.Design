@@ -34,10 +34,12 @@ namespace Kodestruct.Concrete.ACI318_14
          ICalcLog log, bool IsPrestressed =false )
             : base(Section.Section, Section.LongitudinalBars, log)
         {
+            this.ConfinementReinforcementType = ConfinementReinforcementType;
             switch (ConfinementReinforcementType)
             {
                 case ConfinementReinforcementType.Spiral:
                     this.CompressionMemberType = IsPrestressed == false ? CompressionMemberType.NonPrestressedWithSpirals : CompressionMemberType.PrestressedWithSpirals;
+
                     break;
                 case ConfinementReinforcementType.Ties:
                     this.CompressionMemberType = IsPrestressed == false ? CompressionMemberType.NonPrestressedWithTies : CompressionMemberType.PrestressedWithTies;

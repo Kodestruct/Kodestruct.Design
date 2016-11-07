@@ -38,11 +38,11 @@ namespace Kodestruct.Concrete.ACI318_14
         public double GetRequiredTorsionTransverseReinforcementArea(double T_u,double s, double f_yt, 
             double theta=45.0)
         {
-            double A_o = Shape.GetA_oh();
+            double A_o = 0.85*Shape.GetA_oh();
             double thetaRad = theta.ToRadians();
             double phi = 0.75;
             //(22.7.6.1a)
-            double A_tReq = ((T_u * s) / (phi * 2 * A_o * f_yt)) * 1.0 / (Math.Tan(thetaRad));
+            double A_tReq = ((T_u * s) / (phi * 2.0 * A_o * f_yt)) * 1.0 / (Math.Tan(thetaRad));
             return A_tReq;
         }
 
@@ -50,7 +50,7 @@ namespace Kodestruct.Concrete.ACI318_14
         public double GetRequiredTorsionLongitudinalReinforcementArea(double T_u, double f_y,
     double theta = 45.0)
         {
-            double A_o = Shape.GetA_oh();
+            double A_o = 0.85*Shape.GetA_oh();
             double p_h = Shape.Get_p_h();
             double thetaRad = theta.ToRadians();
             double phi = 0.75;
@@ -64,14 +64,20 @@ namespace Kodestruct.Concrete.ACI318_14
             return Shape.Get_T_th(N_u);
         }
 
-        public double GetMaximumForceInteractionRatio(double V_u, double T_u, double V_c, double b, double d)
+        public double GetMaximumForceInteractionRatio(double V_u, double T_u, double phiV_c, double b, double d)
         {
+
+            StrengthReductionFactorFactory srf = new StrengthReductionFactorFactory();
+            double phi = srf.Get_phi_Torsion();
+            double phi_shear = srf.Get_phi_ShearReinforced();
+            double V_c = phiV_c / phi_shear;
+            //(22.7.7.1a)
             double Sqrt_f_c = Shape.Material.Sqrt_f_c_prime;
             double p_h = Shape.Get_p_h();
             double A_oh = Shape.GetA_oh();
             double IR1 = Math.Sqrt(Math.Pow((((V_u) / (b * d))), 2) + Math.Pow((((T_u * p_h)) / (1.7 * Math.Pow(A_oh, 2))), 2));
-            double IR2 = ((V_c) / (b * d)) + 8 * Sqrt_f_c;
-            double IR = Math.Max(IR1, IR2);
+            double IR2 = phi*((V_c) / (b * d) + 8 * Sqrt_f_c);
+            double IR = IR1 / IR2;
 
             return IR;
         }

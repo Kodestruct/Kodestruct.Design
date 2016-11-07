@@ -133,7 +133,7 @@
     <Compile Include="ACI\Entities\ShearAndTorsion\ResultOfShearStressDueToMoment.cs" />
     <Compile Include="ACI\Entities\ShearAndTorsion\ShearPerimeterConfigurationType.cs" />
     <Compile Include="ACI\Entities\ShearAndTorsion\TorsionalPropertyCalculator.cs" />
-    <Compile Include="ACI\ACI318_14\C_21_StrengthReductionFactors\StrengthReductionFactorFactory.cs" />
+    <Compile Include="ACI\ACI318_14\C21_StrengthReductionFactors\StrengthReductionFactorFactory.cs" />
     <Compile Include="ACI\Entities\ShearAndTorsion\TorsionalElementType.cs" />
     <Compile Include="ACI\Entities\ShearAndTorsion\TorsionalReinforcementType.cs" />
     <Compile Include="ACI\Interfaces\IConcreteCompressionMaterial.cs" />

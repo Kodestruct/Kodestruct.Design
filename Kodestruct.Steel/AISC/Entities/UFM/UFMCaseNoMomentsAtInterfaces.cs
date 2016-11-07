@@ -89,7 +89,8 @@ namespace Kodestruct.Steel.AISC.UFM
             }
             double SignedA_ub = P_u >= 0 ? A_ub : -A_ub;
 
-            _H_bc = H_c_ND + SignedA_ub - SignedH_d;
+            //_H_bc = H_c_ND + SignedA_ub - SignedH_d;
+            _H_bc = _H_c + SignedA_ub;
 
             BasicPropertiesAreCalculated = true;
         }

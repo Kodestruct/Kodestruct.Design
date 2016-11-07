@@ -71,7 +71,7 @@ namespace Kodestruct.Steel.Tests.AISC
             //Note 1270 kip*in distortional moment in gusset is calculated in design guide
             //from equation given in Tamboli book
             //Beam-column connection axial force H_ubc is reduced due to distorional force
-            UFMCaseNoMomentsAtInterfaces ufmCase = new UFMCaseNoMomentsAtInterfaces(21.4, 14.0, 47.2, 17.5, 12.0, 840.0, 50.0, true, 127, 100);
+            UFMCaseNoMomentsAtInterfaces ufmCase = new UFMCaseNoMomentsAtInterfaces(21.4, 14.0, 47.2, 17.5, 12.0, 840.0, 50.0, true, 1270, 100);
             double H_ubc = ufmCase.H_bc;
             double refValueH_ubc = 220.0;
             double actualToleranceV_c = EvaluateActualTolerance(H_ubc, refValueH_ubc);

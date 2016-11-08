@@ -38,10 +38,10 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         /// <param name="b_yCant">Slab cantilever extension beyond column face (along axis Y)</param>
         /// <returns></returns>
         public PunchingPerimeterData GetPerimeterData(PunchingPerimeterConfiguration Configuration, double c_x, double c_y, double d,
-    double b_xCant, double b_yCant, Point2D ColumnCenter)
+        double b_xCant, double b_yCant, Point2D ColumnCenter)
         {
-            throw new NotImplementedException();
-
+            List<PerimeterLineSegment> PerimeterSegments = GetPerimeterSegments(Configuration, c_x, c_y, d, b_xCant, b_yCant);
+            return new PunchingPerimeterData(PerimeterSegments, ColumnCenter);
         }
 
 

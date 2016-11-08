@@ -39,16 +39,16 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         /// <param name="ColumnType">Identifies if the column is located at the interior, slab edge, or slab corner</param>
         /// <param name="ColumnCenter">Controid pointof column</param>
         public ConcreteSectionTwoWayShear(IConcreteMaterial Material, PunchingPerimeterData Perimeter, double d,
-            double c_x, double c_y, bool AtColumnFace, PunchingPerimeterConfiguration ColumnType, Point2D ColumnCenter)
+            double c_x, double c_y, bool AtColumnFace, PunchingPerimeterConfiguration ColumnType)
         {
             this.Material    =Material      ;
-            this.Segments    =Segments      ;
+            this.Segments    =Perimeter.Segments      ;
             this.d           =d             ;
             this.c_x         =c_x           ;
             this.c_y         =c_y           ;
             this.AtColumnFace=AtColumnFace  ;
             this.ColumnType = ColumnType    ;
-            this.ColumnCenter = ColumnCenter;
+            this.ColumnCenter = Perimeter.ColumnCentroid;
         }
 
 

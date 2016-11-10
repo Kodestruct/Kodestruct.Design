@@ -121,6 +121,9 @@
   <data name="ACI_MildRebarProperties" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ACI_MildRebarProperties.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="ACI_RebarCover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ACI_RebarCover.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="AnchorAreas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AnchorAreas.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>

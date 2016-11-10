@@ -15,6 +15,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
     {
         /// <summary>
         /// MacGregor, Wight. Reinforced concrete. 6th edition
+        /// Example 7-2
         /// </summary>
         [Test]
         public void RectangularBeamReturnsThresholdTorsionValue()
@@ -39,6 +40,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
         /// <summary>
         /// MacGregor, Wight. Reinforced concrete. 6th edition
+        /// Example 7-2
         /// </summary>
         [Test]
         public void RectangularBeamReturnsInteractionValue()
@@ -72,6 +74,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
         /// <summary>
         /// MacGregor, Wight. Reinforced concrete. 6th edition
+        /// Example 7-2
         /// </summary>
         [Test]
         public void RectangularBeamReturnsRequiredTransverseRebarValue()

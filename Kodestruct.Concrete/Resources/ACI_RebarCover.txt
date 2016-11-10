@@ -1,0 +1,59 @@
+NP-CIP-SLAB OR JOIST-CastAgainstEarth,All,All,3,3,3
+NP-CIP-SLAB OR JOIST-ExposedToWeather,5,5,1.5,2,2
+NP-CIP-SLAB OR JOIST-Protected,11,11,0.75,1.5,1.5
+NP-CIP-WALL-CastAgainstEarth,All,All,3,3,3
+NP-CIP-WALL-ExposedToWeather,5,5,1.5,2,2
+NP-CIP-WALL-Protected,11,11,0.75,1.5,1.5
+NP-CIP-BEAM-CastAgainstEarth,All,All,3,3,3
+NP-CIP-BEAM-ExposedToWeather,5,5,1.5,2,2
+NP-CIP-BEAM-Protected,All,All,1.5,1.5,1.5
+NP-CIP-COLUMN OR PEDESTAL-CastAgainstEarth,All,All,3,3,3
+NP-CIP-COLUMN OR PEDESTAL-ExposedToWeather,5,5,1.5,2,2
+NP-CIP-COLUMN OR PEDESTAL-Protected,All,All,1.5,1.5,1.5
+NP-CIP-TIE-CastAgainstEarth,All,All,3,3,3
+NP-CIP-TIE-ExposedToWeather,5,5,1.5,2,2
+NP-CIP-TIE-Protected,All,All,1.5,1.5,1.5
+NP-PLANT-SLAB OR JOIST-ExposedToWeather,5,11,1.25,1.5,2
+NP-PLANT-SLAB OR JOIST-Protected,11,11,0.625,1.25,1.25
+NP-PLANT-WALL-ExposedToWeather,5,11,0.75,1.5,1.5
+NP-PLANT-WALL-Protected,11,11,0.625,1.25,1.25
+NP-PLANT-BEAM-ExposedToWeather,5,11,1.25,1.5,2
+NP-PLANT-BEAM-Protected_Primary,All,All,0.625db,0.625db,0.625db
+NP-PLANT-BEAM-Protected_Ties,All,All,0.375,0.375,0.375
+NP-PLANT-COLUMN OR PEDESTAL-ExposedToWeather,5,11,1.25,1.5,2
+NP-PLANT-COLUMN OR PEDESTAL-Protected_Primary,All,All,0.625db,0.625db,0.625db
+NP-PLANT-COLUMN OR PEDESTAL-Protected_Ties,All,All,0.375,0.375,0.375
+NP-PLANT-TIE-ExposedToWeather,5,11,1.25,1.5,2
+NP-PLANT-TIE-Protected_Primary,All,All,0.625db,0.625db,0.625db
+NP-PLANT-TIE-Protected_Ties,All,All,0.375,0.375,0.375
+PS-CIP-SLAB OR JOIST-CastAgainstEarth,All,All,3,3,3
+PS-CIP-SLAB OR JOIST-ExposedToWeather,All,All,1,1,1
+PS-CIP-SLAB OR JOIST-Protected,All,All,0.75,0.75,0.75
+PS-CIP-WALL-CastAgainstEarth,All,All,3,3,3
+PS-CIP-WALL-ExposedToWeather,All,All,1,1,1
+PS-CIP-WALL-Protected,All,All,0.75,0.75,0.75
+PS-CIP-BEAM-CastAgainstEarth,All,All,3,3,3
+PS-CIP-BEAM-ExposedToWeather,All,All,1.5,1.5,1.5
+PS-CIP-BEAM-Protected_Primary,All,All,1.5,1.5,1.5
+PS-CIP-BEAM-Protected_Ties,All,All,1,1,1
+PS-CIP-COLUMN OR PEDESTAL-CastAgainstEarth,All,All,3,3,3
+PS-CIP-COLUMN OR PEDESTAL-ExposedToWeather,All,All,1.5,1.5,1.5
+PS-CIP-COLUMN OR PEDESTAL-Protected_Primary,All,All,1.5,1.5,1.5
+PS-CIP-COLUMN OR PEDESTAL-Protected_Ties,All,All,1,1,1
+PS-CIP-TIE-CastAgainstEarth,All,All,3,3,3
+PS-CIP-TIE-ExposedToWeather,All,All,1.5,1.5,1.5
+PS-CIP-TIE-Protected_Primary,All,All,1.5,1.5,1.5
+PS-CIP-TIE-Protected_Primary,All,All,1,1,1
+PS-PLANT-SLAB OR JOIST-ExposedToWeather,5,11,1.25,1.5,2
+PS-PLANT-SLAB OR JOIST-Protected,11,11,0.625,1.25,1.25
+PS-PLANT-WALL-ExposedToWeather,11,11,0.75,1.5,1.5
+PS-PLANT-WALL-Protected,11,11,0.625,1.25,1.25
+PS-PLANT-BEAM-ExposedToWeather,5,11,1.25,1.5,2
+PS-PLANT-BEAM-Protected_Primary,All,All,0.625db,0.625db,0.625db
+PS-PLANT-BEAM-Protected_Ties,All,All,0.375,0.375,0.375
+PS-PLANT-COLUMN OR PEDESTAL-ExposedToWeather,5,11,1.25,1.5,2
+PS-PLANT-COLUMN OR PEDESTAL-Protected_Primary,All,All,0.625db,0.625db,0.625db
+PS-PLANT-COLUMN OR PEDESTAL-Protected_Ties,All,All,0.375,0.375,0.375
+PS-PLANT-TIE-ExposedToWeather,5,11,1.25,1.5,2
+PS-PLANT-TIE-Protected_Primary,All,All,0.625db,0.625db,0.625db
+PS-PLANT-TIE-Protected_Ties,All,All,0.375,0.375,0.375

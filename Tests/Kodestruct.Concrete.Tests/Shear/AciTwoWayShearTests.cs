@@ -63,5 +63,74 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
 
         }
+
+        /// <summary>
+        /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
+        /// Example D.1
+        /// </summary>
+        [Test]
+        public void InteriorSlabReturnsPerimeterJ_yProperty()
+        {
+            IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
+            PerimeterFactory f = new PerimeterFactory();
+            double d = 5.62;
+            double cx = 12.0;
+            double cy = 20.0;
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
+            double J_y = sec.GetJy(sec.AdjustedSegments);
+
+            double refValue = 27474; //from example  (page 19)
+            double actualTolerance = EvaluateActualTolerance(J_y, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
+        /// <summary>
+        /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
+        /// Example D.1
+        /// </summary>
+        [Test]
+        public void InteriorSlabReturnsPerimeter_gamma_vy_Property()
+        {
+            IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
+            PerimeterFactory f = new PerimeterFactory();
+            double d = 5.62;
+            double cx = 12.0;
+            double cy = 20.0;
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
+            double gamma_vy = sec.Get_gamma_vy(cx + d, cy + d);
+
+            double refValue = 0.36; //from example 
+            double actualTolerance = EvaluateActualTolerance(gamma_vy, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
+        /// <summary>
+        /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
+        /// Example D.1
+        /// </summary>
+        [Test]
+        public void InteriorSlabReturnsPunchingShearStress()
+        {
+            IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
+            PerimeterFactory f = new PerimeterFactory();
+            double d = 5.62;
+            double cx = 12.0;
+            double cy = 20.0;
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0, 600, 110,true).v_max;
+
+            double refValue = 0.294; //from example 
+            double actualTolerance = EvaluateActualTolerance(v_u, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
     }
 }

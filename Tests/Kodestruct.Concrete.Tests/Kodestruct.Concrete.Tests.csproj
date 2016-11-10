@@ -79,22 +79,23 @@
     <Compile Include="Shear\AciTwoWayShearTests.cs" />
     <Compile Include="Shear\ShearTestsCommon.cs" />
     <Compile Include="Shear\AciConcreteShearRectangularBeamTests.cs" />
-    <Compile Include="SplicesAndDevelopment\Tension\HookStub.cs" />
-    <Compile Include="SplicesAndDevelopment\Tension\StandardHookTests.cs" />
-    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmenKtrTests.cs" />
-    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentCbTests.cs" />
-    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentCommonTests.cs" />
-    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentksiTests.cs" />
-    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentStub.cs" />
-    <Compile Include="SplicesAndDevelopment\Tension\TensionDevelopmentTests.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Cover\CoverTests.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Tension\HookStub.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Tension\StandardHookTests.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Tension\TensionDevelopmenKtrTests.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Tension\TensionDevelopmentCbTests.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Tension\TensionDevelopmentCommonTests.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Tension\TensionDevelopmentksiTests.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Tension\TensionDevelopmentStub.cs" />
+    <Compile Include="SplicesDevelopmentDetails\Tension\TensionDevelopmentTests.cs" />
     <Compile Include="ToleranceTestBase.cs" />
     <Compile Include="Torsion\AciConcreteTorsionRectangularBeamTests.cs" />
     <Compile Include="Torsion\TorsionTestsCommon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="General\Concrete\" />
-    <Folder Include="SplicesAndDevelopment\Common\" />
-    <Folder Include="SplicesAndDevelopment\Compression\" />
+    <Folder Include="SplicesDevelopmentDetails\Common\" />
+    <Folder Include="SplicesDevelopmentDetails\Compression\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Kodestruct.Concrete.Tests.licenseheader" />

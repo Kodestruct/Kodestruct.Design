@@ -8,7 +8,7 @@ using Kodestruct.Concrete.ACI318_14;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
-    public partial class StandardHookTests
+    public partial class AciStandardHookTests
     {
         //PCA Notes on ACI318-08
         //Table 4-4 Development Length ldh (inches) of Standard Hooks for Uncoated Grade 60 Bars

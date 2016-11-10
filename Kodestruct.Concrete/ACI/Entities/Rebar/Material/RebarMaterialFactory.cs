@@ -26,7 +26,7 @@ namespace Kodestruct.Concrete.ACI
 {
     public class RebarMaterialFactory
     {
-        public IRebarMaterial GetMaterial(string SpecificationId)
+        public IRebarMaterial GetMaterial(string SpecificationId="A615Grade60")
         {
             switch (SpecificationId)
             {

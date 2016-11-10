@@ -39,9 +39,13 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 
         public Point2D Centroid
         {
-            get { 
-                
-                centroid = new Point2D((PointJ.X - PointI.X)/2.0, (PointJ.Y - PointI.Y)/2.0);
+            get {
+                double X_max = Math.Max(PointI.X, PointJ.X);
+                double X_min = Math.Min(PointI.X, PointJ.X);
+                double Y_max = Math.Max(PointI.Y, PointJ.Y);
+                double Y_min = Math.Min(PointI.Y, PointJ.Y);
+
+                centroid = new Point2D((X_max + X_min) / 2.0, (Y_max + Y_min) / 2.0);
                 return centroid; }
         }
         

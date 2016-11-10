@@ -16,7 +16,7 @@ using Kodestruct.Concrete.ACI318_14.Materials;
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
     [TestFixture]
-    public partial class StandardHookTests
+    public partial class AciStandardHookTests
     {
 
         private StandardHookInTension CreateHookObject(double ConcStrength, double RebarDiameter)

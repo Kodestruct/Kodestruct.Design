@@ -70,6 +70,33 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
         }
 
+        /// <summary>
+        /// MacGregor, Wight. Reinforced concrete. 6th edition
+        /// Example 7-2
+        /// </summary>
+        [Test]
+        public void RectangularBeamReturnsRequiredShearRebarAreaValue()
+        {
+            double h = 24.0;
+            double d = 21.5;
+            double b = 14.0;
+            double N_u = 0.0;
+            double phiV_s = 43100.0*0.75;
+            double fc = 3000.0;
+            double s = 1.0;
+            double c_center = 1.75;
+            bool IsLightWeight = false;
+            RebarMaterialFactory rmf= new RebarMaterialFactory();
+            IRebarMaterial rm = rmf.GetMaterial();
+            OneWayShearReinforcedSectionNonPrestressed section = new OneWayShearReinforcedSectionNonPrestressed(d, rm, s);
+            double A_v =section.GetRequiredShearReinforcementArea(phiV_s);
+
+            double refValue =  0.0334 ; 
+            double actualTolerance = EvaluateActualTolerance(A_v, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+        }
         [Test]
         public void RectangularBeamReturnsDetailedConcreteShearValue()
         {

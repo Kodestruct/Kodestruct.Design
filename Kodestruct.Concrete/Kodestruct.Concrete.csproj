@@ -97,6 +97,7 @@
     <Compile Include="ACI\ACI318_14\C17_Anchorage\StrengthReductionFactor\StrengthReductionFactorBase.cs" />
     <Compile Include="ACI\ACI318_14\C17_Anchorage\StrengthReductionFactor\StrengthReductionFactorCastIn.cs" />
     <Compile Include="ACI\ACI318_14\C17_Anchorage\StrengthReductionFactor\StrengthReductionFactorPostInstalled.cs" />
+    <Compile Include="ACI\ACI318_14\C20_Durability\Cover\RebarCoverFactory.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\ConcreteSectionCompression.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\FlexuralSectionFactory.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\CompressionMemberType.cs" />
@@ -285,6 +286,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AnchorAreas.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ACI_RebarCover.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

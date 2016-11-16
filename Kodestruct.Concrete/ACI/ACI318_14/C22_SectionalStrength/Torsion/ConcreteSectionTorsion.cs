@@ -40,7 +40,8 @@ namespace Kodestruct.Concrete.ACI318_14
         {
             double A_o = 0.85*Shape.GetA_oh();
             double thetaRad = theta.ToRadians();
-            double phi = 0.75;
+            StrengthReductionFactorFactory srf = new StrengthReductionFactorFactory();
+            double phi = srf.Get_phi_Torsion();
             //(22.7.6.1a)
             double A_tReq = ((T_u * s) / (phi * 2.0 * A_o * f_yt)) * 1.0 / (Math.Tan(thetaRad));
             return A_tReq;
@@ -53,7 +54,8 @@ namespace Kodestruct.Concrete.ACI318_14
             double A_o = 0.85*Shape.GetA_oh();
             double p_h = Shape.Get_p_h();
             double thetaRad = theta.ToRadians();
-            double phi = 0.75;
+            StrengthReductionFactorFactory srf = new StrengthReductionFactorFactory();
+            double phi = srf.Get_phi_Torsion();
             //(22.7.6.1b)
             double A_lReq = ((T_u * p_h) / (phi * 2 * A_o * f_y)) * 1.0 / (Math.Tan(thetaRad));
             return A_lReq;

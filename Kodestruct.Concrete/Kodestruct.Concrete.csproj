@@ -102,6 +102,7 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\FlexuralSectionFactory.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\CompressionMemberType.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\CompressionSectionFactory.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\ShearFriction\ConcreteSectionShearFriction.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\UpperLimitOnShearStrength.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\ConcreteOneWayShearStrength.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\ConcreteSectionOneWayShearNonPrestressed.cs">
@@ -121,6 +122,7 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionGeneric.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionRectangularNonPrestressed.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionShapeFactory.cs" />
+    <Compile Include="ACI\Entities\ShearAndTorsion\ShearFrictionSurfaceType.cs" />
     <Compile Include="ACI\Interfaces\IConcreteTorsionalShape.cs" />
     <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionLapSplice.cs" />
     <Compile Include="ACI\ACI530\ReinforcedCMU\CMUSectionLongitunallyReinforced.cs" />

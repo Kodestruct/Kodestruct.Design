@@ -54,13 +54,14 @@ namespace Kodestruct.Steel.AISC360v10.Connections.AffectedElements
 
         public double GetNetArea(double A_g, double N_bolts, double d_h, double s, List<double> g, double t_p, bool IsTensionSplicePlate  )
         {
+            double A_n = A_g - N_bolts * d_h - g.Sum(gage => Math.Pow(s, 2.0) / (4.0 * gage)); 
             if (IsTensionSplicePlate==false)
             {
-               return A_g - N_bolts * d_h - g.Sum(gage => Math.Pow(s, 2.0) / (4.0 * gage)); 
+                return A_n; 
             }
             else
             {
-                return 0.85 * A_g;
+                return Math.Min(0.85 * A_g, A_n);
             }
             
         }

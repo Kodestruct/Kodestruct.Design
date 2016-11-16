@@ -15,6 +15,7 @@ using Kodestruct.Concrete.ACI.ACI318_14.Durability.Cover;
 
 
 
+
 namespace Kodestruct.Concrete.ACI318_14.Cover
 {
     [TestFixture]

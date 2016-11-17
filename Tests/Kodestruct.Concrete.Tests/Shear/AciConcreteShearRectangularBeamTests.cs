@@ -7,6 +7,8 @@ using NUnit.Framework;
 using Kodestruct.Concrete.ACI318_14;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Common.Section.Interfaces;
+using Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.ShearFriction;
+using Kodestruct.Concrete.ACI.Entities;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 {
@@ -119,6 +121,25 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
             //Assert.LessOrEqual(actualTolerance, tolerance);
             Assert.True(true);
+
+        }
+
+        [Test]
+        public void ShearFrictionReturnsValue()
+        {
+            IConcreteMaterial matC = GetConcreteMaterial(4000, false);
+            IRebarMaterial m = new MaterialAstmA615(A615Grade.Grade60);
+            double A_c = 720.0;
+            double A_v = 4.84;
+
+            ConcreteSectionShearFriction sec = new ConcreteSectionShearFriction( ACI.Entities.ShearAndTorsion.ShearFrictionSurfaceType.HardenedNonRoughenedConcrete, matC, A_c, m, A_v, 90, 0);
+            double phiV_n = sec.GetShearFrictionStrength() / 1000.0; //convert back to ksi units
+
+            double refValue = 130.68;
+            double actualTolerance = EvaluateActualTolerance(phiV_n, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
 
         }
     }

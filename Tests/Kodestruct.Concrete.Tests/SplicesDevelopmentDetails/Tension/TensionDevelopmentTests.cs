@@ -6,13 +6,23 @@ using System.Text;
 using NUnit.Framework;
 using Kodestruct.Concrete.ACI318_14;
 using Kodestruct.Concrete.ACI.Entities;
+using Kodestruct.Concrete.ACI;
+using Kodestruct.Concrete.ACI318_14.Materials;
 
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
     [TestFixture]
-    public partial class TensionDevelopmentTests
+    public partial class AciTensionDevelopmentTests : ToleranceTestBase
     {
+
+        double tolerance; 
+
+        public AciTensionDevelopmentTests()
+        {
+
+            tolerance = 0.02; //2% can differ from rounding
+        }
         //PCA Notes on ACI 318-08
         //Example 4.1—Development of Bars in Tension
 
@@ -97,7 +107,32 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             DevelopmentTension tensDev = this.CreateDevelopmentObject(fc, RebarDiam, IsEpoxyCoated, type,
                 0.0, ClearSpacing, ClearCover, IsTopRebar, ExcessRebarRatio, true);
             double ld = Math.Round(tensDev.GetTensionDevelopmentLength(0.4, 10, 2), 0);
+
+
             Assert.AreEqual(47.0, ld);
         }
+        [Test]
+        public void GetTensionDevelopmentLength_Basic()
+        {
+            double RebarDiam = 0.5;
+            bool IsTopRebar = false;
+            bool IsEpoxyCoated = false;
+            ConcreteTypeByWeight type = ConcreteTypeByWeight.Normalweight;
+            double fc = 4000;
+            double ExcessRebarRatio = 1.0;
+            IConcreteMaterial concrete = new ConcreteMaterial(fc, ConcreteTypeByWeight.Normalweight, null);
+            Rebar rebar = new Rebar(RebarDiam,IsEpoxyCoated, new MaterialAstmA615(A615Grade.Grade60));
+            bool MeetsRebarSpacingAndEdgeDistance = true;
+            DevelopmentTension d = new DevelopmentTension(concrete, rebar, MeetsRebarSpacingAndEdgeDistance, IsTopRebar, ExcessRebarRatio, true, null);
+            bool HasMinimumTransverseReinforcement = true;
+            double l_d = d.GetTensionDevelopmentLength(HasMinimumTransverseReinforcement);
+
+            double refValue = 18.97;
+            double actualTolerance = EvaluateActualTolerance(l_d, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+        }
+
     }
 }

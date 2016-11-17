@@ -44,7 +44,7 @@ namespace Kodestruct.Concrete.ACI318_14
             {
                 if (sideCover!=0.0 && barExtensionCover!=0.0)
                 {
-                    if (db<=11/8)
+                    if (db<=11.0/8.0)
                     {
                         if (sideCover>=2.5 && barExtensionCover>=2.0)
                         {
@@ -74,7 +74,7 @@ namespace Kodestruct.Concrete.ACI318_14
         private double GetConfinementModifier(HookType hookType, bool enclosingRebarIsPerpendicular, double enclosingRebarSpacing)
         {
             double confinementModifier=1.0;
-            if (hookType== HookType.Degree90 && db<=11/8)
+            if (hookType== HookType.Degree90 && db<=11.0/8.0)
             {
                 //      (b) For 90-degree hooks of No. 11 and smaller bars
                 //      that are either enclosed within ties or stirrups
@@ -92,9 +92,9 @@ namespace Kodestruct.Concrete.ACI318_14
                     confinementModifier = SetConfinementModifier();
                 }
             }
-            if (hookType== HookType.Degree180 && db<=11/8)
+            if (hookType== HookType.Degree180 && db<=11.0/8.0)
             {
-                if (enclosingRebarIsPerpendicular==true && enclosingRebarSpacing<=3*db)
+                if (enclosingRebarIsPerpendicular==true && enclosingRebarSpacing<=3.0*db)
                 {
                     confinementModifier = SetConfinementModifier();
                 }

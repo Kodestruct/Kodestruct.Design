@@ -2,15 +2,15 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Steel</id>
-    <version>0.0.2.1</version>
+    <version>0.0.2.2</version>
     <title>Kodestruct.Steel</title>
     <authors>Kodestruct Inc</authors>
     <description>Structural engineering automation library. Components for structural steel element and connection design for buildings and other structures, per AISC 360 standard.</description>
     <language>en-US</language>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
-    <iconUrl>https://drive.google.com/file/d/0B6zayB7C0xkvc0pwRUM5eG9NWFk/view?usp=sharing</iconUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <developmentDependency>false</developmentDependency>
+    <iconUrl>https://raw.githubusercontent.com/Kodestruct/Kodestruct.Design/master/Kodestruct.Steel/LOGOS_nuget_Steel_small.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <developmentDependency>true</developmentDependency>
     <releaseNotes>Update touniform force method</releaseNotes>
     <copyright>Copyright Kodestruct Inc © 2015</copyright>
     <frameworkAssemblies />

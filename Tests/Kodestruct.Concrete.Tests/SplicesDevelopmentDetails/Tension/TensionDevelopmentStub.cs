@@ -15,7 +15,7 @@ using Kodestruct.Concrete.ACI318_14.Materials;
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
     [TestFixture]
-    public partial class TensionDevelopmentTests
+    public partial class AciTensionDevelopmentTests : ToleranceTestBase
     {
 
         private DevelopmentTension CreateDevelopmentObject(double ConcStrength, double ClearSpacing, double ClearCover, bool IsTopRebar,

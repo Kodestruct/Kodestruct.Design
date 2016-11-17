@@ -142,7 +142,7 @@ namespace Kodestruct.Concrete.ACI318_14.Anchorage.LimitStates
                 if (hef_used>=11 || hef_used<=25)
                 {
                     //17.4.2.2b
-                   Nb = 16*Material.Sqrt_f_c_prime/1000*Math.Pow(hef_used,(5/3));
+                   Nb = 16*Material.Sqrt_f_c_prime/1000*Math.Pow(hef_used,(5.0/3.0));
                 }
                 Nb = GetNbAnyAnchor(hef_used, fc, lambda, kc);
             }

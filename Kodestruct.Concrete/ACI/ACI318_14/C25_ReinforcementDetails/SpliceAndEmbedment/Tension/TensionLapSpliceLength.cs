@@ -37,7 +37,7 @@ namespace Kodestruct.Concrete.ACI318_14
         {
             double ls;
 
-            if (Rebar1Diameter>11/8 ||Rebar2Diameter>11/8)
+            if (Rebar1Diameter>11.0/8.0 ||Rebar2Diameter>11.0/8.0)
             {
                 throw new Exception("Lap splices not permitted  for sizes over #11");
             }

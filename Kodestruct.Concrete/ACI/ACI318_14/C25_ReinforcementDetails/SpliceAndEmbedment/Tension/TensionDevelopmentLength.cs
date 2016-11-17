@@ -144,28 +144,28 @@ namespace Kodestruct.Concrete.ACI318_14
             if (clearSpacingLimitsAreMet &&
                 minimumShearReinforcementProvided == true)
             {
-                if (db < 7 / 8)
+                if (db < 7.0 / 8.0)
                 {
                     //Formula A
-                    ld = (fy * ksi_tAndKsi_eProduct / (25 * lambda * sqrt_fc)) * db;
+                    ld = (fy * ksi_tAndKsi_eProduct / (25.0 * lambda * sqrt_fc)) * db;
                 }
                 else
                 {
                     //Formula B
-                    ld = (fy * ksi_tAndKsi_eProduct / (20 * lambda * sqrt_fc)) * db;
+                    ld = (fy * ksi_tAndKsi_eProduct / (20.0 * lambda * sqrt_fc)) * db;
                 }
             }
             else
             {
-                if (db < 7 / 8)
+                if (db < 7.0 / 8.0)
                 {
                     //Formula C
-                    ld = (3.0 * fy * ksi_tAndKsi_eProduct / (50 * lambda * sqrt_fc)) * db;
+                    ld = (3.0 * fy * ksi_tAndKsi_eProduct / (50.0 * lambda * sqrt_fc)) * db;
                 }
                 else
                 {
                     //Formula D
-                    ld = (3.0 * fy * ksi_tAndKsi_eProduct / (40 * lambda * sqrt_fc)) * db;
+                    ld = (3.0 * fy * ksi_tAndKsi_eProduct / (40.0 * lambda * sqrt_fc)) * db;
                 }
             }
 

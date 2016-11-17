@@ -140,7 +140,7 @@ namespace Kodestruct.Concrete.ACI318_14.Anchorage.LimitStates
             {
                 List<double> distances = new List<double>()
                 {
-                    h_eff/1.5,ca_2/1.5,s_MAX/3
+                    h_eff/1.5,ca_2/1.5,s_MAX/3.0
                 };
                 ca_1_used = distances.Max();
             }

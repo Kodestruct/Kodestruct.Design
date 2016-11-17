@@ -9,7 +9,7 @@ using Kodestruct.Concrete.ACI318_14;
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
     [TestFixture]
-    public partial class TensionDevelopmentTests
+    public partial class AciTensionDevelopmentTests
     {
 
 

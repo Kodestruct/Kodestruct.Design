@@ -71,10 +71,10 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                 case PunchingPerimeterConfiguration.EdgeLeft:
                     b_y = c_y +d;
 
-                    p1 = new Point2D(-c_x/2-b_xCant, -b_y / 2.0);
-                    p2 = new Point2D(-c_x/2-b_xCant , b_y / 2.0);
-                    p3 = new Point2D(c_x/2+d/2, b_y / 2.0);
-                    p4 = new Point2D(c_x / 2.0+d/2, -b_y / 2.0);
+                    p1 = new Point2D(-c_x/2.0-b_xCant, -b_y / 2.0);
+                    p2 = new Point2D(-c_x/2.0-b_xCant , b_y / 2.0);
+                    p3 = new Point2D(c_x/2.0+d/2.0, b_y / 2.0);
+                    p4 = new Point2D(c_x / 2.0+d/2.0, -b_y / 2.0);
                     break;
                 case PunchingPerimeterConfiguration.EdgeRight:
                     b_y = c_y +d;
@@ -94,15 +94,15 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                 case PunchingPerimeterConfiguration.EdgeBottom:
                     b_x = c_x + d;
                     p1 = new Point2D(-b_x / 2.0, -c_y / 2.0- b_yCant); 
-                    p2 = new Point2D(-b_x / 2.0, c_y / 2.0+d/2);
-                    p3 = new Point2D(b_x / 2.0, c_y / 2.0+d/2);
+                    p2 = new Point2D(-b_x / 2.0, c_y / 2.0+d/2.0);
+                    p3 = new Point2D(b_x / 2.0, c_y / 2.0+d/2.0);
                     p4 = new Point2D(b_x / 2.0, -c_y / 2.0- b_yCant);
                     break;
                 case PunchingPerimeterConfiguration.CornerLeftTop:
                     p1 = new Point2D(-c_x / 2.0- b_xCant, -c_y / 2.0- d/2.0);
                     p2 = new Point2D(-c_x / 2.0- b_xCant, c_y / 2.0+ b_yCant);
-                    p3 = new Point2D(c_x/2+d/2.0, c_y / 2.0+ b_yCant);
-                    p4 = new Point2D(c_x / 2.0+d/2, -c_y / 2.0- d/2.0);
+                    p3 = new Point2D(c_x/2.0+d/2.0, c_y / 2.0+ b_yCant);
+                    p4 = new Point2D(c_x / 2.0+d/2.0, -c_y / 2.0- d/2.0);
                     break;
                 case PunchingPerimeterConfiguration.CornerRightTop:
                     p1 = new Point2D(-c_x / 2.0- d/2.0, -c_y / 2.0- d/2.0);
@@ -112,15 +112,15 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                     break;
                 case PunchingPerimeterConfiguration.CornerRightBottom:
                     p1 = new Point2D(-c_x / 2.0- d/2.0, -c_y / 2.0- b_yCant);
-                    p2 = new Point2D(-c_x / 2.0- d/2.0, c_y / 2.0+d/2);
-                    p3 = new Point2D(c_x / 2.0+ b_xCant, c_y / 2.0+d/2);
+                    p2 = new Point2D(-c_x / 2.0- d/2.0, c_y / 2.0+d/2.0);
+                    p3 = new Point2D(c_x / 2.0+ b_xCant, c_y / 2.0+d/2.0);
                     p4 = new Point2D(c_x / 2.0+ b_xCant, -c_y / 2.0- b_yCant);
                     break;
                 case PunchingPerimeterConfiguration.CornerLeftBottom:
                     p1 = new Point2D(-c_x / 2.0- b_xCant,  -c_y / 2.0- b_yCant);
-                    p2 = new Point2D(-c_x / 2.0- b_xCant, +c_y / 2.0+d/2);
-                    p3 = new Point2D(c_x/2+d/2.0, c_y / 2.0+ b_yCant);
-                    p4 = new Point2D(c_x / 2.0+d/2, -c_y / 2.0- b_yCant);
+                    p2 = new Point2D(-c_x / 2.0- b_xCant, +c_y / 2.0+d/2.0);
+                    p3 = new Point2D(c_x/2.0+d/2.0, c_y / 2.0+ b_yCant);
+                    p4 = new Point2D(c_x / 2.0+d/2.0, -c_y / 2.0- b_yCant);
                     break;
                 default:
                     break;

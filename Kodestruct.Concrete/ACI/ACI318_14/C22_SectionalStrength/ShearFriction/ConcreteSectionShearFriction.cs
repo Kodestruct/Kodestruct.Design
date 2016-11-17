@@ -40,11 +40,12 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.ShearFriction
         /// <param name="A_v">area of reinforcement crossing the assumed  shear plane to resist shear</param>
         /// <param name="alpha">angle between shear-friction reinforcement and assumed shear plane</param>
         /// <param name="F_comp">Permanent net compression across the shearplane </param>
-        public ConcreteSectionShearFriction( IConcreteMaterial Material, double A_c, IRebarMaterial TransverseRebarMaterial, double A_v, 
+        public ConcreteSectionShearFriction(ShearFrictionSurfaceType ShearFrictionSurfaceType, IConcreteMaterial Material, double A_c, IRebarMaterial TransverseRebarMaterial, double A_v, 
             double alpha =90.0, double F_comp =0.0 )
         {
             this.Material = Material;
-            this.A_c                     =A_c                     ;
+            this.ShearFrictionSurfaceType = ShearFrictionSurfaceType;
+            this.A_c   =A_c;
             this.TransverseRebarMaterial =TransverseRebarMaterial ;
             this.A_v = A_v;
             this.alpha = alpha;

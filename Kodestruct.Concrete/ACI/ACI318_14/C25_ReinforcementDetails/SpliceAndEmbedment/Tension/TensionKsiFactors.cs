@@ -115,7 +115,7 @@ namespace Kodestruct.Concrete.ACI318_14
 
             double ksi_s;
 
-            if (Rebar.Diameter<7/8)
+            if (Rebar.Diameter<7.0/8.0)
             {
                 ksi_s = 0.8;
             }

@@ -34,6 +34,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.ShearFriction
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="ShearFrictionSurfaceType">Type of contact surface</param>
         /// <param name="Material"></param>
         /// <param name="A_c">area of concrete section resisting shear transfer</param>
         /// <param name="TransverseRebarMaterial"></param>
@@ -41,11 +42,11 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.ShearFriction
         /// <param name="alpha">angle between shear-friction reinforcement and assumed shear plane</param>
         /// <param name="F_comp">Permanent net compression across the shearplane </param>
         public ConcreteSectionShearFriction(ShearFrictionSurfaceType ShearFrictionSurfaceType, IConcreteMaterial Material, double A_c, IRebarMaterial TransverseRebarMaterial, double A_v, 
-            double alpha =90.0, double F_comp =0.0 )
+            double alpha =90.0,  double F_comp =0.0 )
         {
             this.Material = Material;
             this.ShearFrictionSurfaceType = ShearFrictionSurfaceType;
-            this.A_c   =A_c;
+            this.A_c                     =A_c                     ;
             this.TransverseRebarMaterial =TransverseRebarMaterial ;
             this.A_v = A_v;
             this.alpha = alpha;
@@ -57,6 +58,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.ShearFriction
             double A_v { get; set; }
             ShearFrictionSurfaceType ShearFrictionSurfaceType { get; set; }
             double alpha { get; set; }
+            double F_comp { get; set; }
 
         /// <summary>
             /// Shear strength per 22.9.4.2 and 22.9.4.3
@@ -67,7 +69,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.ShearFriction
              double mu = GetCoefficientOfFriction();
              double lambda = GetLambda();
              double f_y = TransverseRebarMaterial.YieldStress;
-             double V_nSteel = A_v * f_y * (mu*lambda * Math.Sin(alpha.ToRadians()) + Math.Cos(alpha.ToRadians())); // Eq 22.9.4.3
+             double V_nSteel = (A_v * f_y+F_comp) * (mu*lambda * Math.Sin(alpha.ToRadians()) + Math.Cos(alpha.ToRadians())); // Eq 22.9.4.3
              double f_cMax = GetMaximumStressAcrossShearPlane();
              double V_nMax = A_c * f_cMax;
              double V_n = Math.Min(V_nSteel, V_nMax);

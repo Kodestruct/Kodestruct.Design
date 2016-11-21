@@ -89,6 +89,54 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
+        /// Example D.2
+        /// </summary>
+        [Test]
+        public void EdgeSlabReturnsPerimeterJ_yPropertyFor3SidedPerimeter()
+        {
+            IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
+            PerimeterFactory f = new PerimeterFactory();
+            double d = 5.62;
+            double cx = 12.0;
+            double cy = 20.0;
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.EdgeLeft);
+            double J_y = sec.GetJy(sec.AdjustedSegments);
+
+            double refValue = 17630; //from example  (page 19)
+            double actualTolerance = EvaluateActualTolerance(J_y, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
+
+        /// <summary>
+        /// MacGregor
+        /// Example 13-13
+        /// </summary>
+        [Test]
+        public void EdgeSlabReturnsPerimeterJ_yPropertyFor3SidedPerimeterMG()
+        {
+            IConcreteMaterial mat = this.GetConcreteMaterial(3500, false);
+            PerimeterFactory f = new PerimeterFactory();
+            double d = 5.5;
+            double cx = 12.0;
+            double cy = 16.0;
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 4.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.EdgeLeft);
+            double J_y = sec.GetJy(sec.AdjustedSegments);
+
+            double refValue = 13200.0; 
+            double actualTolerance = EvaluateActualTolerance(J_y, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
+
+        /// <summary>
+        /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.1
         /// </summary>
         [Test]

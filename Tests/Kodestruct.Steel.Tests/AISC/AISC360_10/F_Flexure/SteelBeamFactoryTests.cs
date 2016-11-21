@@ -112,6 +112,21 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
         }
 
         [Test]
+        public void PipeShapeBeam()
+        {
+
+            FlexuralMemberFactory factory = new FlexuralMemberFactory();
+            AiscShapeFactory AiscShapeFactory = new AiscShapeFactory();
+            ISection r = AiscShapeFactory.GetShape("HSS2.5X.188");
+
+
+            SteelMaterial mat = new SteelMaterial(35.0, 29000);
+            ISteelBeamFlexure beam12 = factory.GetBeam(r, mat, null, MomentAxis.YAxis, FlexuralCompressionFiberPosition.Left);
+
+            Assert.IsTrue(beam12 !=null);
+        }
+
+        [Test]
         public void RectangleShapeReturnsYieldStrength()
         {
 

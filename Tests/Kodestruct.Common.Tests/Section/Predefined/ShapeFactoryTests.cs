@@ -77,6 +77,14 @@ namespace Kodestruct.Common.Tests.Section.Predefined
             ISection section = factory.GetShape("HSS6X.500");
             Assert.IsTrue(section is ISectionPipe);
         }
+        [Test]
+        public void ShapeFactoryReturnsValueForCircHSSParsed1()
+        {
+            AiscShapeFactory factory = new AiscShapeFactory();
+            ISection section = factory.GetShape("HSS2.5X.188");
+
+            Assert.IsTrue(section is ISectionPipe);
+        }
 
         [Test]
         public void ShapeFactoryReturnsValueForAngleParsed()

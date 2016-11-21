@@ -26,6 +26,9 @@ namespace Kodestruct.Concrete.ACI
 {
     public class Rebar : INonPrestressedReinforcement
     {
+
+        public bool IsTensionOnly { get; set; }
+
         private string id;
 
         public string ID

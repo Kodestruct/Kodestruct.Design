@@ -70,11 +70,20 @@ namespace Kodestruct.Concrete.ACI
                     double Force;
                     double Stress;
 
-
-                            Force = rbrPnt.Rebar.GetForce(Strain);
-                            Stress = rbrPnt.Rebar.GetStress(Strain);
-                            ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToNa, rbrPnt));
-
+                    //Disregard bar if it is in compression and it is tension only bar
+                    if (Strain>0 && rbrPnt.Rebar.IsTensionOnly == true)
+                    {
+                        //add this bar to the results with zero force
+                        Force =  0;
+                        Stress = 0;
+                        ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToNa, rbrPnt));
+                    }
+                    else
+                    {
+                        Force = rbrPnt.Rebar.GetForce(Strain);
+                        Stress = rbrPnt.Rebar.GetStress(Strain);
+                        ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToNa, rbrPnt));
+                    }
 
                 } 
 
@@ -210,6 +219,7 @@ namespace Kodestruct.Concrete.ACI
             {
                 if (barResult.Strain > 0)
                 {
+                    
                     resultant.Force += barResult.Force;
                     resultant.Moment += barResult.Force * barResult.DistanceToNeutralAxis;
                 }

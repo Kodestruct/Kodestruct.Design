@@ -35,5 +35,6 @@ namespace Kodestruct.Concrete.ACI
         double GetStress(double Strain);
         double GetForce(double Strain);
         IRebarMaterial Material { get; set; }
+        bool IsTensionOnly { get; set; }
     }
 }

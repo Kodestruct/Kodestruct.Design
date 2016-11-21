@@ -36,7 +36,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             : base(section,  CalcLog)
         {
             sectionPipe = null;
-            ISectionPipe s = Section as ISectionPipe;
+            ISectionPipe s = Section.Shape as ISectionPipe;
 
             if (s == null)
             {

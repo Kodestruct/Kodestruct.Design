@@ -39,9 +39,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
         public BeamCircularHss(ISteelSection section, ICalcLog CalcLog)
             : base(section, CalcLog)
         {
-            if (section is ISectionPipe)
+            if (section.Shape is ISectionPipe)
             {
-                SectionPipe = section as ISectionPipe;
+                SectionPipe = section.Shape as ISectionPipe;
             }
             else
             {

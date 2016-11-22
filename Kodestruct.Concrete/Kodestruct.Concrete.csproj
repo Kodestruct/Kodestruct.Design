@@ -102,6 +102,7 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\FlexuralSectionFactory.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\CompressionMemberType.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\CompressionSectionFactory.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shapes\CrossSectionIShape.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\ShearFriction\ConcreteSectionShearFriction.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\UpperLimitOnShearStrength.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\ConcreteOneWayShearStrength.cs" />

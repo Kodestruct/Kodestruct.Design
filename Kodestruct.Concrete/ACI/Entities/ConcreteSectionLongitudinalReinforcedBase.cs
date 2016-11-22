@@ -48,7 +48,7 @@ namespace Kodestruct.Concrete.ACI
        
  
 
-        protected virtual  List<RebarPointResult> CalculateRebarResults(LinearStrainDistribution StrainDistribution )
+        public virtual  List<RebarPointResult> CalculateRebarResults(LinearStrainDistribution StrainDistribution )
         {
             List<RebarPointResult> ResultList = new List<RebarPointResult>();
 
@@ -308,12 +308,12 @@ namespace Kodestruct.Concrete.ACI
                     barLimitForceMoment = barLimitForce * bar.Coordinate.Y;
 
                 }
-            }
+            
 
 
             ForceMomentContribution barResultant = new ForceMomentContribution() { Force = barLimitForce, Moment = barLimitForceMoment };
             resultant += barResultant;
-        
+    }
 
         return resultant;
 

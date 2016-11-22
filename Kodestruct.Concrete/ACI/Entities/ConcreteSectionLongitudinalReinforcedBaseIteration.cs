@@ -28,7 +28,7 @@ namespace Kodestruct.Concrete.ACI
 {
     public abstract partial class ConcreteSectionLongitudinalReinforcedBase : ConcreteSectionBase, IConcreteSectionWithLongitudinalRebar
     {
-        protected virtual SectionAnalysisResult GetSectionResult(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
+        public virtual SectionAnalysisResult GetSectionResult(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
         {
             double CompressedBarCentroidCoordinate=0;  //Calculate the Coordinate of rebar resultant
             ForceMomentContribution CForceRebarResultant = GetCompressionForceRebarResultant(StrainDistribution, compFiberPosition);

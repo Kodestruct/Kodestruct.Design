@@ -51,7 +51,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             this.ColumnCenter = Perimeter.ColumnCentroid;
 
             Point2D cen = PunchingPerimeterCentroid;
-            AdjustedSegments = AdjustSegments(cen);
+            adjustedSegments = AdjustSegments(cen);
         }
 
 

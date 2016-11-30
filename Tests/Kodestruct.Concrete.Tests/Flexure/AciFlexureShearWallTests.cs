@@ -26,7 +26,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             IStrainCompatibilityAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Top);
             double M_n = MResult.Moment;
 
-            double refValue = 6534*1000.0 * 12.0;
+            double refValue = 7182.546387 * 1000.0 * 12.0;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);
@@ -37,11 +37,11 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         public void StrainDistributionReturnsValue()
         {
             ConcreteSectionFlexure beam = GetShearWall();
-            LinearStrainDistribution StrainDistribution = new LinearStrainDistribution(192,0.003,-0.0483);
+            LinearStrainDistribution StrainDistribution = new LinearStrainDistribution(192, 0.003, -0.051272);
             List<RebarPointResult> r = beam.CalculateRebarResults(StrainDistribution);
             SectionAnalysisResult TrialSectionResult = beam.GetSectionResult(StrainDistribution, FlexuralCompressionFiberPosition.Top );
             double M_n = TrialSectionResult.Moment/12000.0;
-            double refValue = 7300;
+            double refValue = 7182.546387;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);

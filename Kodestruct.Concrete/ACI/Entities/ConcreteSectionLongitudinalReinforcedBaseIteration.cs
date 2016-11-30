@@ -59,7 +59,7 @@ namespace Kodestruct.Concrete.ACI
             double A = 0;
             foreach (var bar in CForceRebarResultant.RebarResults)
             {
-                if (bar.Stress!=0)
+                if (bar.Stress>0)
                 {
                     A = A + bar.Point.Rebar.Area;
                 }

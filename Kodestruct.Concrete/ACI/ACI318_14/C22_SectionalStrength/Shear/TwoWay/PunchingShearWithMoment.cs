@@ -23,14 +23,12 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             double V_u,  bool AllowSinglePointStressRedistribution=false)
         {
             //ColumnCenter = GetColumnCenter();
-            Point2D cen = PunchingPerimeterCentroid;
-            AdjustedSegments = AdjustSegments(cen);
 
             double A_c = AdjustedSegments.Sum(s => s.Length) * d;
 
-            double J_x = GetJx(AdjustedSegments);
-            double J_y = GetJy(AdjustedSegments);
-            double J_xy = GetJxy(AdjustedSegments);
+            double J_x = GetJx();
+            double J_y = GetJy();
+            double J_xy = GetJxy();
 
             double thetaRad = Get_thetaRad(J_xy, J_x, J_y);
             List<PerimeterLineSegment> RotatedSegments = GetRotatedSegments(AdjustedSegments, thetaRad);
@@ -100,17 +98,19 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 
                 if (AllowSinglePointStressRedistribution == false)
                 {
+
+                    X = p.X;
+                    Y = p.Y;
+                }
+                else
+                {
+
+
                     X = p.X > XMaxCutoff ? XMaxCutoff : p.X;
                     X = p.X < XMinCutoff ? XMinCutoff : p.Y;
 
                     Y = p.Y > YMaxCutoff ? YMaxCutoff : p.Y;
                     Y = p.Y < YMinCutoff ? YMinCutoff : p.Y;
-
-                }
-                else
-                {
-                    X = p.X;
-                    Y = p.Y;
                 }
 
                 double v_u_I = GetShearStressFromMomentAndShear(M_x, M_y, V_u, J_x, J_y, A_c, gamma_vx, gamma_vy, X, Y);
@@ -123,6 +123,8 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             ResultOfShearStressDueToMoment result = new ResultOfShearStressDueToMoment(v_max, v_min,gamma_vx,gamma_vy);
             return result;
         }
+
+
 
 
 
@@ -441,9 +443,9 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                 this.ColumnType == PunchingPerimeterConfiguration.CornerRightTop
                 )
             {
-                double J_x_bar = GetJx(movedSegments);
-                double J_y_bar = GetJy(movedSegments);
-                double J_xy_bar = GetJxy(movedSegments);
+                double J_x_bar = GetJx();
+                double J_y_bar = GetJy();
+                double J_xy_bar = GetJxy();
 
                 //421.1R-13 Equation (B-10)
                 double theta = Math.Atan(-2.0 * J_xy_bar / (J_x_bar - J_y_bar));
@@ -468,34 +470,40 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 
         }
 
-        public double GetJxy(List<PerimeterLineSegment> movedSegments)
+        public double GetJxy()
         {
             //421.1R-13 Equation B-11
-            double J_xy = d * movedSegments.Sum(s =>
+            double J_xy = d * AdjustedSegments.Sum(s =>
                 s.Length / 6.0 * (2.0 * s.PointI.X * s.PointI.Y + s.PointI.X * s.PointJ.Y + s.PointJ.X * s.PointI.Y + 2.0 * s.PointJ.X * s.PointJ.Y)
                 );
             return J_xy;
         }
 
-        public double GetJy(List<PerimeterLineSegment> movedSegments)
+        public double GetJy()
         {
             //421.1R-13 Equation B-8
-            double J_y = d * movedSegments.Sum(s =>
+            double J_y = d * AdjustedSegments.Sum(s =>
                 s.Length / 3.0 * (Math.Pow(s.PointI.X, 2.0) + s.PointI.X * s.PointJ.X + Math.Pow(s.PointJ.X, 2.0))
                 );
             return J_y;
         }
 
-        public double GetJx(List<PerimeterLineSegment> movedSegments)
+        public double GetJx()
         {
             //421.1R-13 Equation B-9
-            double J_x = d * movedSegments.Sum(s =>
+            double J_x = d * AdjustedSegments.Sum(s =>
                 s.Length / 3.0 * (Math.Pow(s.PointI.Y, 2.0) + s.PointI.Y * s.PointJ.Y + Math.Pow(s.PointJ.Y, 2.0))
                 );
             return J_x;
         }
 
-        public List<PerimeterLineSegment> AdjustedSegments {get; set;}
+        List<PerimeterLineSegment> adjustedSegments;
+        public List<PerimeterLineSegment> AdjustedSegments
+        {
+            get {
+                return adjustedSegments;
+            }
+            }
         private Point2D FindPunchingPerimeterCentroid()
         {
             double SumLs = Segments.Sum(s => s.Length);

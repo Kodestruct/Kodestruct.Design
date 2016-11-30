@@ -54,7 +54,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 0.0,ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
-            double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0,599.7,31.3,false).v_max / 1000.0; //note: moment is adjusted to be at column centroid
+            double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0, 76800.0, 35300, false).v_max / 1000.0; //note: moment is adjusted to be at column centroid
 
             double refValue = 0.144; //from example
             double actualTolerance = EvaluateActualTolerance(phi_v_c, refValue);
@@ -79,7 +79,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
-            double J_y = sec.GetJy(sec.AdjustedSegments);
+            double J_y = sec.GetJy();
 
             double refValue = 27474; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
@@ -97,12 +97,12 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
             PerimeterFactory f = new PerimeterFactory();
             double d = 5.62;
-            double cx = 12.0;
-            double cy = 20.0;
+            double cx = 18.0;
+            double cy = 18.0;
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.EdgeLeft);
-            double J_y = sec.GetJy(sec.AdjustedSegments);
+            double J_y = sec.GetJy();
 
             double refValue = 17630; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
@@ -126,7 +126,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 4.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.EdgeLeft);
-            double J_y = sec.GetJy(sec.AdjustedSegments);
+            double J_y = sec.GetJy();
 
             double refValue = 13200.0; 
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
@@ -173,9 +173,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0, 600, 110,true).v_max;
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0, 600*1000, 110*1000,false).v_max;
 
-            double refValue = 0.294; //from example 
+            double refValue = 294; //from example 
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);

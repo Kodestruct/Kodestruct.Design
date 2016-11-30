@@ -140,7 +140,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             SteelLimitStateValue Y =
             beam12.GetFlexuralYieldingStrength(FlexuralCompressionFiberPosition.Top);
             double phiM_n = Y.Value;
-            double refValue = 67.5; 
+            double refValue = 810; 
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
 

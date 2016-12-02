@@ -145,5 +145,9 @@ namespace Kodestruct.Common.Section.SectionTypes
             return Q;
         }
 
+        public double GetFirstMomentOfArea(double TopOffset)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

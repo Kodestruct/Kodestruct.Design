@@ -73,20 +73,36 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             {
                 YMaxCutoff = YMax - 0.4 * d;
             }
+            else
+            {
+                YMaxCutoff = YMax;
+            }
 
             if (UniquePoints.Where(p => p.Y == YMin).ToList().Count == 1)
             {
                 YMinCutoff = YMin + 0.4 * d;
+            }
+            else
+            {
+                YMinCutoff = YMin;
             }
 
             if (UniquePoints.Where(p => p.X == XMax).ToList().Count == 1)
             {
                 XMaxCutoff = XMax - 0.4 * d;
             }
+            else
+            {
+                XMaxCutoff = XMax;
+            }
 
             if (UniquePoints.Where(p => p.X == XMin).ToList().Count == 1)
             {
                 XMinCutoff = XMin + 0.4 * d;
+            }
+            else
+            {
+                XMinCutoff = XMin;
             }
             //double x = Math.Abs(point.X - PunchingPerimeterCentroid.X);
             //double y = Math.Abs(point.Y - PunchingPerimeterCentroid.Y);

@@ -129,6 +129,7 @@
     </Compile>
     <Compile Include="Reports\ReportElementAttribute.cs" />
     <Compile Include="Section\Interfaces\IDoubleFlangeMember.cs" />
+    <Compile Include="Section\Interfaces\IFirstMomentOfAreaCalculatable.cs" />
     <Compile Include="Section\Interfaces\IMeasurableAreaSection.cs" />
     <Compile Include="Exceptions\FailedToCalculateSectionPropertiesException.cs" />
     <Compile Include="Section\Interfaces\ISliceableShapeProvider.cs" />

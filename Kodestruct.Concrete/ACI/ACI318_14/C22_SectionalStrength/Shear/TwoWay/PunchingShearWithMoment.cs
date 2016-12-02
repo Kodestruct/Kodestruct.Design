@@ -517,6 +517,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         public List<PerimeterLineSegment> AdjustedSegments
         {
             get {
+
                 return adjustedSegments;
             }
             }

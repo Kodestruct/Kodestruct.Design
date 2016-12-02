@@ -27,29 +27,45 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 {
     public partial class ConcreteSectionTwoWayShear
     {
-        /// <summary>
-        /// Two-way shear section
+
+
+                /// <summary>
+        /// Two-way shear section (constructor used for stress calculation)
         /// </summary>
-        /// <param name="Material">Concrete material</param>
-        /// <param name="Segments">Shear perimeter segments</param>
+        /// <param name="Perimeter">Shear perimeter</param>
         /// <param name="d">Effective slab section</param>
         /// <param name="c_x">Column dimension (along X axis)</param>
         /// <param name="c_y">Column dimension (along Y axis)</param>
-        /// <param name="AtColumnFace">Identifies if the section is adjacent to column face (typical) or away from column face (as is the case with shear studs away from the face)</param>
         /// <param name="ColumnType">Identifies if the column is located at the interior, slab edge, or slab corner</param>
-        /// <param name="ColumnCenter">Controid pointof column</param>
+        ///  <param name="AtColumnFace">Identifies if the section is adjacent to column face (typical) or away from column face (as is the case with shear studs away from the face)</param>
+
+        public ConcreteSectionTwoWayShear( PunchingPerimeterData Perimeter, double d,
+            double c_x, double c_y, PunchingPerimeterConfiguration ColumnType, bool AtColumnFace = true): this(null,
+            Perimeter,d,c_x,c_y,ColumnType,AtColumnFace)
+        {
+        }
+        /// <summary>
+        /// Two-way shear section (constructor used for stress calculation)
+        /// </summary>
+        /// <param name="Material">Concrete material</param>
+        /// <param name="Perimeter">Shear perimeter</param>
+        /// <param name="d">Effective slab section</param>
+        /// <param name="c_x">Column dimension (along X axis)</param>
+        /// <param name="c_y">Column dimension (along Y axis)</param>
+        /// <param name="ColumnType">Identifies if the column is located at the interior, slab edge, or slab corner</param>
+        ///  <param name="AtColumnFace">Identifies if the section is adjacent to column face (typical) or away from column face (as is the case with shear studs away from the face)</param>
+
         public ConcreteSectionTwoWayShear(IConcreteMaterial Material, PunchingPerimeterData Perimeter, double d,
-            double c_x, double c_y, bool AtColumnFace, PunchingPerimeterConfiguration ColumnType)
+            double c_x, double c_y, PunchingPerimeterConfiguration ColumnType, bool AtColumnFace = true)
         {
             this.Material    =Material      ;
             this.Segments    =Perimeter.Segments      ;
             this.d           =d             ;
             this.c_x         =c_x           ;
             this.c_y         =c_y           ;
-            this.AtColumnFace=AtColumnFace  ;
             this.ColumnType = ColumnType    ;
             this.ColumnCenter = Perimeter.ColumnCentroid;
-
+            this.AtColumnFace = AtColumnFace;
             Point2D cen = PunchingPerimeterCentroid;
             adjustedSegments = AdjustSegments(cen);
         }

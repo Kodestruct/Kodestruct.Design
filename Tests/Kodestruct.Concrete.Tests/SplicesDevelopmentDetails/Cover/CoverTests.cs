@@ -45,7 +45,7 @@ namespace Kodestruct.Concrete.ACI318_14.Cover
         {
 
             RebarCoverFactory rcf = new RebarCoverFactory();
-            double cc = rcf.GetRebarCover("NP-CIP-WALL-CastAgainstEarth", RebarDesignation.No5);
+            double cc = rcf.GetRebarCover("NP-CIP-WALL-CastAgainstEarth", RebarDesignation.No5,false);
             double refValue = 3; 
             double actualTolerance = EvaluateActualTolerance(cc, refValue);
 

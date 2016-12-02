@@ -28,7 +28,7 @@ namespace Kodestruct.Common.Section.SectionTypes
     /// <summary>
     /// Generic rectangle shape with geometric parameters provided in a constructor.
     /// </summary>
-    public class SectionRectangular : CompoundShape, ISectionRectangular, ISliceableSection //SectionBaseClass,
+    public class SectionRectangular : CompoundShape, ISectionRectangular, ISliceableSection, IFirstMomentOfAreaCalculatable //SectionBaseClass,
     {
         /// <summary>
         /// Constructor
@@ -117,6 +117,32 @@ namespace Kodestruct.Common.Section.SectionTypes
             //From Boresi, Schmidt; Advanced Mechanics of Materials
             //Table B.1
             _J = (((b * Math.Pow(h, 3) + h * Math.Pow(b, 3))) / (12));
+        }
+
+
+        public double GetFirstMomentOfAreaX(double TopOffset)
+        {
+            double Q = 0.0;
+            double h = YMax - YMin;
+            if (TopOffset>h || TopOffset<0)
+            {
+                throw new Exception("Top offset cannot be greater than section height or be a negative number");
+            }
+            double topOffsetNA = YMax - this.GetElasticCentroidCoordinate().Y;
+            if (TopOffset<=topOffsetNA) //specified slice is above N.A.
+            {
+                var topSlice = this.GetTopSliceSection(TopOffset, SlicingPlaneOffsetType.Top);
+                double Y = topSlice.GetElasticCentroidCoordinate().Y - this.GetElasticCentroidCoordinate().Y;
+                Q = topSlice.A * Y;
+            }
+            else
+            {
+                var botSlice = this.GetTopSliceSection(TopOffset, SlicingPlaneOffsetType.Bottom);
+                double Y = this.GetElasticCentroidCoordinate().Y - botSlice.GetElasticCentroidCoordinate().Y;
+                Q = botSlice.A * Y;
+            }
+
+            return Q;
         }
 
     }

@@ -12,7 +12,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.Durability.Cover
 {
     public class RebarCoverFactory
     {
-        public double GetRebarCover(string CoverCaseId, RebarDesignation RebarDesignation)
+        public double GetRebarCover(string CoverCaseId, RebarDesignation RebarDesignation, bool BarDiameterCheck)
         {
             int RebarNumber = (int)Double.Parse(RebarDesignation.ToString().Substring(2));
             RebarSection sec = new RebarSection(RebarDesignation);
@@ -130,33 +130,34 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.Durability.Cover
 
             #endregion
 
-            var LiveLoadEntryData = Covers.First(l => l.CaseId == CoverCaseId);
+            var CoverEntryData = Covers.First(l => l.CaseId == CoverCaseId);
+            bool CheckDia = CoverEntryData.DiameterCheck == true ? true : BarDiameterCheck;
 
             double cc = 0.0;
-            if (LiveLoadEntryData.IsAllSameDiameterCase == true)
+            if (CoverEntryData.IsAllSameDiameterCase == true)
             {
-                if (LiveLoadEntryData.DiameterCheck == false)
+                if (CheckDia == false)
                 {
-                    return LiveLoadEntryData.SmallBarCover;
+                    return CoverEntryData.SmallBarCover;
                 }
                 else
                 {
-                    return Math.Max(d_b, LiveLoadEntryData.SmallBarCover);
+                    return Math.Max(d_b, CoverEntryData.SmallBarCover);
                 }
             }
             else
             {
-                if (RebarNumber <=LiveLoadEntryData.SmallBarNo)
+                if (RebarNumber <=CoverEntryData.SmallBarNo)
                 {
-                    return LiveLoadEntryData.SmallBarCover;
+                    return CoverEntryData.SmallBarCover;
                 }
-                else if (RebarNumber <= LiveLoadEntryData.MidBarCover )
+                else if (RebarNumber <= CoverEntryData.MidBarCover )
 	            {
-                    return LiveLoadEntryData.MidBarCover;
+                    return CoverEntryData.MidBarCover;
 	            }
                 else
                 {
-                    return LiveLoadEntryData.LargeBarCover;
+                    return CoverEntryData.LargeBarCover;
                 }
             }
 

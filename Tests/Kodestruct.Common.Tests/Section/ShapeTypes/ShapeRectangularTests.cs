@@ -46,5 +46,16 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             Assert.AreEqual(3, sr.GetElasticCentroidCoordinate().Y);
         }
 
+
+        [Test]
+        public void SectionRectangleReturnsFirstMomentOfArea()
+        {
+            SectionRectangular sr = new SectionRectangular(3, 4);
+            double Q = sr.GetFirstMomentOfAreaX(1);
+            double refVal = 1.0 * 3.0 * 1.5;
+            double actualTolerance = EvaluateActualTolerance(Q, refVal);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
 }
 }

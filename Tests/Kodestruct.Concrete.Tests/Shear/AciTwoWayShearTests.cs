@@ -20,7 +20,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         /// Example 13-11
         /// </summary>
         [Test]
-        public void SlabPunchingConcentricReturnsValue()
+        public void SlabPunchingStrengthReturnsValue()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
             PerimeterFactory f = new PerimeterFactory();
@@ -29,7 +29,8 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double b_2 = 12.0;
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData perimeter = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, b_1, b_2, d,0,0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, perimeter, d, b_1, b_2, true, PunchingPerimeterConfiguration.Interior);
+            //ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, perimeter, d, b_1, b_2, true, PunchingPerimeterConfiguration.Interior);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, perimeter,d, b_1, b_2, PunchingPerimeterConfiguration.Interior);
             double phi_v_c = sec.GetTwoWayStrengthForUnreinforcedConcrete()/1000.0; //convert to kips
             
             double refValue = 71.3/d/95.0; //from example
@@ -53,7 +54,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double cy = 16.0;
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 0.0,ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy,  PunchingPerimeterConfiguration.Interior);
             double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0, 76800.0, 35300, false).v_max / 1000.0; //note: moment is adjusted to be at column centroid
 
             double refValue = 0.144; //from example
@@ -78,7 +79,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double cy = 20.0;
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy, PunchingPerimeterConfiguration.Interior);
             double J_y = sec.GetJy();
 
             double refValue = 27474; //from example  (page 19)
@@ -101,7 +102,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double cy = 18.0;
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 0.0, 0.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.EdgeLeft);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy,  PunchingPerimeterConfiguration.EdgeLeft);
             double J_y = sec.GetJy();
 
             double refValue = 17630; //from example  (page 19)
@@ -125,7 +126,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double cy = 16.0;
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 4.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.EdgeLeft);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy,  PunchingPerimeterConfiguration.EdgeLeft);
             double J_y = sec.GetJy();
 
             double refValue = 13200.0; 
@@ -149,7 +150,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double cy = 20.0;
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy,  PunchingPerimeterConfiguration.Interior);
             double gamma_vy = sec.Get_gamma_vy(cx + d, cy + d);
 
             double refValue = 0.36; //from example 
@@ -172,7 +173,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double cy = 20.0;
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(mat, data, d, cx, cy, true, PunchingPerimeterConfiguration.Interior);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy, PunchingPerimeterConfiguration.Interior);
             double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0, 600*1000, 110*1000,false).v_max;
 
             double refValue = 294; //from example 

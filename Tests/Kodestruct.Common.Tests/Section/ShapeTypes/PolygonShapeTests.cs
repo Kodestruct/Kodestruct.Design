@@ -20,6 +20,7 @@ using NUnit.Framework;
 using Kodestruct.Common.Mathematics;
 using Kodestruct.Common.Section.General;
 using Kodestruct.Common.Section.Interfaces;
+using System;
 
 
 namespace Kodestruct.Common.Tests.Section.ShapeTypes
@@ -154,6 +155,28 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
 
 
             double actualTolerance = EvaluateActualTolerance(A, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+
+        }
+
+
+        [Test]
+        public void PolygonShapeCalculatesZx()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-1, 0),
+                new Point2D(-1, 4),
+                new Point2D(1, 4),
+                new Point2D(1, 0)
+            };
+            var rect = new PolygonShape(Points);
+            double refValue = 2.0*Math.Pow(4,2)/4.0;
+            double Zx = rect.Z_x;
+
+
+            double actualTolerance = EvaluateActualTolerance(Zx, refValue);
             Assert.LessOrEqual(actualTolerance, tolerance);
 
 

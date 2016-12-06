@@ -183,6 +183,27 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
         }
 
         [Test]
+        public void PolygonShapeCalculatesZy()
+        {
+            var Points = new List<Point2D>
+            {
+                new Point2D(-1, 0),
+                new Point2D(-1, 4),
+                new Point2D(1, 4),
+                new Point2D(1, 0)
+            };
+            var rect = new PolygonShape(Points);
+            double refValue = 4.0 * Math.Pow(2, 2) / 4.0;
+            double Zy = rect.Z_y;
+
+
+            double actualTolerance = EvaluateActualTolerance(Zy, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+
+        }
+
+        [Test]
         public void PolygonShapeReturnsTopSliceOfArea1()
         {
             var Points = new List<Point2D>

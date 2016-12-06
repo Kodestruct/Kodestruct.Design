@@ -132,7 +132,7 @@ namespace Kodestruct.Common.Section.General
                 if (Vertices != null)
                 {
                     Point2D XmaxPoint = Vertices.MaxBy(v => v.X);
-                    return XmaxPoint.Y;
+                    return XmaxPoint.X;
                 }
 
                 return 0.0;
@@ -374,10 +374,9 @@ namespace Kodestruct.Common.Section.General
         private double GetZ_y()
         {
 
-            throw new NotImplementedException();
             PolygonShape NinetyDegreeShape = GetRotatedShape(90.0);
-            IMoveableSection topSlice = NinetyDegreeShape.GetTopSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Top);
-            IMoveableSection botSlice = NinetyDegreeShape.GetTopSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Bottom);
+            IMoveableSection topSlice = NinetyDegreeShape.GetTopSliceSection(XMax - PlasticCentroidCoordinate.X, SlicingPlaneOffsetType.Top);
+            IMoveableSection botSlice = NinetyDegreeShape.GetBottomSliceSection(XMax - PlasticCentroidCoordinate.X, SlicingPlaneOffsetType.Top);
             double Z = topSlice.A * (topSlice.PlasticCentroidCoordinate.Y - PlasticCentroidCoordinate.Y) +
                        botSlice.A * (PlasticCentroidCoordinate.Y - botSlice.PlasticCentroidCoordinate.Y);
             return Z;
@@ -415,14 +414,14 @@ namespace Kodestruct.Common.Section.General
 
         private double LeftAndRightAreaDifferenceFunction(double X)
         {
-            double OffsetFromTop = XMin - X;
+            double OffsetFromTop = X -XMin;
             if (OffsetFromTop==0)
             {
                 return this.A;
             }
             else if (OffsetFromTop >= XMax - XMin)
             {
-                return this.A;
+                return -this.A;
             }
             else
             {
@@ -430,7 +429,7 @@ namespace Kodestruct.Common.Section.General
                 PolygonShape RotatedPoly = this.GetRotatedShape(90);
 
                 IMoveableSection topSlice = RotatedPoly.GetTopSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Top);
-                IMoveableSection botSlice = RotatedPoly.GetTopSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Bottom);
+                IMoveableSection botSlice = RotatedPoly.GetBottomSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Top);
                 return botSlice.A - topSlice.A;
             }
         }
@@ -457,7 +456,7 @@ namespace Kodestruct.Common.Section.General
 
 
             IMoveableSection topSlice = this.GetTopSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Top);
-            IMoveableSection botSlice = this.GetTopSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Bottom);
+            IMoveableSection botSlice = this.GetBottomSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Top);
             double Z = topSlice.A * (topSlice.PlasticCentroidCoordinate.Y - PlasticCentroidCoordinate.Y) +
                        botSlice.A * (PlasticCentroidCoordinate.Y - botSlice.PlasticCentroidCoordinate.Y);
             return Z;
@@ -472,14 +471,14 @@ namespace Kodestruct.Common.Section.General
             }
             else if (OffsetFromTop >= YMax - YMin)
             {
-                return this.A;
+                return -this.A;
             }
             else
             {
 
 
                 IMoveableSection topSlice = this.GetTopSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Top);
-                IMoveableSection botSlice = this.GetTopSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Bottom);
+                IMoveableSection botSlice = this.GetBottomSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Top);
                 return topSlice.A - botSlice.A;
             }
         }

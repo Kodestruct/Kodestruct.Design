@@ -360,6 +360,91 @@ namespace Kodestruct.Common.Section.General
         //    set { SyRight = value; }
         //}
 
+        double _Zy;
+        public override double Z_y
+        {
+            get
+            {
+                _Z_y = GetZ_y();
+                return _Z_y;
+            }
+        }
+
+        private double GetZ_y()
+        {
+
+            throw new NotImplementedException();
+            IMoveableSection topSlice = this.GetTopSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Top);
+            IMoveableSection botSlice = this.GetTopSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Bottom);
+            double Z = topSlice.A * (topSlice.PlasticCentroidCoordinate.Y - PlasticCentroidCoordinate.Y) +
+                       botSlice.A * (PlasticCentroidCoordinate.Y - botSlice.PlasticCentroidCoordinate.Y);
+            return Z;
+        }
+
+
+        double _Zx;
+        public override double Z_x
+        {
+            get
+            {
+                _Z_x = GetZ_x();
+                return _Z_x;
+            }
+        }
+        Point2D plasticCentroidCoordinate;
+
+        public override Point2D PlasticCentroidCoordinate
+        {
+            
+            get{ return CalculatePlasticCentroid();}
+        }
+
+        private Point2D CalculatePlasticCentroid()
+        {
+            double ConvergenceTolerance = 0.0001;
+            //Find coordinate of Plastic Neutral Axis  such that top and bottom areas are the same
+            double yPNA = RootFinding.Brent(new FunctionOfOneVariable(TopAndBottomAreaDifferenceFunction), YMin, YMax,
+            ConvergenceTolerance, 0);
+            //Find coordinate of Plastic Neutral Axis  such that top and bottom areas are the same
+            double xPNA = RootFinding.Brent(new FunctionOfOneVariable(LeftAndRightAreaDifferenceFunction), XMin, XMax,
+            ConvergenceTolerance, 0);
+            return new Point2D(xPNA, yPNA);
+        }
+
+        private double LeftAndRightAreaDifferenceFunction(double X)
+        {
+            PolygonShape RotatedPoly = this.GetRotatedShape(90);
+            double OffsetFromTop = XMin - X;
+            IMoveableSection topSlice = RotatedPoly.GetTopSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Top);
+            IMoveableSection botSlice = RotatedPoly.GetTopSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Bottom);
+            return botSlice.A - topSlice.A;
+        }
+
+        private PolygonShape GetRotatedShape(int AngleOfRotation)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
+        private double GetZ_x()
+        {
+
+
+            IMoveableSection topSlice = this.GetTopSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Top);
+            IMoveableSection botSlice = this.GetTopSliceSection(YMax - PlasticCentroidCoordinate.Y, SlicingPlaneOffsetType.Bottom);
+            double Z = topSlice.A * (topSlice.PlasticCentroidCoordinate.Y - PlasticCentroidCoordinate.Y) +
+                       botSlice.A * (PlasticCentroidCoordinate.Y - botSlice.PlasticCentroidCoordinate.Y);
+            return Z;
+        }
+
+        private double TopAndBottomAreaDifferenceFunction(double Y)
+        {
+            double OffsetFromTop =YMax-Y;
+            IMoveableSection topSlice = this.GetTopSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Top);
+            IMoveableSection botSlice = this.GetTopSliceSection(OffsetFromTop, SlicingPlaneOffsetType.Bottom);
+            return topSlice.A - botSlice.A;
+        }
         //private double Zx;
 
         //public new double PlasticSectionModulusX

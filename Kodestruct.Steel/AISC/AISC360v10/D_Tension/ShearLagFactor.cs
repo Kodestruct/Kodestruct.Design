@@ -27,7 +27,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10
     {
 
         public double GetShearLagFactor(ShearLagCase Case, double x_bar, double b_plate, double l,
-            double B, double H, double A_g, double A_connected, bool IsOpenOpenTensionSection)
+            double B, double H, double A_g, double A_connected, bool IsOpenTensionSection)
         {
             ShearLagFactorBase shearLagCase;
             switch (Case)
@@ -76,7 +76,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10
                     break;
             }
             double U= shearLagCase.GetShearLagFactor();
-            if (IsOpenOpenTensionSection == false)
+            if (IsOpenTensionSection == false)
             {
                 return U;
             }

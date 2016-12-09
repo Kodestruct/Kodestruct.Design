@@ -93,6 +93,12 @@ namespace Kodestruct.Common.Tests.Section.Predefined
             ISection section = factory.GetShape("L3-1/2X3X1/4");
             Assert.IsTrue(section is ISectionAngle);
         }
-
+        [Test]
+        public void ShapeFactoryReturnsValueForPipeParsed()
+        {
+            AiscShapeFactory factory = new AiscShapeFactory();
+            ISection section = factory.GetShape("PIPE6XXS");
+            Assert.IsTrue(section is ISectionHollow);
+        }
     }
 }

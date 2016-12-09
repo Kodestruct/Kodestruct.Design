@@ -61,7 +61,7 @@ namespace Kodestruct.Common.Section.Predefined
             {
                 return ShapeTypeSteel.TeeRolled;
             }
-            else if (ShapeId.StartsWith("Pipe"))
+            else if (ShapeId.StartsWith("PIPE"))
             {
                 return ShapeTypeSteel.CircularHSS;
             }

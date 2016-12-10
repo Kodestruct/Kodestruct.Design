@@ -34,74 +34,40 @@ using Kodestruct.Steel.AISC.SteelEntities.Materials;
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
 {
 
-
-
     [TestFixture]
-    public class CompressionIShapeSlenderTests : ToleranceTestBase
+    public class CompressionCircularHssTests : ToleranceTestBase
     {
-        public CompressionIShapeSlenderTests()
+        public CompressionCircularHssTests()
         {
             tolerance = 0.02; //2% can differ from rounding in the manual
         }
 
         double tolerance;
-
-
         ISteelCompressionMember column { get; set; }
         private void CreateColumn(double L_ex, double L_ey, double L_ez=0)
         {
             CompressionMemberFactory factory = new CompressionMemberFactory();
-            AiscShapeFactory AiscShapeFactory = new AiscShapeFactory();
-            ISection section = AiscShapeFactory.GetShape("W14X43", ShapeTypeSteel.IShapeRolled);
-            SteelMaterial mat = new SteelMaterial(50.0,29000);
+            AiscShapeFactory ShapeFactory = new AiscShapeFactory();
+            ISection section = ShapeFactory.GetShape("PIPE8SCH80");
+            SteelMaterial mat = new SteelMaterial(35.0,29000);
             L_ez = L_ez == 0? L_ex : L_ez;
             column = factory.GetCompressionMember(section,mat, L_ex, L_ey, L_ez);
 
         }
-        /// <summary>
-        /// AISC Steel Manual Table 4-1
-        /// </summary>
+
         [Test]
-        public void IShapeReturns_0ft_LengthAxialStrength() 
+        public void PipeReturns_15ft_LengthAxialStrength() 
         {
-            CreateColumn(0, 0);
+            CreateColumn(15*12, 15*12);
             SteelLimitStateValue colFlexure = column.GetFlexuralBucklingStrength();
             double phiP_n = colFlexure.Value;
-            double refValue = 562.0;
+            double refValue = 307.0;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
 
-        /// <summary>
-        /// AISC Steel Manual Table 4-1
-        /// </summary>
-        [Test]
-        public void IShapeReturns_16ft_LengthAxialStrength()
-        {
-            CreateColumn(16.0 * 12.0, 16.0 * 12.0);
-            SteelLimitStateValue colFlexure = column.GetFlexuralBucklingStrength();
-            double phiP_n = colFlexure.Value;
-            double refValue = 267.0;
-            double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
-
-            Assert.LessOrEqual(actualTolerance, tolerance);
-        }
-
-        /// <summary>
-        /// AISC Steel Manual Table 4-1
-        /// </summary>
-        [Test]
-        public void IShapeReturns_30ft_LengthAxialStrength()
-        {
-            CreateColumn(30.0 * 12.0, 30.0 * 12.0);
-            SteelLimitStateValue colFlexure = column.GetFlexuralBucklingStrength();
-            double phiP_n = colFlexure.Value;
-            double refValue = 78.5;
-            double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
-
-            Assert.LessOrEqual(actualTolerance, tolerance);
-        }
+        
 
         }
 

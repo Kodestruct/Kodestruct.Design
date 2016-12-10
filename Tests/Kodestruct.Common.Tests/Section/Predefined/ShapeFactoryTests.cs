@@ -98,7 +98,7 @@ namespace Kodestruct.Common.Tests.Section.Predefined
         {
             AiscShapeFactory factory = new AiscShapeFactory();
             ISection section = factory.GetShape("PIPE6XXS");
-            Assert.IsTrue(section is ISectionHollow);
+            Assert.IsTrue(section is ISectionPipe);
         }
     }
 }

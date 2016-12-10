@@ -60,7 +60,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
 
         #region Limit States
 
-        public virtual SteelLimitStateValue GetFlexuralYieldingStrength(FlexuralCompressionFiberPosition CompressionLocation)
+        public override SteelLimitStateValue GetFlexuralYieldingStrength(FlexuralCompressionFiberPosition CompressionLocation)
         {
             SteelLimitStateValue ls = new SteelLimitStateValue(GetYieldingMomentCapacity(), true);
 

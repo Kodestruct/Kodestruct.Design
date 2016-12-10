@@ -83,13 +83,16 @@ namespace Kodestruct.Steel.AISC.AISC360v10.General.Compactness
 
         public override double GetLambda_r(StressType stress)
         {
+            double E = Material.ModulusOfElasticity;
+            double F_y = Material.YieldStress;
+
             if (stress == StressType.Flexure)
             {
-                return 0.31 * SqrtE_Fy();
+                return 0.31 * E / F_y;
             }
             else
             {
-                return 0.11 * SqrtE_Fy();
+                return 0.11 * E / F_y;
             }
         }
 

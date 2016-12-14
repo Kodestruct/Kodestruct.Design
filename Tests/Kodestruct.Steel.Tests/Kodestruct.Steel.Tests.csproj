@@ -40,8 +40,8 @@
       <HintPath>..\..\packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.3.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Kodestruct.Common.0.0.3.5\lib\net45\Kodestruct.Common.dll</HintPath>
+    <Reference Include="Kodestruct.Common, Version=0.0.3.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Kodestruct.Common.0.0.3.6\lib\net45\Kodestruct.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -72,6 +72,7 @@
     <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeNonSlenderTests.cs" />
     <Compile Include="AISC\AISC360_10\E_Compression\RectangularHSS\CompressionRhsTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Angle\AngleTests.cs" />
+    <Compile Include="AISC\AISC360_10\F_Flexure\Channel\F2_Channel_DoublySymmetricCompactTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW12.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\W18WeakAxis.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Pipe\F8-CircularHssTests.cs" />

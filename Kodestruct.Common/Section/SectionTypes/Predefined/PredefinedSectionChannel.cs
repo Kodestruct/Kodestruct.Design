@@ -71,7 +71,14 @@ namespace Kodestruct.Common.Section.Predefined
 
         public double h_o
         {
-            get { return _h_o; }
+            get {
+                _h_o = Get_h_o();
+                return _h_o; }
+        }
+
+        private double Get_h_o()
+        {
+            return d - t_f;
         }
         double flangeClearDistance;
 

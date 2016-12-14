@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Common</id>
-    <version>0.0.3.5</version>
+    <version>0.0.3.6</version>
     <title>Kodestruct.Common</title>
     <authors>Konstantin Udilovich</authors>
     <description>Structural engineering automation library. Components common to different material standards for buildings and other structures, including section properties and shared entities.</description>
@@ -12,7 +12,7 @@
     <iconUrl>https://raw.githubusercontent.com/Kodestruct/Kodestruct.Design/master/Kodestruct.Common/LOGOS_nuget_Common_small.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <developmentDependency>false</developmentDependency>
-    <releaseNotes>Updates to AISC shape lookup</releaseNotes>
+    <releaseNotes>Minor fix to channel calculations</releaseNotes>
     <copyright>Copyright Konstantin Udilovich © 2015</copyright>
     <frameworkAssemblies />
     <dependencies>

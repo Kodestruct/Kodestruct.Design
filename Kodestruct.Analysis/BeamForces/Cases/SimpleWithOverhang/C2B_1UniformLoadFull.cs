@@ -79,7 +79,7 @@ namespace Kodestruct.Analysis.BeamForces.SimpleWithOverhang
                 {
                     CalculateX1(X);
                 }
-                M = w / 2 * Math.Pow(a - X1, 2); //overhang case
+                M = w / 2.0 * Math.Pow(a - X1, 2); //overhang case
                     BeamEntryFactory.CreateEntry("Mx", M, BeamTemplateType.Mx, 2,
                     new Dictionary<string, double>()
                         {

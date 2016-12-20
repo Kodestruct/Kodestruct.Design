@@ -66,7 +66,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Combination
                     }
                     else
                     {
-                        InteractionRatioPMM = N / 2 + (Mx + My);  //H1-1b
+                        InteractionRatioPMM = N / 2.0 + (Mx + My);  //H1-1b
                     }
                         if (InteractionRatioV!=0)
                         {
@@ -91,7 +91,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Combination
                          }
                  break;
                 case CombinationCaseId.H3:
-                    InteractionRatioPMM = N / 2 + (Mx + My);  //H2-1
+                    InteractionRatioPMM = N / 2.0 + (Mx + My);  //H2-1
                  break;
                 case CombinationCaseId.Linear:
                  InteractionRatio = N + Mx + My+T+V;

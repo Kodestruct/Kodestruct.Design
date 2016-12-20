@@ -152,7 +152,7 @@ namespace Kodestruct.Common.Section
                     else if (r.Ymax >= YCoordinate && r.Ymin <= YCoordinate)
                     {
                         double thisRectHeight = r.Ymax - YCoordinate;
-                        newShape.rectanglesXAxis.Add(new CompoundShapePart(r.b, thisRectHeight, new Point2D(0, r.Ymax - thisRectHeight / 2)));
+                        newShape.rectanglesXAxis.Add(new CompoundShapePart(r.b, thisRectHeight, new Point2D(0, r.Ymax - thisRectHeight / 2.0)));
                     }
                     else
                     {
@@ -173,7 +173,7 @@ namespace Kodestruct.Common.Section
                     else if (r.Ymax > YCoordinate && r.Ymin <= YCoordinate)
                     {
                         double thisRectHeight =  YCoordinate - r.Ymin;
-                        newShape.rectanglesXAxis.Add(new CompoundShapePart(r.b, thisRectHeight, new Point2D(0, r.Ymin + thisRectHeight / 2)));
+                        newShape.rectanglesXAxis.Add(new CompoundShapePart(r.b, thisRectHeight, new Point2D(0, r.Ymin + thisRectHeight / 2.0)));
                     }
                     else
                     {

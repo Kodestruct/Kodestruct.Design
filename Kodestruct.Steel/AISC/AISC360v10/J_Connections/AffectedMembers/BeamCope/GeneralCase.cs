@@ -37,8 +37,10 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
             SteelMaterial mat = new SteelMaterial(Material.YieldStress);
             CalcLog log = new CalcLog();
 
-            AffectedElementInFlexure flexuralElement = new AffectedElementInFlexure(r, mat, log);
-            return flexuralElement.GetPlateBucklingCriticalStress(c);
+
+            throw new NotImplementedException();
+            //AffectedElementInFlexure flexuralElement = new AffectedElementInFlexure(r, mat, log);
+            //return flexuralElement.GetPlateBucklingCriticalStress(c);
 
             #region Obsolete
             //double lambda = GetLambda();

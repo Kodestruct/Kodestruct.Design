@@ -103,8 +103,8 @@ namespace Kodestruct.Common.Section
                         double y_circ;
 
                         y_circ = GetCircularSpandrelCentroid();
-                        y_c = (GetCircularSpandrelArea() * GetCircularSpandrelCentroid() + b_rect * r * r / 2) / GetArea();
-                        x_c = (GetCircularSpandrelArea() * GetCircularSpandrelCentroid() + b_rect * r * b_rect / 2) / GetArea();
+                        y_c = (GetCircularSpandrelArea() * GetCircularSpandrelCentroid() + b_rect * r * r / 2.0) / GetArea();
+                        x_c = (GetCircularSpandrelArea() * GetCircularSpandrelCentroid() + b_rect * r * b_rect / 2.0) / GetArea();
 
                         if (this.isTopWidened == true)
                         {

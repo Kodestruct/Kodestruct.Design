@@ -99,9 +99,9 @@ namespace Kodestruct.Common.Section.SectionTypes
         {
             List<CompoundShapePart> rectX = new List<CompoundShapePart>()
             {
-                new CompoundShapePart(B,t_f, new Point2D(0,H/2-t_f/2)),
+                new CompoundShapePart(B,t_f, new Point2D(0,H/2-t_f/2.0)),
                 new CompoundShapePart(t_w*2,H-2*t_f, new Point2D(0,0)),
-                new CompoundShapePart(B,t_f, new Point2D(0,-(H/2-t_f/2)))
+                new CompoundShapePart(B,t_f, new Point2D(0,-(H/2-t_f/2.0)))
             };
             return rectX;
         }

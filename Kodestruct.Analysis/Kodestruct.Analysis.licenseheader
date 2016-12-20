@@ -19,5 +19,5 @@ extensions: .cs
  
 extensions:  .xml .config .xsd
 <!--
-	Copyright (C) 2015 Kodestruct Inc
+	Copyright (C) 2015 Konstantin Udilovich
 -->

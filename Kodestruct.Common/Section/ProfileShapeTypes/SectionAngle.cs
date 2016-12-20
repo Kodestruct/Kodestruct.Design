@@ -209,8 +209,8 @@ namespace Kodestruct.Common.Section.SectionTypes
         {
             List<CompoundShapePart> rectX = new List<CompoundShapePart>()
             {
-                new CompoundShapePart(t,d-t, new Point2D(t/2.0,(d-t)/2+t)),
-                new CompoundShapePart(b,t, new Point2D(b/2,t/2)),
+                new CompoundShapePart(t,d-t, new Point2D(t/2.0,(d-t)/2.0+t)),
+                new CompoundShapePart(b,t, new Point2D(b/2,t/2.0)),
             };
             return rectX;
         }
@@ -228,7 +228,7 @@ namespace Kodestruct.Common.Section.SectionTypes
             List<CompoundShapePart> rectY = new List<CompoundShapePart>()
             {
                 new CompoundShapePart(d,t, new Point2D(0, t/2.0)),
-                new CompoundShapePart(t, b-t, new Point2D(0,((b-t)/2+t))),
+                new CompoundShapePart(t, b-t, new Point2D(0,((b-t)/2.0+t))),
             };
             return rectY;
         }

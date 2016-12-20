@@ -56,7 +56,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Composite
             }
             else
             {
-                d_1 = (SlabSolidThickness - a / 2) + SlabDeckThickness;
+                d_1 = (SlabSolidThickness - a / 2.0) + SlabDeckThickness;
             }
             return d_1;
         }

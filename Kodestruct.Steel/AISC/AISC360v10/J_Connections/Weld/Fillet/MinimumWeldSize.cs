@@ -35,23 +35,23 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.Weld
         public static double GetMinimumWeldSize(double MaterialThickness)
         {
             double tmin = 0;
-            if (MaterialThickness <= 1 / 4)
+            if (MaterialThickness <= 1.0 / 4.0)
             {
-                tmin = 1 / 8.0;
+                tmin = 1.0 / 8.0;
             }
             else
             {
-                if (MaterialThickness > 3 / 4)
+                if (MaterialThickness > 3.0 / 4.0)
                 {
-                    tmin = 5 / 16.0;
+                    tmin = 5.0 / 16.0;
                 }
-                else if (tmin <= 1 / 2)
+                else if (tmin <= 1 / 2.0)
                 {
-                    tmin = 3 / 16.0;
+                    tmin = 3.0 / 16.0;
                 }
                 else
                 {
-                    tmin = 1 / 4.0;
+                    tmin = 1.0 / 4.0;
                 }
             }
             return tmin;

@@ -107,7 +107,7 @@ namespace Kodestruct.Analysis.BeamForces.Cantilever
         {
 
             beam.EvaluateX(X);
-            double M = w * X*X / 2 ;
+            double M = w * X*X / 2.0 ;
             BeamEntryFactory.CreateEntry("Mx", M, BeamTemplateType.Mx, 1,
             new Dictionary<string, double>()
                         {

@@ -63,7 +63,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
 
 
 
-                    if (IsSingleSideReinforcement==false)
+                    if (IsSingleSideReinforcement==true)
                     {
                         A_r = t_r * b_r;
                     }

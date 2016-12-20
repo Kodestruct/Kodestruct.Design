@@ -118,15 +118,15 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.Weld
         public double GetMinimumEffectiveThroat(double MaterialThicknessOfThinnerPartJoined)
         {
             double matThickness = MaterialThicknessOfThinnerPartJoined;
-            double t_min = 1 / 8;
+            double t_min = 1 / 8.0;
 
-            if (matThickness <= 1 / 4) { t_min = 1 / 8; }
-            else if (matThickness > 1 / 4 && matThickness <= 1 / 2) { t_min = 3 / 16; }
-            else if (matThickness > 1 / 2 && matThickness <= 3 / 4) { t_min = 1 / 4; }
-            else if (matThickness > 3 / 4 && matThickness <= 11 / 2) { t_min = 5 / 16; }
-            else if (matThickness > 11 / 2 && matThickness <= 21 / 4) { t_min = 3 / 8; }
-            else if (matThickness > 21 / 4 && matThickness <= 6) { t_min = 1 / 2; }
-            else { t_min = 5 / 8; }
+            if (matThickness <= 1 / 4.0) { t_min = 1 / 8.0; }
+            else if (matThickness > 1 / 4.0 && matThickness <= 1.0 / 2.0) { t_min = 3.0 / 16.0; }
+            else if (matThickness > 1.0 / 2.0 && matThickness <= 3.0 / 4.0) { t_min = 1.0 / 4.0; }
+            else if (matThickness > 3.0 / 4.0 && matThickness <= 11.0 / 2.0) { t_min = 5.0 / 16.0; }
+            else if (matThickness > 11.0 / 2.0 && matThickness <= 21.0 / 4.0) { t_min = 3.0 / 8.0; }
+            else if (matThickness > 21.0 / 4.0 && matThickness <= 6) { t_min = 1.0 / 2.0; }
+            else { t_min = 5.0 / 8.0; }
 
             return t_min;
         }

@@ -47,7 +47,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite.Flexure
             double b_eff;
             double h_rib = 3;
             b_eff = SumQ_n / ((h_rib + h_solid - Y_2) * 2 * 0.85 * f_cPrime); //Back calculate b_eff to get the round number from AISC manual
-            double Y_2T = h_solid - (SumQ_n / (0.85 * f_cPrime * b_eff) / 2) + h_rib; //test
+            double Y_2T = h_solid - (SumQ_n / (0.85 * f_cPrime * b_eff) / 2.0) + h_rib; //test
 
             AiscShapeFactory factory = new AiscShapeFactory();
             ISection section = factory.GetShape("W18X35", ShapeTypeSteel.IShapeRolled);

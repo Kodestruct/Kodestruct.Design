@@ -149,9 +149,9 @@ namespace Kodestruct.Common.Section.SectionTypes
         {
             List<CompoundShapePart> rectX = new List<CompoundShapePart>()
             {
-                new CompoundShapePart(b_f,t_f, new Point2D(0,d/2-t_f/2)),
+                new CompoundShapePart(b_f,t_f, new Point2D(0,d/2.0-t_f/2.0)),
                 new CompoundShapePart(t_w,d-2*t_f, new Point2D(0,0)),
-                new CompoundShapePart(b_f,t_f, new Point2D(0,-(d/2-t_f/2)))
+                new CompoundShapePart(b_f,t_f, new Point2D(0,-(d/2.0-t_f/2.0)))
             };
             return rectX;
         }
@@ -189,14 +189,14 @@ namespace Kodestruct.Common.Section.SectionTypes
                 rectY = new List<CompoundShapePart>()
                 {
                     new CompoundShapePart(d, t_w, new Point2D(0, -t_w/2.0)),
-                    new CompoundShapePart(2*t_f,b_f-t_w, new Point2D(0, -(t_w+(b_f -t_w)/2))),
+                    new CompoundShapePart(2*t_f,b_f-t_w, new Point2D(0, -(t_w+(b_f -t_w)/2.0))),
                 };
             }
             else
             {
                 rectY = new List<CompoundShapePart>()
                 {
-                    new CompoundShapePart(2*t_f,b_f-t_w, new Point2D(0, ((b_f -t_w)/2))),
+                    new CompoundShapePart(2*t_f,b_f-t_w, new Point2D(0, ((b_f -t_w)/2.0))),
                     new CompoundShapePart(d, t_w, new Point2D(0,(b_f -t_w)+t_w/2.0)),
                     
                 };

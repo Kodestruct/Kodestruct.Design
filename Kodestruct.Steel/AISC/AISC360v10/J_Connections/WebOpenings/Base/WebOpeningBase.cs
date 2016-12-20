@@ -67,7 +67,49 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
         public double e { get; set; }
         public double F_y { get; set; }
 
+        private double _A_r;
 
+        public double A_r
+        {
+            get {
+                _A_r = GetA_r();
+                return _A_r; }
+            set { _A_r = value; }
+        }
+
+        private double GetA_r()
+        {
+            double ReinforcementArea;
+
+            if (IsSingleSideReinforcement == true)
+            {
+                ReinforcementArea = 2.0 * t_r * b_r; 
+            }
+            else
+            {
+                ReinforcementArea = t_r * b_r;
+            }
+            return ReinforcementArea;
+        }
+
+        private double _P_r;
+
+        public double P_r
+        {
+            get {
+                _P_r = GetP_r();
+                return _P_r; }
+            set { _P_r = value; }
+        }
+
+        private double GetP_r()
+        {
+            double P_r1 = A_r * F_y;
+            double P_r2 = F_y * Section.t_w * a_o / (2.0 * Math.Sqrt(3.0));
+            return Math.Min(P_r1, P_r2);
+        }
+        
+        
         public double s_t
         {
             get {

@@ -59,7 +59,13 @@ namespace  Kodestruct.Steel.AISC360v10.Connections.AffectedElements
             get { return section; }
             set { section = value; }
         }
-     
-        
+
+        private ISteelSection _SectionNet;
+
+        public ISteelSection SectionNet
+        {
+            get { return _SectionNet; }
+            set { _SectionNet = value; }
+        }
     }
 }

@@ -95,16 +95,16 @@ namespace Kodestruct.Common.Section.SectionTypes
             {
                     rectX = new List<CompoundShapePart>()
                     {
-                        new CompoundShapePart(b_f,t_f, new Point2D(0,d-t_f/2)),
-                        new CompoundShapePart(t_w,d-t_f, new Point2D(0,(d-t_f)/2))
+                        new CompoundShapePart(b_f,t_f, new Point2D(0,d-t_f/2.0)),
+                        new CompoundShapePart(t_w,d-t_f, new Point2D(0,(d-t_f)/2.0))
                     };
             }
             else
             {
                  rectX = new List<CompoundShapePart>()
                     {
-                        new CompoundShapePart(t_w,d-t_f, new Point2D(0,t_f+(d-t_f)/2)),
-                        new CompoundShapePart(b_f,t_f, new Point2D(0,t_f/2))
+                        new CompoundShapePart(t_w,d-t_f, new Point2D(0,t_f+(d-t_f)/2.0)),
+                        new CompoundShapePart(b_f,t_f, new Point2D(0,t_f/2.0))
                     };
             }
 
@@ -121,9 +121,9 @@ namespace Kodestruct.Common.Section.SectionTypes
             double FlangeOverhang = (b_f - t_w) / 2;
             List<CompoundShapePart> rectY = new List<CompoundShapePart>()
             {
-                new CompoundShapePart(t_f,FlangeOverhang, new Point2D(0 ,b_f-FlangeOverhang/2)),
-                new CompoundShapePart(d,t_w, new Point2D(0,b_f/2)),
-                new CompoundShapePart(FlangeOverhang,t_f, new Point2D(0,FlangeOverhang/2)),
+                new CompoundShapePart(t_f,FlangeOverhang, new Point2D(0 ,b_f-FlangeOverhang/2.0)),
+                new CompoundShapePart(d,t_w, new Point2D(0,b_f/2.0)),
+                new CompoundShapePart(FlangeOverhang,t_f, new Point2D(0,FlangeOverhang/2.0)),
             };
             return rectY;
         }

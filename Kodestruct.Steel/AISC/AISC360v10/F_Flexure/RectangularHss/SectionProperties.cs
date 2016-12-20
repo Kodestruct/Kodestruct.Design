@@ -50,8 +50,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             double I_Reduced = GetReducedMomentOfInertiaX(MomentAxis, ADeducted, bRemoved, t_f);
 
 
-		     double yCentroidModifiedFromBottom = h / 2 - ADeducted / AOriginal;
-             double yCentroidModifiedFromTop = h / 2 + ADeducted / AOriginal;
+		     double yCentroidModifiedFromBottom = h / 2.0 - ADeducted / AOriginal;
+             double yCentroidModifiedFromTop = h / 2.0 + ADeducted / AOriginal;
 
              Se = I_Reduced / yCentroidModifiedFromTop;
             

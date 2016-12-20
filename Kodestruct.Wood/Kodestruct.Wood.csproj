@@ -101,7 +101,7 @@
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\AdjustmentFactors\WetService.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\DowelFastenerBase.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\DoubleShearFastener.cs" />
-    <Compile Include="NDS\NDS_2015\Fasteners\DowelType\ShearDowel.cs" />
+    <Compile Include="NDS\NDS_2015\Fasteners\DowelType\AdjustmentFactors\Geometry.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\SingleShearFastener.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\WoodFastener.cs" />
     <Compile Include="NDS\NDS_2015\Material\Solid\4A_VisuallyGradedDimensionLumber.cs" />

@@ -71,9 +71,9 @@ namespace Kodestruct.Common.Section.SectionTypes
             double t_f = this.t_f;
             double b_f = this.b_f;
             r = k - t_f;
-            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2));
-            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f / 2));
-            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * (t_f + r), new Point2D(0, d / 2));
+            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2.0));
+            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f / 2.0));
+            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * (t_f + r), new Point2D(0, d / 2.0));
             PartWithDoubleFillet TopFillet = new PartWithDoubleFillet(r, t_w, new Point2D(0, d - t_f), true);
             PartWithDoubleFillet BottomFillet = new PartWithDoubleFillet(r, t_w, new Point2D(0, t_f), false);
 
@@ -109,7 +109,7 @@ namespace Kodestruct.Common.Section.SectionTypes
 
             PartWithDoubleFillet LeftFillet = new PartWithDoubleFillet(r, 2 * FlangeThickness, new Point2D(0, b_f - FlangeOverhang), false);
             PartWithDoubleFillet RightFillet = new PartWithDoubleFillet(r, 2 * FlangeThickness, new Point2D(0, FlangeOverhang), true);
-            CompoundShapePart Web = new CompoundShapePart(d, t_w, new Point2D(0, b_f / 2)); 
+            CompoundShapePart Web = new CompoundShapePart(d, t_w, new Point2D(0, b_f / 2.0)); 
 
             List<CompoundShapePart> rectY = new List<CompoundShapePart>()
             {

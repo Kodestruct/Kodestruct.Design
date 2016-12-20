@@ -109,9 +109,9 @@ namespace Kodestruct.Analysis.BeamForces.Simple
             private double FindZeroPointLocation()
             {
                 double x=0.0;
-                if (P/2+(M1-M2)/L!=0)
+                if (P/2.0+(M1-M2)/L!=0)
                 {
-                    x = M1/(P/2+(M1-M2)/L);
+                    x = M1/(P/2.0+(M1-M2)/L);
                 }
                 return x;
             }

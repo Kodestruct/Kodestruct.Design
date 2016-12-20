@@ -50,6 +50,26 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
              Assert.LessOrEqual(actualTolerance, tolerance);
          }
 
+         [Test]
+         public void SectionIWithFlangeHolesRolledReturnsIx()
+         {
+             SectionIWithFlangeHoles shape = new SectionIWithFlangeHoles("", 17.7, 6.0, 0.425, 0.3,0.001,2);
+             double Ix = shape.I_x;
+             double refValue = 510;
+             double actualTolerance = EvaluateActualTolerance(Ix, refValue);
+             Assert.LessOrEqual(actualTolerance, tolerance);
+         }
+
+         [Test]
+         public void SectionIWithFlangeHolesRolledReturnsIy()
+         {
+             SectionIWithFlangeHoles shape = new SectionIWithFlangeHoles("", 17.7, 6.0, 0.425, 0.3, 0.001, 2);
+             double Iy = shape.I_y;
+             double refValue = 15.3;
+             double actualTolerance = EvaluateActualTolerance(Iy, refValue);
+             Assert.LessOrEqual(actualTolerance, tolerance);
+         }
+
          //[Test]
          //public void SectionIRolledReturnsJ()
          //{

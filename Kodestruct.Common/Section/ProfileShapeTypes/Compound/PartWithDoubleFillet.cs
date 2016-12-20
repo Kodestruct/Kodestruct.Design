@@ -109,7 +109,7 @@ namespace Kodestruct.Common.Section
                 double ybarCir = IsTopWidened ? (InsertionPoint.Y - GetCircularSpandrelCentroid()) - this.Centroid.Y : this.Centroid.Y -(InsertionPoint.Y + GetCircularSpandrelCentroid()) ;
             double IxCircularAreas = 2* GetCircularSpandrelArea() * Math.Pow(ybarCir, 2);
             double IxRectShape = b_rect * Math.Pow(r, 3) / 12.0;
-                double ybarRect = IsTopWidened ? Centroid.Y - (InsertionPoint.Y - r / 2) : Centroid.Y - (InsertionPoint.Y + r / 2);
+                double ybarRect = IsTopWidened ? Centroid.Y - (InsertionPoint.Y - r / 2.0) : Centroid.Y - (InsertionPoint.Y + r / 2.0);
             double IxRectArea = SolidRectangleWidth * r * Math.Pow(ybarRect, 2);
             double Ix = IxCircularShapes + IxCircularAreas + IxRectShape + IxRectArea;
             return Ix;
@@ -215,7 +215,7 @@ namespace Kodestruct.Common.Section
                         double y_circ;
 
                         y_circ = GetCircularSpandrelCentroid();
-                        y_c = (2 * GetCircularSpandrelArea() * GetCircularSpandrelCentroid() + b_rect * r * r / 2) / GetArea();
+                        y_c = (2 * GetCircularSpandrelArea() * GetCircularSpandrelCentroid() + b_rect * r * r / 2.0) / GetArea();
 
                         if (this.isTopWidened == true)
                         {

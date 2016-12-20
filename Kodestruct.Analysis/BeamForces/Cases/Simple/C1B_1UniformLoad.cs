@@ -107,7 +107,7 @@ namespace Kodestruct.Analysis.BeamForces.Simple
         {
 
             beam.EvaluateX(X);
-            double M = w * X / 2 * (L - X);
+            double M = w * X / 2.0 * (L - X);
                     BeamEntryFactory.CreateEntry("Mx", M, BeamTemplateType.Mx, 1,
                     new Dictionary<string, double>()
                         {

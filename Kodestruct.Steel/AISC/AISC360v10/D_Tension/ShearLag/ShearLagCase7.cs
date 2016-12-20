@@ -63,7 +63,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10
             }
             else if (N==3)
             {
-                if (bf > 2 / 3 * d)
+                if (bf > 2.0 / 3.0 * d)
                 {
                     U1 = 0.9;
                 }

@@ -36,8 +36,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
             SteelMaterial mat = new SteelMaterial(F_y);
             CalcLog log = new CalcLog();
 
-            AffectedElementInFlexure flexuralElement = new AffectedElementInFlexure(r,mat,log);
-            return flexuralElement.GetPlateFlexuralBucklingStrength(L_pl);
+            throw new NotImplementedException();
+            //AffectedElementInFlexure flexuralElement = new AffectedElementInFlexure(r,mat,log);
+            //return flexuralElement.GetPlateFlexuralBucklingStrength(L_pl);
         }
     }
 }

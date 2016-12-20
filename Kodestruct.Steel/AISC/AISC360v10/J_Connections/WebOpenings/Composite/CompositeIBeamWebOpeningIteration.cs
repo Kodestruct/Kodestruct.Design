@@ -46,8 +46,10 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
             while (ValuesNeedRecalculation==true)
             {
                 double P_ch;
+
+                //Use Eq 3-19 to obtain alpha_vt
                 double muPrevious = mu_TopItr;
-                if (mu_TopItr> nu)
+                if (mu_TopItr> nu) 
                 {
                      P_ch = GetP_ch(true);
                 }
@@ -132,7 +134,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
             double d = Section.d;
             double P_ch3 = double.PositiveInfinity;
 
-            double A_st = Section.GetTopSliceSection(d / 2 - e - h_o / 2.0, SlicingPlaneOffsetType.Top).A; //slice of steel section from opening centerline up
+            double A_st = Section.GetTopSliceSection(d / 2.0 - e - h_o / 2.0, SlicingPlaneOffsetType.Top).A; //slice of steel section from opening centerline up
             if (overrideP_ch == false)
             {
                 P_ch3 = F_y * A_st; //(3-15c)
@@ -143,7 +145,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                 double t_f = Section.t_fTop;
                 double t_w = Section.t_w;
 
-                P_ch3 = F_y * (t_f * (b_f - t_w) + A_r); //(3-20)
+                P_ch3 = F_y * t_f * (b_f - t_w) ; //(3-20) A_r = 0;
             }
 
 
@@ -208,18 +210,23 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
 
         protected override double Get_alphaTop()
         {
-            //if (mu > nu)
-            //{
-            //    double alpha_v_t = mu / nu;
-            //    overrideP_ch = true;
-            //    return alpha_v_t;
-            //}
-            //else
-            //{
             double mu = Get_mu_Top();
             double nu = Get_nu_Top();
+
+            if (mu > nu)
+            {
+                double alpha_v_t = mu / nu;  //Equation 3-19
+                if (alpha_v_t<1)
+                {
+                    alpha_v_t = 1.0; 
+                }
+                return alpha_v_t;
+            }
+            else
+            {
+
             return Get_alpha(mu, nu);
-            //}
+            }
         }
 
         #endregion

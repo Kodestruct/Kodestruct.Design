@@ -61,8 +61,8 @@ namespace Kodestruct.Common.Section.SectionTypes
             ISectionAngle a = angle;
             List<CompoundShapePart> rectX = new List<CompoundShapePart>()
             {
-                new CompoundShapePart(2*a.t,a.d-a.t, new Point2D(a.t/2.0,(a.d-a.t)/2)),
-                new CompoundShapePart(2*a.b,a.t, new Point2D(a.b/2,a.t/2)),
+                new CompoundShapePart(2*a.t,a.d-a.t, new Point2D(a.t/2.0,(a.d-a.t)/2.0)),
+                new CompoundShapePart(2*a.b,a.t, new Point2D(a.b/2,a.t/2.0)),
             };
             return rectX;
         }
@@ -78,10 +78,10 @@ namespace Kodestruct.Common.Section.SectionTypes
             ISectionAngle a = angle;
             List<CompoundShapePart> rectY = new List<CompoundShapePart>()
             {
-                new CompoundShapePart(a.t, a.b-a.t, new Point2D(0,(a.b-a.t)/2 +gap/2)),
-                new CompoundShapePart(a.d,a.t, new Point2D(0,a.t/2.0+gap/2)),
-                new CompoundShapePart(a.d,a.t, new Point2D(0,-(a.t/2.0+gap/2))),
-                new CompoundShapePart(a.t, a.b-a.t,new Point2D(0, -(a.b-a.t)/2+gap/2)),
+                new CompoundShapePart(a.t, a.b-a.t, new Point2D(0,(a.b-a.t)/2 +gap/2.0)),
+                new CompoundShapePart(a.d,a.t, new Point2D(0,a.t/2.0+gap/2.0)),
+                new CompoundShapePart(a.d,a.t, new Point2D(0,-(a.t/2.0+gap/2.0))),
+                new CompoundShapePart(a.t, a.b-a.t,new Point2D(0, -(a.b-a.t)/2.0+gap/2.0)),
             };
             return rectY;
         }

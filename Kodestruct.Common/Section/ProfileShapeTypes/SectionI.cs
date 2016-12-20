@@ -84,7 +84,7 @@ namespace Kodestruct.Common.Section.SectionTypes
         public double h_o
         {
             get {
-                double df = _d - (this.t_f / 2 + this.t_fBot / 2);
+                double df = _d - (this.t_f / 2.0 + this.t_fBot / 2.0);
                 return _h_o; }
         }
 
@@ -163,9 +163,9 @@ namespace Kodestruct.Common.Section.SectionTypes
             double t_f = this.t_f;
             double b_f = this.b_fTop;
 
-            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2));
-            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f / 2));
-            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * t_f, new Point2D(0, d / 2));
+            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2.0));
+            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f / 2.0));
+            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * t_f, new Point2D(0, d / 2.0));
 
             List<CompoundShapePart> rectX = new List<CompoundShapePart>()
             {
@@ -191,9 +191,9 @@ namespace Kodestruct.Common.Section.SectionTypes
 
             // I-shape converted to X-shape 
             double FlangeOverhang = (b_f - t_w) / 2.0;
-            CompoundShapePart LeftFlange = new CompoundShapePart(2* t_f, FlangeOverhang, new Point2D(0, b_f - FlangeOverhang/2));
-            CompoundShapePart RightFlange = new CompoundShapePart(2*t_f, FlangeOverhang, new Point2D(0, FlangeOverhang/2));
-            CompoundShapePart Web = new CompoundShapePart(d, t_w, new Point2D(0, b_f / 2));
+            CompoundShapePart LeftFlange = new CompoundShapePart(2* t_f, FlangeOverhang, new Point2D(0, b_f - FlangeOverhang/2.0));
+            CompoundShapePart RightFlange = new CompoundShapePart(2*t_f, FlangeOverhang, new Point2D(0, FlangeOverhang/2.0));
+            CompoundShapePart Web = new CompoundShapePart(d, t_w, new Point2D(0, b_f / 2.0));
 
             List<CompoundShapePart> rectY = new List<CompoundShapePart>()
             {

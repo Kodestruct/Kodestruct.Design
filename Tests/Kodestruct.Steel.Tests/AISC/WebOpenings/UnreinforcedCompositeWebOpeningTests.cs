@@ -98,6 +98,7 @@ namespace Kodestruct.Steel.Tests.AISC
         [Test]
         public void OpeningCompositeReturnsShearStrength()
         {
+            SetExampleValues();
             CompositeIBeamWebOpening o = new CompositeIBeamWebOpening(section, b_e, t_fill, t_deck, F_y, f_cPrime, N_studs, Q_n,
                 N_o, a_o, h_0, e, t_r, b_r, Steel.AISC.DeckAtBeamCondition.Perpendicular,4.5,12.0);
             double phiV_n = o.GetShearStrength();

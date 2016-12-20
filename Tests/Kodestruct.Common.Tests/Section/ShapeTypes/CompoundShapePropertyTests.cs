@@ -76,9 +76,9 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             double y_p = 0.706;
             double refValue = d - y_p;
 
-            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d  - t_f / 2));
+            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d  - t_f / 2.0));
             PartWithDoubleFillet TopFillet = new PartWithDoubleFillet(k, t_w, new Point2D(0, d  - t_f), true);
-            CompoundShapePart Web = new CompoundShapePart(t_w, d - t_f - k, new Point2D(0, d/2));
+            CompoundShapePart Web = new CompoundShapePart(t_w, d - t_f - k, new Point2D(0, d/2.0));
 
             List<CompoundShapePart> tee = new List<CompoundShapePart>()
             {
@@ -108,9 +108,9 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
 
             double refValue = d/2;
 
-            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2));
-            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f / 2));
-            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * (t_f+k), new Point2D(0, d / 2));
+            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2.0));
+            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f / 2.0));
+            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * (t_f+k), new Point2D(0, d / 2.0));
             PartWithDoubleFillet TopFillet = new PartWithDoubleFillet(k, t_w, new Point2D(0, d - t_f), true);
             PartWithDoubleFillet BottomFillet = new PartWithDoubleFillet(k, t_w, new Point2D(0,  t_f), false);
 
@@ -141,11 +141,11 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             double t_w = 1;
             double t_f = 1;
  
-            double refValue = d / 2;
+            double refValue = d / 2.0;
 
-            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2));
-            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f/2));
-            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * t_f , new Point2D(0, d/2));
+            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2.0));
+            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f/2.0));
+            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * t_f , new Point2D(0, d/2.0));
 
             List<CompoundShapePart> Ishape = new List<CompoundShapePart>()
             {

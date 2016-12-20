@@ -41,7 +41,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers.Concentra
             double R_n = 0.0;
             double E = 29000;
             R_n = ((24 * Math.Pow(t_w, 3) * Math.Sqrt(E * F_yw)) / (h));
-            if (l_edge<d/2)
+            if (l_edge<d/2.0)
             {
                 R_n = R_n * 0.5; 
             }

@@ -81,10 +81,10 @@ namespace Kodestruct.Common.Section.SectionTypes
             //double FlangeThickness = this.t_fTop;
             //double FlangeWidth = this.b_fTop;
 
-            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d / 2 - t_f / 2));
-            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, -(d / 2 - t_f / 2)));
-            PartWithDoubleFillet TopFillet = new PartWithSingleFillet(k, t_w, new Point2D(0, d / 2 - t_f), true);
-            PartWithDoubleFillet BottomFillet = new PartWithSingleFillet(k, t_w, new Point2D(0, -(d / 2 - t_f)), false);
+            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d / 2.0 - t_f / 2.0));
+            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, -(d / 2.0 - t_f / 2.0)));
+            PartWithDoubleFillet TopFillet = new PartWithSingleFillet(k, t_w, new Point2D(0, d / 2.0 - t_f), true);
+            PartWithDoubleFillet BottomFillet = new PartWithSingleFillet(k, t_w, new Point2D(0, -(d / 2.0 - t_f)), false);
             CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * t_f - 2 * k, new Point2D(0, 0));
 
 

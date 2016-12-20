@@ -22,16 +22,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners.DowelType
+namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners
+
 {
-    public  class ShearDowel
+public partial class DowelFastenerBase : WoodFastener
+{
+
+    public double GetGeometryFactor(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType, double L_end)
     {
-        public ShearDowel(double D)
+        double C_Delta = 0;
+        throw new NotImplementedException();
+        if (this.D<=0.25)
         {
-
+            C_Delta = 1.0;
         }
-    
+        else
+        {
+            //End distance C_Delta
+            double C_DeltaEnd = GetEndDistanceC_Delta(LoadToGrainDirection, FastenerEdgeBearingType, L_end);
+        }
 
+        return C_Delta;
+    }
+
+    private double GetEndDistanceC_Delta(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType,
+        double L_end)
+    {
+        throw new NotImplementedException();
+        double L_endC_delta05 = GetMinimumEndDistance(LoadToGrainDirection, FastenerEdgeBearingType);
+        if (L_end < L_endC_delta05)
+        {
+            throw new Exception("End distance is smaller than minimum permitted. Revise design.");
+        }
+        double L_endC_delta1 = GetMinimumEndDistanceForMaximumStrength(LoadToGrainDirection, FastenerEdgeBearingType);
+        double C_Delta = L_end / (L_endC_delta1);
+        return C_Delta;
+
+    }
 
         //Table 12.5.1B Spacing Requirements for 
         //Fasteners in a Row 

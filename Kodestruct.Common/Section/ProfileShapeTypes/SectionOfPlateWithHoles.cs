@@ -68,24 +68,24 @@ namespace Kodestruct.Common.Section.SectionTypes
             double a_cBot = l_edgeBottom - d_hole / 2.0;
             double l_clear = s - d_hole;
 
-            CompoundShapePart rb = new CompoundShapePart(t_p, a_cBot, new Point2D(0, cg.Y+a_cBot / 2));
+            CompoundShapePart rb = new CompoundShapePart(t_p, a_cBot, new Point2D(0, cg.Y+a_cBot / 2.0));
             double y_bot = a_cBot;
 
             rectangles.Add(rb);
             for (int i = 0; i < (N_rows-1); i++)
             {
-                CompoundShapePart hole = new CompoundShapePart(0, d_hole, new Point2D(0,cg.Y+ y_bot + d_hole / 2));
+                CompoundShapePart hole = new CompoundShapePart(0, d_hole, new Point2D(0,cg.Y+ y_bot + d_hole / 2.0));
                 y_bot = y_bot + d_hole;
                 rectangles.Add(hole);
-                CompoundShapePart solid = new CompoundShapePart(t_p, l_clear, new Point2D(0,cg.Y+ y_bot + l_clear / 2));
+                CompoundShapePart solid = new CompoundShapePart(t_p, l_clear, new Point2D(0,cg.Y+ y_bot + l_clear / 2.0));
                 y_bot = y_bot + l_clear;
                 rectangles.Add(solid);
             }
-            CompoundShapePart lasthole = new CompoundShapePart(0, d_hole, new Point2D(0, cg.Y+y_bot + d_hole / 2));
+            CompoundShapePart lasthole = new CompoundShapePart(0, d_hole, new Point2D(0, cg.Y+y_bot + d_hole / 2.0));
             y_bot = y_bot + d_hole;
             rectangles.Add(lasthole);
 
-            CompoundShapePart rt = new CompoundShapePart(t_p, a_cTop, new Point2D(0, cg.Y + y_bot+a_cTop / 2));
+            CompoundShapePart rt = new CompoundShapePart(t_p, a_cTop, new Point2D(0, cg.Y + y_bot+a_cTop / 2.0));
             rectangles.Add(rt);
 
             return rectangles;

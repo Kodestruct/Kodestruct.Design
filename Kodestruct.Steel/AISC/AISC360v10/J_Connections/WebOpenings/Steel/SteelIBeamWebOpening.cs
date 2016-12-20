@@ -50,7 +50,17 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
 
         public override double Get_mu_Top()
         {
-            return 0;
+            if (A_r == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                double V_pt = GetV_pt();
+                double d_rT = s_t - PlateOffset - t_r / 2.0;
+                double mu_tp = P_r * d_rT / (V_pt * s_t);
+                return mu_tp;
+            }
         }
 
         public override double Get_nu_Bottom()
@@ -60,14 +70,24 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
 
         public override double Get_mu_Bottom()
         {
-            return 0;
+            if (A_r == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                double V_pb = GetV_pb();
+                double d_rB = s_b - PlateOffset - t_r / 2.0;
+                double mu_tp = P_r * d_rB / (V_pb * s_t);
+                return mu_tp;
+            }
         }
 
         protected override double Get_alphaTop()
         {
             double mu = Get_mu_Top();
             double nu = Get_nu_Top();
-
+           
                 double alphaTop = Get_alpha(mu, nu);
                 return alphaTop;
             

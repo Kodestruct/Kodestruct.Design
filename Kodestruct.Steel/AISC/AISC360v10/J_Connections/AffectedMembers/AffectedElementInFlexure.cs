@@ -60,54 +60,34 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
             Log = new CalcLog();
         }
 
-        //public AffectedElementInFlexure(ISection section, double F_y, double F_u, bool HasHolesInTensionFlange, 
-        //    double A_fg, double A_fn, bool IsCompactDoublySymmetricForFlexure,  bool IsRolled = false)
-        //    : base(F_y, F_u)
-        //{
-        //    SteelMaterial material = new SteelMaterial(F_y, F_u, SteelConstants.ModulusOfElasticity, SteelConstants.ShearModulus);
-        //    this.Section = new SteelGeneralSection(section, material);
-        //    this.A_fg = A_fg;
-        //    this.A_fn = A_fn;
-        //    this.HasHolesInTensionFlange = HasHolesInTensionFlange;
-        //    this.IsCompactDoublySymmetricForFlexure = IsCompactDoublySymmetricForFlexure;
-        //    this.IsRolled=IsRolled;
-
-        //    Log = new CalcLog();
-        //}
-        //public AffectedElementInFlexure(SectionOfPlateWithHoles Section, ISteelMaterial Material, ICalcLog CalcLog, bool IsRolled = false)
-        //    : base(Section, Material, CalcLog)
-        //{
-        //    this.HasHolesInTensionFlange = false;
-        //    this.A_fg = 0;
-        //    this.A_fn = 0;
-        //    this.IsRolled = IsRolled;
-        //}
-
-        //public AffectedElementInFlexure(SectionRectangular Section, ISteelMaterial Material, ICalcLog CalcLog, bool IsRolled=false)
-        //    : base(Section, Material, CalcLog)
-        //{
-        //    this.HasHolesInTensionFlange = false;
-        //    this.A_fg = 0;
-        //    this.A_fn = 0;
-        //    this.IsRolled = IsRolled;
-        //}
-
-
         public double GetFlexuralStrength(double L_b)
         {
             double phiM_n =0.0;
-
+            double F_y = this.Section.Material.YieldStress;
             
             ISection section = Section.Shape;
 
             bool IsValidGrossSection = ValidateGrossSection();
-            bool IsValidNetSection = ValidateNetSection();
-
+            bool IsValidNetSection = true;
+            if (this.NetSectionShape!=null)
+            {
+                IsValidNetSection = ValidateNetSection();
+            }
+    
 
             double phiM_nLTB, phiM_nNet, phiM_nGross;
 
             //Gross Section Yielding
-
+            if (IsCompactDoublySymmetricForFlexure == true)
+            {
+                double Z = GrossSectionShape.Z_x;
+                phiM_nGross = 0.9 * F_y * Z;
+            }
+            else
+            {
+                double S = Math.Min(GrossSectionShape.S_xBot, GrossSectionShape.S_xTop);
+                phiM_nGross = 0.9*F_y*S;
+            }
 
             //Net Section Fracture
             if ( NetSectionShape == null)
@@ -116,7 +96,22 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
             }
             else
             {
-
+                if (GrossSectionShape is ISectionI)
+                {
+                    if (NetSectionShape is ISectionI)
+                    {
+                        SectionIWithFlangeHoles netSec = NetSectionShape as SectionIWithFlangeHoles;
+                        phiM_nNet = GetTensionFlangeRuptureStrength(GrossSectionShape as ISectionI, NetSectionShape as ISectionI);
+                    }
+                    else
+                    {
+                        throw new Exception("If I-Shape is used for Gross section,specify I-Shape with holes object type for net sections.");
+                    }
+                }
+                else
+                {
+                    phiM_nNet = 0.75 * NetSectionShape.Z_x * F_y;
+                }
             }
 
             //Lateral Stability
@@ -125,33 +120,40 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
                 double S = NetSectionShape == null? Math.Min(GrossSectionShape.S_xBot, GrossSectionShape.S_xTop) :   Math.Min(NetSectionShape.S_xBot, NetSectionShape.S_xTop); 
                 double lambda = this.GetLambda(L_b);
                 double Q = this.GetBucklingReductionCoefficientQ(lambda);
-                double F_cr = this.Section.Material.YieldStress*Q;
+                double F_cr = F_y * Q;
                 phiM_nLTB = 0.9 * S * F_cr;
             }
+            else
+            {
+                phiM_nLTB = double.PositiveInfinity;
+            }
 
+            List<double> LimitStates = new List<double>()
+            {
+                phiM_nLTB, phiM_nNet, phiM_nGross
+            };
 
-
-            //if (section is SectionRectangular || section is SectionOfPlateWithHoles || section is SectionI)
-            //{
-            //    phiM_n = Get_phiMnYieldingAndRupture(GrossSectionShape,NetSectionShape); 
-                
-            //}
-            //else
-            //{
-            //    throw new Exception("Wrong section type. Only SectionRectangular, SectionOfPlateWithHoles and SectionI are supported.");
-            //}
+            phiM_n = LimitStates.Min();
 
             return phiM_n;
         }
 
         private bool ValidateNetSection()
         {
-            throw new NotImplementedException();
+            if (this.GrossSectionShape is SectionOfPlateWithHoles || this.GrossSectionShape is SectionIWithFlangeHoles)
+            {
+
+                return true;
+
+            }
+            else
+            {
+                throw new Exception("Wrong section type. Only SectionRectangular and SectionI are supported.");
+            }
         }
 
         private bool ValidateGrossSection()
         {
-            throw new NotImplementedException();
 
             if (this.GrossSectionShape is SectionRectangular || this.GrossSectionShape is SectionI)
             {
@@ -161,79 +163,59 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
             }
             else
             {
-                throw new Exception("Wrong section type. Only SectionRectangular, SectionOfPlateWithHoles and SectionI are supported.");
+                throw new Exception("Wrong section type. Only SectionRectangular and SectionI are supported.");
             }
         }
 
 
 
-        private double Get_phiMnYieldingAndRupture(ISection GrossSection, ISection NetSection)
-        {
-            double phiM_n = 0;
-            throw new NotImplementedException();
-            //if (section is SectionOfPlateWithHoles)
-            //{
-            //    SectionOfPlateWithHoles plateWithHoles = section as SectionOfPlateWithHoles;
-            //    double Z_g = plateWithHoles.B * Math.Pow(plateWithHoles.H, 2) / 4.0;
-            //    double Z_net = plateWithHoles.Z_x;
-            //    double Y = 0.9 * this.Section.Material.YieldStress * Z_g; //Flexural Yielding
-            //    double R = 0.75 * this.Section.Material.UltimateStress * Z_net;
-            //    phiM_n = Math.Min(Y, R);
-            //}
-            //else if (section is ISectionI)
-            //{
-            //    ISectionI IShape = section as ISectionI;
-            //    double R = GetTensionFlangeRuptureStrength(IShape);
-            //    if (IsCompactDoublySymmetricForFlexure == false)
-            //    {
-            //        throw new Exception("Noncompact and singly symmetric I-shapes are not supported for connection checks.");
-            //    }
-            //    else
-            //    {
-            //        BeamIDoublySymmetricCompact IBeam = new BeamIDoublySymmetricCompact(Section, this.IsRolled, Log);
-            //        double Y = 0.9 * IBeam.GetMajorNominalPlasticMoment();
-            //        phiM_n = Math.Min(Y, R);
-            //    }
-
-            //}
-            //else //Rectangle
-            //{
-            //    SectionRectangular plate = section as SectionRectangular;
-            //    if (plate != null)
-            //    {
-            //        double Z = plate.Z_x;
-            //        double Y = 0.9 * this.Section.Material.YieldStress * Z;
-            //        phiM_n = Y;
-            //    }
-            //}
-
-            //return phiM_n;
-        }
-
         public double GetTensionFlangeRuptureStrength(ISectionI ShapeIGross, ISectionI ShapeINet)
         {
-            throw new NotImplementedException();
             double phiM_n = -1;
             double F_y = Section.Material.YieldStress;
             double F_u = Section.Material.UltimateStress;
             double S_g = Math.Min(ShapeIGross.S_xBot, ShapeIGross.S_xTop);
 
+            SectionIWithFlangeHoles netSec = ShapeINet as SectionIWithFlangeHoles;
+            if (netSec == null)
+            {
+                throw new Exception("Net section shape not recognized");
+            }
+            double A_fgB = ShapeIGross.b_fBot * ShapeIGross.t_fBot;
+            double A_fgT = ShapeIGross.b_fTop * ShapeIGross.t_fTop;
 
-            double A_fg;
-            double A_fn;
-
+            double A_fnB = netSec.b_fBot * netSec.t_fBot- netSec.b_hole * netSec.N_holes;
+            double A_fnT = netSec.b_fTop * netSec.t_fTop- netSec.b_hole * netSec.N_holes;
 
             double Y_t = GetY_t();
-            if (F_u*A_fn>=Y_t*F_y*A_fg)
+
+            double BotFlangeRuptureMoment = GetNetSectionRuptureStrength(A_fnB, A_fgB, Y_t );
+            double TopFlangeRuptureMoment = GetNetSectionRuptureStrength(A_fnT, A_fgT, Y_t);
+
+            phiM_n = Math.Min(BotFlangeRuptureMoment, TopFlangeRuptureMoment);
+            return phiM_n;
+        }
+
+        private double GetNetSectionRuptureStrength(double A_fn, double A_fg, double Y_t)
+        {
+  
+            double phiM_n = 0.0;
+
+            double F_y = Section.Material.YieldStress;
+            double F_u = Section.Material.UltimateStress;
+
+            if (F_u * A_fn >= Y_t * F_y * A_fg)
             {
                 //LimitStateDoes not apply 
-                return -1;
+                return double.PositiveInfinity;
             }
             else
             {
+                double S_g = Math.Min(GrossSectionShape.S_xBot, GrossSectionShape.S_xTop);
                 double M_n = F_u * A_fn / A_fg * S_g; //F13-1
                 phiM_n = 0.9 * M_n;
             }
+
             return phiM_n;
         }
 

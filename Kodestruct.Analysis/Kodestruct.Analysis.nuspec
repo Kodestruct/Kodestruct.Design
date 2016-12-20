@@ -2,15 +2,18 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Analysis</id>
-    <version>0.0.1.4</version>
+    <version>0.0.3.1</version>
     <title>Kodestruct.Analysis</title>
     <authors>Konstantin Udilovich</authors>
     <description>Structural engineering automation library. Components for structural analysis of beams and frames.</description>
+    <summary />
     <language>en-VC</language>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>http://www.Kodestruct.com</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Kodestruct/Kodestruct.Design/master/Kodestruct.Analysis/LOGOS_nuget_Analysis_small.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <developmentDependency>false</developmentDependency>
+    <releaseNotes>Updates to number format</releaseNotes>
     <copyright>Copyright Konstantin Udilovich © 2015</copyright>
     <frameworkAssemblies />
     <dependencies>

@@ -57,7 +57,7 @@ namespace Kodestruct.Common.Section.SectionTypes
             this.t_w =                     t_w ; 
             this.b_hole =                  b_hole ; 
             this.N_holes =                 N_holes ;
-            this.IsOneSidedReinforcement = IsRolled ;
+            this.IsRolled = IsRolled ;
         }
 
             string Name; 
@@ -65,9 +65,9 @@ namespace Kodestruct.Common.Section.SectionTypes
             double b_f; 
             double t_f; 
             double t_w; 
-            double b_hole; 
-            double N_holes;
-            bool IsOneSidedReinforcement;
+            public double b_hole  {get; set;}
+            public double N_holes {get; set;}
+            public bool IsRolled { get; set; }
 
             /// <summary>
             /// Defines a set of rectangles for analysis with respect to 

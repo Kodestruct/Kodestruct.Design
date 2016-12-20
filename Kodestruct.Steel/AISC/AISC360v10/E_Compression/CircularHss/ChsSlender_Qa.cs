@@ -41,14 +41,14 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             double D = this.SectionPipe.D;
             double t = this.SectionPipe.t_des;
 
-            if (D/t>0.45*SqrtE_Fy())
+            if (D/t>0.45*E/F_y)
             {
                 throw new Exception(String.Format("The use of pipe sections with D/t ratio = {0}, greater than 0.45*E/F_y is not recommended by AISC specification.", Math.Round(D/t) ));
             }
             else
 	        {
 
-                if (D/t>0.11*SqrtE_Fy())
+                if (D / t > 0.11 * E / F_y)
                 {
 
                     Qa=((0.038*E) / (F_y*(D / t)))+((2.0) / (3.0)); //(E7-19)

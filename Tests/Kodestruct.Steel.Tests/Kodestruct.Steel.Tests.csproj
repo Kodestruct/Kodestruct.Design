@@ -40,8 +40,8 @@
       <HintPath>..\..\packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.3.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Kodestruct.Common.0.0.3.2\lib\net45\Kodestruct.Common.dll</HintPath>
+    <Reference Include="Kodestruct.Common, Version=0.0.3.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Kodestruct.Common.0.0.3.6\lib\net45\Kodestruct.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -67,12 +67,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AISC\AISC360_10\D_Tension\TensileStrengthTests.cs" />
+    <Compile Include="AISC\AISC360_10\E_Compression\CircularHss\CompressionCircularHssTests.cs" />
     <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeSlenderTests.cs" />
     <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeNonSlenderTests.cs" />
     <Compile Include="AISC\AISC360_10\E_Compression\RectangularHSS\CompressionRhsTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Angle\AngleTests.cs" />
+    <Compile Include="AISC\AISC360_10\F_Flexure\Channel\F2_Channel_DoublySymmetricCompactTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW12.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\W18WeakAxis.cs" />
+    <Compile Include="AISC\AISC360_10\F_Flexure\Pipe\F8-CircularHssTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Solid\SolidShapeTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\SteelBeamFactoryTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW18.cs" />
@@ -125,7 +128,6 @@
   <ItemGroup>
     <Folder Include="AISC\AISC360_10\B_General\Compactness\" />
     <Folder Include="AISC\AISC360_10\C_Stability\" />
-    <Folder Include="AISC\AISC360_10\E_Compression\CircularHss\" />
     <Folder Include="AISC\AISC360_10\I_Composite\Axial\" />
     <Folder Include="AISC\AISC360_10\K_HSS\MomentConnections\" />
   </ItemGroup>

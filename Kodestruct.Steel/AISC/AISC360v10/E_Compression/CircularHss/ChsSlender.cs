@@ -50,7 +50,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
         public ChsSlender(ISteelSection Section, double L_x, double L_y, double L_z, ICalcLog CalcLog)
             : base(Section,L_x,L_y, L_z, CalcLog)
         {
-            if (Section.Shape is ISectionTube)
+            if (Section.Shape is ISectionPipe)
             {
                 this.SectionPipe = Section.Shape as ISectionPipe;
             }

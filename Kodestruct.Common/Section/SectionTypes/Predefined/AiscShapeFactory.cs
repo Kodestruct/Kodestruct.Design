@@ -41,6 +41,7 @@ namespace Kodestruct.Common.Section.Predefined
 
         private ShapeTypeSteel DetermineShapeType(string ShapeId)
         {
+            ShapeId = ShapeId.ToUpper();
             if (ShapeId.StartsWith("W") || ShapeId.StartsWith("S") || ShapeId.StartsWith("HP"))
             {
                 return ShapeTypeSteel.IShapeRolled;
@@ -61,7 +62,7 @@ namespace Kodestruct.Common.Section.Predefined
             {
                 return ShapeTypeSteel.TeeRolled;
             }
-            else if (ShapeId.StartsWith("Pipe"))
+            else if (ShapeId.StartsWith("PIPE"))
             {
                 return ShapeTypeSteel.CircularHSS;
             }

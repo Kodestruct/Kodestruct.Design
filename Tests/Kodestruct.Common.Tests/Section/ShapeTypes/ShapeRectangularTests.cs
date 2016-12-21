@@ -57,5 +57,15 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
 
+        [Test]
+        public void SectionRectangleReturnsPlasticMomentOfArea()
+        {
+            SectionRectangular sr = new SectionRectangular(0.5, 8);
+            double Z = sr.Z_x;
+            double refVal = 8.0;
+            double actualTolerance = EvaluateActualTolerance(Z, refVal);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
 }
 }

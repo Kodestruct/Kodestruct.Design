@@ -64,7 +64,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
         {
             double phiM_n =0.0;
             double F_y = this.Section.Material.YieldStress;
-            
+            double F_u = this.Section.Material.UltimateStress;
+
             ISection section = Section.Shape;
 
             bool IsValidGrossSection = ValidateGrossSection();
@@ -110,7 +111,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
                 }
                 else
                 {
-                    phiM_nNet = 0.75 * NetSectionShape.Z_x * F_y;
+                    phiM_nNet = 0.75 * NetSectionShape.Z_x * F_u;
                 }
             }
 
@@ -140,7 +141,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
 
         private bool ValidateNetSection()
         {
-            if (this.GrossSectionShape is SectionOfPlateWithHoles || this.GrossSectionShape is SectionIWithFlangeHoles)
+            if (this.NetSectionShape is SectionOfPlateWithHoles || this.NetSectionShape is SectionIWithFlangeHoles)
             {
 
                 return true;

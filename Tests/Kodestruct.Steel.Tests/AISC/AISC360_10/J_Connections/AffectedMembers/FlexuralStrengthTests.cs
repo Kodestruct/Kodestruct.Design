@@ -38,10 +38,11 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
         {
             ICalcLog log = new  CalcLog();
             SectionRectangular Section = new SectionRectangular(0.5, 8);
-            ISteelMaterial Material = new SteelMaterial(50);
-            //AffectedElementInFlexure element = new AffectedElementInFlexure(Section, Material, log);
-            //double phiM_n = element.GetFlexuralStrength();
-            //Assert.AreEqual(360.0, phiM_n);
+            SectionOfPlateWithHoles NetSection = new SectionOfPlateWithHoles("", 0.5, 8, 2, 0.01, 2, 2,new Common.Mathematics.Point2D(0,0));
+            AffectedElementInFlexure element = new AffectedElementInFlexure(Section, NetSection, 50, 65.0);
+
+            double phiM_n = element.GetFlexuralStrength(0);
+            Assert.AreEqual(360.0, phiM_n);
         }
     }
 }

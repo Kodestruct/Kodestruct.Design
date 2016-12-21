@@ -223,5 +223,36 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
 
         //public abstract double GetFlexuralStrength();
 
+        protected void CheckProportions()
+        {
+            CheckFlangeAndReinforcementSlenderness();
+            CheckWeb();
+        }
+
+        private void CheckWeb()
+        {
+            double slendernessWeb= (this.Section.d - 2.0* this.Section.t_f)/this.Section.t_w;
+
+            double SlendernessMax = 520.0 * Math.Sqrt(Math.Min(F_y, 65.0));
+            if (slendernessWeb> SlendernessMax )
+            {
+                throw new Exception("Web is too slender, revise.");
+            }
+            CheckOpeningAspectRatio();
+        }
+
+       protected abstract void  CheckOpeningAspectRatio();
+
+        private void CheckFlangeAndReinforcementSlenderness()
+        {
+            double slendernessFlange = this.Section.b_f / (2.0 * this.Section.t_f);
+            double slendernessReinforcement = this.b_r / t_r;
+
+            double SlendernessMax = 65.0 * Math.Sqrt(Math.Min(F_y, 65.0));
+            if (slendernessFlange> SlendernessMax || slendernessReinforcement>SlendernessMax)
+            {
+                throw new Exception("Flange or reinforcement plate are too slender, revise.");
+            }
+        }
     }
 }

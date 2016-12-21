@@ -92,5 +92,26 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                 return alphaTop;
             
         }
-    }
+
+        protected override void CheckOpeningAspectRatio()
+        {
+     
+                double slendernessWeb= (this.Section.d - 2.0* this.Section.t_f)/this.Section.t_w;
+                double aspectRatio = a_o / h_o;
+                double RatioMax = double.PositiveInfinity;
+                if (slendernessWeb <=420.0 * Math.Sqrt(Math.Min(F_y, 65.0)))
+                {
+                RatioMax = 3.0;
+                }
+                else
+                {
+                RatioMax =2.2;
+                }
+  
+                if (slendernessWeb > RatioMax)
+                {
+                throw new Exception(String.Format("Revise opening to have aspect ratio a_0/h_0 to be {0}", RatioMax));
+                }
+        }
+        }
 }

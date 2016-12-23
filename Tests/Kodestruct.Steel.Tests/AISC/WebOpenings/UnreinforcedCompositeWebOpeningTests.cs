@@ -35,10 +35,12 @@ namespace Kodestruct.Steel.Tests.AISC
         public UnreinforcedWebOpeningTests()
         {
             tolerance = 0.02; //2% can differ from rounding
-            SetExampleValues();
+            SetExample3Values();
         }
 
-        private void SetExampleValues()
+        //4.5 EXAMPLE 3: COMPOSITE BEAM
+        //WITH UNREINFORCED OPENING
+        private void SetExample3Values()
         {
             A_s = 13.0;
             d = 20.66;
@@ -67,10 +69,33 @@ namespace Kodestruct.Steel.Tests.AISC
             b_r = 0.0;
         }
 
+        //4.2 EXAMPLE 1: STEEL BEAM WITH
+        //UNREINFORCED OPENING
+        private void SetExample1Values()
+        {
+            A_s = 16.2;
+            d = 23.57;
+            t_w = 0.395;
+            h_0 = 10.00;
+            a_o = 20.0;
+            s_b = 4.785;
+            s_t = 8.785;
+            DeltaA_s = 3.95;
+            A_sn = 12.25;
+
+            AiscShapeFactory f = new AiscShapeFactory();
+            section = f.GetShape("W24X55") as ISectionI;
+            F_y = 36.0;
+            f_cPrime = 3.0;
+            e = -2.0;
+            t_r = 0.0;
+            b_r = 0.0;
+        }
+
+
         double tolerance;
 
-        //4.5 EXAMPLE 3: COMPOSITE BEAM
-        //WITH UNREINFORCED OPENING
+
         double A_s;
         double d;
         double t_w;
@@ -98,7 +123,7 @@ namespace Kodestruct.Steel.Tests.AISC
         [Test]
         public void OpeningCompositeReturnsShearStrength()
         {
-            SetExampleValues();
+            SetExample3Values();
             CompositeIBeamWebOpening o = new CompositeIBeamWebOpening(section, b_e, t_fill, t_deck, F_y, f_cPrime, N_studs, Q_n,
                 N_o, a_o, h_0, e, t_r, b_r, Steel.AISC.DeckAtBeamCondition.Perpendicular,4.5,12.0);
             double phiV_n = o.GetShearStrength();
@@ -107,6 +132,19 @@ namespace Kodestruct.Steel.Tests.AISC
             Assert.LessOrEqual(actualTolerance, tolerance);
 
         }
+
+        [Test]
+        public void OpeningNonCompositeUnreinforcedReturnsShearStrength()
+        {
+            SetExample1Values();
+            SteelIBeamWebOpening o = new SteelIBeamWebOpening(section, F_y, a_o, h_0, e, t_r, b_r, true);
+            double phiV_n = o.GetShearStrength();
+            double refValue = 54.28;
+            double actualTolerance = EvaluateActualTolerance(phiV_n, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+        }
+
     }
       
 }

@@ -275,5 +275,28 @@ namespace Kodestruct.Steel.AISC.SteelEntities.Welds
             }
             return governingElement;
         }
+
+
+        
+        
+        public override double XMin { get { return Lines.Min(l => l.X_min);} }
+        public override double XMax { get { return Lines.Max(l => l.X_max);} }
+        public override double Ymin { get { return Lines.Min(l => l.Y_min); } }
+        public override double Ymax { get { return Lines.Max(l => l.Y_max); } }
+
+
+        public override Point2D CalculateElastcCentroid()
+        {
+            var cenX = Lines.Sum(l => l.Centroid.X * l.Length) / Lines.Sum(l => l.Length);
+            var cenY = Lines.Sum(l => l.Centroid.Y * l.Length) / Lines.Sum(l => l.Length);
+
+            CG_X_Left = cenX - XMin;
+            CG_X_Right  = XMax -cenX;
+            CG_Y_Bottom = cenY - Ymin;
+            CG_Y_Top    = Ymax - cenY;
+
+            centroidCalculated = true;
+            return new Point2D(cenX, cenY);
+        }
     }
 }

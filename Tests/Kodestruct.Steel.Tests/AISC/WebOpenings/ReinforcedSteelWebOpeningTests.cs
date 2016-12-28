@@ -56,6 +56,8 @@ namespace Kodestruct.Steel.Tests.AISC
             e = 0.0;
             t_r = 0.25;
             b_r = 0.65 / 0.25;
+            V_u = 460;
+            M_u = 3600;
         }
 
 
@@ -68,7 +70,7 @@ namespace Kodestruct.Steel.Tests.AISC
         public void OpeningSteelReturnsShearStrength()
         {
             SetExampleValuesSteel();
-            SteelIBeamWebOpening o = new SteelIBeamWebOpening(section, F_y,a_o,h_0,e,t_r,b_r,true);
+            SteelIBeamWebOpening o = new SteelIBeamWebOpening(section, F_y,a_o,h_0,e,t_r,b_r,true,0,M_u,V_u);
             double phiV_n = o.GetShearStrength();
             double refValue =38.7;
             double actualTolerance = EvaluateActualTolerance(phiV_n, refValue);

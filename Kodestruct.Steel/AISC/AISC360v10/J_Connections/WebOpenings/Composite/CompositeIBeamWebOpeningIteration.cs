@@ -245,7 +245,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                 RatioMax = 2.2;
             }
 
-            if (slendernessWeb > RatioMax)
+            if (aspectRatio > RatioMax)
             {
                 throw new Exception(String.Format("Revise opening to have aspect ratio a_0/h_0 to be {0}", RatioMax));
             }

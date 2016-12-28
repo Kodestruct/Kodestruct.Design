@@ -30,6 +30,7 @@ using Kodestruct.Steel.AISC.Steel.Entities.Sections;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
 using Kodestruct.Steel.AISC.SteelEntities.Sections;
 using Kodestruct.Steel.AISC360v10.HSS.ConcentratedForces;
+using Kodestruct.Steel.AISC.SteelEntities;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
 {
@@ -63,6 +64,26 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
             Assert.LessOrEqual(actualToleranceSec, tolerance);
         }
 
+        [Test]
+        public void HssRhsConcentratedForceLongitudinalPlateReturnsValue()
+        {
+            SectionTube ch = new SectionTube(null, 8, 8, 0.25, 0.93 * 0.25, 1.5 * 0.25);
+            SteelMaterial matE = new SteelMaterial(46.0, 65, SteelConstants.ModulusOfElasticity, SteelConstants.ShearModulus);
+            SteelRhsSection Element = new SteelRhsSection(ch, matE);
+
+            SectionRectangular rec = new SectionRectangular(0.25, 8.0);
+            SteelMaterial matR = new SteelMaterial(36.0);
+            SteelPlateSection pl = new SteelPlateSection(rec, matR);
+
+            CalcLog log = new CalcLog();
+
+            RhsLongitudinalPlate concForceConnection = new RhsLongitudinalPlate(Element, pl, log, false, 45.0, 148.0, 0.0);
+            double phiR_n = concForceConnection.GetHssMaximumPlateThicknessForShearLoad().Value;
+
+            //double refValueSec = 46.2;
+            //double actualToleranceSec = EvaluateActualTolerance(phiR_n, refValueSec);
+            //Assert.LessOrEqual(actualToleranceSec, tolerance);
+        }
 
 
         public HssRhsConcentratedForceTests()

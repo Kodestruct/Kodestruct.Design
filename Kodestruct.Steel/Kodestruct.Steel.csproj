@@ -81,6 +81,7 @@
     <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\Types\BasePlateIShape.cs" />
     <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\Types\BasePlateRectangularHss.cs" />
     <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\Types\BasePlateTypeBase.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\WebOpenings\Base\WebOpeningGeneral.cs" />
     <Compile Include="AISC\AISC360v10\J_Connections\WebOpenings\Composite\CompositeIBeamWebOpeningIteration.cs" />
     <Compile Include="AISC\AISC360v10\J_Connections\WebOpenings\Steel\SteelIBeamWebOpening.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsLongitudinalPlate.cs" />

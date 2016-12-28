@@ -57,8 +57,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
         public CompositeIBeamWebOpening(ISectionI Section, double SlabEffectiveWidth,
             double SlabSolidThickness, double SlabDeckThickness, double F_y, double f_cPrime, double N_studs, double Q_n, double N_o,
             double a_o, double h_o, double e, double t_r, double b_r, DeckAtBeamCondition DeckAtBeamCondition, double w_rMin, double s_r,
-            bool IsSingleSideReinforcement = false, double PlateOffset=0)
-            : base(Section, a_o, h_o, e, F_y, t_r, b_r,  IsSingleSideReinforcement, PlateOffset)
+            bool IsSingleSideReinforcement = false, double PlateOffset = 0, double M_u = 0, double V_u = 0)
+            : base(Section, a_o, h_o, e, F_y, t_r, b_r,  IsSingleSideReinforcement, PlateOffset,M_u,V_u)
         {
 
 
@@ -66,6 +66,13 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                     if (IsSingleSideReinforcement==true)
                     {
                         A_r = t_r * b_r;
+                        double A_f_top = Section.b_fTop * Section.t_fTop;
+                        double A_f_bot = Section.b_fBot * Section.t_fBot;
+                        if (A_r > A_f_top/3.0 || A_r > A_f_bot/3.0)
+                        {
+                            throw new Exception("Reinforcement area cannot exceed A_f/3");
+                        }
+
                     }
                     else
                     {
@@ -259,9 +266,33 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
             //Concrete inside flutes is ignored here
             //DG-02 uses average if flutes are parallel to beam
             return SlabSolidThickness;
+            this.GetV_bar_p();
         }
 
 
 
+
+        //protected override double GetV_mMax()
+        //{
+
+        //    double V_bar_p = this.GetV_bar_p();
+        //    double V_bar_c = GetV_bar_c();
+        //    double V_mMax = 2.0 / 3.0 * V_bar_p + V_bar_c;
+        //    return V_mMax;
+        //}
+
+        //private double GetV_bar_c()
+        //{
+        //    double V_pt = GetV_pt();
+        //    double mu = this.Get_mu_Top();
+        //    double nu = this.Get_nu_Top();
+        //    double V_c1 = V_pt * (mu / nu - 1.0);
+        //    V_c1 = V_c1 < 0 ? 0 : V_c1;
+
+        //    double V_mt_SH = this.s_t * Section.t_w * 0.6 * F_y; //pure shear capacity of top tee
+        //    double V_c2 = V_mt_SH - V_pt;
+
+        //    return Math.Min(V_c1, V_c2);
+        //}
     }
 }

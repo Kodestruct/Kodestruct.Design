@@ -39,7 +39,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
         /// <param name="t_r"> Plate thickness of opening reinforcement (top or bottom)</param>
         /// <param name="b_r"> Plate width (horizontal dimension in cross-section) for reinforcement</param>
         public WebOpeningBase(ISectionI Section, double a_o, double h_o, double e, double F_y, double t_r, double b_r,
-             bool IsSingleSideReinforcement , double PlateOffset)
+             bool IsSingleSideReinforcement, double PlateOffset, double M_u, double V_u)
         {
                 this.a_o =a_o;
                 this.h_o =h_o;
@@ -47,6 +47,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                 this.F_y = F_y;
                 this.t_r = t_r;
                 this.b_r = b_r;
+            this.M_u=M_u;
+            this.V_u = V_u;
                 SectionI sec = new SectionI(null, Section.d, Section.b_fTop, Section.t_fTop, Section.t_w);
 
                    this.Section = sec;
@@ -55,6 +57,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                    this.IsSingleSideReinforcement = IsSingleSideReinforcement;
         }
 
+        double M_u, V_u;
         public double PlateOffset              {get; set;}
         public bool IsSingleSideReinforcement { get; set; }
 
@@ -130,10 +133,25 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
         }
         public SectionI Section { get; set; }
 
-        public  virtual double GetShearStrength()
+        public  double GetShearStrength()
         {
+            CheckProportions();
             double d = Section.d;
 
+            if (IsSingleSideReinforcement == true)
+            {
+                if (V_u == 0)
+                {
+                    throw new Exception("Provide non-zero values of M_u and V_u");
+                }
+                else
+                {
+                    if (M_u/(V_u*d)>20.0)
+                    {// 3-36
+                        throw new Exception("M_u/(V_u*d) must be less than 20 for single-side reinforcement");
+                    }
+                }
+            }
             double mu_Top = Get_mu_Top();
             double nu_Top = Get_nu_Top();
 
@@ -158,9 +176,25 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
 
         public abstract double Get_phi();
 
+
+        protected double GetV_bar_p()
+        {
+            //TODO: Adjust this to correct for web slenderness
+            double V_bar_p = this.Section.d * this.Section.t_w * 0.6 * F_y;
+            return V_bar_p;
+        }
+
         protected virtual double GetV_m(double V_mt, double V_mb, double mu, double nu)
         {
+            //this method is overriden  for composite beam
+
+
+            //From Table 4.5
+            double V_Bar_p = GetV_bar_p();
+            double V_mMax = 2.0 / 3.0 * V_Bar_p;
+
             double V_m = V_mt + V_mb;
+            V_m = V_m > V_mMax ? V_mMax : V_m;
             return V_m;
         }
 
@@ -227,6 +261,21 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
         {
             CheckFlangeAndReinforcementSlenderness();
             CheckWeb();
+            CheckTeeSlendernessSingleSided();
+        }
+
+        private void CheckTeeSlendernessSingleSided()
+        {
+            if (IsSingleSideReinforcement == true)
+            {
+                //3-35
+                double SlendernessMax = 140*Math.Sqrt(F_y);
+                if (s_t / Section.t_w > SlendernessMax || s_b / Section.t_w > SlendernessMax)
+                {
+                    throw new Exception("s/t_w ratio for at least one of the tees exceeds maximum limit");
+                }
+            }
+            
         }
 
         private void CheckWeb()
@@ -254,5 +303,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                 throw new Exception("Flange or reinforcement plate are too slender, revise.");
             }
         }
+
+        
+        
     }
 }

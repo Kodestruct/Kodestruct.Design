@@ -86,6 +86,8 @@ namespace Kodestruct.Steel.Tests.AISC
         double e;
         double t_r;
         double b_r;
+        double V_u;
+        double M_u;
 
         [Test]
         public void OpeningCompositeReturnsShearStrength()

@@ -32,8 +32,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
     {
 
         public SteelIBeamWebOpening(ISectionI Section, double F_y,
-            double a_o, double h_o, double e, double t_r, double b_r, bool IsSingleSideReinforcement = false, double PlateOffset = 0) 
-            :base(Section,a_o,h_o,e,F_y,t_r,b_r,IsSingleSideReinforcement, PlateOffset)
+            double a_o, double h_o, double e, double t_r, double b_r, bool IsSingleSideReinforcement = false, double PlateOffset = 0,
+            double M_u = 0, double V_u = 0) 
+            :base(Section,a_o,h_o,e,F_y,t_r,b_r,IsSingleSideReinforcement, PlateOffset,M_u,V_u)
         {
 
         }
@@ -59,6 +60,10 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                 double V_pt = GetV_pt();
                 double d_rT = s_t - PlateOffset - t_r / 2.0;
                 double mu_tp = P_r * d_rT / (V_pt * s_t);
+                if (mu_tp >12.0)
+                {
+                    throw new Exception("Top tee slenderness ratio exceeds max. value of 12.");
+                }
                 return mu_tp;
             }
         }
@@ -78,8 +83,12 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
             {
                 double V_pb = GetV_pb();
                 double d_rB = s_b - PlateOffset - t_r / 2.0;
-                double mu_tp = P_r * d_rB / (V_pb * s_t);
-                return mu_tp;
+                double mu_bot = P_r * d_rB / (V_pb * s_t);
+                if (mu_bot > 12.0)
+                {
+                    throw new Exception("Bottom tee slenderness ratio exceeds max. value of 12.");
+                }
+                return mu_bot;
             }
         }
 
@@ -107,11 +116,13 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
                 {
                 RatioMax =2.2;
                 }
-  
-                if (slendernessWeb > RatioMax)
+
+                if (aspectRatio > RatioMax)
                 {
                 throw new Exception(String.Format("Revise opening to have aspect ratio a_0/h_0 to be {0}", RatioMax));
                 }
         }
-        }
+
+
+    }
 }

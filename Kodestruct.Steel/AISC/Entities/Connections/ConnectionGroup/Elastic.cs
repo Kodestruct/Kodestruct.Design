@@ -98,18 +98,74 @@ namespace Kodestruct.Steel.AISC.SteelEntities
             }
         }
 
-        private void CalculateElastcCentroid()
+        public abstract Point2D CalculateElastcCentroid();
+        //private void CalculateElastcCentroid()
+        //{
+        //    double cx=0.0;
+        //    double cy = 0.0;
+        //    //Find the elastic centroid of the group
+        //    foreach (var e in Elements)
+        //    {
+        //        cx = cx + e.Location.X;
+        //        cy = cy + e.Location.Y;
+        //    }
+        //    _c = new Point2D(cx, cy);
+
+        //    //CG_X_Left    =
+        //    //CG_X_Right   =
+        //    //CG_Y_Bottom  =
+        //    //CG_Y_Top     =
+        //}
+
+        public bool centroidCalculated { get; set; }
+
+        private double _CG_X_Left;
+
+        public double CG_X_Left
         {
-            double cx=0.0;
-            double cy = 0.0;
-            //Find the elastic centroid of the group
-            foreach (var e in Elements)
-            {
-                cx = cx + e.Location.X;
-                cy = cy + e.Location.Y;
-            }
-            _c = new Point2D(cx, cy);
+            get { 
+                if( centroidCalculated == false) CalculateElastcCentroid();
+                return _CG_X_Left; }
+            set { _CG_X_Left = value; }
         }
+
+        private double _CG_X_Right;
+
+        public double CG_X_Right
+        {
+            get {
+                if (centroidCalculated == false) CalculateElastcCentroid();
+                return _CG_X_Right; }
+            set { _CG_X_Right = value; }
+        }
+
+
+        private double _CG_Y_Bottom;
+
+        public double CG_Y_Bottom
+        {
+            get {
+                if (centroidCalculated == false) CalculateElastcCentroid();
+                return _CG_Y_Bottom; }
+            set { _CG_Y_Bottom = value; }
+        }
+
+
+        private double _CG_Y_Top;
+
+        public double CG_Y_Top
+        {
+            get {
+                if (centroidCalculated == false) CalculateElastcCentroid();
+                return _CG_Y_Top; }
+            set { _CG_Y_Top = value; }
+        }
+        
+
+        public abstract double XMin { get; }
+        public abstract double XMax { get; }
+        public abstract double Ymin { get; }
+        public abstract double Ymax { get; }
 
         public double GetForceResultant(double V_u, double H_u)
         {

@@ -215,5 +215,45 @@ namespace Kodestruct.Steel.AISC.SteelEntities.Welds
             double Y = (NodeI.Y + NodeJ.Y) / 2.0;
             return new Point2D(X, Y);
         }
+
+        private double _X_min;
+
+        public double X_min
+        {
+            get {
+                _X_min = Math.Min(NodeI.X, NodeJ.X);
+                return _X_min; }
+            set { _X_min = value; }
+        }
+
+        private double _X_max;
+
+        public double X_max
+        {
+            get {
+                _X_max = Math.Max(NodeI.X, NodeJ.X);
+                return _X_max; }
+            set { _X_max = value; }
+        }
+
+        private double _Y_min;
+
+        public double Y_min
+        {
+            get {
+                _Y_min = Math.Min(NodeI.Y, NodeJ.Y);
+                return _Y_min; }
+            set { _Y_min = value; }
+        }
+
+        private double _Y_max;
+
+        public double Y_max
+        {
+            get {
+                _Y_max = Math.Max(NodeI.Y, NodeJ.Y);
+                return _Y_max; }
+            set { _Y_max = value; }
+        }
     }
 }

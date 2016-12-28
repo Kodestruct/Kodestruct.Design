@@ -28,9 +28,15 @@ namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners
 public partial class DowelFastenerBase : WoodFastener
 {
 
-    public double GetGeometryFactor(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType, double L_end)
+    public double GetGeometryFactor(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType, double L_end,
+        double l_m, double l_s, bool IsLoadedEdge)
     {
         double C_Delta = 0;
+
+        this.l_m          =l_m         ;
+        this.l_s          =l_s         ;
+        this.IsLoadedEdge =IsLoadedEdge;
+
         throw new NotImplementedException();
         if (this.D<=0.25)
         {
@@ -44,6 +50,10 @@ public partial class DowelFastenerBase : WoodFastener
 
         return C_Delta;
     }
+
+        double l_m;
+        double l_s;
+        bool   IsLoadedEdge
 
     private double GetEndDistanceC_Delta(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType,
         double L_end)
@@ -64,34 +74,85 @@ public partial class DowelFastenerBase : WoodFastener
         //Fasteners in a Row 
         public double GetMinimumSpacingOfFastenersWithinRow(LoadToGrainDirection LoadToGrainDirection)
         {
-            throw new NotImplementedException();
+            return 3.0 * D;
         }
 
         //Table 12.5.1B Spacing Requirements for 
         //Fasteners in a Row 
         public double GetMinimumSpacingOfFastenersWithinRowForMaximumStrength(LoadToGrainDirection LoadToGrainDirection)
         {
-            throw new NotImplementedException();
-        }
-        public double GetMinimumSpacingOfRows()
-        {
-            throw new NotImplementedException();
-        }
-        public double GetMinimumEdgeDistance()
-        {
-            throw new NotImplementedException();
+            return 4.0 * D;
+            //For Perpendicular to Grain  load => Required spacing for attached members 
         }
 
+
         //Table 12.5.1A End Distance Requirements
-        public double GetMinimumEndDistance(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType)
+        public double GetMinimumEndDistance(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType, bool IsSoftwood=true)
         {
-            throw new NotImplementedException();
+            switch (LoadToGrainDirection)
+            {
+                case LoadToGrainDirection.ParallelToGrain:
+                    if (FastenerEdgeBearingType = Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
+                    {
+                        return 2.0 * D;
+                    }
+                    else
+                    {
+                        if (IsSoftwood)
+                        {
+                            return 3.5 * D;
+                        }
+                        else
+                        {
+                            return 2.5 * D;
+                        }
+                    }
+                    break;
+                case LoadToGrainDirection.PerpendicularToGrain:
+                    return 2.0 * D;
+                    break;
+                default:
+                    throw new Exception("LoadToGrainDirection not recognized");
+                    break;
+            }
+
         }
 
         //Table 12.5.1A End Distance Requirements
         public double GetMinimumEndDistanceForMaximumStrength(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType)
         {
-            throw new NotImplementedException();
+
+            switch (LoadToGrainDirection)
+            {
+                case LoadToGrainDirection.ParallelToGrain:
+                    if (FastenerEdgeBearingType = Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
+                    {
+                        return 4.0 * D;
+                    }
+                    else
+                    {
+                        if (IsSoftwood)
+                        {
+                            return 7.0 * D;
+                        }
+                        else
+                        {
+                            return 5.0 * D;
+                        }
+                    }
+                    break;
+                case LoadToGrainDirection.PerpendicularToGrain:
+                    return 4.0 * D;
+                    break;
+                default:
+                    throw new Exception("LoadToGrainDirection not recognized");
+                    break;
+            }
+        }
+
+        public double GetMinimumEdgeDistance(LoadToGrainDirection LoadToGrainDirection)
+        {
+
         }
         
     }

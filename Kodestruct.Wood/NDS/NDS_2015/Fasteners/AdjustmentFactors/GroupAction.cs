@@ -28,16 +28,17 @@ namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners
     public partial class WoodFastener : AnalyticalElement
     {
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="ConnectorType"></param>
-/// <param name="E_m"></param>
-/// <param name="A_m"></param>
-/// <param name="E_s"></param>
-/// <param name="A_s"></param>
-/// <param name="D"></param>
-/// <returns></returns>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ConnectorType">Connector type (e.g.DowelTypeFastenerInWoodToWoodConnection)</param>
+        /// <param name="E_m">Modulus of elasticity of main member</param>
+        /// <param name="A_m">Gross cross-sectional area of main member(s)</param>
+        /// <param name="E_s">Modulus of elasticity of side member</param>
+        /// <param name="A_s">Sum of gross cross-sectional areas of side member(s)</param>
+        /// <param name="D">Dowel-type fastener diameter</param>
+        /// <returns></returns>
+        
        public double GetGroupActionFactor(MechanicalConnectorTypeForGroupEffects ConnectorType, 
            double E_m, double A_m, double E_s, double A_s, double n, double s, double D=0.25)
        {

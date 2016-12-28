@@ -143,5 +143,25 @@ namespace Kodestruct.Steel.AISC.SteelEntities.Bolts
             double centroidY = SumY / Bolts.Count();
             return new Point2D(centroidX, centroidY);
         }
+
+        public override double XMin { get { return Bolts.Min(b => b.Location.X); } }
+        public override double XMax { get { return Bolts.Max(b => b.Location.X); } }
+        public override double Ymin { get { return Bolts.Min(b => b.Location.Y); } }
+        public override double Ymax { get { return Bolts.Max(b => b.Location.Y); } }
+
+        public override Point2D CalculateElastcCentroid()
+        {
+            var CG = GetGroupCenterOfGravity();
+            double cenX = CG.X;
+            double cenY = CG.Y;
+
+            CG_X_Left = cenX - XMin;
+            CG_X_Right = XMax - cenX;
+            CG_Y_Bottom = cenY - Ymin;
+            CG_Y_Top = Ymax - cenY;
+
+            centroidCalculated = true;
+            return CG;
+        }
     }
 }

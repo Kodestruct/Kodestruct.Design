@@ -64,6 +64,7 @@
     <Compile Include="NDS\Entities\LoadCombinationType.cs" />
     <Compile Include="NDS\Entities\LoadToGrainDirection.cs" />
     <Compile Include="NDS\Entities\MechanicalConnectorTypeForGroupEffects.cs" />
+    <Compile Include="NDS\Entities\MechanicalDowelLoadType.cs" />
     <Compile Include="NDS\Entities\MechanicalDowelConnectionType.cs" />
     <Compile Include="NDS\Entities\MemberMaterialCategory.cs" />
     <Compile Include="NDS\Entities\ReferenceDesignValueType.cs" />
@@ -98,7 +99,6 @@
     <Compile Include="NDS\NDS_2015\Fasteners\AdjustmentFactors\WetService.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\AdjustmentFactors\Diaphragm.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\AdjustmentFactors\EndGrain.cs" />
-    <Compile Include="NDS\NDS_2015\Fasteners\DowelType\AdjustmentFactors\WetService.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\DowelFastenerBase.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\DoubleShearFastener.cs" />
     <Compile Include="NDS\NDS_2015\Fasteners\DowelType\AdjustmentFactors\Geometry.cs" />

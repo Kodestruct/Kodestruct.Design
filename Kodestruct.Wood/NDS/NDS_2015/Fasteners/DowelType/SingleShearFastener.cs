@@ -30,12 +30,12 @@ namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners.DowelType
         /// 
         /// </summary>
         /// <param name="D">diameter, in. (see 12.3.7) </param>
-        /// <param name="F_yb">dowel bending yield strength, psi </param>
+        /// <param name="F_yb">Dowel bending yield strength, psi </param>
         /// <param name="G">Specific gravity</param>
-        /// <param name="l_m">main member dowel bearing length, in.   </param>
-        /// <param name="l_s">side member dowel bearing length, in</param>
-        /// <param name="F_em">main member dowel bearing strength, psi (see Table 12.3.3) </param>
-        /// <param name="F_es">side member dowel bearing strength, psi (see Table 12.3.3)</param>
+        /// <param name="l_m">Main member dowel bearing length, in.   </param>
+        /// <param name="l_s">Side member dowel bearing length, in</param>
+        /// <param name="F_em">Main member dowel bearing strength, psi (see Table 12.3.3) </param>
+        /// <param name="F_es">Sside member dowel bearing strength, psi (see Table 12.3.3)</param>
         /// <param name="theta">Angle to the grain</param>
         public SingleShearFastener (double D, double F_yb, double G, double l_m , double l_s,
             double F_em, double F_es, double theta):

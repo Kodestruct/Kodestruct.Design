@@ -72,6 +72,31 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
         }
 
+        [Test]
+        public void RectangularBeamReturnsAxialForceCompressionConcreteShearValue()
+        {
+            double h = 24.0;
+            double d = 24.0;
+            double b = 24.0;
+            ConcreteSectionOneWayShearNonPrestressed beam = GetConcreteOneWayShearBeam(b, h, 6000, d, false);
+            double rho_w = 0.0;
+            double M_u = 0;
+            double V_u = 20;
+            double N_u = 450 * 1000;
+
+            double A_g = 0;
+
+            //Convert to kips
+            double phiV_c = beam.GetConcreteShearStrength(N_u, rho_w, M_u, V_u) / 1000.0;
+
+
+            double refValue = 93.0;
+            double actualTolerance = EvaluateActualTolerance(phiV_c, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+        }
+
         /// <summary>
         /// MacGregor, Wight. Reinforced concrete. 6th edition
         /// Example 7-2

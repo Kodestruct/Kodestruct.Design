@@ -62,9 +62,6 @@ namespace Kodestruct.Steel.Tests.AISC
 
 
 
-        //4.6 EXAMPLE 2: COMPOSITE BEAM
-        //WITH REINFORCED OPENING
-
 
         [Test]
         public void OpeningSteelReturnsShearStrength()

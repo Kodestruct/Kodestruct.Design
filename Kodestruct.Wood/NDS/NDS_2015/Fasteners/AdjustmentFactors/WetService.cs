@@ -27,7 +27,9 @@ namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners
 {
     public partial class WoodFastener : AnalyticalElement
     {
-
-
+        public double GetWetSetviceFactor(MechanicalDowelLoadType MechanicalDowelLoadType)
+        {
+        throw new NotImplementedException();
+        }
     }
 }

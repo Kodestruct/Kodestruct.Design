@@ -57,5 +57,31 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.AffectedMembers.B
 
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
+
+        [Test]
+        public void BeamUncopedCopeReturnsValue()
+        {
+            //AISC Live Webinar:  FUNDAMENTALS OF CONNECTION DESIGN.  Tom Murray
+            //August 21,  2014
+            //Part 3 page 25 (Handout)
+            double d = 13.8;
+            double t_w = 0.270;
+            double b_f = 6.73;
+            double t_f = 0.385;
+            double d_cope = 3.0;
+            double c = 8;
+            double F_y = 50;
+            double F_u = 65;
+
+            BeamCopeFactory factory = new BeamCopeFactory();
+            IBeamCope copedBeam = factory.GetCope(Steel.AISC.BeamCopeCase.Uncoped, d, b_f, t_f, t_w, d_cope, c, F_y, F_u);
+            double phiM_n = copedBeam.GetFlexuralStrength();
+
+            double refValue = 2128; 
+            double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
     }
 }

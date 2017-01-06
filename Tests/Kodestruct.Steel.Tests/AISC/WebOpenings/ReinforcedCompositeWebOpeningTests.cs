@@ -30,9 +30,9 @@ using Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings;
 namespace Kodestruct.Steel.Tests.AISC
 {
     [TestFixture]
-    public partial class ReinforcedWebOpeningTests : ToleranceTestBase
+    public partial class WebOpeningTests : ToleranceTestBase
     {
-        public ReinforcedWebOpeningTests()
+        public WebOpeningTests()
         {
             tolerance = 0.1; //10% accepted because it is not clear why on page 35 a value of 9.05 is used when it was caculated as 8.35
 

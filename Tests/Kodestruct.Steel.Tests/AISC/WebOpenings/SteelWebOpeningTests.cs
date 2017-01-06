@@ -30,7 +30,7 @@ using Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings;
 namespace Kodestruct.Steel.Tests.AISC
 {
     [TestFixture]
-    public partial class ReinforcedWebOpeningTests : ToleranceTestBase
+    public partial class WebOpeningTests : ToleranceTestBase
     {
 
         private void SetExampleValuesSteel()
@@ -59,8 +59,6 @@ namespace Kodestruct.Steel.Tests.AISC
             V_u = 460;
             M_u = 3600;
         }
-
-
 
 
         [Test]

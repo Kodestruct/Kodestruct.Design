@@ -24,6 +24,7 @@ using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Common.Section.SectionTypes;
 using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC360v10.Connections.AffectedElements;
+using Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers;
 
 namespace Kodestruct.Steel.AISC.AISC360v10.Connections
 {
@@ -31,15 +32,18 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
     {
         public BeamUncoped(ISectionI Section, ISteelMaterial Material)
         {
-
+            this.Section = Section;
+            this.Material = Material;
         }
 
         public double GetFlexuralStrength()
         {
+            AffectedElementInFlexure ae = new AffectedElementInFlexure(Section,
+                null, Material.YieldStress, Material.UltimateStress, true, true);
             //Confirm if need to use Z_x
-            double F_y = Material.YieldStress;
-            double S_x = Math.Min(this.Section.S_xTop, this.Section.S_xBot);
-            return F_y * S_x;
+            //double F_y = Material.YieldStress;
+            //double S_x = Math.Min(this.Section.S_xTop, this.Section.S_xBot);
+            return ae.GetFlexuralStrength(0.0);
         }
 
         public ISectionI Section { get; set; }

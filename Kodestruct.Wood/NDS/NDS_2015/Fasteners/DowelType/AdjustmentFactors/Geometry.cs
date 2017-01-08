@@ -53,7 +53,7 @@ public partial class DowelFastenerBase : WoodFastener
 
         double l_m;
         double l_s;
-        bool   IsLoadedEdge
+        bool IsLoadedEdge;
 
     private double GetEndDistanceC_Delta(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType,
         double L_end)
@@ -92,7 +92,7 @@ public partial class DowelFastenerBase : WoodFastener
             switch (LoadToGrainDirection)
             {
                 case LoadToGrainDirection.ParallelToGrain:
-                    if (FastenerEdgeBearingType = Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
+                    if (FastenerEdgeBearingType == Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
                     {
                         return 2.0 * D;
                     }
@@ -119,19 +119,20 @@ public partial class DowelFastenerBase : WoodFastener
         }
 
         //Table 12.5.1A End Distance Requirements
-        public double GetMinimumEndDistanceForMaximumStrength(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType)
+        public double GetMinimumEndDistanceForMaximumStrength(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType,
+            bool IsSoftwood = true)
         {
 
             switch (LoadToGrainDirection)
             {
                 case LoadToGrainDirection.ParallelToGrain:
-                    if (FastenerEdgeBearingType = Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
+                    if (FastenerEdgeBearingType == Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
                     {
                         return 4.0 * D;
                     }
                     else
                     {
-                        if (IsSoftwood)
+                        if (IsSoftwood==true)
                         {
                             return 7.0 * D;
                         }
@@ -152,7 +153,7 @@ public partial class DowelFastenerBase : WoodFastener
 
         public double GetMinimumEdgeDistance(LoadToGrainDirection LoadToGrainDirection)
         {
-
+            throw new NotImplementedException();
         }
         
     }

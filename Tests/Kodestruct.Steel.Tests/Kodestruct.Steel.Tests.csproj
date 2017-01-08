@@ -115,7 +115,8 @@
     <Compile Include="AISC\Materials\SteelMaterialCatalogA992ErrorTests.cs" />
     <Compile Include="AISC\Materials\SteelMaterialCatalogA572Tests.cs" />
     <Compile Include="AISC\Materials\SteelMaterialCatalogA992Tests.cs" />
-    <Compile Include="AISC\WebOpenings\ReinforcedSteelWebOpeningTests.cs" />
+    <Compile Include="AISC\WebOpenings\DetailingTests.cs" />
+    <Compile Include="AISC\WebOpenings\SteelWebOpeningTests.cs" />
     <Compile Include="AISC\WebOpenings\UnreinforcedCompositeWebOpeningTests.cs" />
     <Compile Include="AISC\WebOpenings\ReinforcedCompositeWebOpeningTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

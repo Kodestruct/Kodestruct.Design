@@ -45,8 +45,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
             if (IsCompositeBeam == false)
             {
                 double s_teeMax = 0.15 * d;
-                double h_oMax2=  (s_teeMax- d / 2.0 + e)*2.0;
-                double h_oMax3 = (s_teeMax - d / 2.0 - e) * 2.0;
+                double h_oMax2 = d - s_teeMax * 2.0 - e * 2.0; //top tee limitation
+                double h_oMax3 = d - s_teeMax * 2.0 + e * 2.0; ; //bottom tee limitation
+                double h_oMax4 = GetOpeningParameterLimit(IsCompositeBeam,d,a_o);
 
                 List<double> h = new List<double>()
                 {
@@ -60,11 +61,52 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.WebOpenings
             else
             {
                 double s_teeMax = 0.12 * d;
-                double h_oMax2 = (s_teeMax - d / 2.0 - e) * 2.0;
-                h_oMax = Math.Min(h_oMax1, h_oMax2);
+                double h_oMax2 = d - s_teeMax * 2.0 + e * 2.0; ; //bottom tee limitation
+                double h_oMax3 = GetOpeningParameterLimit(IsCompositeBeam, d, a_o);
+
+                List<double> h = new List<double>()
+                {
+                    h_oMax1, 
+                    h_oMax2,
+                    h_oMax3
+                };
+
+                h_oMax = h.Min();
             }
 
             return h_oMax;
+        }
+
+        private static double GetOpeningParameterLimit(bool IsCompositeBeam, double d,double a_o)
+        {
+            double h;
+ 
+            if (IsCompositeBeam == false)
+            {
+                double h1 = 0.4667*d-0.04714*Math.Pow(d*(98.0*d-75.0*a_o),0.5);
+                double h2 = 0.4667 * d + 0.04714 * Math.Pow(d * (98.0 * d - 75.0 * a_o), 0.5);
+                if (h2<0 )
+                {
+                    return h1;
+                }
+                else
+                {
+                    return Math.Max(h1, h2);
+                }
+            }
+            else
+            {
+                double h1 = 0.5 * d - 0.28867 * Math.Pow(d * (3.0 * d - 2.0 * a_o), 0.5);
+                double h2 = 0.5 * d + 0.28867 * Math.Pow(d * (3.0 * d - 2.0 * a_o), 0.5);
+                if (h2 < 0)
+                {
+                    return h1;
+                }
+                else
+                {
+                    return Math.Max(h1, h2);
+                }
+            }
         }
 
         public static double GetMaximumOpeningWidth(double h_o, double d,

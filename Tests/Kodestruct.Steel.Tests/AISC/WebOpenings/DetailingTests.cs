@@ -69,14 +69,32 @@ namespace Kodestruct.Steel.Tests.AISC
             double t_f = 0.44;
            
             h_0 = 9.0;
-            a_o = 20.0;
-            double h_op = WebOpeningGeneral.GetMaximumOpeningHeight(a_o, d, e, t_f, t_w, F_y, true);
 
-            double refValue =20;
+            double h_op = WebOpeningGeneral.GetMaximumOpeningWidth(h_0, d, t_f, t_w, F_y, true, false);
+
+            double refValue =23.4;
             double actualTolerance = EvaluateActualTolerance(h_op, refValue);
             Assert.LessOrEqual(actualTolerance, tolerance);
 
         }
+
+        [Test]
+        public void OpeningSteelReturnsMaxHeight()
+        {
+            double d = 15.9;
+            double t_w = 0.275;
+            double t_f = 0.44;
+
+            h_0 = 9.0;
+            a_o = 20.0;
+            double h_op = WebOpeningGeneral.GetMaximumOpeningHeight(a_o, d, e, t_f, t_w, F_y, true);
+
+            double refValue = 11.1;
+            double actualTolerance = EvaluateActualTolerance(h_op, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+        }
+
     }
       
 }

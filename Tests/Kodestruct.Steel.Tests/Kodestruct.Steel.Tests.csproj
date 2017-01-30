@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="AISC\AISC360_10\D_Tension\TensileStrengthTests.cs" />
     <Compile Include="AISC\AISC360_10\E_Compression\CircularHss\CompressionCircularHssTests.cs" />
+    <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeNonCompactTests.cs" />
     <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeSlenderTests.cs" />
     <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeNonSlenderTests.cs" />
     <Compile Include="AISC\AISC360_10\E_Compression\RectangularHSS\CompressionRhsTests.cs" />

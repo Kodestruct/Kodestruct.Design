@@ -92,6 +92,21 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
         /// AISC Steel Manual Table 4-1
         /// </summary>
         [Test]
+        public void IShapeReturns_10ft_LengthAxialStrength()
+        {
+            CreateColumn(10.0 * 12.0, 10.0 * 12.0);
+            SteelLimitStateValue colFlexure = column.GetFlexuralBucklingStrength();
+            double phiP_n = colFlexure.Value;
+            double refValue = 422.0;
+            double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        } 
+
+        /// <summary>
+        /// AISC Steel Manual Table 4-1
+        /// </summary>
+        [Test]
         public void IShapeReturns_30ft_LengthAxialStrength()
         {
             CreateColumn(30.0 * 12.0, 30.0 * 12.0);

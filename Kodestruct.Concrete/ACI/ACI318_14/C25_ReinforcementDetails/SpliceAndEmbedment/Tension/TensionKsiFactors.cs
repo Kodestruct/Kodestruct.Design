@@ -60,10 +60,10 @@ namespace Kodestruct.Concrete.ACI318_14
         public double GetKsi_e()
         {
             //(b) For epoxy-coated bars or wires with cover less
-            //than 3db, or clear spacing less than 6db, ?e = 1.5.
-            //For all other epoxy-coated bars or wires, ?e = 1.2.
+            //than 3db, or clear spacing less than 6db, ksi_e = 1.5.
+            //For all other epoxy-coated bars or wires, ksi_e = 1.2.
             //For uncoated and zinc-coated (galvanized) reinforcement,
-            //?e = 1.0.
+            //ksi e = 1.0.
             
             double sc = clearCover;
 
@@ -80,17 +80,21 @@ namespace Kodestruct.Concrete.ACI318_14
             }
             else
             {
-                if (db<=0 || clearCover<=0)
+                if (MeetsSpacingCritera == true)
                 {
-                    throw new Exception("bar diameter or clear cover cannot be <= 0. Please check input");
-                }
-                if (clearCover < 3.0 * db || clearSpacing < 6.0 * db)
-                {
-                    ksi_e = 1.5;
+                    ksi_e = 1.2;
                 }
                 else
                 {
-                    ksi_e = 1.2;
+
+                    if (clearCover < 3.0 * db || clearSpacing < 6.0 * db)
+                    {
+                        ksi_e = 1.5;
+                    }
+                    else
+                    {
+                        ksi_e = 1.2;
+                    }
                 }
             }
 

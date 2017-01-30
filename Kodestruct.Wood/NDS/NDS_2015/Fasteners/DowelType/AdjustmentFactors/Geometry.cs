@@ -29,7 +29,7 @@ public partial class DowelFastenerBase : WoodFastener
 {
 
     public double GetGeometryFactor(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType, double L_end,
-        double l_m, double l_s, bool IsLoadedEdge)
+        double l_m, double l_s, bool IsLoadedEdge, bool IsSoftwood)
     {
         double C_Delta = 0;
 
@@ -45,7 +45,7 @@ public partial class DowelFastenerBase : WoodFastener
         else
         {
             //End distance C_Delta
-            double C_DeltaEnd = GetEndDistanceC_Delta(LoadToGrainDirection, FastenerEdgeBearingType, L_end);
+            double C_DeltaEnd = GetEndDistanceC_Delta(LoadToGrainDirection, FastenerEdgeBearingType, L_end, IsSoftwood);
         }
 
         return C_Delta;
@@ -53,10 +53,10 @@ public partial class DowelFastenerBase : WoodFastener
 
         double l_m;
         double l_s;
-        bool   IsLoadedEdge
+        bool IsLoadedEdge;
 
     private double GetEndDistanceC_Delta(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType,
-        double L_end)
+        double L_end, bool IsSoftwood)
     {
         throw new NotImplementedException();
         double L_endC_delta05 = GetMinimumEndDistance(LoadToGrainDirection, FastenerEdgeBearingType);
@@ -64,7 +64,7 @@ public partial class DowelFastenerBase : WoodFastener
         {
             throw new Exception("End distance is smaller than minimum permitted. Revise design.");
         }
-        double L_endC_delta1 = GetMinimumEndDistanceForMaximumStrength(LoadToGrainDirection, FastenerEdgeBearingType);
+        double L_endC_delta1 = GetMinimumEndDistanceForMaximumStrength(LoadToGrainDirection, FastenerEdgeBearingType, IsSoftwood);
         double C_Delta = L_end / (L_endC_delta1);
         return C_Delta;
 
@@ -92,7 +92,7 @@ public partial class DowelFastenerBase : WoodFastener
             switch (LoadToGrainDirection)
             {
                 case LoadToGrainDirection.ParallelToGrain:
-                    if (FastenerEdgeBearingType = Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
+                    if (FastenerEdgeBearingType == Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
                     {
                         return 2.0 * D;
                     }
@@ -119,13 +119,13 @@ public partial class DowelFastenerBase : WoodFastener
         }
 
         //Table 12.5.1A End Distance Requirements
-        public double GetMinimumEndDistanceForMaximumStrength(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType)
+        public double GetMinimumEndDistanceForMaximumStrength(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType, bool IsSoftwood)
         {
 
             switch (LoadToGrainDirection)
             {
                 case LoadToGrainDirection.ParallelToGrain:
-                    if (FastenerEdgeBearingType = Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
+                    if (FastenerEdgeBearingType == Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
                     {
                         return 4.0 * D;
                     }
@@ -152,7 +152,7 @@ public partial class DowelFastenerBase : WoodFastener
 
         public double GetMinimumEdgeDistance(LoadToGrainDirection LoadToGrainDirection)
         {
-
+            throw new NotImplementedException();
         }
         
     }

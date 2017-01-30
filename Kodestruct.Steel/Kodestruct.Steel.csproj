@@ -87,6 +87,8 @@
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsLongitudinalPlate.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsTransversePlate.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\LimitStates\ChsCapPlateYielding.cs" />
+    <Compile Include="AISC\Entities\Connections\Bolts\BoltThreadChecker.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltNutCondition.cs" />
     <Compile Include="AISC\Entities\Enums\HssPlateConnection\HssConcentratedForceType.cs" />
     <Compile Include="AISC\Entities\Enums\HssPlateConnection\TransversePlateType.cs" />
     <Compile Include="AISC\Interfaces\HssPlateConnection\IHssCapPlateConnection.cs" />
@@ -127,8 +129,8 @@
     <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\Base\RhsTrussConnectionUtilization.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AISC\Entities\Enums\HssTrussConnectionClassification.cs" />
-    <Compile Include="AISC\Entities\Enums\HssTrussConnectionMemberType.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\HssTrussConnectionClassification.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\HssTrussConnectionMemberType.cs" />
     <Compile Include="AISC\Entities\FloorVibrations\EffectiveWeight.cs" />
     <Compile Include="AISC\Entities\FloorVibrations\EffectiveWidth.cs" />
     <Compile Include="AISC\Interfaces\IRhsTrussBranchConnection.cs" />
@@ -142,7 +144,7 @@
     <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\RhsTrussXConnection.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\RhsTrussYConnection.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\TrussConnections\Rhs\TypeGroups\RhsTYXTrussBranchConnection.cs" />
-    <Compile Include="AISC\Entities\Enums\BasePlateShape.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\BasePlateShape.cs" />
     <Compile Include="AISC\Entities\Enums\AxialForceType.cs" />
     <Compile Include="AISC\Entities\Enums\FloorVibrations\AdjacentSpanWeightIncreaseType.cs" />
     <Compile Include="AISC\Entities\Enums\FloorVibrations\BeamFloorLocationType.cs" />
@@ -253,9 +255,9 @@
     <Compile Include="AISC\AISC360v10\J_Connections\SpecialTypes\SinglePlate\StabilizedExtendedPlateTorsion.cs" />
     <Compile Include="AISC\AISC360v10\J_Connections\Weld\Fillet\EffectiveWeldLength.cs" />
     <Compile Include="AISC\Entities\Enums\FlexuralAndTorsionalBracingType.cs" />
-    <Compile Include="AISC\Entities\Enums\GussetPlateConfiguration.cs" />
-    <Compile Include="AISC\Entities\Enums\DeckAtBeamCondition.cs" />
-    <Compile Include="AISC\Entities\Enums\HeadedAnchorWeldCase.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\GussetPlateConfiguration.cs" />
+    <Compile Include="AISC\Entities\Enums\Composite\DeckAtBeamCondition.cs" />
+    <Compile Include="AISC\Entities\Enums\Composite\HeadedAnchorWeldCase.cs" />
     <Compile Include="AISC\Entities\Enums\ShearAreaCase.cs" />
     <Compile Include="AISC\Exceptions\ComboForceException.cs" />
     <Compile Include="AISC\Interfaces\IBeamCope.cs" />
@@ -426,21 +428,21 @@
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsTransversePlatePlateYielding.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Rhs\LimitStates\RhsTransversePlateCripplingTee.cs" />
     <Compile Include="AISC\Entities\Connections\Bolts\BoltGroupGeneral.cs" />
-    <Compile Include="AISC\Entities\Connections\Bolts\BoltHoleDeformationType.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltHoleDeformationType.cs" />
     <Compile Include="AISC\Entities\Connections\Bolts\BoltPoint.cs" />
     <Compile Include="AISC\Entities\Connections\ConnectionGroup\Elastic.cs" />
-    <Compile Include="AISC\Entities\Enums\BeamCopeCase.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\BeamCopeCase.cs" />
     <Compile Include="AISC\Entities\Enums\BendingAxis.cs" />
-    <Compile Include="AISC\Entities\Enums\BoltMaterialId.cs" />
-    <Compile Include="AISC\Entities\Enums\BoltType.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltMaterialId.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltType.cs" />
     <Compile Include="AISC\Entities\Enums\CombinationCaseId.cs" />
     <Compile Include="AISC\Entities\Enums\LocalBucklingCaseId.cs" />
     <Compile Include="AISC\Entities\Enums\LocalBucklingClassification.cs" />
     <Compile Include="AISC\Entities\Enums\ShearNonCircularCase.cs" />
-    <Compile Include="AISC\Entities\Enums\StressDistibutionType.cs" />
-    <Compile Include="AISC\Entities\Enums\WeldGroupPattern.cs" />
-    <Compile Include="AISC\Entities\Enums\WeldLoadType.cs" />
-    <Compile Include="AISC\Entities\Enums\WeldType.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\StressDistibutionType.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Welds\WeldGroupPattern.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Welds\WeldLoadType.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Welds\WeldType.cs" />
     <Compile Include="AISC\Entities\Connections\ConnectionGroup\InstantaneousCenter.cs" />
     <Compile Include="AISC\Entities\Materials\WeldMaterial.cs" />
     <Compile Include="AISC\Entities\Welds\BaseClasses\WeldBase.cs" />
@@ -472,9 +474,9 @@
     <Compile Include="AISC\Interfaces\ISteelTensionMember.cs" />
     <Compile Include="AISC\Interfaces\IWeld.cs" />
     <Compile Include="AISC\Entities\Connections\Bolts\BoltBase.cs" />
-    <Compile Include="AISC\Entities\Connections\Bolts\BoltFayingSurface.cs" />
-    <Compile Include="AISC\Entities\Connections\Bolts\BoltHoleType.cs" />
-    <Compile Include="AISC\Entities\Connections\Bolts\BoltThreadType.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltFayingSurface.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltHoleType.cs" />
+    <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltThreadType.cs" />
     <Compile Include="AISC\Entities\Enums\Forces\StructuralCapacityBase.cs" />
     <Compile Include="AISC\Entities\Materials\PlateMaterial.cs" />
     <Compile Include="AISC\Entities\Materials\ShapeMaterial.cs" />

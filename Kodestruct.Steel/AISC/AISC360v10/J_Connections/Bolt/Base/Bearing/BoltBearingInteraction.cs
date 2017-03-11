@@ -56,7 +56,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.Bolted
             if (f_available * 0.3 > frv)
             {
                 //interation need not be investigated
-                return f_available * Ab;
+                return 0.75* Fnt * Ab;
             }
 
 

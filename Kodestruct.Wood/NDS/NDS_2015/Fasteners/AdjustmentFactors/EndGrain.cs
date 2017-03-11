@@ -26,5 +26,9 @@ namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners
 {
     public partial class WoodFastener : AnalyticalElement
     {
+       public double GetEndGrainFactor()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

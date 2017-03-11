@@ -181,6 +181,7 @@
     <Compile Include="Section\ShearStressDueToAppliedShear.cs" />
     <Compile Include="Section\ShearStressDueToWarping.cs" />
     <Compile Include="Section\TorsionalParameter_a.cs" />
+    <Compile Include="Vibration\SDOF\ArbitraryForcingFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE" />

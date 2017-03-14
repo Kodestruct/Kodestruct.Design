@@ -140,6 +140,7 @@
     <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShape.cs" />
     <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShapeCentroid.cs" />
     <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShapeSlicing.cs" />
+    <Compile Include="Section\ProfileShapeTypes\SectionCompoundStacked.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionIWithFlangeHoles.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionIWithReinfWebOpening.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionOfPlateWithHoles.cs" />

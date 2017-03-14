@@ -1,33 +1,16 @@
-#region Copyright
-   /*Copyright (C) 2015 Konstantin Udilovich
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-   */
-#endregion
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Kodestruct.Steel")]
+[assembly: AssemblyTitle("Kodestruct.Aluminum")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Kodestruct")]
-[assembly: AssemblyProduct("Kodestruct.Steel")]
-[assembly: AssemblyCopyright("Copyright Konstantin Udilovich © 2015")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Kodestruct.Aluminum")]
+[assembly: AssemblyCopyright("Copyright ©  Konstantin Udilovich 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -37,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("404b6c6c-831b-46c5-af2f-d0446a9b5c8f")]
+[assembly: Guid("d9f574fc-f81a-4a71-8766-590faee40f3d")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -49,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.4.3")]
-[assembly: AssemblyFileVersion("0.0.4.3")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

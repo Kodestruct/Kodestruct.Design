@@ -32,7 +32,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Tension
            double GrossArea, double EffectiveNetArea)
         {
             double P1 = GetYieldingInGrossSectionStrength(YieldStress, GrossArea);
-            double P2 = GetYieldingInGrossSectionStrength(UltimateStress, EffectiveNetArea);
+            double P2 = GetRuptureInNetSectionStrength(UltimateStress, EffectiveNetArea);
 
             double P = Math.Min(P1, P2);
 

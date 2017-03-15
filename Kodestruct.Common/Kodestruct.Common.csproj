@@ -72,6 +72,7 @@
     <Compile Include="Maps\MapMultiPolygon.cs" />
     <Compile Include="Maps\MapPolyline.cs" />
     <Compile Include="Maps\PolylineReader.cs" />
+    <Compile Include="Mathematics\Line2D.cs" />
     <Compile Include="Mathematics\Point2D.cs" />
     <Compile Include="Mathematics\Point2DList.cs" />
     <Compile Include="Mathematics\Polygon2D.cs" />
@@ -146,6 +147,8 @@
     <Compile Include="Section\ProfileShapeTypes\SectionOfPlateWithHoles.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionTeeRolled.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionDoubleStacked.cs" />
+    <Compile Include="Section\ProfileShapeTypes\ThinWall\SectionThinWall.cs" />
+    <Compile Include="Section\ProfileShapeTypes\ThinWall\ThinWallSegment.cs" />
     <Compile Include="Section\SectionTypes\General\SectionGeneralProperties.cs" />
     <Compile Include="Section\ProfileShapeTypes\Compound\ArbitraryCompoundShape.cs" />
     <Compile Include="Section\ProfileShapeTypes\Compound\CompoundShape.cs" />

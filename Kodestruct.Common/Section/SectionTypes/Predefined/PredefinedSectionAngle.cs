@@ -41,7 +41,9 @@ namespace Kodestruct.Common.Section.Predefined
             this._t = section.t;
             this.AngleOrientation = AngleOrientation;
             this.AngleRotation = AngleRotation;
- 
+            base._y_Bar = section.y;
+            base._y_pBar= section.yp;
+
         }
 
         private void Set_b_and_d(double d, double b, AngleOrientation AngleOrientation)
@@ -84,7 +86,11 @@ namespace Kodestruct.Common.Section.Predefined
             this._S_z   =SectionModulusPrincipalMinor   ;
             this._r_w =RadiusOfGyrationPrincipalMajor ;
             this._r_z =RadiusOfGyrationPrincipalMinor ;
+
+           
         }
+
+
 
         double _d;
 

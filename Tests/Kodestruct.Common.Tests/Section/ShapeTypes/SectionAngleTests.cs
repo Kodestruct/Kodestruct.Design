@@ -125,5 +125,17 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             double actualTolerance = EvaluateActualTolerance(beta_w, refValue);
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
+
+        //[Test]
+        //public void SectionAngle6X4X1_2Returns_S_xTop()
+        //{
+        //    SectionAngle angle = new SectionAngle("", 6, 4, 0.5, AngleRotation.FlatLegBottom, AngleOrientation.LongLegVertical);
+        //    double beta_w = angle.S_xTop;
+        //    double refValue = 3.14;
+
+        //    double actualTolerance = EvaluateActualTolerance(beta_w, refValue);
+        //    Assert.LessOrEqual(actualTolerance, tolerance);
+        //}
+
     }
 }

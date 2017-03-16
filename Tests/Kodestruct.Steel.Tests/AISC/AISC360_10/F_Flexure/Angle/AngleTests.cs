@@ -105,5 +105,23 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
 
+        [Test]
+        public void AngleReturnsFlexuralLTBStrengthL3X3()
+        {
+            FlexuralMemberFactory factory = new FlexuralMemberFactory();
+            AiscShapeFactory AiscShapeFactory = new AiscShapeFactory();
+            ISection section = AiscShapeFactory.GetShape("L3X3X3/8", ShapeTypeSteel.Angle);
+            SteelMaterial mat = new SteelMaterial(36.0, 29000);
+            ISteelBeamFlexure thisBeam = factory.GetBeam(section, mat, null, MomentAxis.XAxis, FlexuralCompressionFiberPosition.Top);
+
+            SteelLimitStateValue LTB =
+             beam.GetFlexuralLateralTorsionalBucklingStrength(1.0, 4.5 * 12, FlexuralCompressionFiberPosition.Top, Steel.AISC.FlexuralAndTorsionalBracingType.NoLateralBracing);
+            double phiM_n = LTB.Value;
+            double refValue = 88.9;
+            double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
     }
 }

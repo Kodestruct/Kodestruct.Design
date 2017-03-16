@@ -206,7 +206,7 @@ namespace Kodestruct.Common.Section.Predefined
                 case AiscShapeType.ShapeType_HSS:
                     break;
                 case AiscShapeType.ShapeType_L:
-                    SxTop = Ix / (b-y);
+                    SxTop = Ix / (d-y);
                     break;
                 case AiscShapeType.ShapeType_M:
                     break;
@@ -230,7 +230,7 @@ namespace Kodestruct.Common.Section.Predefined
                 default:
                     break;
             }
-            return Sx;
+            return SxTop;
         }
 
 
@@ -285,7 +285,7 @@ namespace Kodestruct.Common.Section.Predefined
                 default:
                     break;
             }
-            return Sx;
+            return SxBot;
         }
 
 

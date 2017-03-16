@@ -28,8 +28,16 @@ namespace Kodestruct.Common.Tests.Section.Predefined
 {
 
     [TestFixture]
-    public class ShapeFactoryTests
+    public class ShapeFactoryTests : ToleranceTestBase
     {
+
+        public ShapeFactoryTests()
+        {
+            tolerance = 0.05; //5% can differ from rounding
+        }
+
+        double tolerance;
+
         //[Test]
         //public void ShapeFactoryReturnsValueForDoubleAngle()
         //{
@@ -99,6 +107,22 @@ namespace Kodestruct.Common.Tests.Section.Predefined
             AiscShapeFactory factory = new AiscShapeFactory();
             ISection section = factory.GetShape("PIPE6XXS");
             Assert.IsTrue(section is ISectionPipe);
+        }
+
+        [Test]
+        public void ShapeFactoryReturnsS_xForAngle()
+        {
+            AiscShapeFactory factory = new AiscShapeFactory();
+            ISection section = factory.GetShape("L3X3X3/8");
+
+            double S_xTop = section.S_xTop;
+            double S_xBot = section.S_xBot;
+
+            Assert.IsTrue(section is ISectionAngle);
+            double refValue = 0.825; //check
+
+            double actualTolerance = EvaluateActualTolerance(S_xTop, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
         }
     }
 }

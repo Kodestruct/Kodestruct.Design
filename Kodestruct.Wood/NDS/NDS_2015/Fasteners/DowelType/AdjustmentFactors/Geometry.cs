@@ -29,7 +29,8 @@ public partial class DowelFastenerBase : WoodFastener
 {
 
     public double GetGeometryFactor(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType, double L_end,
-        double l_m, double l_s, bool IsLoadedEdge, bool IsSoftwood)
+        double L_spacing,
+        double l_m, double l_s, bool IsLoadedEdge, bool IsSoftwood, bool IsLoadedAtAngle)
     {
         double C_Delta = 0;
 
@@ -45,7 +46,9 @@ public partial class DowelFastenerBase : WoodFastener
         else
         {
             //End distance C_Delta
-            double C_DeltaEnd = GetEndDistanceC_Delta(LoadToGrainDirection, FastenerEdgeBearingType, L_end, IsSoftwood);
+            double C_DeltaEnd = GetEndDistanceC_Delta(LoadToGrainDirection, FastenerEdgeBearingType, L_end, IsSoftwood, IsLoadedAtAngle);
+            double C_DeltaSpacing = GetSpacingC_Delta(LoadToGrainDirection, L_spacing);
+            //Add edge disstance here
         }
 
         return C_Delta;
@@ -56,9 +59,13 @@ public partial class DowelFastenerBase : WoodFastener
         bool IsLoadedEdge;
 
     private double GetEndDistanceC_Delta(LoadToGrainDirection LoadToGrainDirection, FastenerEdgeBearingType FastenerEdgeBearingType,
-        double L_end, bool IsSoftwood)
+        double L_end, bool IsSoftwood, bool IsLoadedAtAngle)
     {
-        throw new NotImplementedException();
+        
+        if (IsLoadedAtAngle == true)
+        {
+            throw new Exception("Loading at angle to the fastener is not supported.");
+        }
         double L_endC_delta05 = GetMinimumEndDistance(LoadToGrainDirection, FastenerEdgeBearingType);
         if (L_end < L_endC_delta05)
         {
@@ -70,15 +77,28 @@ public partial class DowelFastenerBase : WoodFastener
 
     }
 
-        //Table 12.5.1B Spacing Requirements for 
-        //Fasteners in a Row 
+    private double GetSpacingC_Delta(LoadToGrainDirection LoadToGrainDirection, double L_spacing)
+    {
+
+        double L_spaceC_delta05 = GetMinimumSpacingOfFastenersWithinRow(LoadToGrainDirection);
+        if (L_spacing < L_spaceC_delta05)
+        {
+            throw new Exception("End distance is smaller than minimum permitted. Revise design.");
+        }
+        double L_spaceC_delta1 = GetMinimumSpacingOfFastenersWithinRowForMaximumStrength(LoadToGrainDirection);
+
+        double C_Delta = L_spacing / (L_spaceC_delta1);
+        return C_Delta;
+
+    }
+
+        //Table 12.5.1B Spacing Requirements for fasteners in a Row 
         public double GetMinimumSpacingOfFastenersWithinRow(LoadToGrainDirection LoadToGrainDirection)
         {
             return 3.0 * D;
         }
 
-        //Table 12.5.1B Spacing Requirements for 
-        //Fasteners in a Row 
+        //Table 12.5.1B Spacing Requirements for fasteners in a Row 
         public double GetMinimumSpacingOfFastenersWithinRowForMaximumStrength(LoadToGrainDirection LoadToGrainDirection)
         {
             return 4.0 * D;

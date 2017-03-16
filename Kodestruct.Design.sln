@@ -38,7 +38,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Analysis.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Concrete.Tests", "Tests\Kodestruct.Concrete.Tests\Kodestruct.Concrete.Tests.csproj", "{381FDBB2-3657-41D3-967F-E9C1F2649FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Wood.Tests", "Kodestruct.Wood.Tests\Kodestruct.Wood.Tests.csproj", "{EBE63C35-56DD-4F0D-9A74-26DBDA049ED0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Wood.Tests", "Tests\Kodestruct.Wood.Tests\Kodestruct.Wood.Tests.csproj", "{EBE63C35-56DD-4F0D-9A74-26DBDA049ED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Aluminum", "Kodestruct.Aluminum\Kodestruct.Aluminum.csproj", "{F7F82708-2E42-41FF-A2A7-4DD831251CCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -170,6 +172,16 @@ Global
 		{EBE63C35-56DD-4F0D-9A74-26DBDA049ED0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EBE63C35-56DD-4F0D-9A74-26DBDA049ED0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EBE63C35-56DD-4F0D-9A74-26DBDA049ED0}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F7F82708-2E42-41FF-A2A7-4DD831251CCE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -72,7 +72,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kodestruct.Wood\Kodestruct.Wood.csproj">
+    <ProjectReference Include="..\..\Kodestruct.Wood\Kodestruct.Wood.csproj">
       <Project>{69a15b6b-bfc5-455c-a080-a994f503ad35}</Project>
       <Name>Kodestruct.Wood</Name>
     </ProjectReference>

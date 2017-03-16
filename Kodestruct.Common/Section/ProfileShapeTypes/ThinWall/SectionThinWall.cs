@@ -1,4 +1,4 @@
-﻿#region Copyright
+#region Copyright
    /*Copyright (C) 2015 Konstantin Udilovich
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,19 @@
    */
 #endregion
  
-using Kodestruct.Common.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Kodestruct.Common.Mathematics;
+using Kodestruct.Common.Section.Interfaces;
 
-namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners
+
+namespace Kodestruct.Common.Section.SectionTypes
 {
-    public partial class WoodFastener : AnalyticalElement
-    {
-       public double GetEndGrainFactor()
-        {
-            throw new NotImplementedException();
-        }
-    }
+
+    //public class SectionThinWall: CompoundShape
+    //{
+
+    //}
 }

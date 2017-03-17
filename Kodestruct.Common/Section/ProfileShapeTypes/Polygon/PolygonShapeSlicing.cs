@@ -107,8 +107,8 @@ namespace Kodestruct.Common.Section.General
 	        Paths solution = new Paths();
 
 	        Clipper c = new Clipper();
-	        c.AddPaths(subj, PolyType.ptSubject, true);
-	        c.AddPaths(clip, PolyType.ptClip, true);
+	        c.AddPolygons(subj, PolyType.ptSubject);
+	        c.AddPolygons(clip, PolyType.ptClip);
 	        c.Execute(ClipType.ctIntersection, solution, 
 	        PolyFillType.pftEvenOdd, PolyFillType.pftEvenOdd);
 
@@ -136,7 +136,7 @@ namespace Kodestruct.Common.Section.General
             Path cutPath = new Path(NumberOfPoints);
             foreach (var p in CuttingRectanglePoints)
             {
-                cutPath.Add(new IntPoint(p.X * ScaleFactor, p.Y * ScaleFactor));
+                cutPath.Add(new IntPoint(Convert.ToInt64(p.X * ScaleFactor), Convert.ToInt64(p.Y * ScaleFactor)));
             }
             Paths subj = new Paths(1);
             subj.Add(cutPath);

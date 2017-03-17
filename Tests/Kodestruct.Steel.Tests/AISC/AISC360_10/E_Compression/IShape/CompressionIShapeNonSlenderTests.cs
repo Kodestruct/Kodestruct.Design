@@ -41,7 +41,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
     {
         public CompressionIShapeSlenderTests()
         {
-            tolerance = 0.02; //2% can differ from rounding in the manual
+            tolerance = 0.05; //5% can differ from rounding in the manual
         }
 
         double tolerance;

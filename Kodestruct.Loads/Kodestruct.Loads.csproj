@@ -40,8 +40,8 @@
       <HintPath>..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kodestruct.Common.0.0.5.1\lib\net45\Kodestruct.Common.dll</HintPath>
+    <Reference Include="Kodestruct.Common, Version=0.0.6.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kodestruct.Common.0.0.6.1\lib\net45\Kodestruct.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -120,7 +120,7 @@
     <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\IceWeight.cs" />
     <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\ImportanceFactor.cs" />
     <Compile Include="ASCE7\ASCE7v10\C10_IceLoads\IceStructure.cs" />
-    <Compile Include="ASCE7\ASCE7v10\C04_LiveLoads\LiveLoadBuilding.cs" />
+    <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\LiveLoadBuilding.cs" />
     <Compile Include="ASCE7\ASCE7v10\C11_SeismicLoads\BaseClasses\LateralSystem.cs" />
     <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\Building.cs" />
     <Compile Include="ASCE7\ASCE7v10\C12_SeismicBuilding\BuildingLateralSystem.cs" />
@@ -268,6 +268,7 @@
     <None Include="Kodestruct.Loads.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ASCE7\ASCE7v10\C04_LiveLoads\" />
     <Folder Include="ASCE7\ASCE7v10\C05_FloodLoads\" />
     <Folder Include="ASCE7\ASCE7v10\C26_Wind\Assets\" />
     <Folder Include="ASCE7\Interfaces\" />

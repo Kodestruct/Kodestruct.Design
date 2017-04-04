@@ -1,0 +1,135 @@
+<Alloy><Temper><ThicknessRange><Product><F_tu><F_ty><F_tuw><F_tyw><k_t><F_tyw_Alt>
+1060,H12,From 0.017 to 2,sheet & plate,11,9,8,2.5,1,2.5
+1060,H12,From 0.01 to 0.5,drawn tube,10,4,8.5,2.5,1,2.5
+1060,H14,From 0.009 to 1,sheet & plate,12,10,8,2.5,1,2.5
+1060,H14,From 0.01 to 0.5,drawn tube,12,10,8.5,2.5,1,2.5
+1100,H12,From 0.017 to 2,sheet & plate,14,11,11,3.5,1,3.5
+1100,H12,From 0.014 to 0.5,drawn tube,14,11,11,3.5,1,3.5
+1100,H14,From 0.009 to 1,sheet & plate,16,14,11,3.5,1,3.5
+1100,H14,From 0.014 to 0.5,drawn tube,16,14,11,3.5,1,3.5
+2014,T6,From 0.04 to 0.249,sheet & plate,66,58,0,0,1.25,0
+2014,T651,From 0.25 to 2,sheet & plate,67,59,0,0,1.25,0
+2014,T6,Up to 0.499,extrusion,60,53,0,0,1.25,0
+2014,T6510,Up to 1.499,extrusion,60,53,0,0,1.25,0
+2014,T6511,Up to 2.499,extrusion,60,53,0,0,1.25,0
+2014,T6,From 0.125 to 8,bar & rod & wire,65,55,0,0,1.25,0
+2015,T652,From 0.125 to 8,bar & rod & wire,65,55,0,0,1.25,0
+2014,T6,From 0.018 to 0.5,drawn tube,65,55,0,0,1.25,0
+Alclad 2014,T6,From 0.04 to 0.05,sheet & plate,63,55,0,0,1.25,0
+Alclad 2014,T6,From 0.051 to 0.124,sheet & plate,64,57,0,0,1.25,0
+Alclad 2014,T651,From 0.25 to 0.499,sheet & plate,64,57,0,0,1.25,0
+2219,T87,From 0.25 to 3,sheet & plate,64,51,35,26,1.25,26
+3003,H12,From 0.017 to 2,sheet & plate,17,12,14,5,1,5
+3003,H12,From 0.01 to 0.5,drawn tube,17,12,14,5,1,5
+3003,H14,From 0.009 to 1,sheet & plate,20,17,14,5,1,5
+3003,H14,From 0.01 to 0.5,drawn tube,20,17,14,5,1,5
+3003,H16,From 0.006 to 0.162,sheet & plate,24,21,14,5,1,5
+3003,H16,From 0.01 to 0.5,drr.wn tube,24,21,14,5,1,5
+3003,H18,From 0.006 to 0.128,sheet & plate,27,24,14,5,1,5
+3003,H18,From 0.01 to 0.5,drawn tube,27,24,14,5,1,5
+Alclad 3003,H12,From 0.017 to 2,sheet & plate,16,11,13,4.5,1,4.5
+Alclad 3003,H14,From 0.009 to 1,sheet & plate,19,16,13,4.5,1,4.5
+Alclad 3003,H16,From 0.006 to 0.162,sheet & plate,23,20,13,4.5,1,4.5
+Alclad 3003,H14,From 0.01 to 0.5,drawn tube,19,16,13,4.5,1,4.5
+Alclad 3003,H18,From 0.01 to 0.5,drawn tube,26,23,13,4.5,1,4.5
+3004,H32,From 0.017 to 2,sheet & plate,28,21,22,8.5,1,8.5
+3004,H34,From 0.009 to 1,sheet & plate,32,25,22,8.5,1,8.5
+3004,H36,From 0.006 to 0.162,sheet & plate,35,28,0,8.5,1,8.5
+3004,H38,From 0.006 to 0.128,sheet & plate,38,31,22,8.5,1,8.5
+Alclad 3004,H32,From 0.017 to 2,sheet & plate,27,20,21,8,1,8
+Alclad 3004,H34,From 0.009 to 1,sheet & plate,31,24,21,8,1,8
+Alclad 3004,H36,From 0.006 to 0.162,sheet & plate,34,27,21,8,1,8
+3005,H25,From 0.016 to 0.08,sheet & plate,26,22,0,0,1,0
+3005,H28,From 0.016 to 0.08,sheet & plate,31,27,0,0,1,0
+3105,H25,From 0.013 to 0.08,sheet & plate,23,19,0,0,1,0
+5005,H12,From 0.017 to 2,sheet & plate,18,14,15,5,1,5
+5005,H14,From 0.009 to 1,sheet & plate,21,17,15,5,1,5
+5005,H16,From 0.006 to 0.162,sheet & plate,24,20,15,5,1,5
+5005,H32,From 0.017 to 2,sheet & plate,17,12,15,5,1,5
+5005,H34,From 0.009 to 1,sheet & plate,20,15,15,5,1,5
+5005,H36,From 0.006 to 0.162,sheet & plate,23,18,15,5,1,5
+5050,H32,From 0.017 to 0.249,sheet & plate,22,16,18,6,1,6
+5050,H32,From 0.01 to 0.5,drawn tube,22,16,18,6,1,6
+5050,H34,From 0.009 to 0.249,sheet & plate,25,20,18,6,1,6
+5050,H34,From 0.01 to 0.5,drawn tube,25,20,18,6,1,6
+5050,H36,From 0.006 to 0.162,sheet & plate,27,22,18,6,1,6
+5052,O,From 0.006 to 3,sheet & plate,25,9.5,25,9.5,1,9.5
+5052,H32,From 0.017 to 2,sheet & plate,31,23,25,9.5,1,9.5
+5052,H32,From 0.01 to 0.45,drawn tube,31,23,25,10,1,10
+5052,H34,From 0.009 to 1,sheet & plate,34,26,25,9.5,1,9.5
+5052,H34,From 0.01 to 0.45,drawn tube,34,26,25,10,1,10
+5052,H36,From 0.006 to 0.162,sheet & plate,37,29,25,9.5,1,9.5
+5083,O,Up to 2.999,extrusion,39,16,39,16,1,16
+5083,H112,Up to 2.999,extrusion,39,16,39,16,1,16
+5083,O,From 0.051 to 1.5,forging,40,18,40,18,1,18
+5083,H111,Up to 2.999,sheet & plate,40,24,39,16,1,16
+5083,H111,Up to 4,sheet & plate,42,22,38,16,1,16
+5083,H116,From 0.125 to 1.5,sheet & plate,44,31,40,18,1,18
+5083,H116,From 1.501 to 3,sheet & plate,41,29,39,17,1,17
+5083,H32,From 0.125 to 1.5,sheet & plate,44,31,40,18,1,18
+5083,H32,From 1.501 to 3,sheet & plate,41,29,39,17,1,17
+5083,H321,From 0.125 to 1.5,extrusion,44,31,40,18,1,18
+5083,H321,From 1.501 to 3,sheet & plate,41,29,39,17,1,17
+5086,O,Up to 2.999,extrusion,35,14,35,14,1,14
+5086,H112,Up to 2.999,extrusion,35,14,35,14,1,14
+5086,O,From 0.02 to 2,sheet & plate,35,14,35,14,1,14
+5086,H111 ,Up to 2.999,extrusion,36,21,    35    ,14,1,14
+5086,H112,From 0.188 to 0.499,sheet & plate,36,18,35,14,1,14
+5086,H112,From 0.5 to 1,sheet & plate,35,16,35,14,1,14
+5086,H112,From 1.001 to 2,sheet & plate,35,16,35,14,1,14
+5086,H112,From 2.001 to 3,sheet & plate,34,16,34,14,1,14
+5086,H116,From 0.063 to 2,sheet & plate,40,16,35,14,1,14
+5086,H32,From 0.02 to 2,sheet & plate,40,16,35,14,1,14
+5086,H32,From 0.01 to 0.45,drawn tube,40,16,35,14,1,14
+5086,H34,From 0.009 to 1,sheet & plate,44,16,35,14,1,14
+5086,H34,From 0.01 to 0.45,drawn tube,44,16,35,14,1,14
+5086,H321,From 0.063 to 2,sheet & plate,40,16,35,14,1,14
+5154,H38,From 0.006 to 0.128,sheet & plate,45,16,30,11,1,11
+5454,O,Up to 2.999,extrusion,31,12,31,12,1,12
+5454,H112,Up to 2.999,extrusion,31,12,31,12,1,12
+5454,O,From 0.02 to 3,sheet & plate,31,12,31,12,1,12
+5454,H111,Up to 2.999,extrusion,33,16,31,12,1,12
+5454,H32,From 0.02 to 2,sheet & plate,36,16,31,12,1,12
+5454,H34,From 0.02 to 1,sheet & plate,39,16,31,12,1,12
+5456,O,From 0.051 to 1.5,sheet & plate,42,16,42,19,1,19
+5456,H116,From 0.063 to 1.25,sheet & plate,46,16,42,19,1,19
+5456,H116,From 1.251 to 1.5,sheet & plate,44,31,42,19,1,19
+5456,H116,From 1.501 to 3,sheet & plate,41,29,41,18,1,18
+5456,H32,From 0.188 to 0.499,sheet & plate,46,33,42,19,1,19
+5456,H32,From 0.5 to 1.5,sheet & plate,44,31,42,19,1,19
+5456,H32,From 1.501 to 3,sheet & plate,41,29,41,18,1,18
+5456,H321,From 0.188 to 0.499,sheet & plate,46,33,42,19,1,19
+5456,H321,From 0.5 to 1.5,sheet & plate,44,31,42,19,1,19
+5456,H321,From 1.501 to 3,sheet & plate,41,29,41,18,1,18
+6005,T5,Up to 1,extrusion,38,35,24,13,1.25,13
+6005A,T61,Up to 1,extrusion,38,35,24,13,1,13
+6061,T6,From 0.01 to 4,sheet & plate,42,35,24,11,1,15
+6061,T651,From 0.01 to 4,sheet & plate,42,35,24,11,1,
+6061,T6,From 0.1 to 0.625,tread plate,42,35,24,11,1,15
+6061,T6,All,extrusion,38,35,24,11,1,15
+6061,T6510,All,extrusion,38,35,24,11,1,15
+6061,T6511,All,extrusion,38,35,24,11,1,15
+6061,T6,From 0.125 to 8,bar & rod & wire,42,35,24,11,1,15
+6061,T651,From 0.125 to 8,bar & rod & wire,42,35,24,11,1,15
+6061,T6,From 0.025 to 0.5,drawn tube,42,35,24,11,1,15
+6061,T6,All,pipe & tube,38,35,24,11,1,15
+6061,T6,All,pipe & tube,38,35,24,11,1,15
+6061,T6,Up to 4,forging,38,35,24,11,1,15
+6061,T6, or greater,std structural profile,38,35,24,11,1,15
+6063,T5,Up to 0.5,extrusion,22,16,17,8,1,8
+6063,TS,From 0.501 to 1,extrusion,21,15,17,8,1,8
+6063,T52,Up to 1,extrusion,22,16,17,8,1,8
+6063,T6,Up to 1,extrusion,30,25,17,8,1,8
+6063,T6,Up to 1,pipe & tube,30,25,17,8,1,8
+6063,T6,Up to 1,pipe & tube,30,25,17,8,1,8
+6066,T6,All,extrusion,50,45,0,0,1.1,0
+6066,T6510,All,extrusion,50,45,0,0,1.1,0
+6066,T6511,All,extrusion,50,45,0,0,1.1,0
+6070,T6,Up to 2.999,extrusion,48,45,0,0,1.1,0
+6082,T6,From 0.2 to 6,extrusion,45,38,28,16,1,16
+6082,T6511,From 0.2 to 6,extrusion,45,38,28,16,1,16
+6105,T5,Up to 1,extrusion,38,35,0,0,1.25,0
+6351,TS,Up to 1,extrusion,38,35,24,11,1,15
+6351,T6,Up to 0.749,extrusion,42,37,24,11,1,15
+6463,T6,Up to 0.5,extrusion,30,25,0,0,1,0
+7005,T53,Up to 0.75,extrusion,50,44,40,24,1,24

@@ -64,6 +64,7 @@
     <Compile Include="Section\ShapeTypes\PolygonShapeTests.cs" />
     <Compile Include="Section\ShapeTypes\SectionDoubleStackedTests.cs" />
     <Compile Include="Section\ShapeTypes\SectionCompoundStackedTests.cs" />
+    <Compile Include="Section\ShapeTypes\SectionThinWalledTests.cs" />
     <Compile Include="Section\ShapeTypes\SectionITests.cs" />
     <Compile Include="Section\ShapeTypes\SectionIRolledTests.cs" />
     <Compile Include="Section\ShapeTypes\SectionIWithReinfWebOpeningTests.cs" />

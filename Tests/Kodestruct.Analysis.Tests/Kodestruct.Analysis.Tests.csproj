@@ -36,8 +36,8 @@
       <HintPath>..\..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Kodestruct.Common.0.0.5.1\lib\net45\Kodestruct.Common.dll</HintPath>
+    <Reference Include="Kodestruct.Common, Version=0.0.6.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Kodestruct.Common.0.0.6.1\lib\net45\Kodestruct.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

@@ -35,6 +35,7 @@ namespace Kodestruct.Common.Section
     /// </summary>
     public abstract partial class CompoundShape : ISliceableSection, ISection //SectionBaseClass, 
     {
+        public bool AdjustCoordinateToCentroid { get; set; }
 
         bool momentsOfInertiaCalculated;
         bool elasticPropertiesCalculated;
@@ -75,7 +76,14 @@ namespace Kodestruct.Common.Section
 
         private void CalculateMomentsOfInertia()
         {
-            
+            //List<CompoundShapePart> adjustedRectangles;
+
+            if (AdjustCoordinateToCentroid == true)
+            {
+                AdjustCoordinates();
+            }
+
+
             foreach (var r in RectanglesXAxis)
             {
                 double thisA = r.GetArea();
@@ -99,6 +107,33 @@ namespace Kodestruct.Common.Section
 
             momentsOfInertiaCalculated = true;
         }
+
+        private void AdjustCoordinates()
+        {
+            //move all rectangles to respect centroid
+            Point2D centr = this.GetElasticCentroidCoordinate();
+            RectanglesXAxis =
+                RectanglesXAxis.Select(r =>
+                {
+                    CompoundShapePart shape = new CompoundShapePart(r.b, r.h,
+                        new Point2D(r.InsertionPoint.X - centr.X,
+                        r.InsertionPoint.Y - centr.Y));
+                    return shape;
+                }
+                    )
+                    .ToList();
+
+                RectanglesXAxis =
+                RectanglesXAxis.Select(r =>
+                {
+                    CompoundShapePart shape = new CompoundShapePart(r.b, r.h,
+                        new Point2D(r.InsertionPoint.X,
+                        r.InsertionPoint.Y - centr.X));
+                    return shape;
+                }
+                    )
+                    .ToList();
+                    }
 
         double GetQ_xTop(double y_top)
         {
@@ -250,6 +285,12 @@ namespace Kodestruct.Common.Section
         }
         private void CalculatePlasticProperties()
         {
+
+            if (AdjustCoordinateToCentroid == true)
+            {
+                AdjustCoordinates();
+            }
+
             //sort rectangles collection to make sure that they go from top to bottom
             var sortedRectanglesX = RectanglesXAxis.OrderByDescending(r => r.InsertionPoint.Y).ToList();
             CalculatePlasticSectionModulus(AnalysisAxis.X, sortedRectanglesX);
@@ -275,7 +316,13 @@ namespace Kodestruct.Common.Section
         private void CalculatePlasticSectionModulus(AnalysisAxis axis, 
             List<CompoundShapePart> rects)
         {
-        
+
+            if (AdjustCoordinateToCentroid == true)
+            {
+                AdjustCoordinates();
+            }
+
+
             double Z = 0.0;
             double Atar = A / 2;
             double Sum_hi=0;  //summation of height of previous rectangles
@@ -441,6 +488,12 @@ double distanceFromBottomToPNA = sectionHeight - PNACoordinate;
         /// </summary>
         private void CalculateElasticProperies()
         {
+
+            if (AdjustCoordinateToCentroid == true)
+            {
+                AdjustCoordinates();
+            }
+
             double yt = YMax - Centroid.Y;
             //double Ix = I_x;
             _S_xTop = I_x / yt;

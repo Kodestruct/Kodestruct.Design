@@ -39,6 +39,7 @@ namespace Kodestruct.Common.Section.SectionTypes
         public SectionThinWall(List<ThinWallSegment> Segments)
         {
             this.Segments = Segments;
+            this.AdjustCoordinateToCentroid = true;
         }
 
         public override List<CompoundShapePart> GetCompoundRectangleXAxisList()

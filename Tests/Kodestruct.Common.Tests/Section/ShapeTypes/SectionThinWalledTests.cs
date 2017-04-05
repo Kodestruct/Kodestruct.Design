@@ -89,7 +89,7 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
          }
 
          [Test]
-         public void SectionThinWallReturnsIyMoved()
+         public void SectionThinWallGeneralReturnsI_y()
          {
              List<ThinWallSegment> segments = new List<ThinWallSegment>()
              {
@@ -102,6 +102,42 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
              SectionThinWall shape = new SectionThinWall(segments);
              double Iy = shape.I_y;
              double refValue = 15.3;
+             double actualTolerance = EvaluateActualTolerance(Iy, refValue);
+             Assert.LessOrEqual(actualTolerance, tolerance);
+         }
+
+         [Test]
+         public void SectionThinWallReturnsIxMoved()
+         {
+             List<ThinWallSegment> segments = new List<ThinWallSegment>()
+             {
+                 new ThinWallSegment(new Line2D(new Point2D(-440.05,98.27), new Point2D(-424.15, 98.27)),1.77),
+                 new ThinWallSegment(new Line2D(new Point2D(-432.1,98.27), new Point2D(-432.1,56.04)),1.07),
+                 new ThinWallSegment(new Line2D(new Point2D(-424.15,56.04), new Point2D(-440.05,56.04)),1.77)
+             };
+
+
+             SectionThinWall shape = new SectionThinWall(segments);
+             double Ix = shape.I_x;
+             double refValue = 31100.00;
+             double actualTolerance = EvaluateActualTolerance(Ix, refValue);
+             Assert.LessOrEqual(actualTolerance, tolerance);
+         }
+
+         [Test]
+         public void SectionThinWallReturnsIyMoved()
+         {
+             List<ThinWallSegment> segments = new List<ThinWallSegment>()
+             {
+                 new ThinWallSegment(new Line2D(new Point2D(-440.05,98.27), new Point2D(-424.15, 98.27)),1.77),
+                 new ThinWallSegment(new Line2D(new Point2D(-432.1,98.27), new Point2D(-432.1,56.04)),1.07),
+                 new ThinWallSegment(new Line2D(new Point2D(-424.15,56.04), new Point2D(-440.05,56.04)),1.77)
+             };
+
+
+             SectionThinWall shape = new SectionThinWall(segments);
+             double Iy = shape.I_y;
+             double refValue = 1200.00;
              double actualTolerance = EvaluateActualTolerance(Iy, refValue);
              Assert.LessOrEqual(actualTolerance, tolerance);
          }

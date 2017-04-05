@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kodestruct.Aluminum.AA.Entities.Material
 {
-    public class AluminumMaterialBase
+    public class AluminumMaterialBase : IAluminumMaterial
     {
 
         

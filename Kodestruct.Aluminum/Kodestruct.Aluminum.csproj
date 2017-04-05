@@ -56,13 +56,24 @@
     <Compile Include="AA\AA2015\A_Material\AluminumMaterial.cs" />
     <Compile Include="AA\AA2015\B_DesignRequirements\BucklingConstants.cs" />
     <Compile Include="AA\AA2015\B_DesignRequirements\BucklingElement.cs" />
+    <Compile Include="AA\AA2015\B_DesignRequirements\PostBucklingConstants.cs" />
+    <Compile Include="AA\AA2015\B_DesignRequirements\LocalBuckling\DirectStrengthMethod.cs" />
+    <Compile Include="AA\AA2015\F_Flexure\LocalBuckling.cs" />
+    <Compile Include="AA\AA2015\F_Flexure\YieldingAndRupture.cs" />
+    <Compile Include="AA\AA2015\F_Flexure\AluminumFlexuralMember.cs" />
     <Compile Include="AA\Entities\Enums\BucklingType.cs" />
+    <Compile Include="AA\Entities\Enums\ElementSupportType.cs" />
+    <Compile Include="AA\Entities\Enums\SubElementType.cs" />
     <Compile Include="AA\Entities\Enums\Temper.cs" />
     <Compile Include="AA\Entities\Enums\WeldCase.cs" />
+    <Compile Include="AA\Entities\Exceptions\CompressionFiberPositionException.cs" />
     <Compile Include="AA\Entities\Interfaces\IAluminumBeamFlexure.cs" />
     <Compile Include="AA\Entities\Material\AluminumMaterialBase.cs" />
     <Compile Include="AA\Entities\AluminumDesignElement.cs" />
     <Compile Include="AA\Entities\AluminumLimitStateValue.cs" />
+    <Compile Include="AA\Entities\Interfaces\IAluminumMaterial.cs" />
+    <Compile Include="AA\Entities\Section\AluminumSection.cs" />
+    <Compile Include="AA\Entities\Interfaces\IAluminumSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -79,9 +90,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AA\AA2015\B_DesignRequirements\LocalBuckling\" />
     <Folder Include="AA\AA2015\E_Compression\" />
-    <Folder Include="AA\AA2015\F_Flexure\" />
     <Folder Include="AA\AA2015\G_Shear\" />
   </ItemGroup>
   <ItemGroup>

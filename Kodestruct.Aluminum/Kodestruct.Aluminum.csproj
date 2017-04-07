@@ -62,7 +62,7 @@
     <Compile Include="AA\AA2015\F_Flexure\YieldingAndRupture.cs" />
     <Compile Include="AA\AA2015\F_Flexure\AluminumFlexuralMember.cs" />
     <Compile Include="AA\Entities\Enums\BucklingType.cs" />
-    <Compile Include="AA\Entities\Enums\ElementSupportType.cs" />
+    <Compile Include="AA\Entities\Enums\LateralSupportType.cs" />
     <Compile Include="AA\Entities\Enums\SubElementType.cs" />
     <Compile Include="AA\Entities\Enums\Temper.cs" />
     <Compile Include="AA\Entities\Enums\WeldCase.cs" />

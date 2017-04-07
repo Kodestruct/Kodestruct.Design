@@ -8,7 +8,10 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
 {
     public class AluminumMaterialBase : IAluminumMaterial
     {
+        public AluminumMaterialBase()
+        {
 
+        }
         
         protected virtual void ReadMaterialProperties()
         {

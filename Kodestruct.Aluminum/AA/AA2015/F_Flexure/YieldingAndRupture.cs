@@ -148,7 +148,7 @@ namespace Kodestruct.Aluminum.AA.AA2015.Flexure
                 M_np
             };
 
-            double M = LimitStates.Min();
+            double M = 0.9* LimitStates.Min();
             return new AluminumLimitStateValue(M, true);
         }
 
@@ -163,7 +163,7 @@ namespace Kodestruct.Aluminum.AA.AA2015.Flexure
             double F_tu = Section.Material.F_tu;
             double k_t = Section.Material.k_t;
 
-            double M_nu = Z * F_tu / k_t;
+            double M_nu = 0.75 * Z * F_tu / k_t;
 
             return new AluminumLimitStateValue(M_nu, true);
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kodestruct.Aluminum.AA.Entities.Enums
 {
-    public enum ElementSupportType
+    public enum LateralSupportType
     {
         BothEdges,
         OneEdge,

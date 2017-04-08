@@ -15,6 +15,14 @@ namespace Kodestruct.Aluminum.AA.AA2015.Flexure
     {
 
         public IAluminumSection Section { get; set; }
+        public AluminumFlexuralMember()
+        {
 
+        }
+
+        public AluminumFlexuralMember(IAluminumSection Section)
+        {
+            this.Section = Section;
+        }
     }
 }

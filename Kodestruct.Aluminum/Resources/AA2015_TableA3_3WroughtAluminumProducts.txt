@@ -73,7 +73,7 @@ Alclad 3004,H36,From 0.006 to 0.162,sheet & plate,34,27,21,8,1,8
 5086,O,Up to 2.999,extrusion,35,14,35,14,1,14
 5086,H112,Up to 2.999,extrusion,35,14,35,14,1,14
 5086,O,From 0.02 to 2,sheet & plate,35,14,35,14,1,14
-5086,H111 ,Up to 2.999,extrusion,36,21,    35    ,14,1,14
+5086,H111,Up to 2.999,extrusion,36,21,35,14,1,14
 5086,H112,From 0.188 to 0.499,sheet & plate,36,18,35,14,1,14
 5086,H112,From 0.5 to 1,sheet & plate,35,16,35,14,1,14
 5086,H112,From 1.001 to 2,sheet & plate,35,16,35,14,1,14
@@ -104,7 +104,7 @@ Alclad 3004,H36,From 0.006 to 0.162,sheet & plate,34,27,21,8,1,8
 6005,T5,Up to 1,extrusion,38,35,24,13,1.25,13
 6005A,T61,Up to 1,extrusion,38,35,24,13,1,13
 6061,T6,From 0.01 to 4,sheet & plate,42,35,24,11,1,15
-6061,T651,From 0.01 to 4,sheet & plate,42,35,24,11,1,
+6061,T651,From 0.01 to 4,sheet & plate,42,35,24,11,1,15
 6061,T6,From 0.1 to 0.625,tread plate,42,35,24,11,1,15
 6061,T6,All,extrusion,38,35,24,11,1,15
 6061,T6510,All,extrusion,38,35,24,11,1,15
@@ -115,7 +115,7 @@ Alclad 3004,H36,From 0.006 to 0.162,sheet & plate,34,27,21,8,1,8
 6061,T6,All,pipe & tube,38,35,24,11,1,15
 6061,T6,All,pipe & tube,38,35,24,11,1,15
 6061,T6,Up to 4,forging,38,35,24,11,1,15
-6061,T6, or greater,std structural profile,38,35,24,11,1,15
+6061,T6,0.062 or greater,std structural profile,38,35,24,11,1,15
 6063,T5,Up to 0.5,extrusion,22,16,17,8,1,8
 6063,TS,From 0.501 to 1,extrusion,21,15,17,8,1,8
 6063,T52,Up to 1,extrusion,22,16,17,8,1,8

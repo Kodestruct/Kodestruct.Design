@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kodestruct.Aluminum.AA.AA2015.DesignRequirements.LocalBuckling
+namespace Kodestruct.Aluminum.AA.Entities.Enums
 {
-    public partial class DirectStrengthMethod
+    public enum SubElementType
     {
+        Flat,
+        Curved
     }
 }

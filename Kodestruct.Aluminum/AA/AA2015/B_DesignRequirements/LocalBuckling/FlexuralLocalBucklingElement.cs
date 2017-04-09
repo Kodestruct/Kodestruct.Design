@@ -38,7 +38,7 @@ namespace Kodestruct.Aluminum.AA.AA2015.DesignRequirements.LocalBuckling
             double lamda_2 = GetLambda2();
             double lamda_eq = GetLambda_eq(F_e);
             double E = Material.E;
-            BucklingConstantFactory bcf = new BucklingConstantFactory(BucklingType.FlexuralCompression, this.SubElementType, Material, WeldCase);
+            MaterialBucklingConstantProvider bcf = new MaterialBucklingConstantProvider(BucklingType.FlexuralCompression, this.SubElementType, Material, WeldCase);
             double C_p = bcf.C;
             double B_p = bcf.B;
             double k_2 = bcf.k_2;
@@ -69,7 +69,7 @@ namespace Kodestruct.Aluminum.AA.AA2015.DesignRequirements.LocalBuckling
 
         private double GetLambda2()
         {
-            BucklingConstantFactory bcf = new BucklingConstantFactory(BucklingType.FlexuralCompression, this.SubElementType, Material, WeldCase);
+            MaterialBucklingConstantProvider bcf = new MaterialBucklingConstantProvider(BucklingType.FlexuralCompression, this.SubElementType, Material, WeldCase);
             double C_p = bcf.C;
             double lambda2 = C_p;
             return lambda2;
@@ -77,7 +77,7 @@ namespace Kodestruct.Aluminum.AA.AA2015.DesignRequirements.LocalBuckling
 
         private double GetLambda1()
         {
-            BucklingConstantFactory bcf = new BucklingConstantFactory(BucklingType.FlexuralCompression, this.SubElementType, Material, WeldCase);
+            MaterialBucklingConstantProvider bcf = new MaterialBucklingConstantProvider(BucklingType.FlexuralCompression, this.SubElementType, Material, WeldCase);
             double F_cy = this.Material.F_cy;
             double B_p = bcf.B;
             double D_p = bcf.D;
@@ -92,10 +92,10 @@ namespace Kodestruct.Aluminum.AA.AA2015.DesignRequirements.LocalBuckling
             switch (LateralSupportType)
             {
                 case LateralSupportType.BothEdges:
-                    F_e = ((Math.Pow(Math.PI, 2) * E) / (Math.Pow((1.6 * b * t), 2)));
+                    F_e = ((Math.Pow(Math.PI, 2) * E) / (Math.Pow((1.6 * b / t), 2)));
                     break;
                 case LateralSupportType.OneEdge:
-                    F_e = ((Math.Pow(Math.PI, 2) * E) / (Math.Pow((5.0 * b * t), 2)));
+                    F_e = ((Math.Pow(Math.PI, 2) * E) / (Math.Pow((5.0 * b / t), 2)));
                     break;
                 default:
                     throw new Exception("This value LateralSupportType for variable is not supported");

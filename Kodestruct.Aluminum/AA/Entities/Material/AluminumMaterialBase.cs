@@ -23,15 +23,18 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
         public double F_cy
         {
             get {
-                if (this.Temper.StartsWith("H") && this._IsWelded == false)
+                if (_F_cy==0)
                 {
-                    _F_cy= 0.9*F_ty;
+                    if (this.Temper.StartsWith("H") && this._IsWelded == false)
+                    {
+                        _F_cy = 0.9 * F_ty;
+                    }
+                    else
+                    {
+                        _F_cy = F_ty;
+                    }
+                    
                 }
-                else
-	            {
-                    _F_cy = F_ty;
-	            }
-
                 return _F_cy; }
             set { _F_cy = value; }
         }
@@ -43,7 +46,10 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
         public double F_sy
         {
             get {
-                _F_sy = 0.6 * _F_ty;
+                if (_F_sy ==0)
+                {
+                    _F_sy = 0.6 * _F_ty; 
+                }
                 return _F_sy; }
             set { _F_sy = value; }
         }
@@ -54,7 +60,10 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
         public double  F_su
         {
             get {
-                _F_su = 0.6 * F_tu;
+                if (_F_su==0)
+                {
+                    _F_su = 0.6 * F_tu; 
+                }
                 return _F_su; }
             set { _F_su = value; }
         }
@@ -74,7 +83,10 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
         public double F_ty
         {
             get {
-                ReadMaterialProperties();
+                if (_F_ty ==0)
+                {
+                    ReadMaterialProperties(); 
+                }
                 return _F_ty; }
             set { _F_ty = value; }
         }
@@ -85,7 +97,10 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
         public double F_tyw
         {
             get {
-                ReadMaterialProperties();
+                if (_F_tyw == 0)
+                {
+                    ReadMaterialProperties();
+                }
                 return _F_tyw; }
             set { _F_tyw = value; }
         }
@@ -95,8 +110,11 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
 
         public double F_tu
         {
-            get { 
-                ReadMaterialProperties();
+            get {
+                if (_F_tu == 0)
+                {
+                    ReadMaterialProperties();
+                }
                 return _F_tu; }
             set { _F_tu = value; }
         }
@@ -105,8 +123,11 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
 
         public double F_tuw
         {
-            get { 
-                ReadMaterialProperties();
+            get {
+                if (_F_tuw == 0)
+                {
+                    ReadMaterialProperties();
+                }
                 return _F_tuw; }
             set { _F_tuw = value; }
         }
@@ -116,8 +137,11 @@ namespace Kodestruct.Aluminum.AA.Entities.Material
 
         public double k_t
         {
-            get { 
-                ReadMaterialProperties();
+            get {
+                if (_k_t == 0)
+                {
+                    ReadMaterialProperties();
+                }
                 return _k_t; }
             set { _k_t = value; }
         }

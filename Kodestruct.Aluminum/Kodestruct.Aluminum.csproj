@@ -54,9 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AA\AA2015\A_Material\AluminumMaterial.cs" />
-    <Compile Include="AA\AA2015\B_DesignRequirements\BucklingConstantFactory.cs" />
-    <Compile Include="AA\AA2015\B_DesignRequirements\BucklingElement.cs" />
+    <Compile Include="AA\Entities\Enums\MaterialCase.cs" />
     <Compile Include="AA\AA2015\B_DesignRequirements\LocalBuckling\FlexuralLocalBucklingElement.cs" />
+    <Compile Include="AA\AA2015\B_DesignRequirements\MaterialBucklingConstantProvider.cs" />
     <Compile Include="AA\AA2015\B_DesignRequirements\PostBucklingConstants.cs" />
     <Compile Include="AA\AA2015\F_Flexure\LocalBuckling.cs" />
     <Compile Include="AA\AA2015\F_Flexure\YieldingAndRupture.cs" />

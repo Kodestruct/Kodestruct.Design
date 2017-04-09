@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Kodestruct.Aluminum.AA.AA2015.DesignRequirements
 {
-    public partial class BucklingConstantFactory
+    public partial class MaterialBucklingConstantProvider
     {
 
         private double _k_1;

@@ -107,7 +107,8 @@ namespace Kodestruct.Common.Section
             }
             set { centroidYAxisRect = value; }
         }
-        public CompoundShape(): this(null)
+        public CompoundShape()
+            : this(null)
         {
            
         }
@@ -123,6 +124,10 @@ namespace Kodestruct.Common.Section
             plasticPropertiesCalculated = false;
             this.Name = Name;
 
+            //if (AdjustCoordinateToCentroid == true)
+            //{
+            //    AdjustCoordinates();
+            //}
         }
 
 
@@ -200,13 +205,15 @@ namespace Kodestruct.Common.Section
 
         private void CalculateBasicProperties()
         {
+
             CalculateMinAndMaxCoordinates();
             CalculateCentroidForXAxisRectangles();
             CalculateCentroidForYAxisRectangles();
             basicPropertiesCalculated = true;
         }
 
-        private void CalculateCentroidForXAxisRectangles()
+        private void 
+            CalculateCentroidForXAxisRectangles()
         {
 
             double sumOfAreasX=0;

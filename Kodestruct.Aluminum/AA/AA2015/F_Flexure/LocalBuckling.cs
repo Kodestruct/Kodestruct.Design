@@ -41,7 +41,7 @@ namespace Kodestruct.Aluminum.AA.AA2015.Flexure
             else
             {
                 applicable = true;
-                val = M_n;
+                val = 0.9*M_n;
             }
 
             return new AluminumLimitStateValue(val, applicable);

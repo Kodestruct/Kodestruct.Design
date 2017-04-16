@@ -15,7 +15,7 @@ namespace Kodestruct.Common.Section.SectionTypes
         public SectionCompoundStacked(List<SectionRectangular>Rectangles)
         {
             rectangles = Rectangles;
-            this.AdjustCoordinateToCentroid = true;
+
         }
 
         List<SectionRectangular> rectangles;

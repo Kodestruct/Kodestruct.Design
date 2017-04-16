@@ -124,6 +124,9 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
              Assert.LessOrEqual(actualTolerance, tolerance);
          }
 
+
+
+
          [Test]
          public void SectionThinWallReturnsIyMoved()
          {

@@ -29,6 +29,8 @@ namespace Kodestruct.Common.Section.SectionTypes
     public class SectionThinWall : CompoundShape
     {
         private List<ThinWallSegment> segments;
+        private List<ThinWallSegment> SegmentsCentered;
+
 
         public List<ThinWallSegment> Segments
         {
@@ -36,20 +38,60 @@ namespace Kodestruct.Common.Section.SectionTypes
             set { segments = value; }
         }
 
-        public SectionThinWall(List<ThinWallSegment> Segments)
+        public SectionThinWall(List<ThinWallSegment> Segments): base(null)
         {
             this.Segments = Segments;
-            this.AdjustCoordinateToCentroid = true;
+            AdjustCoordinates();
+        }
+
+
+        private void AdjustCoordinates()
+        {
+
+            //move all rectangles to respect centroid
+            Point2D centr = this.CalculateLineCentroidCoordinate();
+            SegmentsCentered = this.Segments.Select(s =>
+                new ThinWallSegment(new Line2D(
+                    new Point2D(s.Line.StartPoint.X-centr.X,s.Line.StartPoint.Y-centr.Y),
+                    new Point2D(s.Line.EndPoint.X-centr.X,s.Line.EndPoint.Y-centr.Y)),
+                    s.WallThickness)
+                ).ToList();
+
+        }
+
+        private Point2D CalculateLineCentroidCoordinate()
+        {
+
+            double Xcen = this.Segments.Sum(s =>
+            s.Line.Length * s.WallThickness*(s.Line.EndPoint.X + s.Line.StartPoint.X)/2.0);
+
+
+
+            double cenArea = this.Segments.Sum(s =>
+            s.Line.Length * s.WallThickness
+
+            );
+
+            double cenX = Xcen/cenArea;
+
+            double Ycen = this.Segments.Sum(s =>
+            s.Line.Length * s.WallThickness*(s.Line.EndPoint.Y + s.Line.StartPoint.Y)/2.0);
+
+
+            double cenY = Ycen / cenArea;
+
+            return new Point2D(cenX, cenY);
         }
 
         public override List<CompoundShapePart> GetCompoundRectangleXAxisList()
         {
            
             List<ThinWallSegment> YSegments = new List<ThinWallSegment>();
-           
-                List<double> YUnique = GetUniqueYCoordinates(this.Segments);
 
-                List<ThinWallSegment> crossingSegments = GetSubdividedYSegments(YUnique, this.Segments);
+            List<double> YUnique = GetUniqueYCoordinates(SegmentsCentered);
+
+            
+            List<ThinWallSegment> crossingSegments = GetSubdividedYSegments(YUnique, SegmentsCentered);
 
                 List<CompoundShapePart> ProjectedRectangles = GetProjectedYRectangles(crossingSegments);
 
@@ -60,7 +102,7 @@ namespace Kodestruct.Common.Section.SectionTypes
 
         public override List<CompoundShapePart> GetCompoundRectangleYAxisList()
         {
-            List<ThinWallSegment> XSegments = GetRotatedSegments();
+            List<ThinWallSegment> XSegments = GetRotatedSegments(SegmentsCentered);
 
             List<double> YUnique = GetUniqueYCoordinates(XSegments);
 
@@ -73,10 +115,10 @@ namespace Kodestruct.Common.Section.SectionTypes
             return ConsolidatedRectangles;
         }
 
-        private List<ThinWallSegment> GetRotatedSegments()
+        private List<ThinWallSegment> GetRotatedSegments(List<ThinWallSegment> segments)
         {
             //Flip X and Y coordinates
-            List<ThinWallSegment> newSegs = Segments.Select(s =>
+            List<ThinWallSegment> newSegs = segments.Select(s =>
                 {
                     ThinWallSegment sg = new ThinWallSegment(new Line2D(new Point2D(s.Line.StartPoint.Y, s.Line.StartPoint.X), new Point2D(s.Line.EndPoint.Y, s.Line.EndPoint.X)), s.WallThickness);
                     return sg;

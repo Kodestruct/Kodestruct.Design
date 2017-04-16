@@ -39,7 +39,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
         public AngleTests()
         {
             CreateBeam();
-            tolerance = 0.02; //2% can differ from rounding in the manual
+            tolerance = 0.03; //3% can differ from rounding in the manual
         }
 
         double tolerance;

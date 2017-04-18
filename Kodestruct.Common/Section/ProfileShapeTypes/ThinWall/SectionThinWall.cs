@@ -40,8 +40,32 @@ namespace Kodestruct.Common.Section.SectionTypes
 
         public SectionThinWall(List<ThinWallSegment> Segments): base(null)
         {
-            this.Segments = Segments;
+            this.Segments = StraightenSegments(Segments);
             AdjustCoordinates();
+        }
+
+        private List<ThinWallSegment> StraightenSegments(List<ThinWallSegment> OriginalSegments)
+        {
+           // straighten sements that are slightly off axis
+            List<ThinWallSegment> segs = OriginalSegments.Select(s =>
+                {
+                    Line2D lin;
+                    if (Math.Abs((s.Line.StartPoint.X - s.Line.EndPoint.X) / (s.Line.StartPoint.Y - s.Line.EndPoint.Y))<0.01)
+                    {
+                        lin = new Line2D(new Point2D(s.Line.StartPoint.X, s.Line.StartPoint.Y), new Point2D(s.Line.StartPoint.X, s.Line.EndPoint.Y));
+                    }
+                    else if (Math.Abs((s.Line.StartPoint.Y - s.Line.EndPoint.Y) / (s.Line.StartPoint.X - s.Line.EndPoint.X))<0.01)
+	                    {
+                            lin = new Line2D(new Point2D(s.Line.StartPoint.X, s.Line.StartPoint.Y), new Point2D(s.Line.EndPoint.X, s.Line.StartPoint.Y));
+	                    }
+                    else
+                    {
+                        lin = new Line2D(new Point2D(s.Line.StartPoint.X, s.Line.StartPoint.Y), new Point2D(s.Line.EndPoint.X, s.Line.EndPoint.Y));
+                    }
+
+                    return new ThinWallSegment(lin, s.WallThickness);
+                }).ToList();
+            return segs;
         }
 
 

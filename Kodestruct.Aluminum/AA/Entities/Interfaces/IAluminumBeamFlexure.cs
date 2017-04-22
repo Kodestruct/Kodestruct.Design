@@ -14,7 +14,6 @@
    limitations under the License.
    */
 #endregion
-
 using Kodestruct.Common.Section.Interfaces;
 using System;
 using System.Collections.Generic;

@@ -217,57 +217,95 @@ namespace Kodestruct.Common.Section.SectionTypes
         {
 
             List<ThinWallSegment> segments = new List<ThinWallSegment>();
-            for (int i = 0; i < YUnique.Count() - 1; i++)
+            for (int i = 0; i < YUnique.Count(); i++)
             {
-                double DeltaY = YUnique[i + 1] - YUnique[i];
+                //double DeltaY = YUnique[i + 1] - YUnique[i];
 
-                List<ThinWallSegment> crossingSegments = Segs.Where(s =>
+                List<ThinWallSegment> crossingVericalSegments = Segs.Where(s =>
                     {
-                        if (s.Line.YMax == s.Line.YMin)
-	                        {
-		                        if (s.Line.YMin ==YUnique[i])
-	                            {
-		                             return true;
-	                            }
-                                else
-	                            {
-                                    return false;
-	                            }
-	                        }
-                        else
+                        //if this is a level line
+                        if (s.Line.YMax != s.Line.YMin)
                         {
-                            if (s.Line.YMin <= YUnique[i] && s.Line.YMax >= YUnique[i + 1])
+                            if (i != 0)
                             {
-                                return true;
+                                if (s.Line.YMin < YUnique[i] && s.Line.YMax >= YUnique[i])
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    return false;
+                                }
                             }
+                            //if this is the lowest coordinate
                             else
                             {
                                 return false;
                             }
+
+                            //s.Line.YMin <= YUnique[i] & s.Line.YMin >= YUnique[i + 1]
                         }
-                     //s.Line.YMin <= YUnique[i] & s.Line.YMin >= YUnique[i + 1]
+                        else
+                        {
+                            return false;
+                        }
+
+
                     }
-                     
                      ).ToList();
 
-                if (crossingSegments.Count() == 0)
+                if (crossingVericalSegments.Count() == 0)
                 {
                     //if this segment is a gap
-                    segments.Add(new ThinWallSegment(YUnique[i], YUnique[i + 1], 0));
+                    if (i != 0)
+                    {
+                        segments.Add(new ThinWallSegment(YUnique[i-1], YUnique[i], 0));
+                    }
                 }
                 else
                 {
                     //if this segment is NOT a gap
-                    foreach (var s in Segs)
+                    foreach (var s in crossingVericalSegments)
                     {
-                            Line2D subLine = s.Line.GetSubSegment(YUnique[i], YUnique[i + 1]);
+                        if (i != 0)
+                        {
+                            Line2D subLine = s.Line.GetSubSegment(YUnique[i-1], YUnique[i]);
                             ThinWallSegment seg = new ThinWallSegment(subLine, s.WallThickness);
                             segments.Add(seg);
+                        }
+                        else
+                        {
+                            ThinWallSegment seg = new ThinWallSegment(s.Line, s.WallThickness);
+                            segments.Add(seg);
+                        }
                        
                     }
                 }
+
+                List<ThinWallSegment> crossingHorizontalSegments = Segs.Where(s =>
+               {
+                   //if this is a level line
+                   if (s.Line.YMax == s.Line.YMin)
+                   {
+
+                       if (s.Line.YMin == YUnique[i])
+                       {
+                           return true;
+                       }
+                       else
+                       {
+                           return false;
+                       }
+
+                   }
+                   else
+                   {
+                       return false;
+                   }
+               }).ToList();
+                segments.AddRange(crossingHorizontalSegments);
             }
-            return segments;
+            return segments.OrderBy(c => c.Line.StartPoint.Y).ToList();
         }
 
         private List<double> GetUniqueYCoordinates(List<ThinWallSegment> Segments)

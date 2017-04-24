@@ -181,5 +181,23 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
              double actualTolerance = EvaluateActualTolerance(Ix, refValue);
              Assert.LessOrEqual(actualTolerance, tolerance);
          }
+
+         [Test]
+         public void SectionThinWallReturnsIxMoved2Skew()
+         {
+             List<ThinWallSegment> segments = new List<ThinWallSegment>()
+             {
+                 new ThinWallSegment(new Line2D(new Point2D(-36.009*12.0,8.108 *12.0), new Point2D(  -36.009*12.0-21.0, 4.754*12.0)),1.03),
+                 new ThinWallSegment(new Line2D(new Point2D(-36.671*12.0, 8.190*12.0), new Point2D(  -35.346*12.0, 8.190*12.0)),1.77),
+                 new ThinWallSegment(new Line2D(new Point2D(-36.671*12.0 - 21.0, 4.670*12.0), new Point2D(  -35.346*12.0 - 21.0, 4.670*12.0)),1.77)
+             };
+
+
+             SectionThinWall shape = new SectionThinWall(segments);
+             double Ix = shape.I_x;
+             double refValue = 32668.00; //from AutoCAD
+             double actualTolerance = EvaluateActualTolerance(Ix, refValue);
+             Assert.LessOrEqual(actualTolerance, tolerance);
+         }
     }
 }

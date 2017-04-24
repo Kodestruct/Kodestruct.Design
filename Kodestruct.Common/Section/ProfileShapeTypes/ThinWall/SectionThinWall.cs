@@ -204,7 +204,8 @@ namespace Kodestruct.Common.Section.SectionTypes
                     {
                         //SLOPED LINE
                         double angleFromHorizontal = Math.Atan(dy / dx);
-                        p = new CompoundShapePart(dx / Math.Sin(angleFromHorizontal), dy, new Point2D(0, (s.Line.YMax- s.Line.YMin)/2.0));
+                        double t_eff = s.WallThickness / Math.Sin(angleFromHorizontal);
+                        p = new CompoundShapePart(t_eff, dy, new Point2D(0, (s.Line.YMax + s.Line.YMin) / 2.0));
                     }
                 }
 

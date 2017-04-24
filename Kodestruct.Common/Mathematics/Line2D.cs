@@ -131,12 +131,12 @@ namespace Kodestruct.Common.Mathematics
             else
             {
                 double dy1 = YMin - this.YMin;
-                double dy2 = YMax - YMin;
+                double dy2 = YMax - this.YMin;
                 double alpha = this.AngleToVertical;
 
-                double dxMin = YMin - this.YMin;
-                double xmin = XMin + dy1 / Math.Tan(alpha);
-                double xmax = xmin + dy2 / Math.Tan(alpha);
+                //double dxMin = YMin - this.YMin;
+                double xmin =this.XMin + dy1 * Math.Tan(alpha);
+                double xmax =this.XMin + dy2 * Math.Tan(alpha);
 
                 return new Line2D(new Point2D(xmin, YMin), new Point2D(xmax, YMax));
             }

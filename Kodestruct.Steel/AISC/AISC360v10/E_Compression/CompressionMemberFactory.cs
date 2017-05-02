@@ -96,6 +96,29 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
  
             }
 
+            else if (Shape is ISectionRectangular || Shape is ISectionRound)
+            {
+
+                ISteelSection solidSec;
+                if (Shape is ISectionRectangular)
+                {
+                    ISectionRectangular RectangleShape = Shape as ISectionRectangular;
+                    solidSec = new SteelRectangleSection(RectangleShape, Material);
+
+                }
+                else
+                {
+                    ISectionRound rnd = Shape as ISectionRound;
+                    solidSec = new SteelRoundSection(rnd, Material);
+                }
+
+
+                CompressionMemberRectangle SolidShapeSection = new CompressionMemberRectangle(solidSec, L_ex, L_ey, L_ez, log);
+                return SolidShapeSection;
+                
+
+            }
+
             else if (Shape is ISectionTee)
             {
                 ISectionTee TeeShape = Shape as ISectionTee;

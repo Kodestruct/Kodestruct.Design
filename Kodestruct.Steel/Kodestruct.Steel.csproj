@@ -91,6 +91,8 @@
     <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltNutCondition.cs" />
     <Compile Include="AISC\Entities\Enums\HssPlateConnection\HssConcentratedForceType.cs" />
     <Compile Include="AISC\Entities\Enums\HssPlateConnection\TransversePlateType.cs" />
+    <Compile Include="AISC\Entities\Sections\SectionRound.cs" />
+    <Compile Include="AISC\Entities\Sections\SectionRectangle.cs" />
     <Compile Include="AISC\Interfaces\HssPlateConnection\IHssCapPlateConnection.cs" />
     <Compile Include="AISC\Interfaces\HssPlateConnection\IHssTransversePlateConnection.cs" />
     <Compile Include="AISC\Interfaces\HssPlateConnection\IHssLongitudinalPlateConnection.cs" />

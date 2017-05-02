@@ -221,7 +221,40 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                     };
                     break;
 
+                case PunchingPerimeterConfiguration.CornerLeftTop:
+                    
+                    return new List<PerimeterLineSegment>()
+                    {
+                        new PerimeterLineSegment(p3,p4 ),
+                        new PerimeterLineSegment(p4,p1 ),
+                    };
+                break;
 
+                case PunchingPerimeterConfiguration.CornerRightTop:
+
+                return new List<PerimeterLineSegment>()
+                    {
+                        new PerimeterLineSegment(p4,p1 ),
+                        new PerimeterLineSegment(p1,p2 ),
+                    };
+                break;
+                case PunchingPerimeterConfiguration.CornerLeftBottom:
+
+                return new List<PerimeterLineSegment>()
+                    {
+                        new PerimeterLineSegment(p2,p3 ),
+                        new PerimeterLineSegment(p3,p4 ),
+                    };
+                break;
+
+                case PunchingPerimeterConfiguration.CornerRightBottom:
+
+                return new List<PerimeterLineSegment>()
+                    {
+                        new PerimeterLineSegment(p1,p2 ),
+                        new PerimeterLineSegment(p2,p3 ),
+                    };
+                break;
 
                 default:
                     throw new Exception("Unrecognized punching perimeter column type");

@@ -80,7 +80,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy, PunchingPerimeterConfiguration.Interior);
-            double J_y = sec.GetJy();
+            double J_y = sec.GetJy(sec.AdjustedSegments);
 
             double refValue = 27474; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
@@ -103,7 +103,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy,  PunchingPerimeterConfiguration.EdgeLeft);
-            double J_y = sec.GetJy();
+            double J_y = sec.GetJy(sec.AdjustedSegments);
 
             double refValue = 17630; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
@@ -127,7 +127,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 4.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy,  PunchingPerimeterConfiguration.EdgeLeft);
-            double J_y = sec.GetJy();
+            double J_y = sec.GetJy(sec.AdjustedSegments);
 
             double refValue = 13200.0; 
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
@@ -155,6 +155,29 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
             double refValue = 0.36; //from example 
             double actualTolerance = EvaluateActualTolerance(gamma_vy, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
+        /// <summary>
+        /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
+        /// Example D.3
+        /// </summary>
+        [Test]
+        public void CornerSlabReturnsPunchingShearStress()
+        {
+            IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
+            PerimeterFactory f = new PerimeterFactory();
+            double d = 5.62;
+            double cx = 20.00;
+            double cy = 20.0;
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(238 * 1000, -338 * 1000,6000.0, false).v_max;
+
+            double refValue = 192.0; //from example 
+            double actualTolerance = EvaluateActualTolerance(v_u, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);
         }

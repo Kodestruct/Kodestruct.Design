@@ -31,29 +31,32 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         /// <summary>
         /// Shear stress due to unbalanced moment going into the column-slab intersection through varying shear distribution per 421.1R-13 section 8.4.4.2.3 
         /// </summary>
-        /// <param name="M_ux">Moment around X axis normal to slab edge or in the direction of corner bisecting ray. This moment must be reported at column centoid.</param>
-        /// <param name="M_uy">Moment around Y axis parallel to slab edge or in the direction normal to corner bisecting ray. This moment must be reported at column centoid.</param>
+        /// <param name="M_ux_bar">Moment around X axis normal to slab edge or in the direction of corner bisecting ray. This moment must be reported at column centoid.</param>
+        /// <param name="M_uy_bar">Moment around Y axis parallel to slab edge or in the direction normal to corner bisecting ray. This moment must be reported at column centoid.</param>
         /// <param name="V_u">Punching shear force</param>
         /// <param name="AllowSinglePointStressRedistribution">Determines if the reduction of peak stress if the maximum stress occurs at a single point (per ACI 421.1R-13)</param>
         /// <returns>Maximum and minimum stress (maximum is additive to the concentic shear) </returns>
-        public ResultOfShearStressDueToMoment GetCombinedShearStressDueToMomementAndShear(double M_ux, double M_uy,
+        public ResultOfShearStressDueToMoment GetCombinedShearStressDueToMomementAndShear(double M_ux_bar, double M_uy_bar,
             double V_u,  bool AllowSinglePointStressRedistribution=false)
         {
             //ColumnCenter = GetColumnCenter();
 
             double A_c = AdjustedSegments.Sum(s => s.Length) * d;
 
-            double J_x = GetJx();
-            double J_y = GetJy();
-            double J_xy = GetJxy();
+            double J_x_bar = GetJx(AdjustedSegments);   // d times product of inertia of assumed shear critical section about nonprincipal axes x
+            double J_y_bar = GetJy(AdjustedSegments);   // d times product of inertia of assumed shear critical section about nonprincipal axes y
+            double J_xy_bar = GetJxy(AdjustedSegments);
 
-            double thetaRad = Get_thetaRad(J_xy, J_x, J_y);
+            double thetaRad = Get_thetaRad(J_xy_bar, J_x_bar, J_y_bar);
+            //The absolute value of θ is less than π/2; when the value is
+            //positive, θ is measured in the clockwise direction
+
             List<PerimeterLineSegment> RotatedSegments = GetRotatedSegments(AdjustedSegments, thetaRad);
 
             double y_O = GetPunchingPerimeterEccentricityY();
             double x_O = GetPunchingPerimeterEccentricityX();
-            double M_x = M_ux + V_u * y_O;
-            double M_y = M_uy + V_u * x_O;
+            double M_x_bar = M_ux_bar + V_u * y_O;
+            double M_y_bar = M_uy_bar + V_u * x_O;
 
             double l_x = Get_l_x(RotatedSegments);
             double l_y = Get_l_y(RotatedSegments);
@@ -146,6 +149,15 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                     Y = p.Y < YMinCutoff ? YMinCutoff : p.Y;
                 }
 
+                //Calculate    properties with respect to Principal axis
+
+                double J_x = GetJx(RotatedSegments);   // d times product of inertia of assumed shear critical section about PRINCIPAL axes x
+                double J_y = GetJy(RotatedSegments);   // d times product of inertia of assumed shear critical section about PRINCIPAL axes y
+
+                //Adjust moments
+                double M_x = M_x_bar * Math.Cos(thetaRad) - M_y_bar * Math.Sin(thetaRad);
+                double M_y = M_x_bar * Math.Sin(thetaRad) + M_y_bar * Math.Cos(thetaRad);
+
                 double v_u_I = GetShearStressFromMomentAndShear(M_x, M_y, V_u, J_x, J_y, A_c, gamma_vx, gamma_vy, X, Y);
                 shearStressValues.Add(v_u_I);
             }
@@ -165,7 +177,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             double J_x, double J_y, double A_c,
             double gamma_vx, double gamma_vy, double x, double y)
         {
-
+            
 
             double v_u = ((V_u) / (A_c)) + ((gamma_vx * M_ux * y) / (J_x)) + ((gamma_vy * M_uy * x) / (J_y));
 
@@ -395,7 +407,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         private double Get_l_y(List<PerimeterLineSegment> RotatedSegments)
         {
             double YMin = RotatedSegments.Min(s => Math.Min(s.PointI.Y, s.PointJ.Y));
-            double YMax = RotatedSegments.Max(s => Math.Min(s.PointI.Y, s.PointJ.Y));
+            double YMax = RotatedSegments.Max(s => Math.Max(s.PointI.Y, s.PointJ.Y));
             double ly = YMax - YMin;
 
             return ly;
@@ -404,7 +416,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         private double Get_l_x(List<PerimeterLineSegment> RotatedSegments)
         {
             double XMin = RotatedSegments.Min(s => Math.Min(s.PointI.X, s.PointJ.X));
-            double XMax = RotatedSegments.Max(s => Math.Min(s.PointI.X, s.PointJ.X));
+            double XMax = RotatedSegments.Max(s => Math.Max(s.PointI.X, s.PointJ.X));
             double lX = XMax - XMin;
 
             return lX;
@@ -476,9 +488,9 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                 this.ColumnType == PunchingPerimeterConfiguration.CornerRightTop
                 )
             {
-                double J_x_bar = GetJx();
-                double J_y_bar = GetJy();
-                double J_xy_bar = GetJxy();
+                double J_x_bar = GetJx(movedSegments);
+                double J_y_bar = GetJy(movedSegments);
+                double J_xy_bar = GetJxy(movedSegments);
 
                 //421.1R-13 Equation (B-10)
                 double theta = Math.Atan(-2.0 * J_xy_bar / (J_x_bar - J_y_bar));
@@ -503,28 +515,28 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 
         }
 
-        public double GetJxy()
+        public double GetJxy(List<PerimeterLineSegment> segments)
         {
             //421.1R-13 Equation B-11
-            double J_xy = d * AdjustedSegments.Sum(s =>
+            double J_xy = d * segments.Sum(s =>
                 s.Length / 6.0 * (2.0 * s.PointI.X * s.PointI.Y + s.PointI.X * s.PointJ.Y + s.PointJ.X * s.PointI.Y + 2.0 * s.PointJ.X * s.PointJ.Y)
                 );
             return J_xy;
         }
 
-        public double GetJy()
+        public double GetJy(List<PerimeterLineSegment> segments)
         {
             //421.1R-13 Equation B-8
-            double J_y = d * AdjustedSegments.Sum(s =>
+            double J_y = d * segments.Sum(s =>
                 s.Length / 3.0 * (Math.Pow(s.PointI.X, 2.0) + s.PointI.X * s.PointJ.X + Math.Pow(s.PointJ.X, 2.0))
                 );
             return J_y;
         }
 
-        public double GetJx()
+        public double GetJx(List<PerimeterLineSegment> segments)
         {
             //421.1R-13 Equation B-9
-            double J_x = d * AdjustedSegments.Sum(s =>
+            double J_x = d * segments.Sum(s =>
                 s.Length / 3.0 * (Math.Pow(s.PointI.Y, 2.0) + s.PointI.Y * s.PointJ.Y + Math.Pow(s.PointJ.Y, 2.0))
                 );
             return J_x;

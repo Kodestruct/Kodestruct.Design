@@ -204,5 +204,25 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
+
+
+        //[Test]
+        //public void CornerSlabReturnsPunchingShearStressRev1()
+        //{
+        //    IConcreteMaterial mat = this.GetConcreteMaterial(4000, false);
+        //    PerimeterFactory f = new PerimeterFactory();
+        //    double d = 5.62;
+        //    double cx = 20.00;
+        //    double cy = 14.0;
+        //    Point2D ColumnCenter = new Point2D(0, 0);
+        //    PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
+        //    ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
+        //    double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, false).v_max;
+
+        //    double refValue = 192.0; //from example 
+        //    double actualTolerance = EvaluateActualTolerance(v_u, refValue);
+
+        //    Assert.LessOrEqual(actualTolerance, tolerance);
+        //}
     }
 }

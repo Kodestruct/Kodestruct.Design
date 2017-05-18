@@ -51,7 +51,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             //ICalcLogEntry entryStub = mocks.Stub<ICalcLogEntry>();
             MockRepository mocks = new MockRepository();
             log = mocks.Stub<ICalcLog>();
-            tolerance = 0.05; //5% can differ from rounding
+            tolerance = 0.06; //5% can differ from rounding
         }
 
         public IConcreteMaterial GetConcreteMaterial(double fc, bool IsLightWeight)

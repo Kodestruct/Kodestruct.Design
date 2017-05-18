@@ -73,7 +73,17 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 
             PointsI.AddRange(PointsJ);
 
-            List<Point2D> UniquePoints = PointsI.Distinct().ToList();
+            //List<Point2D> UniquePoints = PointsI.Distinct().ToList();
+
+            List<Point2D> UniquePoints = new List<Point2D>();
+            foreach (var p in PointsI)
+            {
+                if (!UniquePoints.Contains(p))
+                {
+                    UniquePoints.Add(p);
+                }
+            }
+
             double YMax = UniquePoints.Max(p => p.Y);
             double YMin = UniquePoints.Min(p => p.Y);
 
@@ -150,13 +160,12 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                 }
 
                 //Calculate    properties with respect to Principal axis
-
                 double J_x = GetJx(RotatedSegments);   // d times product of inertia of assumed shear critical section about PRINCIPAL axes x
                 double J_y = GetJy(RotatedSegments);   // d times product of inertia of assumed shear critical section about PRINCIPAL axes y
 
-                //Adjust moments
-                double M_x = M_x_bar * Math.Cos(thetaRad) - M_y_bar * Math.Sin(thetaRad);
-                double M_y = M_x_bar * Math.Sin(thetaRad) + M_y_bar * Math.Cos(thetaRad);
+                //Adjust moments for principal axis orientation
+                double M_x = M_x_bar * Math.Sin(thetaRad) - M_y_bar * Math.Cos(thetaRad);
+                double M_y = M_x_bar * Math.Cos(thetaRad) + M_y_bar * Math.Sin(thetaRad);
 
                 double v_u_I = GetShearStressFromMomentAndShear(M_x, M_y, V_u, J_x, J_y, A_c, gamma_vx, gamma_vy, X, Y);
                 shearStressValues.Add(v_u_I);
@@ -177,11 +186,81 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             double J_x, double J_y, double A_c,
             double gamma_vx, double gamma_vy, double x, double y)
         {
-            
-
-            double v_u = ((V_u) / (A_c)) + ((gamma_vx * M_ux * y) / (J_x)) + ((gamma_vy * M_uy * x) / (J_y));
+            //Adjust signs consistent with sign convention
+            double M_uxA = AdjustMomentX(M_ux);
+            double M_uyA = AdjustMomentY(M_uy);
+            double v_u = ((V_u) / (A_c)) + ((gamma_vx * M_uxA * y) / (J_x)) + ((gamma_vy * M_uyA * x) / (J_y));
 
             return v_u;
+        }
+
+        private double AdjustMomentY(double M_uy)
+        {
+
+            switch (ColumnType)
+            {
+                case PunchingPerimeterConfiguration.EdgeLeft:
+                    return M_uy;
+                    break;
+                case PunchingPerimeterConfiguration.EdgeRight:
+                    return -M_uy;
+                    break;
+                case PunchingPerimeterConfiguration.EdgeTop:
+                    return M_uy;
+                    break;
+                case PunchingPerimeterConfiguration.EdgeBottom:
+                    return M_uy;
+                    break;
+                case PunchingPerimeterConfiguration.CornerLeftTop:
+                    return M_uy;
+                    break;
+                case PunchingPerimeterConfiguration.CornerRightTop:
+                    return M_uy;
+                    break;
+                case PunchingPerimeterConfiguration.CornerRightBottom:
+                    return -M_uy;
+                    break;
+                case PunchingPerimeterConfiguration.CornerLeftBottom:
+                    return -M_uy;
+                    break;
+                default:
+                    return M_uy;
+                    break;
+            }
+        }
+
+        private double AdjustMomentX(double M_ux)
+        {
+            switch (ColumnType)
+            {
+                case PunchingPerimeterConfiguration.EdgeLeft:
+                    return M_ux;
+                    break;
+                case PunchingPerimeterConfiguration.EdgeRight:
+                    return M_ux;
+                    break;
+                case PunchingPerimeterConfiguration.EdgeTop:
+                    return -M_ux;
+                    break;
+                case PunchingPerimeterConfiguration.EdgeBottom:
+                    return M_ux;
+                    break;
+                case PunchingPerimeterConfiguration.CornerLeftTop:
+                    return -M_ux;
+                    break;
+                case PunchingPerimeterConfiguration.CornerRightTop:
+                    return M_ux;
+                    break;
+                case PunchingPerimeterConfiguration.CornerRightBottom:
+                    return M_ux;
+                    break;
+                case PunchingPerimeterConfiguration.CornerLeftBottom:
+                    return -M_ux;
+                    break;
+                default:
+                    return M_ux;
+                    break;
+            }
         }
 
         #region Factor used to determine unbalanced moment

@@ -163,9 +163,9 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                 double J_x = GetJx(RotatedSegments);   // d times product of inertia of assumed shear critical section about PRINCIPAL axes x
                 double J_y = GetJy(RotatedSegments);   // d times product of inertia of assumed shear critical section about PRINCIPAL axes y
 
-                //Adjust moments for principal axis orientation
-                double M_x = M_x_bar * Math.Sin(thetaRad) - M_y_bar * Math.Cos(thetaRad);
-                double M_y = M_x_bar * Math.Cos(thetaRad) + M_y_bar * Math.Sin(thetaRad);
+                //Adjust moments for principal axis orientation (ACCOUNTING FOR THE LOCAL AXIS PER ACI 421)
+                double M_y = M_x_bar * Math.Sin(thetaRad) - M_y_bar * Math.Cos(thetaRad);
+                double M_x = M_y_bar * Math.Cos(thetaRad) + M_y_bar * Math.Sin(thetaRad);
 
                 double v_u_I = GetShearStressFromMomentAndShear(M_x, M_y, V_u, J_x, J_y, A_c, gamma_vx, gamma_vy, X, Y);
                 shearStressValues.Add(v_u_I);
@@ -187,81 +187,81 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             double gamma_vx, double gamma_vy, double x, double y)
         {
             //Adjust signs consistent with sign convention
-            double M_uxA = AdjustMomentX(M_ux);
-            double M_uyA = AdjustMomentY(M_uy);
+            double M_uxA =-M_ux ;//AdjustMomentX(M_ux);
+            double M_uyA = M_uy;//AdjustMomentY(M_uy);
             double v_u = ((V_u) / (A_c)) + ((gamma_vx * M_uxA * y) / (J_x)) + ((gamma_vy * M_uyA * x) / (J_y));
 
             return v_u;
         }
 
-        private double AdjustMomentY(double M_uy)
-        {
+        //private double AdjustMomentY(double M_uy)
+        //{
 
-            switch (ColumnType)
-            {
-                case PunchingPerimeterConfiguration.EdgeLeft:
-                    return M_uy;
-                    break;
-                case PunchingPerimeterConfiguration.EdgeRight:
-                    return -M_uy;
-                    break;
-                case PunchingPerimeterConfiguration.EdgeTop:
-                    return M_uy;
-                    break;
-                case PunchingPerimeterConfiguration.EdgeBottom:
-                    return M_uy;
-                    break;
-                case PunchingPerimeterConfiguration.CornerLeftTop:
-                    return M_uy;
-                    break;
-                case PunchingPerimeterConfiguration.CornerRightTop:
-                    return M_uy;
-                    break;
-                case PunchingPerimeterConfiguration.CornerRightBottom:
-                    return -M_uy;
-                    break;
-                case PunchingPerimeterConfiguration.CornerLeftBottom:
-                    return -M_uy;
-                    break;
-                default:
-                    return M_uy;
-                    break;
-            }
-        }
+        //    switch (ColumnType)
+        //    {
+        //        case PunchingPerimeterConfiguration.EdgeLeft:
+        //            return M_uy;
+        //            break;
+        //        case PunchingPerimeterConfiguration.EdgeRight:
+        //            return -M_uy;
+        //            break;
+        //        case PunchingPerimeterConfiguration.EdgeTop:
+        //            return M_uy;
+        //            break;
+        //        case PunchingPerimeterConfiguration.EdgeBottom:
+        //            return M_uy;
+        //            break;
+        //        case PunchingPerimeterConfiguration.CornerLeftTop:
+        //            return M_uy;
+        //            break;
+        //        case PunchingPerimeterConfiguration.CornerRightTop:
+        //            return M_uy;
+        //            break;
+        //        case PunchingPerimeterConfiguration.CornerRightBottom:
+        //            return -M_uy;
+        //            break;
+        //        case PunchingPerimeterConfiguration.CornerLeftBottom:
+        //            return -M_uy;
+        //            break;
+        //        default:
+        //            return M_uy;
+        //            break;
+        //    }
+        //}
 
-        private double AdjustMomentX(double M_ux)
-        {
-            switch (ColumnType)
-            {
-                case PunchingPerimeterConfiguration.EdgeLeft:
-                    return M_ux;
-                    break;
-                case PunchingPerimeterConfiguration.EdgeRight:
-                    return M_ux;
-                    break;
-                case PunchingPerimeterConfiguration.EdgeTop:
-                    return -M_ux;
-                    break;
-                case PunchingPerimeterConfiguration.EdgeBottom:
-                    return M_ux;
-                    break;
-                case PunchingPerimeterConfiguration.CornerLeftTop:
-                    return -M_ux;
-                    break;
-                case PunchingPerimeterConfiguration.CornerRightTop:
-                    return M_ux;
-                    break;
-                case PunchingPerimeterConfiguration.CornerRightBottom:
-                    return M_ux;
-                    break;
-                case PunchingPerimeterConfiguration.CornerLeftBottom:
-                    return -M_ux;
-                    break;
-                default:
-                    return M_ux;
-                    break;
-            }
-        }
+        //private double AdjustMomentX(double M_ux)
+        //{
+        //    switch (ColumnType)
+        //    {
+        //        case PunchingPerimeterConfiguration.EdgeLeft:
+        //            return M_ux;
+        //            break;
+        //        case PunchingPerimeterConfiguration.EdgeRight:
+        //            return M_ux;
+        //            break;
+        //        case PunchingPerimeterConfiguration.EdgeTop:
+        //            return -M_ux;
+        //            break;
+        //        case PunchingPerimeterConfiguration.EdgeBottom:
+        //            return M_ux;
+        //            break;
+        //        case PunchingPerimeterConfiguration.CornerLeftTop:
+        //            return -M_ux;
+        //            break;
+        //        case PunchingPerimeterConfiguration.CornerRightTop:
+        //            return M_ux;
+        //            break;
+        //        case PunchingPerimeterConfiguration.CornerRightBottom:
+        //            return M_ux;
+        //            break;
+        //        case PunchingPerimeterConfiguration.CornerLeftBottom:
+        //            return -M_ux;
+        //            break;
+        //        default:
+        //            return M_ux;
+        //            break;
+        //    }
+        //}
 
         #region Factor used to determine unbalanced moment
         public double Get_gamma_vy(double l_x, double l_y)
@@ -505,6 +505,10 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         #region Principal axis
         private List<PerimeterLineSegment> GetRotatedSegments(List<PerimeterLineSegment> adjustedSegments, double thetaRad)
         {
+
+            List<PerimeterLineSegment> RotatedSegments = new List<PerimeterLineSegment>();
+
+
             if (ColumnType == PunchingPerimeterConfiguration.CornerLeftBottom ||
                 ColumnType == PunchingPerimeterConfiguration.CornerLeftTop ||
                 ColumnType == PunchingPerimeterConfiguration.CornerRightBottom ||
@@ -512,20 +516,25 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             {
 
 
-                List<PerimeterLineSegment> RotatedSegments = new List<PerimeterLineSegment>();
+                
+                List<PerimeterLineSegment> RotatedSegmentsInLocalAxis = new List<PerimeterLineSegment>();
+
                 foreach (var seg in adjustedSegments)
                 {
                     Point2D pi = GetRotatedPoint(seg.PointI, thetaRad);
                     Point2D pj = GetRotatedPoint(seg.PointJ, thetaRad);
                     PerimeterLineSegment newSeg = new PerimeterLineSegment(pi, pj);
-                    RotatedSegments.Add(newSeg);
+                    RotatedSegments.Add(newSeg.GetFlippedCoordinateClone()); //flip X and Y coordinates
                 }
-                return RotatedSegments;
+                
             }
             else
             {
-                return adjustedSegments;
+                //TODO: ROTATE EDGE COORDINATES
+                RotatedSegments= adjustedSegments;
             }
+
+            return RotatedSegments;
         }
 
         private Point2D GetRotatedPoint(Point2D point2D, double thetaRad)

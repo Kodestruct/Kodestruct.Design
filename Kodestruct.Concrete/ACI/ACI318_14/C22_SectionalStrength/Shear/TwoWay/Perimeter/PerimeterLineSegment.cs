@@ -93,8 +93,13 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         }
         #endregion
         
-                
-
+        public PerimeterLineSegment GetFlippedCoordinateClone()
+        {
+            return new PerimeterLineSegment(
+                new Point2D(PointI.Y,PointI.X),
+                new Point2D(PointJ.Y, PointJ.X)
+                );
+        }
 
     }
 }

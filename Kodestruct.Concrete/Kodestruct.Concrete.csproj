@@ -118,8 +118,8 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PunchingPerimeterConfiguration.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PunchingPerimeterData.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\PunchingShearStrength.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\FractionOfUnbalancedMoment.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\CriticalSectionProperties.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\FractionOfUnbalancedMoment.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\PrincipalAxis.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\PunchingShearWithMoment.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\ConcreteSectionTorsion.cs" />

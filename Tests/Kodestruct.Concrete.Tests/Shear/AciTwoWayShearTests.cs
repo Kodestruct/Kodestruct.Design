@@ -40,30 +40,31 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 
         
         }
-        ///// <summary>
-        ///// MacGregor, Wight. Reinforced concrete. 6th edition
-        ///// Example 13-13
-        ///// </summary>
-        //[Test]
-        //public void SlabPunchingMomentAndShearReturnsStressMG()
-        //{
-        //    IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
-        //    PerimeterFactory f = new PerimeterFactory();
-        //    double d = 5.5;
-        //    double cx = 12.0;
-        //    double cy = 16.0;
-        //    Point2D ColumnCenter = new Point2D(0, 0);
-        //    PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 0.0,ColumnCenter);
-        //    ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy,  PunchingPerimeterConfiguration.EdgeLeft);
-        //    double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0, 45600, 35300, false).v_max / 1000.0; //note: moment is adjusted to be at column centroid
+        /// <summary>
+        /// MacGregor, Wight. Reinforced concrete. 6th edition
+        /// Example 13-13
+        /// </summary>
+        [Test]
+        public void SlabPunchingMomentAndShearReturnsStressMG()
+        {
+            IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
+            PerimeterFactory f = new PerimeterFactory();
+            double d = 5.5;
+            double cx = 12.0;
+            double cy = 16.0;
+            Point2D ColumnCenter = new Point2D(0, 0);
+            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.EdgeLeft);
+            double M_u = 6400.0 * 2.6; //MacGregor reduces unbalanced moment to 6.4 kip*ft. Kodestruct makes adjustment for gamma so 6.4 is multipled by 1 / gamma_v
+            double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0, M_u, 35300, false).v_max / 1000.0; //note: moment is adjusted to be at column centroid
 
-        //    double refValue = 0.144; //from example
-        //    double actualTolerance = EvaluateActualTolerance(phi_v_c, refValue);
+            double refValue = 0.144; //from example
+            double actualTolerance = EvaluateActualTolerance(phi_v_c, refValue);
 
-        //    Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.LessOrEqual(actualTolerance, tolerance);
 
 
-        //}
+        }
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 

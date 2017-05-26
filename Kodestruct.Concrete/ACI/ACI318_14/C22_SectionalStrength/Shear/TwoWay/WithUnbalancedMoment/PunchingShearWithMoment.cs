@@ -37,7 +37,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         /// <param name="AllowSinglePointStressRedistribution">Determines if the reduction of peak stress if the maximum stress occurs at a single point (per ACI 421.1R-13)</param>
         /// <returns>Maximum and minimum stress (maximum is additive to the concentic shear) </returns>
         public ResultOfShearStressDueToMoment GetCombinedShearStressDueToMomementAndShear(double M_ux_bar, double M_uy_bar,
-            double V_u,  bool AllowSinglePointStressRedistribution=false)
+            double V_u, double gamma_f_x = 0, double gamma_f_y = 0, bool AllowSinglePointStressRedistribution = false)
         {
             //ColumnCenter = GetColumnCenter();
 
@@ -55,15 +55,19 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 
             double y_O = GetPunchingPerimeterEccentricityY();
             double x_O = GetPunchingPerimeterEccentricityX();
-            double M_x_bar = M_ux_bar + V_u * y_O;
-            double M_y_bar = M_uy_bar + V_u * x_O;
+            double M_x_bar = M_ux_bar; //+ V_u * y_O; Ignore beneficial effects of shear force eccentricity because for high-shear low moment cases the moment reverses
+            double M_y_bar = M_uy_bar; //+V_u * x_O; Ignore beneficial effects of shear force eccentricity because for high-shear low moment cases the moment reverses
 
             double l_x = Get_l_x(RotatedSegments);
             double l_y = Get_l_y(RotatedSegments);
 
             //calculate gammas
-            double gamma_vx = Get_gamma_vx(l_x, l_y);
-            double gamma_vy = Get_gamma_vy(l_x, l_y);
+
+
+            //double gamma_vx = Get_gamma_vx(l_x, l_y);
+            //double gamma_vy = Get_gamma_vy(l_x, l_y);
+
+
 
             List<double> shearStressValues = new List<double>();
 

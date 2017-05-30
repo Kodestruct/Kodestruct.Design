@@ -28,7 +28,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
     public partial class ConcreteSectionTwoWayShear
     {
 
-        #region Shear strength
+        #region Concrete Shear strength
         /// <summary>
         /// Shear strength (as stress) per table 22.6.5.2
         /// </summary>
@@ -130,5 +130,6 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 
 
         #endregion
+
     }
 }

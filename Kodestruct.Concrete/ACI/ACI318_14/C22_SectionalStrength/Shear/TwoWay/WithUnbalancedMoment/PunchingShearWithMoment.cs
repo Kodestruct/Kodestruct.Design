@@ -31,13 +31,15 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         /// <summary>
         /// Shear stress due to unbalanced moment going into the column-slab intersection through varying shear distribution per 421.1R-13 section 8.4.4.2.3 
         /// </summary>
-        /// <param name="M_ux_bar">Moment around X axis normal to slab edge or in the direction of corner bisecting ray. This moment must be reported at column centoid.</param>
-        /// <param name="M_uy_bar">Moment around Y axis parallel to slab edge or in the direction normal to corner bisecting ray. This moment must be reported at column centoid.</param>
+        /// <param name="M_ux_bar">Moment around X axis normal to slab edge or in the direction of corner bisecting ray. This moment must be reported at punching perimeter centoid.</param>
+        /// <param name="M_uy_bar">Moment around Y axis parallel to slab edge or in the direction normal to corner bisecting ray. This moment must be reported at punching perimeter centoid.</param>
         /// <param name="V_u">Punching shear force</param>
+        /// <param name="gamma_v_x">Portion of unbalanced moment around X axis (normal to slab edge) to be transferred by shear</param>
+        /// <param name="gamma_v_y">Portion of unbalanced moment around Y axis (parallel to slab edge or in the direction normal to corner bisecting ray) to be transferred by shear</param>
         /// <param name="AllowSinglePointStressRedistribution">Determines if the reduction of peak stress if the maximum stress occurs at a single point (per ACI 421.1R-13)</param>
         /// <returns>Maximum and minimum stress (maximum is additive to the concentic shear) </returns>
         public ResultOfShearStressDueToMoment GetCombinedShearStressDueToMomementAndShear(double M_ux_bar, double M_uy_bar,
-            double V_u, double gamma_f_x = 0, double gamma_f_y = 0, bool AllowSinglePointStressRedistribution = false)
+            double V_u, double gamma_v_x = 0, double gamma_v_y = 0, bool AllowSinglePointStressRedistribution = false)
         {
             //ColumnCenter = GetColumnCenter();
 
@@ -66,6 +68,26 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
 
             //double gamma_vx = Get_gamma_vx(l_x, l_y);
             //double gamma_vy = Get_gamma_vy(l_x, l_y);
+
+
+            double gamma_vx ;
+            double gamma_vy;
+
+            if (gamma_v_x > 1.0 || gamma_v_y>1)
+            {
+                throw new Exception("Invalid value for gamma_v_x or gamma_v_y. One of these values is more than 1.0");
+            }
+            else if (gamma_v_x < 0.0 || gamma_v_y < 0.0)
+            {
+                throw new Exception("Invalid value for gamma_v_x or gamma_v_y. One of these values less than 0.0");
+            }
+            else
+            {
+                //gamma_vx = Get_gamma_vx(l_x, l_y);
+                //gamma_vy = Get_gamma_vy(l_x, l_y);
+                gamma_vx = gamma_v_x;
+                gamma_vy = gamma_v_y;
+            }
 
 
 

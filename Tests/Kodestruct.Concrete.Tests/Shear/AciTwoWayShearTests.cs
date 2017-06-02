@@ -56,7 +56,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.EdgeLeft);
             double M_u = 6400.0 * 2.6; //MacGregor reduces unbalanced moment to 6.4 kip*ft. Kodestruct makes adjustment for gamma so 6.4 is multipled by 1 / gamma_v
-            double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0, M_u, 35300, false).v_max / 1000.0; //note: moment is adjusted to be at column centroid
+            double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0, M_u, 35300).v_max / 1000.0; //note: moment is adjusted to be at column centroid
 
             double refValue = 0.144; //from example
             double actualTolerance = EvaluateActualTolerance(phi_v_c, refValue);
@@ -127,7 +127,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.EdgeLeft);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0* 1000, 1720 * 1000, 36000, false).v_min;
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0* 1000, 1720 * 1000, 36000).v_min;
 
             double refValue = -338; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
@@ -266,7 +266,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(-238 * 1000, 338 * 1000,6000.0, false).v_max;
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(-238 * 1000, 338 * 1000,6000.0).v_max;
 
             double refValue = 192.0; //from example 
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
@@ -289,7 +289,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy, PunchingPerimeterConfiguration.Interior);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0, 600*1000, 110*1000,false).v_max;
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0, 600*1000, 110*1000).v_max;
 
             double refValue = 294; //from example 
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
@@ -309,7 +309,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, false).v_max;
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0).v_max;
 
             double refValue = 935; 
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
@@ -328,7 +328,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerRightTop);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, false).v_max;
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0).v_max;
 
             double refValue = 935;
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
@@ -347,7 +347,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftBottom);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, false).v_max;
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0).v_max;
 
             double refValue = 935;
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
@@ -367,7 +367,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerRightBottom);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, false).v_max;
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0).v_max;
 
             double refValue = 935;
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);

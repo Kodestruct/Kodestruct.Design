@@ -168,12 +168,13 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                 double J_y = GetJy(RotatedSegments);   // d times product of inertia of assumed shear critical section about PRINCIPAL axes y
 
                 //Adjust moments for principal axis orientation (ACCOUNTING FOR THE LOCAL AXIS PER ACI 421)
+                //Follow Fig B.1 (a) (b) and (c) for sign convention
                 double M_y; 
                 double M_x; 
                 if (thetaRad!=0)
                 {
-                    M_y = M_x_bar * Math.Sin(thetaRad) - M_y_bar * Math.Cos(thetaRad);
-                    M_x = M_x_bar * Math.Cos(thetaRad) + M_y_bar * Math.Sin(thetaRad);
+                    M_y = M_x_bar * Math.Sin(thetaRad) + M_y_bar * Math.Cos(thetaRad);
+                    M_x = M_x_bar * Math.Cos(thetaRad) - M_y_bar * Math.Sin(thetaRad);
                 }
                 else
                 {
@@ -201,7 +202,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             double gamma_vx, double gamma_vy, double x, double y)
         {
             //Adjust signs consistent with sign convention
-            double M_uxA =-M_ux ;//AdjustMomentX(M_ux);
+            double M_uxA = M_ux ;//AdjustMomentX(M_ux);
             double M_uyA = M_uy;//AdjustMomentY(M_uy);
             double v_u = ((V_u) / (A_c)) + ((gamma_vx * M_uxA * y) / (J_x)) + ((gamma_vy * M_uyA * x) / (J_y));
 

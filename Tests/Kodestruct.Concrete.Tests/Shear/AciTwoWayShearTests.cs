@@ -1,4 +1,4 @@
-//Sample license text.
+ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -266,7 +266,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(-238 * 1000, 338 * 1000,6000.0).v_max;
+            double M_uy = 381.0*1000; // moment with adjustment for perimeter eccentricity
+            double M_ux = -195.0 * 1000; // moment with adjustment for perimeter eccentricity
+
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(M_ux, M_uy,6000.0,0.4,0.267).v_max;
 
             double refValue = 192.0; //from example 
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);

@@ -1,4 +1,4 @@
-//Sample license text.
+ 
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

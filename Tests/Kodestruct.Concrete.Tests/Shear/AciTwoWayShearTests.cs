@@ -55,8 +55,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.EdgeLeft, cx, cy, d, 4.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.EdgeLeft);
-            double M_u = 6400.0 * 2.6; //MacGregor reduces unbalanced moment to 6.4 kip*ft. Kodestruct makes adjustment for gamma so 6.4 is multipled by 1 / gamma_v
-            double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0, M_u, 35300).v_max / 1000.0; //note: moment is adjusted to be at column centroid
+            double gamma_v = 1.0 - 0.616;
+            double M_u = 6400.0/ gamma_v*12;
+            double V_u = 35300.0;
+            double phi_v_c = sec.GetCombinedShearStressDueToMomementAndShear(0, M_u, V_u,0, gamma_v).v_max / 1000.0; //note: moment is adjusted to be at column centroid
 
             double refValue = 0.144; //from example
             double actualTolerance = EvaluateActualTolerance(phi_v_c, refValue);
@@ -266,8 +268,8 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
-            double M_uy = 381.0*1000; // moment with adjustment for perimeter eccentricity
-            double M_ux = -195.0 * 1000; // moment with adjustment for perimeter eccentricity
+            double M_uy = -381.0*1000; // moment with adjustment for perimeter eccentricity
+            double M_ux = 195.0 * 1000; // moment with adjustment for perimeter eccentricity
 
             double v_u = sec.GetCombinedShearStressDueToMomementAndShear(M_ux, M_uy,6000.0,0.4,0.267).v_max;
 
@@ -292,7 +294,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             Point2D ColumnCenter = new Point2D(0, 0);
             PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.Interior, cx, cy, d, 0.0, 0.0, ColumnCenter);
             ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear( data, d, cx, cy, PunchingPerimeterConfiguration.Interior);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0, 600*1000, 110*1000).v_max;
+            double gamma_vx = 0.0;
+            double gamma_vy = 0.36; //from example
+            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0, 600*1000, 110*1000, gamma_vx, gamma_vy).v_max;
 
             double refValue = 294; //from example 
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
@@ -301,8 +305,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         }
 
 
+
         [Test]
-        public void CornerSlabReturnsPunchingShearStress_UpperLeft()
+        public void CornerSlabReturnsPunchingShearStressEqualForConfigurations()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(4000, false);
             PerimeterFactory f = new PerimeterFactory();
@@ -310,72 +315,35 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double cx = 20.00;
             double cy = 14.0;
             Point2D ColumnCenter = new Point2D(0, 0);
-            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0).v_max;
 
-            double refValue = 935; 
-            double actualTolerance = EvaluateActualTolerance(v_u, refValue);
+            //_UpperRight
+            PunchingPerimeterData data_UpperRight = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec_UpperRight = new ConcreteSectionTwoWayShear(data_UpperRight, d, cx, cy, PunchingPerimeterConfiguration.CornerRightTop);
+            double v_u_UpperRight = sec_UpperRight.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000,0,1.0,1.0).v_max;
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
-        }
+            //_LowerLeft
+            PunchingPerimeterData data_LowerLeft = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec_LowerLeft = new ConcreteSectionTwoWayShear(data_LowerLeft, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftBottom);
+            double v_u_LowerLeft = sec_LowerLeft.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, 1.0, 1.0).v_max;
 
-        [Test]
-        public void CornerSlabReturnsPunchingShearStress_UpperRight()
-        {
-            IConcreteMaterial mat = this.GetConcreteMaterial(4000, false);
-            PerimeterFactory f = new PerimeterFactory();
-            double d = 5.62;
-            double cx = 20.00;
-            double cy = 14.0;
-            Point2D ColumnCenter = new Point2D(0, 0);
-            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerRightTop);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0).v_max;
+            //_LowerRight
+            PunchingPerimeterData data_LowerRight = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec_LowerRight = new ConcreteSectionTwoWayShear(data_LowerRight, d, cx, cy, PunchingPerimeterConfiguration.CornerRightBottom);
+            double v_u_LowerRight = sec_LowerRight.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, 1.0, 1.0).v_max;
 
-            double refValue = 935;
-            double actualTolerance = EvaluateActualTolerance(v_u, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
-        }
+            //_UpperLeft
+            PunchingPerimeterData data_UpperLeft = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
+            ConcreteSectionTwoWayShear sec_UpperLeft = new ConcreteSectionTwoWayShear(data_UpperLeft, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
+            double v_u_UpperLeft = sec_UpperLeft.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, 1.0, 1.0).v_max;
 
-        [Test]
-        public void CornerSlabReturnsPunchingShearStress_LowerLeft()
-        {
-            IConcreteMaterial mat = this.GetConcreteMaterial(4000, false);
-            PerimeterFactory f = new PerimeterFactory();
-            double d = 5.62;
-            double cx = 20.00;
-            double cy = 14.0;
-            Point2D ColumnCenter = new Point2D(0, 0);
-            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftBottom);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0).v_max;
-
-            double refValue = 935;
-            double actualTolerance = EvaluateActualTolerance(v_u, refValue);
-
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.AreEqual(v_u_UpperRight, v_u_LowerLeft);
+            Assert.AreEqual(v_u_UpperRight, v_u_LowerRight);
+            Assert.AreEqual(v_u_UpperRight, v_u_UpperLeft);
         }
 
 
-        [Test]
-        public void CornerSlabReturnsPunchingShearStress_LowerRight()
-        {
-            IConcreteMaterial mat = this.GetConcreteMaterial(4000, false);
-            PerimeterFactory f = new PerimeterFactory();
-            double d = 5.62;
-            double cx = 20.00;
-            double cy = 14.0;
-            Point2D ColumnCenter = new Point2D(0, 0);
-            PunchingPerimeterData data = f.GetPerimeterData(PunchingPerimeterConfiguration.CornerLeftTop, cx, cy, d, 0.0, 0.0, ColumnCenter);
-            ConcreteSectionTwoWayShear sec = new ConcreteSectionTwoWayShear(data, d, cx, cy, PunchingPerimeterConfiguration.CornerRightBottom);
-            double v_u = sec.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0).v_max;
 
-            double refValue = 935;
-            double actualTolerance = EvaluateActualTolerance(v_u, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
-        }
     }
 }

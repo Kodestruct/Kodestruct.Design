@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Steel</id>
-    <version>0.0.6.1</version>
+    <version>0.0.8.1</version>
     <title>Kodestruct.Steel</title>
     <authors>Konstantin Udilovich</authors>
     <description>Structural engineering automation library. Components for structural steel element and connection design for buildings and other structures, per AISC 360 standard.</description>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/Kodestruct/Kodestruct.Design/master/Kodestruct.Steel/LOGOS_nuget_Steel_small.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <developmentDependency>true</developmentDependency>
-    <releaseNotes>Added rectangular and round compression members</releaseNotes>
+    <releaseNotes>Minor update to affected element in  flexure</releaseNotes>
     <copyright>Copyright Kodestruct Inc © 2015</copyright>
     <frameworkAssemblies />
     <dependencies>

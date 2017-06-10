@@ -36,72 +36,10 @@ namespace Kodestruct.Loads.ASCE.ASCE7_10.WindLoads.Building.DirectionalProcedure
 
             double CpMax = Math.Max(Math.Abs(CpPos), Math.Abs(CpNeg));
             
-            #region Cp
-            ICalcLogEntry CpEntry = new CalcLogEntry();
-            CpEntry.ValueName = "Cp";
-            CpEntry.AddDependencyValue("A", Math.Round(A_trib, 3));
-            CpEntry.AddDependencyValue("h", Math.Round(h, 3));
-            CpEntry.AddDependencyValue("theta", Math.Round(theta, 3));
-            CpEntry.AddDependencyValue("Gcp", Math.Round(CpPos, 3));
-            CpEntry.AddDependencyValue("GcpNeg", Math.Round(CpNeg, 3));
-            CpEntry.Reference = "";
-            CpEntry.DescriptionReference = SelectTemplate(h,theta,Zone);
-            CpEntry.FormulaID = null; //reference to formula from code
-            CpEntry.VariableValue = Math.Round(CpMax, 3).ToString();
-            #endregion
-            this.AddToLog(CpEntry);
-
             double a = GetCornerZoneDimension(B, L, h);
             CCPressureResult result = new CCPressureResult(CpPos, CpNeg, a);
             return result;
 
-        }
-        private string SelectTemplate(double h, double theta, WindWallCladdingZone Zone)
-        {
-            string templatePath = null;
-
-            if (h<=60)
-            {
-                if (theta>10)
-                {
-                    switch (Zone)
-                    {
-                        case WindWallCladdingZone.Corner:
-                            templatePath = "/Templates/Loads/ASCE7_10/Wind/PressureCoefficient/WindGCpWallCCCornerLowRise.docx";
-                            break;
-                        case WindWallCladdingZone.Middle:
-                            templatePath = "/Templates/Loads/ASCE7_10/Wind/PressureCoefficient/WindGCpWallCCMiddleLowRise.docx";
-                            break;
-                    }
-                }
-                else
-                {
-                    //10% reduction
-                    switch (Zone)
-                    {
-                        case WindWallCladdingZone.Corner:
-                            templatePath = "/Templates/Loads/ASCE7_10/Wind/PressureCoefficient/WindGCpWallCCCornerLowRiseFlat.docx";
-                            break;
-                        case WindWallCladdingZone.Middle:
-                            templatePath = "/Templates/Loads/ASCE7_10/Wind/PressureCoefficient/WindGCpWallCCMiddleLowRiseFlat.docx";
-                            break;
-                    }
-                }
-            }
-            else
-            {
-                switch (Zone)
-                {
-                    case WindWallCladdingZone.Corner:
-                        templatePath = "/Templates/Loads/ASCE7_10/Wind/PressureCoefficient/WindGCpWallCCCornerHiRise.docx";
-                        break;                                                                                
-                    case WindWallCladdingZone.Middle:                                                         
-                        templatePath = "/Templates/Loads/ASCE7_10/Wind/PressureCoefficient/WindGCpWallCCMiddleHiRise.docx";
-                        break;
-                }
-
-            }
-            return templatePath;
         }
 
         public double GetWallPressureCoefficientPositive(WindWallCladdingZone Zone, double theta, double A_trib, double h)
@@ -127,7 +65,7 @@ namespace Kodestruct.Loads.ASCE.ASCE7_10.WindLoads.Building.DirectionalProcedure
                 CpPos = GetCp(A_trib, Asmallest, Alargest, CP_smallestA, CP_largesAlargestA);
                 if (theta <= 10)
                 {
-                    CpPos = CpPos * 0.9; //10% reduction
+                    CpPos = CpPos * 0.9; //10% reduction per footnote 5
 
                 }
             }
@@ -145,11 +83,11 @@ namespace Kodestruct.Loads.ASCE.ASCE7_10.WindLoads.Building.DirectionalProcedure
         public double GetWallPressureCoefficientNegative(WindWallCladdingZone Zone, double theta, double A_trib, double h)
         {
             double CpNeg = 1.4;
-            double Asmallest            =10.0;
+            double Asmallest            =20.0;
             double Alargest             =500.0;
 
             double CP_smallestA         =1.0;
-            double CP_largesAlargestA   =1.0;
+            double CP_largestA   =1.0;
 
             //Figure 30.4-1
             if (h<=60)
@@ -158,39 +96,40 @@ namespace Kodestruct.Loads.ASCE.ASCE7_10.WindLoads.Building.DirectionalProcedure
                 {
                     case WindWallCladdingZone.Corner:
                         CP_smallestA = -1.4;
-                        CP_largesAlargestA = -0.8;
+                        CP_largestA = -0.8;
                         break;
                     case WindWallCladdingZone.Middle:
 
                         CP_smallestA = -1.1;
-                        CP_largesAlargestA = -0.8;
+                        CP_largestA = -0.8;
                         break;
 
                 }
                 if (theta <= 10)
                 {
-                    CP_smallestA = CP_smallestA * 0.9; //10% reduction
-                    CP_largesAlargestA = CP_largesAlargestA * 0.9; //10% reduction
+                    CP_smallestA = CP_smallestA * 0.9; //10% reduction per footnote in the figure
+                    CP_largestA = CP_largestA * 0.9; //10% reduction per footnote in the figure
                 }
             }
-            else
+            else // building over 60 ft
             {
+                // Figure 30.6 -1
                 switch (Zone)
                 {
                     case WindWallCladdingZone.Corner:
                         CP_smallestA = -1.8;
-                        CP_largesAlargestA = -1.0;
+                        CP_largestA = -1.0;
                         break;
                     case WindWallCladdingZone.Middle:
 
                         CP_smallestA = -0.9;
-                        CP_largesAlargestA = -0.7;
+                        CP_largestA = -0.7;
                         break;
 
                 } 
             }
 
-            CpNeg = GetCp(A_trib, Asmallest, Alargest, CP_smallestA, CP_largesAlargestA);
+            CpNeg = GetCp(A_trib, Asmallest, Alargest, CP_smallestA, CP_largestA);
             return CpNeg;
         }
 

@@ -70,7 +70,7 @@
     <Compile Include="ASCE7\ASCE7v10\C26_Wind\WindStructureGeneral\FreestandingWallOrSignPressure.cs" />
     <Compile Include="ASCE7\ASCE7v10\C26_Wind\WindStructureGeneral\FreestandingWallOrSignPressureCoefficient.cs" />
     <Compile Include="ASCE7\ASCE7v10\C26_Wind\WindStructureGeneral\WindStructureGeneral.cs" />
-    <Compile Include="ASCE7\Entities\IBuildingComponent.cs" />
+    <Compile Include="ASCE7\Interfaces\IBuildingComponent.cs" />
     <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\BlockGroutingType.cs" />
     <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\CMUBase.cs" />
     <Compile Include="ASCE7\ASCE7v10\C03_DeadLoads\SpecialCases\CMU\CMUGroutedBase.cs" />
@@ -271,7 +271,6 @@
     <Folder Include="ASCE7\ASCE7v10\C04_LiveLoads\" />
     <Folder Include="ASCE7\ASCE7v10\C05_FloodLoads\" />
     <Folder Include="ASCE7\ASCE7v10\C26_Wind\Assets\" />
-    <Folder Include="ASCE7\Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

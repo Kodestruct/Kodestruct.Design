@@ -141,6 +141,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
 
         private bool ValidateNetSection()
         {
+            //if (this.NetSectionShape is SectionOfPlateWithHoles || this.NetSectionShape is SectionIWithFlangeHoles)
             if (this.NetSectionShape is SectionOfPlateWithHoles || this.NetSectionShape is SectionIWithFlangeHoles)
             {
 
@@ -149,7 +150,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
             }
             else
             {
-                throw new Exception("Wrong section type. Only SectionRectangular and SectionI are supported.");
+                throw new Exception("Wrong section type. Use SectionOfPlateWithHoles or SectionIWithFlangeHoles.");
             }
         }
 

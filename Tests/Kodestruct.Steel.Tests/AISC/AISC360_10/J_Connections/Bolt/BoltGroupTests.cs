@@ -82,18 +82,18 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
 
-        /// <summary>
-        /// Elastic moment. Checked against spreadsheet calculation
-        /// </summary>
-        [Test]
-        public void BoltGroupElasticReturnsElasticMoment()
-        {
-            BoltGroup bg = new BoltGroup(4, 2, 3, 3);
-            double C = bg.CalculateElasticGroupMomentCoefficientC();
-            double boltStrength = 4.39205;
-            double MomentCapacity = C * boltStrength;
-            Assert.AreEqual(100.0, Math.Round(MomentCapacity));
-        }
+        ///// <summary>
+        ///// Elastic moment. Checked against spreadsheet calculation
+        ///// </summary>
+        //[Test]
+        //public void BoltGroupElasticReturnsElasticMoment()
+        //{
+        //    BoltGroup bg = new BoltGroup(4, 2, 3, 3);
+        //    double C = bg.CalculateElasticGroupMomentCoefficientC();
+        //    double boltStrength = 4.39205;
+        //    double MomentCapacity = C * boltStrength;
+        //    Assert.AreEqual(100.0, Math.Round(MomentCapacity));
+        //}
 
 
         [Test]

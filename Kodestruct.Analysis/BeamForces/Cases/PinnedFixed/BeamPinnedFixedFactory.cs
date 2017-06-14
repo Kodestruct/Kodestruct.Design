@@ -95,7 +95,9 @@ namespace Kodestruct.Analysis.BeamForces.PinnedFixed
             if (load is LoadConcentratedSpecial) //3A.1
             {
                 LoadConcentratedSpecial cl = load as LoadConcentratedSpecial;
-                beamDeflectionCase = new ConcentratedLoadAtCenter(beam, cl.P);
+                ConcentratedLoadAtCenter b = new ConcentratedLoadAtCenter(beam, cl.P);
+                beamForceCase = b;
+                beamDeflectionCase = b;
             }
             if (load is LoadConcentratedGeneral) //3A.2
             {

@@ -66,8 +66,35 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
             this.ColumnType = ColumnType    ;
             this.ColumnCenter = Perimeter.ColumnCentroid;
             this.AtColumnFace = AtColumnFace;
-            Point2D cen = PunchingPerimeterCentroid;
+            cen = PunchingPerimeterCentroid;
+            CalculatePerimeterProperties();
+            
+        }
+
+        Point2D cen;
+        double l_x;
+        double l_y;
+        List<PerimeterLineSegment> RotatedSegments;
+        double thetaRad;
+        double A_c;
+
+
+        private void CalculatePerimeterProperties()
+        {
             adjustedSegments = AdjustSegments(cen);
+            A_c = AdjustedSegments.Sum(s => s.Length) * d;
+
+            double J_x_bar = GetJx(AdjustedSegments);   // d times product of inertia of assumed shear critical section about nonprincipal axes x
+            double J_y_bar = GetJy(AdjustedSegments);   // d times product of inertia of assumed shear critical section about nonprincipal axes y
+            double J_xy_bar = GetJxy(AdjustedSegments);
+
+            thetaRad = Get_thetaRad(J_xy_bar, J_x_bar, J_y_bar);
+            //The absolute value of ? is less than ?/2; when the value is
+            //positive, ? is measured in the clockwise direction
+
+           RotatedSegments = GetRotatedSegments(AdjustedSegments, thetaRad);
+           l_x = Get_l_x(RotatedSegments);
+           l_y = Get_l_y(RotatedSegments);
         }
 
 

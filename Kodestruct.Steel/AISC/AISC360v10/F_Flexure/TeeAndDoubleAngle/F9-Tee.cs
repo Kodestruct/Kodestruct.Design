@@ -38,9 +38,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             : base(section, CalcLog)
         {
 
-            if (section is ISectionTee )
+            if (section.Shape is ISectionTee )
             {
-                    SectionTee = section as ISectionTee;
+                    SectionTee = section.Shape as ISectionTee;
 
             }
             else
@@ -50,7 +50,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             GetSectionValues();
         }
 
-        ISectionTee SectionTee;
+        //ISectionTee SectionTee;
         ISectionDoubleAngle SectionDoubleAngle;
 
 

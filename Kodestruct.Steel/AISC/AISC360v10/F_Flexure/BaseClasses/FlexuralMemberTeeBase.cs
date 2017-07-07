@@ -41,11 +41,11 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             sectionTee = null;
             this.Section = section;
 
-            ISectionTee sTee = section as ISectionTee;
+            ISectionTee sTee = section.Shape as ISectionTee;
 
             if (sTee == null)
             {
-                ISectionDoubleAngle sDL = section as ISectionDoubleAngle;
+                ISectionTee sDL = section.Shape as ISectionTee;
                 if (sDL ==null)
                 {
                     throw new Exception("Section must be of type SectionTee or SectionDoubleAngle");

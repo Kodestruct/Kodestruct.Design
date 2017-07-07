@@ -33,7 +33,7 @@ namespace Kodestruct.Steel.AISC.UFM
         {
             alpha_bar = this.alpha_bar;
             beta_bar = this.beta_bar;
-
+            this.DeltaV_b = DeltaV_b;
             CalculateForces();
         }
 

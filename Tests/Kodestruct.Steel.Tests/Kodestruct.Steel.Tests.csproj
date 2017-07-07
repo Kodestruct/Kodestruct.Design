@@ -81,6 +81,7 @@
     <Compile Include="AISC\AISC360_10\F_Flexure\SteelBeamFactoryTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW18.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\RectangularHSS\F7-RectangularHssTests.cs" />
+    <Compile Include="AISC\AISC360_10\F_Flexure\Tee\TeeShapeTests.cs" />
     <Compile Include="AISC\AISC360_10\G_Shear\ShearUnstiffenedBeamTests.cs" />
     <Compile Include="AISC\AISC360_10\H_CombinedForce\CombinationTests.cs" />
     <Compile Include="AISC\AISC360_10\I_Composite\Anchor\HeadedAnchorTests.cs" />

@@ -43,25 +43,14 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
         {
             //ColumnCenter = GetColumnCenter();
 
-            double A_c = AdjustedSegments.Sum(s => s.Length) * d;
 
-            double J_x_bar = GetJx(AdjustedSegments);   // d times product of inertia of assumed shear critical section about nonprincipal axes x
-            double J_y_bar = GetJy(AdjustedSegments);   // d times product of inertia of assumed shear critical section about nonprincipal axes y
-            double J_xy_bar = GetJxy(AdjustedSegments);
-
-            double thetaRad = Get_thetaRad(J_xy_bar, J_x_bar, J_y_bar);
-            //The absolute value of θ is less than π/2; when the value is
-            //positive, θ is measured in the clockwise direction
-
-            List<PerimeterLineSegment> RotatedSegments = GetRotatedSegments(AdjustedSegments, thetaRad);
 
             double y_O = GetPunchingPerimeterEccentricityY();
             double x_O = GetPunchingPerimeterEccentricityX();
             double M_x_bar = M_ux_bar; //+ V_u * y_O; Ignore beneficial effects of shear force eccentricity because for high-shear low moment cases the moment reverses
             double M_y_bar = M_uy_bar; //+V_u * x_O; Ignore beneficial effects of shear force eccentricity because for high-shear low moment cases the moment reverses
 
-            double l_x = Get_l_x(RotatedSegments);
-            double l_y = Get_l_y(RotatedSegments);
+
 
             //calculate gammas
 

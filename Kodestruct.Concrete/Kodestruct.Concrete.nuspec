@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Concrete</id>
-    <version>0.0.8.1</version>
+    <version>0.0.8.2</version>
     <title>Kodestruct.Concrete</title>
     <authors>Konstantin Udilovich</authors>
     <description>Structural engineering automation library. Components for reinforced concrete element design for buildings and other structures per ACI 318 standard.</description>

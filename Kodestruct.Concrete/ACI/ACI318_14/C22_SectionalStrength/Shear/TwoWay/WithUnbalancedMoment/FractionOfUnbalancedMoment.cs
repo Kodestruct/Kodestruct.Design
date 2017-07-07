@@ -29,7 +29,18 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
     {
 
 
+
         #region Factor used to determine unbalanced moment
+        public double Get_gamma_vy()
+        {
+            return this.Get_gamma_vy(l_x, l_y);
+        }
+
+        public double Get_gamma_vx()
+        {
+            return this.Get_gamma_vx(l_x, l_y);
+        }
+
         public double Get_gamma_vy(double l_x, double l_y)
         {
             double gamma_vy = 1.0;

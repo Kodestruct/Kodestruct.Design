@@ -40,13 +40,13 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             if (section is ISectionDoubleAngle)
             {
 
-                    SectionDoubleAngle = section as ISectionDoubleAngle;
+                    SectionDoubleAngle = section.Shape as ISectionDoubleAngle;
 
 
             }
             else
             {
-                throw new SectionWrongTypeException(typeof(ISectionTube));
+                throw new SectionWrongTypeException(typeof(ISectionDoubleAngle));
             }
             this.AngleOrientation = AngleOrientation;
             this.AngleRotation = AngleRotation;

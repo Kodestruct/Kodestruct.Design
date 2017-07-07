@@ -45,7 +45,7 @@ namespace Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay
                 v_c = lambda * 2.0 * Math.Sqrt(f_c);
             }
 
-            double v_s = A_v * f_y / (b_o * s); // (4-13) per ACI 421R-08
+            double v_s = A_v * f_y / (b_o * this.s); // (4-13) per ACI 421R-08
 
             double v_n_Max= lambda * 6.0 * Math.Sqrt(f_c);
 

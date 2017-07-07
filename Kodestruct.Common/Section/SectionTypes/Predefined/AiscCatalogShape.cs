@@ -112,7 +112,14 @@ namespace Kodestruct.Common.Section.Predefined
                             Qf = double.Parse(Vals[41], CultureInfo.InvariantCulture);
                             Qw = double.Parse(Vals[42], CultureInfo.InvariantCulture);
                             ro = double.Parse(Vals[43], CultureInfo.InvariantCulture);
-                            H = double.Parse(Vals[44], CultureInfo.InvariantCulture);
+                            if (ShapeName.StartsWith("HSS"))
+                            {
+                                H = Ht;
+                            }
+                            else
+                            {
+                                H = double.Parse(Vals[44], CultureInfo.InvariantCulture);
+                            }
                             tanAlpha = double.Parse(Vals[45], CultureInfo.InvariantCulture);
                             Qs = double.Parse(Vals[46], CultureInfo.InvariantCulture);
                             Iw = double.Parse(Vals[47], CultureInfo.InvariantCulture);

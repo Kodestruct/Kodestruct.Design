@@ -1,13 +1,13 @@
 ﻿
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using NUnit.Framework;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace Kodestruct.Analysis.Tests.BeamForces
-{
+//namespace Kodestruct.Analysis.Tests.BeamForces
+//{
     //[TestFixture]
     //public class BeamForces_C1A_4Tests
     //{
@@ -35,5 +35,5 @@ namespace Kodestruct.Analysis.Tests.BeamForces
     //        double M_max = bm.GetMomentMinimum().Value;
     //        Assert.AreEqual(-3.0*P*L/16.0, M_min);
     //    }
-    }
-}
+//    }
+//}

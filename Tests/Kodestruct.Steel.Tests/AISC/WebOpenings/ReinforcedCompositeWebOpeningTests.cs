@@ -68,14 +68,19 @@ namespace Kodestruct.Steel.Tests.AISC
         //4.6 EXAMPLE 4: COMPOSITE BEAM
         //WITH REINFORCED OPENING
 
+        double A_s;
         double d;
         double t_w;
+        double t_s;
         double t_deck;
         double t_fill;
         double t_e;
         double b_e;
         double h_0;
         double a_o;
+        double s_b;
+        double s_t;
+        double DeltaA_s;
         double A_sn;
         double Q_n;
         ISectionI section;
@@ -133,6 +138,29 @@ namespace Kodestruct.Steel.Tests.AISC
             double actualTolerance = EvaluateActualTolerance(phiV_n, refValue);
             Assert.LessOrEqual(actualTolerance, tolerance);
 
+        }
+
+        //4.4 EXAMPLE 2: STEEL BEAM WITH
+        //REINFORCED OPENING
+        private void SetExample2Values()
+        {
+            A_s = 16.2;
+            d = 18.11;
+            t_w = 0.39;
+            h_0 = 11.00;
+            a_o = 20.0;
+            s_b = 3.555;
+            s_t = 3.55;
+            DeltaA_s = 4.29;
+            A_sn = 11.91;
+
+            AiscShapeFactory f = new AiscShapeFactory();
+            section = f.GetShape("W18X55") as ISectionI;
+            F_y = 50.0;
+            f_cPrime = 3.0;
+            e = 0.0;
+            t_r = 0.375;
+            b_r = 1.75;
         }
     }
       

@@ -106,11 +106,11 @@ namespace Kodestruct.Loads.ASCE.ASCE7_10.SeismicLoads
                 for (int i = 0; i < NumEntries; i++)
                 {
                     var thisVal = ResultList[i];
-                    if (i > 0 && i < NumEntries - 1)
+                    if (i > 0 && i < NumEntries)
                     {
-                        if (thisVal.S >= ResultList[i - 1].S && thisVal.S <= ResultList[i + 1].S)
+                        if (S >= ResultList[i - 1].S && S <= ResultList[i].S)
                         {
-                            SiteCoefficientF = Interpolation.InterpolateLinear(ResultList[i - 1].S, ResultList[i - 1].F, ResultList[i + 1].S, ResultList[i + 1].F, S);
+                            SiteCoefficientF = Interpolation.InterpolateLinear(ResultList[i - 1].S, ResultList[i - 1].F, ResultList[i].S, ResultList[i].F, S);
                         }
                     }
                 }

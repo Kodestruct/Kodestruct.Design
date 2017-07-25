@@ -73,6 +73,7 @@
     <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\WoodDoubleFloorTests.cs" />
     <Compile Include="ASCE7\ASCE7_10\C03_DeadLoads\WoodFramingTests.cs" />
     <Compile Include="ASCE7\ASCE7_10\C04_LiveLoads\LiveLoadTests.cs" />
+    <Compile Include="ASCE7\ASCE7_10\C11_SeismicLoads\AsceSiteCoefficientTests.cs" />
     <Compile Include="ASCE7\ASCE7_10\C11_SeismicLoads\AsceApproximatePeriodTests.cs" />
     <Compile Include="ASCE7\ASCE7_10\ToleranceTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

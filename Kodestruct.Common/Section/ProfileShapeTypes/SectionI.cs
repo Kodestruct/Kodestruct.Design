@@ -47,6 +47,21 @@ namespace Kodestruct.Common.Section.SectionTypes
             this._t_w = t_w;
         }
 
+        public SectionI(string Name, double d, double b_f, double t_f,
+    double t_w, bool InsertAtMidHeight)
+    : base(Name)
+        {
+            this._d = d;
+            this._b_f = b_f;
+            this._t_f = t_f;
+            this._b_fTop = b_f;
+            this._t_fTop = t_f;
+            this._b_fBot = b_f;
+            this._t_fBot = t_f;
+            this._t_w = t_w;
+            this.InsertAtMidHeight = InsertAtMidHeight;
+        }
+
         public SectionI(string Name, double d, double b_fTop, double b_fBot,
             double t_fTop, double t_fBot, double t_w)
             : base(Name)
@@ -58,6 +73,21 @@ namespace Kodestruct.Common.Section.SectionTypes
             this._t_fBot = t_fBot;
             this._t_w = t_w;
         }
+
+        public SectionI(string Name, double d, double b_fTop, double b_fBot,
+    double t_fTop, double t_fBot, double t_w, bool InsertAtMidHeight)
+    : base(Name)
+        {
+            this._d = d;
+            this._b_fTop = b_fTop;
+            this._t_fTop = t_fTop;
+            this._b_fBot = b_fBot;
+            this._t_fBot = t_fBot;
+            this._t_w = t_w;
+            this.InsertAtMidHeight = InsertAtMidHeight;
+        }
+
+        public bool InsertAtMidHeight { get; set; }
 
         #region Properties specific to I-Beam
 
@@ -163,9 +193,14 @@ namespace Kodestruct.Common.Section.SectionTypes
             double t_f = this.t_f;
             double b_f = this.b_fTop;
 
-            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2.0));
-            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f / 2.0));
-            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * t_f, new Point2D(0, d / 2.0));
+            double ShiftY = 0;
+            if (InsertAtMidHeight == true)
+            {
+                ShiftY = d / 2.0;
+            }
+            CompoundShapePart TopFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, d - t_f / 2.0 - ShiftY));
+            CompoundShapePart BottomFlange = new CompoundShapePart(b_f, t_f, new Point2D(0, t_f / 2.0 - ShiftY));
+            CompoundShapePart Web = new CompoundShapePart(t_w, d - 2 * t_f, new Point2D(0, d / 2.0 - ShiftY));
 
             List<CompoundShapePart> rectX = new List<CompoundShapePart>()
             {
@@ -188,11 +223,15 @@ namespace Kodestruct.Common.Section.SectionTypes
             double FlangeWidth = this.b_fTop;
 
 
-
+            double ShiftX = 0;
+            if (InsertAtMidHeight == true)
+            {
+                ShiftX = b_f / 2.0;
+            }
             // I-shape converted to X-shape 
             double FlangeOverhang = (b_f - t_w) / 2.0;
-            CompoundShapePart LeftFlange = new CompoundShapePart(2* t_f, FlangeOverhang, new Point2D(0, b_f - FlangeOverhang/2.0));
-            CompoundShapePart RightFlange = new CompoundShapePart(2*t_f, FlangeOverhang, new Point2D(0, FlangeOverhang/2.0));
+            CompoundShapePart LeftFlange = new CompoundShapePart(2* t_f, FlangeOverhang, new Point2D(0, b_f - FlangeOverhang/2.0- ShiftX));
+            CompoundShapePart RightFlange = new CompoundShapePart(2*t_f, FlangeOverhang, new Point2D(0, FlangeOverhang/2.0- ShiftX));
             CompoundShapePart Web = new CompoundShapePart(d, t_w, new Point2D(0, b_f / 2.0));
 
             List<CompoundShapePart> rectY = new List<CompoundShapePart>()

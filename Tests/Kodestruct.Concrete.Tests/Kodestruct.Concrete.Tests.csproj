@@ -56,6 +56,7 @@
     <Compile Include="Compression\AciCompressionSquareColumnSPColTests.cs" />
     <Compile Include="Compression\AciCompressionSquareColumnTestsFactored.cs" />
     <Compile Include="Compression\AciCompressionSquareColumnTestsNominal.cs" />
+    <Compile Include="Compression\AciShearWallTests.cs" />
     <Compile Include="ConcreteTestBase.cs" />
     <Compile Include="Flexure\AciFlexureShearWallTests.cs" />
     <Compile Include="Flexure\AciFlexureGeneralBeamTests .cs" />

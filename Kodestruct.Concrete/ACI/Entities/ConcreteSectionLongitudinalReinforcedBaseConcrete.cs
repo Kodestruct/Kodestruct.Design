@@ -147,7 +147,7 @@ namespace Kodestruct.Concrete.ACI
             ConcreteCompressionContribution.Force = ConcreteResultantForce;
 
 
-            double concreteForceCentroidDistance = Section.SliceableShape.GetElasticCentroidCoordinate().Y - compressedPortion.GetElasticCentroidCoordinate().Y;
+            double concreteForceCentroidDistance = compressedPortion.GetElasticCentroidCoordinate().Y - Section.SliceableShape.GetElasticCentroidCoordinate().Y;
             ConcreteCompressionContribution.Moment = concreteForceCentroidDistance * ConcreteResultantForce;
 
             return ConcreteCompressionContribution;

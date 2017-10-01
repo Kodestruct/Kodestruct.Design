@@ -50,11 +50,11 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
 
             Assert.LessOrEqual(actualTolerance, tolerance);
 
-            double P1 = 1220 * 1000;
-            double refValue1 = 160 ; //from SP column software
+            //double P1 = 1220 * 1000;
+            //double refValue1 = 160 ; //from SP column software
 
 
-            double M_n1 = col.GetNominalMomentResult(P1, FlexuralCompressionFiberPosition.Top).Moment/(12*1000.0);
+            //double M_n1 = col.GetNominalMomentResult(P1, FlexuralCompressionFiberPosition.Top).Moment/(12*1000.0);
         }
 
 
@@ -70,7 +70,6 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             CompressionSectionFactory compressionFactory = new CompressionSectionFactory();
             IConcreteMaterial mat = GetConcreteMaterial(f_c);
             IRebarMaterial rebarMat = new MaterialAstmA615(A615Grade.Grade60);
-
             ConcreteSectionFlexure flexureMember = flexureFactory.GetRectangularSectionFourSidesDistributed(b, h, 4.0, 0, 2.5, 2.5,
                 mat, rebarMat, ConfinementReinforcementType.Ties, 1);
 

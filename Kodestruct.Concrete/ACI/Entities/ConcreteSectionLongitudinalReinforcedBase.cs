@@ -35,7 +35,10 @@ namespace Kodestruct.Concrete.ACI
 		{
 			this.Section = Section;
 			this.longitBars = LongitudinalBars;
+            this.TransformedSection= CalculateTransformedSection();
 		}
+
+
 
         private  List<RebarPoint>  longitBars;
 
@@ -55,9 +58,9 @@ namespace Kodestruct.Concrete.ACI
             double c = StrainDistribution.NeutralAxisTopDistance;
             double h = StrainDistribution.Height;
             double YMax = Section.SliceableShape.YMax;
-            double YMin = Section.SliceableShape.YMin;
-            double XMax = Section.SliceableShape.XMax;
-            double XMin = Section.SliceableShape.XMin;
+            //double YMin = Section.SliceableShape.YMin;
+            //double XMax = Section.SliceableShape.XMax;
+            //double XMin = Section.SliceableShape.XMin;
 
             double sectionHeight = Section.SliceableShape.YMax - Section.SliceableShape.YMin;
             double distTopToSecNeutralAxis = sectionHeight - Section.SliceableShape.y_Bar;
@@ -65,7 +68,10 @@ namespace Kodestruct.Concrete.ACI
                 foreach (RebarPoint rbrPnt in LongitudinalBars)
                 {
                     double BarDistanceToTop = YMax - rbrPnt.Coordinate.Y;
-                    double BarDistanceToNa = BarDistanceToTop - distTopToSecNeutralAxis;
+
+                    double BarDistanceToCentroid = TransformedSection.GetElasticCentroidCoordinate().Y - rbrPnt.Coordinate.Y;
+
+                    //double BarDistanceToNa = StrainDistribution.NeutralAxisTopDistance - BarDistanceToTop;
                     double Strain = StrainDistribution.GetStrainAtPointOffsetFromTop(BarDistanceToTop);
                     double Force;
                     double Stress;
@@ -76,13 +82,15 @@ namespace Kodestruct.Concrete.ACI
                         //add this bar to the results with zero force
                         Force =  0;
                         Stress = 0;
-                        ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToNa, rbrPnt));
+                    //ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToNa, rbrPnt));
+                    ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToCentroid, rbrPnt));
                     }
                     else
                     {
                         Force = rbrPnt.Rebar.GetForce(Strain);
                         Stress = rbrPnt.Rebar.GetStress(Strain);
-                        ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToNa, rbrPnt));
+                    //ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToNa, rbrPnt));
+                    ResultList.Add(new RebarPointResult(Stress, Strain, Force, BarDistanceToCentroid, rbrPnt));
                     }
 
                 } 
@@ -212,6 +220,7 @@ namespace Kodestruct.Concrete.ACI
                 if (barResult.Strain < 0)
                 {
                     resultant.Force += barResult.Force;
+                    
                     resultant.Moment += barResult.Force * barResult.DistanceToNeutralAxis;
                 }
             }

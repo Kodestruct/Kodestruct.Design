@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using Kodestruct.Concrete.ACI.Entities;
 using Kodestruct.Concrete.ACI318_14.Materials;
 using Kodestruct.Common.Section.Interfaces;
+using System.IO;
+using Kodestruct.Concrete.ACI318_14.Tests.Output.CSV;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
 {
@@ -20,30 +22,30 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
     class AciShearWallTests: ConcreteTestBase
     {
         [Test]
-        public void ShearWallCalculatesMoment()
+        public void ShearWallCalculatesPMMDiagram()
         {
-            double f_c_prime = 6000;
+            double f_c_prime = 6;
             double f_c_prime_psi = f_c_prime * 1000;
             RebarMaterialFactory factory = new RebarMaterialFactory();
             string RebarSpecificationId = "A615Grade60";
             IRebarMaterial LongitudinalRebarMaterial = factory.GetMaterial(RebarSpecificationId);
             double h_total = 20 * 12;
-            double t_w = 10;
+            double t_w = 12;
             double N_curtains = 2;
             double s = 12;
-            double c_edge = 3;
+            double c_edge = 0;
 
-            BoundaryZone BoundaryZoneTop     = new BoundaryZone(4,2, "No5",6,3,3);
-            BoundaryZone BoundaryZoneBottom = new BoundaryZone(4, 2, "No5", 6, 3, 3);
-            string RebarSizeId = "No5";
+            BoundaryZone BoundaryZoneTop = new BoundaryZone(3, 3, "No8", 6, 3, 3);
+            BoundaryZone BoundaryZoneBottom = new BoundaryZone(3, 3, "No8", 6, 3, 3);
+            string WallRebarSizeId = "No4";
 
-            double P_u = 1000;
+
             FlexuralCompressionFiberPosition p = FlexuralCompressionFiberPosition.Top;
             ConcreteMaterial Concrete = new ConcreteMaterial(f_c_prime_psi, ConcreteTypeByWeight.Normalweight, null);
             ConfinementReinforcementType ConfinementReinforcementType = KodestructAci.ConfinementReinforcementType.Ties;
             CrossSectionIShape shape = GetIShape(Concrete, h_total, t_w, BoundaryZoneTop, BoundaryZoneBottom);
 
-            List<KodestructAci.RebarPoint> LongitudinalBars = GetLongitudinalBars(shape.SliceableShape as ISectionI, h_total, t_w, RebarSizeId, N_curtains, s, c_edge,
+            List<KodestructAci.RebarPoint> LongitudinalBars = GetLongitudinalBars(shape.SliceableShape as ISectionI, h_total, t_w, WallRebarSizeId, N_curtains, s, c_edge,
             BoundaryZoneTop, BoundaryZoneBottom, LongitudinalRebarMaterial);
 
             KodestructAci.IConcreteFlexuralMember fs = new KodestructAci14.ConcreteSectionFlexure(shape, LongitudinalBars, null, ConfinementReinforcementType);
@@ -51,11 +53,25 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
             IConcreteSectionWithLongitudinalRebar Section = fs as IConcreteSectionWithLongitudinalRebar;
             ConcreteSectionCompression column = new ConcreteSectionCompression(Section, ConfinementReinforcementType, null);
             //Convert axial force to pounds
-            double P_u_pounds = P_u * 1000.0;
-            double phiM_n = column.GetDesignMomentWithCompressionStrength(P_u_pounds, p).phiM_n / 1000.0; // convert to kip inch units
+            List<PMPair> Pairs = column.GetPMPairs(p);
+            var PairsAdjusted = Pairs.Select(pair => new PMPair(pair.P / 1000.0, pair.M / 1000.0 / 12.0));
+
+            string Filename = Path.Combine(Path.GetTempPath(), "PMInteraction.csv");
+            using (CsvFileWriter writer = new CsvFileWriter(Filename))
+            {
+                foreach (var pair in PairsAdjusted)
+                {
+                        CsvRow row = new CsvRow();
+                                row.Add(pair.M.ToString());
+                                row.Add(pair.P.ToString());
+                    writer.WriteRow(row);
+                    
+                }
+            }
         }
 
-        private List<KodestructAci.RebarPoint> GetWallBars(double h, double t_w, string RebarSizeId, double N_curtains, double s, double c_edge, IRebarMaterial LongitudinalRebarMaterial)
+        private List<KodestructAci.RebarPoint> GetWallBars(double h, double t_w, string RebarSizeId, double N_curtains, double s,
+          double topZoneLength, double bottomZoneLength,  double c_edge, IRebarMaterial LongitudinalRebarMaterial)
         {
 
             RebarDesignation des;
@@ -70,8 +86,8 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
             int NBarLines = (int)Math.Floor(h / s);
             double A_s = NBarLines * N_curtains * A_b;
             RebarLine Line = new RebarLine(A_s,
-            new Point2D(0.0, -h / 2.0 + c_edge),
-            new Point2D(0.0, h / 2.0 - c_edge),
+            new Point2D(0.0,  bottomZoneLength + c_edge),
+            new Point2D(0.0, h - c_edge - topZoneLength),
             LongitudinalRebarMaterial, false, false, NBarLines);
 
             return Line.RebarPoints;
@@ -107,13 +123,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
     BoundaryZone BoundaryZoneTop, BoundaryZone BoundaryZoneBottom, IRebarMaterial LongitudinalRebarMaterial)
         {
 
-            List<KodestructAci.RebarPoint> BzTopBars = GetBoundaryZoneBars(BoundaryZoneTop, LongitudinalRebarMaterial, new Point2D(0.0, shape.d / 2.0 - BoundaryZoneTop.h / 2.0), true);
-            List<KodestructAci.RebarPoint> BzBottomBars = GetBoundaryZoneBars(BoundaryZoneBottom, LongitudinalRebarMaterial, new Point2D(0.0, -(shape.d / 2.0) + BoundaryZoneTop.h / 2.0), false);
+            List<KodestructAci.RebarPoint> BzTopBars = GetBoundaryZoneBars(BoundaryZoneTop, LongitudinalRebarMaterial, new Point2D(0.0, shape.d - BoundaryZoneTop.h / 2.0), true);
+            List<KodestructAci.RebarPoint> BzBottomBars = GetBoundaryZoneBars(BoundaryZoneBottom, LongitudinalRebarMaterial, new Point2D(0.0,  BoundaryZoneTop.h / 2.0), false);
 
             List<KodestructAci.RebarPoint> retBars = null;
             if (N_curtains != 0)
             {
-                List<KodestructAci.RebarPoint> WallBars = GetWallBars(h_total - (BoundaryZoneTop.h + BoundaryZoneBottom.h), t_w, RebarSizeId, N_curtains, s, c_edge, LongitudinalRebarMaterial);
+                List<KodestructAci.RebarPoint> WallBars = GetWallBars(h_total , t_w, RebarSizeId, N_curtains, s,
+                    BoundaryZoneTop.h , BoundaryZoneBottom.h, c_edge, LongitudinalRebarMaterial);
                 retBars = BzTopBars.Concat(BzBottomBars).Concat(WallBars).ToList();
             }
             else

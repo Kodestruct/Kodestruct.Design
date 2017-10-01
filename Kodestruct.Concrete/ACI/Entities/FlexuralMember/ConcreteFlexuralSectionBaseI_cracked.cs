@@ -185,39 +185,7 @@ namespace Kodestruct.Concrete.ACI
 
 
 
-        public List<IMoveableSection> GetTransformedRebarShapes(double YMax, double YMin)
-        {
 
-            List<IMoveableSection> barSections = new List<IMoveableSection>();
-            double E_c = this.Section.Material.ModulusOfElasticity;
-            double E_s = 29000000.0; //Steel modulus of elasticity
-            double n = E_s / E_c;
-
-            List<RebarPoint> filteredBars = LongitudinalBars.Where
-                (
-                b => 
- 
-                        b.Coordinate.Y >= YMin && b.Coordinate.Y <=YMax
-
-                ).ToList();
-            foreach (RebarPoint rbrPnt in filteredBars)
-            { 
-
-                double A_bar = rbrPnt.Rebar.Area*n;
-                double d_bar = rbrPnt.Rebar.Diameter;
-                if (d_bar == 0)
-                {
-                    d_bar = (YMax - YMin) / 100.0;
-                }
-                Point2D thisCentroid = new Point2D(rbrPnt.Coordinate.X, rbrPnt.Coordinate.Y);
-
-                SectionRectangular rect = new SectionRectangular(null, A_bar / d_bar, d_bar, thisCentroid);
-                //rect.Centroid = new Point2D(rbrPnt.Coordinate.X, rbrPnt.Coordinate.Y);
-                barSections.Add(rect);
-            }
-
-            return barSections;
-         }
 
     }
 }

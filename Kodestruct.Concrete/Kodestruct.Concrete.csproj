@@ -128,6 +128,9 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionGeneric.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionRectangularNonPrestressed.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionShapeFactory.cs" />
+    <Compile Include="ACI\Entities\ConcreteSectionLongitudinalReinforcedBaseCentroid.cs" />
+    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralIteractionDiagram.cs" />
+    <Compile Include="ACI\Entities\General\PMPair.cs" />
     <Compile Include="ACI\Entities\ShearAndTorsion\ShearFrictionSurfaceType.cs" />
     <Compile Include="ACI\Interfaces\IConcreteTorsionalShape.cs" />
     <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionLapSplice.cs" />
@@ -276,7 +279,6 @@
   <ItemGroup>
     <Folder Include="ACI\ACI318_14\C10_Columns\" />
     <Folder Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\Prestressed\" />
-    <Folder Include="ACI\Entities\General\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -123,6 +123,7 @@ namespace Kodestruct.Concrete.ACI
             currentCompressionFiberPosition = CompressionFiberPosition; //store this off because it will be necessary during iteration
             StrainHeight = GetStrainDistributionHeight(CompressionFiberPosition);//store this off because it will be necessary during iteration
 
+
             double StrainMin = MaxSteelLimitingStrainInTension;
             //double StrainMax = StrainUltimateConcrete.Value;
             double StrainMax = MaxConcreteStrain;

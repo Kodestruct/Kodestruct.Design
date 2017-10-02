@@ -86,15 +86,16 @@ namespace Kodestruct.Concrete.ACI
 
         protected double GetDistanceToNeutralAxis(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition CompressionFiberPosition)
         {
-            double c = StrainDistribution.NeutralAxisTopDistance;
+            double c; 
              switch (CompressionFiberPosition)
             {
                 case FlexuralCompressionFiberPosition.Top:
+                    c = StrainDistribution.NeutralAxisTopDistance;
                     return c;
-                    break;
                 case FlexuralCompressionFiberPosition.Bottom:
-                    return StrainDistribution.Height-c;
-                    break;
+                    //return StrainDistribution.Height-c;
+                    c = StrainDistribution.NeutralAxisBottomDistance;
+                    return c;
                 default:
                     throw new CompressionFiberPositionException();
             }
@@ -111,7 +112,7 @@ namespace Kodestruct.Concrete.ACI
             double h = Section.SliceableShape.YMax - Section.SliceableShape.YMin;
             double a;
             
-            if (c == double.PositiveInfinity)
+            if (c == double.PositiveInfinity || c==double.NegativeInfinity)
             {
                 a = h;
             }
@@ -124,12 +125,8 @@ namespace Kodestruct.Concrete.ACI
                 }
             }
 
-            if (a>h)
-            {
-                a = h;
-            }
 
-            double CentroidYToTopEdge = (Section.SliceableShape.YMax-Section.SliceableShape.YMin)-Section.SliceableShape.y_Bar;
+            //double CentroidYToTopEdge = (Section.SliceableShape.YMax-Section.SliceableShape.YMin)-Section.SliceableShape.y_Bar;
             //double neutralAxisToBottomOfCompressedShapeOffset = CentroidYToTopEdge - a;
             IMoveableSection compressedPortion = null;
             ISliceableSection sec = this.Section.SliceableShape as ISliceableSection;

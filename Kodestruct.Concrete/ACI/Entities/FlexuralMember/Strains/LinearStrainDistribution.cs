@@ -33,6 +33,11 @@ namespace Kodestruct.Concrete.ACI
             get { return GetNeutralAxisDistanceFromTop(); }
         }
 
+        public double NeutralAxisBottomDistance
+        {
+            get { return GetNeutralAxisDistanceFromBottom(); }
+        }
+
 
         public double StrainSlope
         {
@@ -70,23 +75,16 @@ namespace Kodestruct.Concrete.ACI
             return TopFiberStrain - StrainSlope * PointTopDistance;
         }
 
-        public double GetStrainAtPointOffsetFromTBottom(double PointBottomDistance)
+        public double GetStrainAtPointOffsetFromBottom(double PointBottomDistance)
         {
-            double PointTopDistance = this.Height - PointBottomDistance;
-            return TopFiberStrain - StrainSlope * PointTopDistance;
+
+            return BottomFiberStrain + StrainSlope * PointBottomDistance;
         }
 
         private double GetNeutralAxisDistanceFromTop()
         {
             double neutralAxisTopDistance = 0;
 
-            //if (TopFiberStrain * BottomFiberStrain >0)
-            //{
-            //    //throw new Exception("Failed to locate neutral axis top and bottom strains must have different signs");
-            //    neutralAxisTopDistance = double.PositiveInfinity;
-            //}
-            //else
-            //{
 
             if (TopFiberStrain != BottomFiberStrain)
             {
@@ -106,11 +104,35 @@ namespace Kodestruct.Concrete.ACI
             {
                 return double.PositiveInfinity;
             } 
-            //}
-
-
             
         }
+
+        private double GetNeutralAxisDistanceFromBottom()
+        {
+            double neutralAxisBottomDistance = 0;
+
+
+            if (TopFiberStrain != BottomFiberStrain)
+            {
+                if ((TopFiberStrain < 0) == (BottomFiberStrain < 0)) // strains are same sign
+                {
+                    neutralAxisBottomDistance = BottomFiberStrain * (this.Height) / (Math.Abs(TopFiberStrain) - Math.Abs(BottomFiberStrain));
+                    return Math.Abs(neutralAxisBottomDistance);
+                }
+                else
+                {
+
+                    neutralAxisBottomDistance = (BottomFiberStrain * this.Height) / (Math.Abs(TopFiberStrain) + Math.Abs(BottomFiberStrain));
+                    return Math.Abs(neutralAxisBottomDistance);
+                }
+            }
+            else
+            {
+                return double.NegativeInfinity;
+            }
+
+        }
+
         public LinearStrainDistribution Clone()
         {
             return new LinearStrainDistribution(this.Height, this.TopFiberStrain, this.BottomFiberStrain);

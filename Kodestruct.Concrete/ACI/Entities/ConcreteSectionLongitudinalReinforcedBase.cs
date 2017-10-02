@@ -51,28 +51,40 @@ namespace Kodestruct.Concrete.ACI
        
  
 
-        public virtual  List<RebarPointResult> CalculateRebarResults(LinearStrainDistribution StrainDistribution )
+        public virtual  List<RebarPointResult> CalculateRebarResults(LinearStrainDistribution StrainDistribution,
+            FlexuralCompressionFiberPosition p)
         {
             List<RebarPointResult> ResultList = new List<RebarPointResult>();
 
             double c = StrainDistribution.NeutralAxisTopDistance;
             double h = StrainDistribution.Height;
             double YMax = Section.SliceableShape.YMax;
-            //double YMin = Section.SliceableShape.YMin;
-            //double XMax = Section.SliceableShape.XMax;
-            //double XMin = Section.SliceableShape.XMin;
+            double YMin = Section.SliceableShape.YMin;
+
 
             double sectionHeight = Section.SliceableShape.YMax - Section.SliceableShape.YMin;
             double distTopToSecNeutralAxis = sectionHeight - Section.SliceableShape.y_Bar;
 
                 foreach (RebarPoint rbrPnt in LongitudinalBars)
                 {
-                    double BarDistanceToTop = YMax - rbrPnt.Coordinate.Y;
+                double BarDistanceToTop;
+                double BarDistanceToBottom;
+                double BarDistanceToCentroid;
+                double Strain;
+                if (p == FlexuralCompressionFiberPosition.Top)
+                {
+                    BarDistanceToTop = YMax - rbrPnt.Coordinate.Y;
+                    BarDistanceToCentroid = TransformedSection.GetElasticCentroidCoordinate().Y - rbrPnt.Coordinate.Y;
+                    Strain = StrainDistribution.GetStrainAtPointOffsetFromTop(BarDistanceToTop);
+                }
+                else
+                {
 
-                    double BarDistanceToCentroid = TransformedSection.GetElasticCentroidCoordinate().Y - rbrPnt.Coordinate.Y;
+                    BarDistanceToBottom = rbrPnt.Coordinate.Y - YMin;
+                    BarDistanceToCentroid = rbrPnt.Coordinate.Y - TransformedSection.GetElasticCentroidCoordinate().Y ;
+                    Strain = StrainDistribution.GetStrainAtPointOffsetFromBottom(BarDistanceToBottom);
+                }
 
-                    //double BarDistanceToNa = StrainDistribution.NeutralAxisTopDistance - BarDistanceToTop;
-                    double Strain = StrainDistribution.GetStrainAtPointOffsetFromTop(BarDistanceToTop);
                     double Force;
                     double Stress;
 
@@ -208,11 +220,12 @@ namespace Kodestruct.Concrete.ACI
 
     }
 
-    protected ForceMomentContribution GetRebarResultant(LinearStrainDistribution StrainDistribution, ResultantType resType )
+    protected ForceMomentContribution GetRebarResultant(LinearStrainDistribution StrainDistribution, ResultantType resType
+        , FlexuralCompressionFiberPosition p)
     {
         ForceMomentContribution resultant = new ForceMomentContribution();
         //tension is negative
-        List<RebarPointResult> RebarResults = CalculateRebarResults(StrainDistribution);
+        List<RebarPointResult> RebarResults = CalculateRebarResults(StrainDistribution,p);
         foreach (var barResult in RebarResults)
         {
             if (resType == ResultantType.Tension)

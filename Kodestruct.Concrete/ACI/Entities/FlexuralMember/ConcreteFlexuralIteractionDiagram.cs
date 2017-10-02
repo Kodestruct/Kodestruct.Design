@@ -69,9 +69,9 @@ namespace Kodestruct.Concrete.ACI
                         throw new CompressionFiberPositionException();
                 }
 
-                if (i==1)
+                if (i==66)
                 {
-                    int a = 10;
+                    
                 }
                 SectionAnalysisResult thisDistibutionResult = GetSectionResult(currentStrainDistribution, CompressionFiberPosition);
                 IStrainCompatibilityAnalysisResult nominalResult = GetResult(thisDistibutionResult);
@@ -97,8 +97,13 @@ namespace Kodestruct.Concrete.ACI
                     phi = 1.0;
                 }
 
+                double SignFactor = 1.0;
+                if (CompressionFiberPosition == FlexuralCompressionFiberPosition.Bottom)
+                {
+                    SignFactor = -1.0;
+                }
                 double P = thisDistibutionResult.AxialForce * phi;
-                double M = thisDistibutionResult.Moment * phi;
+                double M = thisDistibutionResult.Moment * phi* SignFactor;
                 PMPair thisPair = new PMPair(P, M);
 
                 Pairs.Add(thisPair);

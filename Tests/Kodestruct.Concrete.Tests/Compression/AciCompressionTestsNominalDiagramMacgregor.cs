@@ -60,5 +60,27 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             }
 
         }
+
+        [Test]
+        public void ColumnReturnsNegativeNominalInteractionDiagram()
+        {
+            ConcreteSectionCompression col = GetConcreteExampleColumn();
+            List<PMPair> Pairs = col.GetPMPairs(FlexuralCompressionFiberPosition.Bottom, 50, false);
+            var PairsAdjusted = Pairs.Select(pair => new PMPair(pair.P / 1000.0, pair.M / 1000.0 / 12.0));
+
+            string Filename = Path.Combine(Path.GetTempPath(), "PMInteractionMacGregorNegative.csv");
+            using (CsvFileWriter writer = new CsvFileWriter(Filename))
+            {
+                foreach (var pair in PairsAdjusted)
+                {
+                    CsvRow row = new CsvRow();
+                    row.Add(pair.M.ToString());
+                    row.Add(pair.P.ToString());
+                    writer.WriteRow(row);
+
+                }
+            }
+
+        }
     }
 }

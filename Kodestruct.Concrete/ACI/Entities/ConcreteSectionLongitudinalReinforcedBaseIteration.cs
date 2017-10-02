@@ -39,7 +39,7 @@ namespace Kodestruct.Concrete.ACI
             
             ForceMomentContribution CForceResultant = CForceRebarResultant + CForceConcreteResultant;
 
-            ForceMomentContribution TForceResultant = GetTensionForceResultant(StrainDistribution);
+            ForceMomentContribution TForceResultant = GetTensionForceResultant(StrainDistribution, compFiberPosition);
             SectionAnalysisResult result = new SectionAnalysisResult()
             {
                 AxialForce = CForceResultant.Force + TForceResultant.Force,
@@ -76,14 +76,14 @@ namespace Kodestruct.Concrete.ACI
         }
         protected virtual ForceMomentContribution GetCompressionForceRebarResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
         {
-            ForceMomentContribution steelContrib = GetRebarResultant(StrainDistribution, ResultantType.Compression);
+            ForceMomentContribution steelContrib = GetRebarResultant(StrainDistribution, ResultantType.Compression, compFiberPosition);
 
             return steelContrib;
         }
 
-        protected virtual ForceMomentContribution GetTensionForceResultant(LinearStrainDistribution StrainDistribution)
+        protected virtual ForceMomentContribution GetTensionForceResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
         {
-            ForceMomentContribution rebarContribution = GetRebarResultant(StrainDistribution, ResultantType.Tension);
+            ForceMomentContribution rebarContribution = GetRebarResultant(StrainDistribution, ResultantType.Tension, compFiberPosition);
             return rebarContribution;
         }
 

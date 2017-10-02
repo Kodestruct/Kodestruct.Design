@@ -38,7 +38,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         {
             ConcreteSectionFlexure beam = GetShearWall();
             LinearStrainDistribution StrainDistribution = new LinearStrainDistribution(192, 0.003, -0.051272);
-            List<RebarPointResult> r = beam.CalculateRebarResults(StrainDistribution);
+            List<RebarPointResult> r = beam.CalculateRebarResults(StrainDistribution, FlexuralCompressionFiberPosition.Top);
             SectionAnalysisResult TrialSectionResult = beam.GetSectionResult(StrainDistribution, FlexuralCompressionFiberPosition.Top );
             double M_n = TrialSectionResult.Moment/12000.0;
             double refValue = 7182.546387;

@@ -99,6 +99,7 @@
     <Compile Include="ACI\ACI318_14\C17_Anchorage\StrengthReductionFactor\StrengthReductionFactorPostInstalled.cs" />
     <Compile Include="ACI\ACI318_14\C20_Durability\Cover\RebarCoverFactory.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\ConcreteSectionCompression.cs" />
+    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\InteractionDiagram.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\FlexuralSectionFactory.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\CompressionMemberType.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\CompressionSectionFactory.cs" />

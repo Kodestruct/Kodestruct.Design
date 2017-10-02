@@ -27,7 +27,7 @@ using Kodestruct.Common.Mathematics;
 
 namespace Kodestruct.Concrete.ACI318_14
 {
-    public class ConcreteSectionCompression : ConcreteCompressionSectionBase
+    public partial class ConcreteSectionCompression : ConcreteCompressionSectionBase
     {
         public ConcreteSectionCompression(IConcreteSectionWithLongitudinalRebar Section, 
         ConfinementReinforcementType ConfinementReinforcementType,

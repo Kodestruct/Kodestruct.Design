@@ -31,10 +31,10 @@ namespace Kodestruct.Concrete.ACI
     public abstract partial class ConcreteFlexuralSectionBase : ConcreteSectionLongitudinalReinforcedBase, IConcreteFlexuralMember
     {
 
-        public List<PMPair> GetPMPairs(FlexuralCompressionFiberPosition CompressionFiberPosition, int NumberOfSteps=50, bool IncludeResistanceFactor = true)
+        protected List<SectionAnalysisResult> GetInteractionResults(FlexuralCompressionFiberPosition CompressionFiberPosition, int NumberOfSteps=50)
         {
 
-            List<PMPair> Pairs = new List<PMPair>();
+            List<SectionAnalysisResult> SectionResults = new List<SectionAnalysisResult>();
 
             currentCompressionFiberPosition = CompressionFiberPosition; //store this off because it will be necessary during iteration
             StrainHeight = GetStrainDistributionHeight(CompressionFiberPosition);//store this off because it will be necessary during iteration
@@ -74,46 +74,28 @@ namespace Kodestruct.Concrete.ACI
                     
                 }
                 SectionAnalysisResult thisDistibutionResult = GetSectionResult(currentStrainDistribution, CompressionFiberPosition);
-                IStrainCompatibilityAnalysisResult nominalResult = GetResult(thisDistibutionResult);
-                ConcreteCompressionStrengthResult result = new ConcreteCompressionStrengthResult(nominalResult, CompressionFiberPosition, this.Section.Material.beta1);
 
+                
+                #region Dubugging output
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine(string.Format("AxialForce = {0}", Math.Round(thisDistibutionResult.AxialForce/ 1000.0, 0)));
-                sb.AppendLine(string.Format("Moment = {0}", Math.Round(thisDistibutionResult.Moment/12.0/1000.0, 0)));
-                sb.AppendLine(string.Format("CForce = {0}", Math.Round(thisDistibutionResult.CForce/1000.0, 0)));
-                sb.AppendLine(string.Format("TForce = {0}", Math.Round(thisDistibutionResult.TForce/1000.0, 0)));
+                sb.AppendLine(string.Format("AxialForce = {0}", Math.Round(thisDistibutionResult.AxialForce / 1000.0, 0)));
+                sb.AppendLine(string.Format("Moment = {0}", Math.Round(thisDistibutionResult.Moment / 12.0 / 1000.0, 0)));
+                sb.AppendLine(string.Format("CForce = {0}", Math.Round(thisDistibutionResult.CForce / 1000.0, 0)));
+                sb.AppendLine(string.Format("TForce = {0}", Math.Round(thisDistibutionResult.TForce / 1000.0, 0)));
                 sb.AppendLine(string.Format("SteelStrain = {0}", thisDistibutionResult.StrainDistribution.BottomFiberStrain, 0));
                 sb.AppendLine(string.Format("YNeutral = {0}", Math.Round(thisDistibutionResult.StrainDistribution.NeutralAxisTopDistance, 3)));
 
-                StrengthReductionFactorFactory f = new StrengthReductionFactorFactory();
-                FlexuralFailureModeClassification failureMode = f.GetFlexuralFailureMode(result.epsilon_t, result.epsilon_ty);
-                double phi;
-                if (IncludeResistanceFactor == true)
-                {
-                    phi = f.Get_phiFlexureAndAxial(failureMode, ConfinementReinforcementType, result.epsilon_t, result.epsilon_ty);
-                }
-                else
-                {
-                    phi = 1.0;
-                }
+                #endregion
 
-                double SignFactor = 1.0;
-                if (CompressionFiberPosition == FlexuralCompressionFiberPosition.Bottom)
-                {
-                    SignFactor = -1.0;
-                }
-                double P = thisDistibutionResult.AxialForce * phi;
-                double M = thisDistibutionResult.Moment * phi* SignFactor;
-                PMPair thisPair = new PMPair(P, M);
-
-                Pairs.Add(thisPair);
+                SectionResults.Add(thisDistibutionResult);
             }
 
 
-
-
-            return Pairs;
+            return SectionResults;
+               
         }
+
+
 
         private double GetSteelStrain(int numberOfSteps, int i, double strainMax, double strainMin, int numberOfStartEndPoints)
         {

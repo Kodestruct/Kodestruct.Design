@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Concrete</id>
-    <version>0.0.9.2</version>
+    <version>0.0.9.3</version>
     <title>Kodestruct.Concrete</title>
     <authors>Konstantin Udilovich</authors>
     <description>Structural engineering automation library. Components for reinforced concrete element design for buildings and other structures per ACI 318 standard.</description>
@@ -12,12 +12,12 @@
     <iconUrl>https://raw.githubusercontent.com/Kodestruct/Kodestruct.Design/master/Kodestruct.Concrete/LOGOS_nuget_Concrete_small.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <developmentDependency>false</developmentDependency>
-    <releaseNotes>Updates to punching</releaseNotes>
+    <releaseNotes>Updates to interaction diagram</releaseNotes>
     <copyright>Copyright Konstantin Udilovich © 2015</copyright>
     <frameworkAssemblies />
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="Kodestruct.Common" version="0.0.6.1" />
+        <dependency id="Kodestruct.Common" version="0.0.10.1" />
       </group>
     </dependencies>
   </metadata>

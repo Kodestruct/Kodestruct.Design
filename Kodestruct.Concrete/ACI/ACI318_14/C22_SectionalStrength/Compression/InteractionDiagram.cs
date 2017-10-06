@@ -53,10 +53,10 @@ namespace Kodestruct.Concrete.ACI318_14
                 }
 
                 double SignFactor = 1.0;
-                if (CompressionFiberPosition == FlexuralCompressionFiberPosition.Bottom)
-                {
-                    SignFactor = -1.0;
-                }
+                //if (CompressionFiberPosition == FlexuralCompressionFiberPosition.Bottom)
+                //{
+                //    SignFactor = -1.0;
+                //}
                 double P = thisDistibutionResult.AxialForce * phi;
                 double M = thisDistibutionResult.Moment * phi * SignFactor;
                 PMPair thisPair = new PMPair(P, M);
@@ -96,7 +96,7 @@ namespace Kodestruct.Concrete.ACI318_14
 
             //FINAL DIAGRAM
             List<PMPair> TruncatedPairs = new List<PMPair>();
-            TruncatedPairs.Add(GetPureTensionPoint(CompressionFiberPosition));
+            //TruncatedPairs.Add(GetPureTensionPoint(CompressionFiberPosition));
 
             var RemainingPairs = SortedPairs.Where(p => p.P < P_o);
             TruncatedPairs.AddRange(RemainingPairs);

@@ -64,7 +64,7 @@ namespace Kodestruct.Concrete.ACI
             }
             else
             {
-                return Section as ISliceableSection;
+                return Section.SliceableShape as ISliceableSection;
             }
 
            

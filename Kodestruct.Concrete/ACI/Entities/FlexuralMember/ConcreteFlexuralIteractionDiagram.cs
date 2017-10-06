@@ -69,10 +69,11 @@ namespace Kodestruct.Concrete.ACI
                         throw new CompressionFiberPositionException();
                 }
 
-                if (i==66)
+                if (i==2)
                 {
                     
                 }
+
                 SectionAnalysisResult thisDistibutionResult = GetSectionResult(currentStrainDistribution, CompressionFiberPosition);
 
                 
@@ -89,8 +90,11 @@ namespace Kodestruct.Concrete.ACI
 
                 SectionResults.Add(thisDistibutionResult);
             }
+            //pure tension step
+            LinearStrainDistribution pureTensionStrainDistribution = new LinearStrainDistribution(StrainHeight, StrainMin, StrainMin);
+            SectionAnalysisResult pureTensionDistibutionResult = GetSectionResult(pureTensionStrainDistribution, CompressionFiberPosition);
 
-
+            SectionResults.Add(pureTensionDistibutionResult);
             return SectionResults;
                
         }

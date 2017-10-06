@@ -59,7 +59,19 @@ namespace Kodestruct.Concrete.ACI
             //22.4.2.2 
             double A_g = Section.SliceableShape.A;
             var compressionLongitudinalBars = LongitudinalBars.Where(r => r.Rebar.IsTensionOnly == false);
-            double A_s = compressionLongitudinalBars.Sum(b => b.Rebar.Area);
+            double A_s = compressionLongitudinalBars.Sum(b =>
+            {
+                if (b.Rebar.IsTensionOnly == false)
+                {
+                    return b.Rebar.Area;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            
+            );
             double f_c = Section.Material.SpecifiedCompressiveStrength;
             double f_yA_s = LongitudinalBars.Sum(b => b.Rebar.Area * b.Rebar.Material.YieldStress);
             //(22.4.2.2)

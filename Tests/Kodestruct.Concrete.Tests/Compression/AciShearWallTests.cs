@@ -43,9 +43,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
             FlexuralCompressionFiberPosition p = FlexuralCompressionFiberPosition.Top;
             ConcreteMaterial Concrete = new ConcreteMaterial(f_c_prime_psi, ConcreteTypeByWeight.Normalweight, null);
             ConfinementReinforcementType ConfinementReinforcementType = KodestructAci.ConfinementReinforcementType.Ties;
-            CrossSectionIShape shape = GetIShape(Concrete, h_total, t_w, BoundaryZoneTop, BoundaryZoneBottom);
+            //CrossSectionIShape shape = GetIShape(Concrete, h_total, t_w, BoundaryZoneTop, BoundaryZoneBottom);
+            CrossSectionRectangularShape shape = new CrossSectionRectangularShape(Concrete, null, t_w, h_total);
 
-            List<KodestructAci.RebarPoint> LongitudinalBars = GetLongitudinalBars(shape.SliceableShape as ISectionI, h_total, t_w, WallRebarSizeId, N_curtains, s, c_edge,
+            List<KodestructAci.RebarPoint> LongitudinalBars = GetLongitudinalBars(shape.SliceableShape as ISectionRectangular, h_total, t_w, WallRebarSizeId, N_curtains, s, c_edge,
             BoundaryZoneTop, BoundaryZoneBottom, LongitudinalRebarMaterial);
 
             KodestructAci.IConcreteFlexuralMember fs = new KodestructAci14.ConcreteSectionFlexure(shape, LongitudinalBars, null, ConfinementReinforcementType);
@@ -56,7 +57,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
             List<PMPair> Pairs = column.GetPMPairs(p);
             var PairsAdjusted = Pairs.Select(pair => new PMPair(pair.P / 1000.0, pair.M / 1000.0 / 12.0));
 
-            string Filename = Path.Combine(Path.GetTempPath(), "PMInteraction.csv");
+            string Filename = Path.Combine(Path.GetTempPath(), "PMInteractionShearWall.csv");
             using (CsvFileWriter writer = new CsvFileWriter(Filename))
             {
                 foreach (var pair in PairsAdjusted)
@@ -68,6 +69,96 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
                     
                 }
             }
+        }
+
+
+        [Test]
+        public void ShearWallCalculatesPMMDiagramMaxIteration()
+        {
+            double f_c_prime = 6;
+            double f_c_prime_psi = f_c_prime * 1000;
+            IRebarMaterial LongitudinalRebarMaterial = new RebarMaterialGeneral(60000);
+            double l_w = 20 * 12;
+            double h = 12;
+
+
+            FlexuralCompressionFiberPosition p = FlexuralCompressionFiberPosition.Top;
+            ConcreteMaterial Concrete = new ConcreteMaterial(f_c_prime_psi, ConcreteTypeByWeight.Normalweight, null);
+            ConfinementReinforcementType ConfinementReinforcementType = KodestructAci.ConfinementReinforcementType.Ties;
+            //CrossSectionIShape shape = GetIShape(Concrete, h_total, t_w, BoundaryZoneTop, BoundaryZoneBottom);
+            CrossSectionRectangularShape shape = new CrossSectionRectangularShape(Concrete, null, h, l_w);
+
+            List<RebarPoint> LongitudinalBars = GetLongitudinalBarsFromCoordinates(LongitudinalRebarMaterial);
+
+            KodestructAci.IConcreteFlexuralMember fs = new KodestructAci14.ConcreteSectionFlexure(shape, LongitudinalBars, null, ConfinementReinforcementType);
+
+            IConcreteSectionWithLongitudinalRebar Section = fs as IConcreteSectionWithLongitudinalRebar;
+            ConcreteSectionCompression column = new ConcreteSectionCompression(Section, ConfinementReinforcementType, null);
+            //Convert axial force to pounds
+            List<PMPair> Pairs = column.GetPMPairs(p,50,true);
+            var PairsAdjusted = Pairs.Select(pair => new PMPair(pair.P / 1000.0, pair.M / 1000.0 / 12.0));
+
+            string Filename = Path.Combine(Path.GetTempPath(), "PMInteractionShearWallMaxIteration.csv");
+            using (CsvFileWriter writer = new CsvFileWriter(Filename))
+            {
+                foreach (var pair in PairsAdjusted)
+                {
+                    CsvRow row = new CsvRow();
+                    row.Add(pair.M.ToString());
+                    row.Add(pair.P.ToString());
+                    writer.WriteRow(row);
+
+                }
+            }
+        }
+
+        private List<RebarPoint> GetLongitudinalBarsFromCoordinates(IRebarMaterial LongitudinalRebarMaterial)
+        {
+
+            List<RebarPoint> points = new List<RebarPoint>();
+            List<double> RebarAreas = new List<double>()
+            {
+                5.04 ,
+                5.04 ,
+                5.04 ,
+                5.04 ,
+                5.04 ,
+                5.04 ,
+                5.04 ,
+                5.04 ,
+                5.04 ,
+                2    ,
+                2    ,
+                2    ,
+                2    ,
+                0.576,
+
+
+            };
+            List<double> RebarYs = new List<double>()
+            {
+                -117    ,
+                -104.25 ,
+                -91.5   ,
+                -78.75  ,
+                -66     ,
+                -53.25  ,
+                -40.5   ,
+                -27.75  ,
+                -15     ,
+                -9      ,
+                31      ,
+                71      ,
+                111     ,
+                117     ,
+
+            };
+            for (int i = 0; i < RebarAreas.Count(); i++)
+            {
+                RebarPoint pnt = new RebarPoint(new Rebar(RebarAreas[i], LongitudinalRebarMaterial), new RebarCoordinate(0, RebarYs[i]));
+                points.Add(pnt);
+            }
+            return points;
         }
 
         private List<KodestructAci.RebarPoint> GetWallBars(double h, double t_w, string RebarSizeId, double N_curtains, double s,
@@ -86,8 +177,8 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
             int NBarLines = (int)Math.Floor(h / s);
             double A_s = NBarLines * N_curtains * A_b;
             RebarLine Line = new RebarLine(A_s,
-            new Point2D(0.0,  bottomZoneLength + c_edge),
-            new Point2D(0.0, h - c_edge - topZoneLength),
+            new Point2D(0.0,  (bottomZoneLength + c_edge)-h/2),
+            new Point2D(0.0, h/2 - c_edge - topZoneLength),
             LongitudinalRebarMaterial, false, false, NBarLines);
 
             return Line.RebarPoints;
@@ -118,13 +209,13 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
             return Line.RebarPoints;
         }
 
-        private List<KodestructAci.RebarPoint> GetLongitudinalBars(KodestructSection.Interfaces.ISectionI shape, double h_total, double t_w,
-   string RebarSizeId, double N_curtains, double s, double c_edge,
-    BoundaryZone BoundaryZoneTop, BoundaryZone BoundaryZoneBottom, IRebarMaterial LongitudinalRebarMaterial)
+        private List<KodestructAci.RebarPoint> GetLongitudinalBars(ISectionRectangular shape, double h_total, double t_w,
+        string RebarSizeId, double N_curtains, double s, double c_edge,
+        BoundaryZone BoundaryZoneTop, BoundaryZone BoundaryZoneBottom, IRebarMaterial LongitudinalRebarMaterial)
         {
 
-            List<KodestructAci.RebarPoint> BzTopBars = GetBoundaryZoneBars(BoundaryZoneTop, LongitudinalRebarMaterial, new Point2D(0.0, shape.d - BoundaryZoneTop.h / 2.0), true);
-            List<KodestructAci.RebarPoint> BzBottomBars = GetBoundaryZoneBars(BoundaryZoneBottom, LongitudinalRebarMaterial, new Point2D(0.0,  BoundaryZoneTop.h / 2.0), false);
+            List<KodestructAci.RebarPoint> BzTopBars = GetBoundaryZoneBars(BoundaryZoneTop, LongitudinalRebarMaterial, new Point2D(0.0, shape.H/2.0- BoundaryZoneTop.h / 2.0), true);
+            List<KodestructAci.RebarPoint> BzBottomBars = GetBoundaryZoneBars(BoundaryZoneBottom, LongitudinalRebarMaterial, new Point2D(0.0,  BoundaryZoneTop.h / 2.0 - shape.H / 2.0), false);
 
             List<KodestructAci.RebarPoint> retBars = null;
             if (N_curtains != 0)

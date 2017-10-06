@@ -36,7 +36,7 @@ namespace Kodestruct.Concrete.ACI
 
         public ConcreteFlexuralSectionBase(IConcreteSection Section, List<RebarPoint> LongitudinalBars, ICalcLog log, 
             ConfinementReinforcementType ConfinementReinforcementType = ConfinementReinforcementType.Ties, double ConvergenceToleranceStrain = 0.000002)
-            : base(Section, LongitudinalBars, log)
+            : base(Section, LongitudinalBars, log, false)
         {
             this.ConvergenceToleranceStrain = ConvergenceToleranceStrain;
             this.ConfinementReinforcementType = ConfinementReinforcementType;

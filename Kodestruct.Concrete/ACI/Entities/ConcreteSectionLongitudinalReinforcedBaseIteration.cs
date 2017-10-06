@@ -45,7 +45,7 @@ namespace Kodestruct.Concrete.ACI
                 AxialForce = CForceResultant.Force + TForceResultant.Force,
                 CForce = CForceResultant.Force,
                 TForce = TForceResultant.Force,
-                Moment = Math.Abs(CForceResultant.Moment)+ Math.Abs(TForceResultant.Moment),
+                Moment =CForceResultant.Moment+ TForceResultant.Moment,
                 Rotation = 0,
                 StrainDistribution = StrainDistribution,
                 CompressionRebarResults = CForceRebarResultant.RebarResults,
@@ -77,7 +77,6 @@ namespace Kodestruct.Concrete.ACI
         protected virtual ForceMomentContribution GetCompressionForceRebarResultant(LinearStrainDistribution StrainDistribution, FlexuralCompressionFiberPosition compFiberPosition)
         {
             ForceMomentContribution steelContrib = GetRebarResultant(StrainDistribution, ResultantType.Compression, compFiberPosition);
-
             return steelContrib;
         }
 
@@ -94,7 +93,7 @@ namespace Kodestruct.Concrete.ACI
 
             if (compFiberPosition == FlexuralCompressionFiberPosition.Top)
             {
-                if (StrainDistribution.TopFiberStrain< this.MaxConcreteStrain)
+                if (StrainDistribution.TopFiberStrain< this.MaxConcreteStrain && StrainDistribution.TopFiberStrain>=0)
                 {
                     concreteForceResultant = GetConcreteParabolicStressForceResultant(StrainDistribution);
                 }
@@ -104,6 +103,15 @@ namespace Kodestruct.Concrete.ACI
                     {
                         concreteForceResultant = GetConcreteWhitneyForceResultant(StrainDistribution, compFiberPosition, CompressedRebarArea,  CompressedBarCentroidCoordinate);
                     }
+                    else if (StrainDistribution.TopFiberStrain<0)
+                    {
+                        concreteForceResultant = new ForceMomentContribution()
+                        {
+                            Force = 0,
+                            Moment = 0,
+                            RebarResults = new List<RebarPointResult>()
+                        };
+                    }
                     else
                     {
                         throw new UltimateConcreteStrainExceededException();
@@ -112,7 +120,7 @@ namespace Kodestruct.Concrete.ACI
             }
             else
             {
-                if (StrainDistribution.BottomFiberStrain < this.MaxConcreteStrain)
+                if (StrainDistribution.BottomFiberStrain < this.MaxConcreteStrain && StrainDistribution.TopFiberStrain >= 0)
                 {
                     concreteForceResultant = GetConcreteParabolicStressForceResultant(StrainDistribution);
                 }
@@ -121,6 +129,15 @@ namespace Kodestruct.Concrete.ACI
                     if (StrainDistribution.BottomFiberStrain == this.MaxConcreteStrain)
                     {
                         concreteForceResultant = GetConcreteWhitneyForceResultant(StrainDistribution, compFiberPosition, CompressedRebarArea, CompressedBarCentroidCoordinate);
+                    }
+                    else if (StrainDistribution.TopFiberStrain < 0)
+                    {
+                        concreteForceResultant = new ForceMomentContribution()
+                        {
+                            Force = 0,
+                            Moment = 0,
+                            RebarResults = new List<RebarPointResult>()
+                        };
                     }
                     else
                     {

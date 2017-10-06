@@ -40,9 +40,8 @@
       <HintPath>..\packages\Clipper.6.2.10\lib\net40\clipper_library.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.6.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kodestruct.Common.0.0.6.1\lib\net45\Kodestruct.Common.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Kodestruct.Common, Version=0.0.10.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kodestruct.Common.0.0.10.2\lib\net45\Kodestruct.Common.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -50,6 +49,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -129,6 +129,7 @@
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionGeneric.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionRectangularNonPrestressed.cs" />
     <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionShapeFactory.cs" />
+    <Compile Include="ACI\Entities\CompressionMember\PMRatioFinder.cs" />
     <Compile Include="ACI\Entities\ConcreteSectionLongitudinalReinforcedBaseCentroid.cs" />
     <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralIteractionDiagram.cs" />
     <Compile Include="ACI\Entities\General\PMPair.cs" />
@@ -293,13 +294,18 @@
     <None Include="packages.config" />
     <None Include="Resources\ACI_MildRebarProperties.txt" />
     <None Include="Kodestruct.Concrete.licenseheader" />
-    <None Include="Kodestruct.Concrete.nuspec" />
+    <None Include="Kodestruct.Concrete.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AnchorAreas.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ACI_RebarCover.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

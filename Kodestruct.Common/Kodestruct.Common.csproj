@@ -76,6 +76,7 @@
     <Compile Include="Mathematics\Point2D.cs" />
     <Compile Include="Mathematics\Point2DList.cs" />
     <Compile Include="Mathematics\Polygon2D.cs" />
+    <Compile Include="Mathematics\PolygonLineIntersectionFinder.cs" />
     <Compile Include="Mathematics\PolygonLocationChecking.cs" />
     <Compile Include="Mathematics\Vector2d.cs" />
     <Compile Include="Reports\CalcLog.cs" />

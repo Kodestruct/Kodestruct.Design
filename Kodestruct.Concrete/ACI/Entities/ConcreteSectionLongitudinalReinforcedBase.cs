@@ -30,15 +30,24 @@ namespace Kodestruct.Concrete.ACI
     public abstract partial class ConcreteSectionLongitudinalReinforcedBase : ConcreteSectionBase, IConcreteSectionWithLongitudinalRebar 
     {
 
-        public ConcreteSectionLongitudinalReinforcedBase(IConcreteSection Section, List<RebarPoint> LongitudinalBars, ICalcLog CalcLog)
+        public ConcreteSectionLongitudinalReinforcedBase(IConcreteSection Section, List<RebarPoint> LongitudinalBars, ICalcLog CalcLog, bool UseTransformedSectionForCentroidCalculations=false)
 			: base(Section,CalcLog)
 		{
 			this.Section = Section;
 			this.longitBars = LongitudinalBars;
-            this.TransformedSection= CalculateTransformedSection();
+            this.UseTransformedSectionForCentroidCalculations = UseTransformedSectionForCentroidCalculations;
+            if (UseTransformedSectionForCentroidCalculations ==true)
+            {
+                this.TransformedSection = CalculateTransformedSection();
+            }
+            else
+            {
+                this.TransformedSection = Section.SliceableShape as ISliceableSection;
+            }
+            
 		}
 
-
+        public bool UseTransformedSectionForCentroidCalculations { get; set; }
 
         private  List<RebarPoint>  longitBars;
 
@@ -74,14 +83,16 @@ namespace Kodestruct.Concrete.ACI
                 if (p == FlexuralCompressionFiberPosition.Top)
                 {
                     BarDistanceToTop = YMax - rbrPnt.Coordinate.Y;
-                    BarDistanceToCentroid = TransformedSection.GetElasticCentroidCoordinate().Y - rbrPnt.Coordinate.Y;
+                    BarDistanceToCentroid = rbrPnt.Coordinate.Y - TransformedSection.GetElasticCentroidCoordinate().Y;
+                    // BarDistanceToCentroid = TransformedSection.GetElasticCentroidCoordinate().Y - rbrPnt.Coordinate.Y;
                     Strain = StrainDistribution.GetStrainAtPointOffsetFromTop(BarDistanceToTop);
                 }
                 else
                 {
 
                     BarDistanceToBottom = rbrPnt.Coordinate.Y - YMin;
-                    BarDistanceToCentroid = rbrPnt.Coordinate.Y - TransformedSection.GetElasticCentroidCoordinate().Y ;
+                    //BarDistanceToCentroid = TransformedSection.GetElasticCentroidCoordinate().Y - rbrPnt.Coordinate.Y;
+                   BarDistanceToCentroid = rbrPnt.Coordinate.Y - TransformedSection.GetElasticCentroidCoordinate().Y ;
                     Strain = StrainDistribution.GetStrainAtPointOffsetFromBottom(BarDistanceToBottom);
                 }
 

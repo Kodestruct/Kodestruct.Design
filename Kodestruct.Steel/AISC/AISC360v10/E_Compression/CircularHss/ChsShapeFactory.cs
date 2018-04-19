@@ -44,11 +44,11 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 
             if (webCompactnessX ==  CompactnessClassAxialCompression.NonSlender && webCompactnessY == CompactnessClassAxialCompression.NonSlender )
             {
-                return new ChsNonSlender(Section, L_x, L_y, L_z, CalcLog);
+                return new ChsNonSlender(Section, L_x, L_y, L_z);
             }
             else
             {
-                return new ChsSlender(Section, L_x, L_y, L_z, CalcLog);
+                return new ChsSlender(Section, L_x, L_y, L_z);
             }
             return column;
         }

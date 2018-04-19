@@ -32,8 +32,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
     public partial class IShapeSlenderElements : IShapeCompact
     {
 
-        public IShapeSlenderElements(ISteelSection Section, bool IsRolled, double L_x, double L_y, double L_z, ICalcLog CalcLog)
-            : base(Section, IsRolled, L_x, L_y, L_z, CalcLog)
+        public IShapeSlenderElements(ISteelSection Section, bool IsRolled, double L_x, double L_y, double L_z )
+            : base(Section, IsRolled, L_x, L_y, L_z)
         {
     }
 

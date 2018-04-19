@@ -65,8 +65,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
         }
 
         
-        public RhsNonSlender(ISteelSection Section, double L_ex, double L_ey, double L_ez, ICalcLog CalcLog)
-            : base(Section,L_ex,L_ey, L_ez, CalcLog)
+        public RhsNonSlender(ISteelSection Section, double L_ex, double L_ey, double L_ez)
+            : base(Section,L_ex,L_ey, L_ez)
         {
             if (Section.Shape is ISectionTube)
             {

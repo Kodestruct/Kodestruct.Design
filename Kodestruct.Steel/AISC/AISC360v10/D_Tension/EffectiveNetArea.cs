@@ -72,7 +72,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Tension
             {
                 //For bolted splice plates Ae=An =0.85Ag, according to Section J4.1
                 double AeMax = 0.85 * A_g;
-                Ae = Ae < AeMax ? AeMax : Ae;
+                Ae = Ae > AeMax ? AeMax : Ae;
                 return Ae;
             }
 

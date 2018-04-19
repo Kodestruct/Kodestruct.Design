@@ -31,7 +31,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 {
     public class RhsShapeFactory
     {
-        public ISteelCompressionMember GetRhsShape(ISteelSection Section, double L_ex, double L_ey, double L_ez, ICalcLog CalcLog)
+        public ISteelCompressionMember GetRhsShape(ISteelSection Section, double L_ex, double L_ey, double L_ez)
         {
 
             ISteelCompressionMember column = null;
@@ -44,11 +44,11 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 
             if (webCompactnessX ==  CompactnessClassAxialCompression.NonSlender && webCompactnessY == CompactnessClassAxialCompression.NonSlender )
             {
-                return new RhsNonSlender(Section, L_ex, L_ey, L_ez, CalcLog);
+                return new RhsNonSlender(Section, L_ex, L_ey, L_ez);
             }
             else
             {
-                return new RhsSlender(Section, L_ex, L_ey, L_ez, CalcLog);
+                return new RhsSlender(Section, L_ex, L_ey, L_ez);
             }
             return column;
         }

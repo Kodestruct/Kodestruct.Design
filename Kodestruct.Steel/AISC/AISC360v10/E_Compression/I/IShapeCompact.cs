@@ -59,8 +59,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 
         }
 
-        public IShapeCompact(ISteelSection Section, bool IsRolled, double L_x, double L_y, double L_z, ICalcLog CalcLog)
-            : base(Section,L_x,L_y, L_z, CalcLog)
+        public IShapeCompact(ISteelSection Section, bool IsRolled, double L_x, double L_y, double L_z)
+            : base(Section,L_x,L_y, L_z)
         {
             if (Section.Shape is ISectionI)
             {

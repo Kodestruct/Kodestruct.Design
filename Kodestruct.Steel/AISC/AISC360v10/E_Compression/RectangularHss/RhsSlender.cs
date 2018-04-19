@@ -35,7 +35,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 
         public override double CalculateCriticalStress()
         {
-            double Fcr = 0.0;
+
 
             //Flexural
 
@@ -49,8 +49,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
         }
 
 
-        public RhsSlender(ISteelSection Section, double L_x, double L_y, double L_z, ICalcLog CalcLog)
-            : base(Section,L_x,L_y, L_z, CalcLog)
+        public RhsSlender(ISteelSection Section, double L_x, double L_y, double L_z )
+            : base(Section,L_x,L_y, L_z)
         {
             if (Section.Shape is ISectionTube)
             {

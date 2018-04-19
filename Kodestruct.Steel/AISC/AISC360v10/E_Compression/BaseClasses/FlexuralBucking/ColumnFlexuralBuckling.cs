@@ -22,11 +22,8 @@ using System.Text;
 using Kodestruct.Common.Entities; 
 using Kodestruct.Common.Section.Interfaces; 
 using Kodestruct.Steel.AISC.Interfaces;
-
- 
- 
 using Kodestruct.Common.CalculationLogger.Interfaces; 
-using Kodestruct.Steel.AISC.Interfaces;
+
 
 
 namespace Kodestruct.Steel.AISC.AISC360v10.Compression
@@ -99,15 +96,18 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             double Fe=0;
             double Slenderness = SlendernessKLr;
 
-            if (Slenderness != 0)
-            {
-                //(E3-4)
-                Fe = Math.Pow(Math.PI, 2) * E / Math.Pow(Slenderness, 2);
-            }
-            else
-            {
-                return double.PositiveInfinity;
-            }
+            FlexuralBucklingCriticalStressCalculator fcalc = new FlexuralBucklingCriticalStressCalculator();
+
+            Fe = fcalc.GetF_e(E, Slenderness);
+            //if (Slenderness != 0)
+            //{
+            //    //(E3-4)
+            //    Fe = Math.Pow(Math.PI, 2) * E / Math.Pow(Slenderness, 2);
+            //}
+            //else
+            //{
+            //    return double.PositiveInfinity;
+            //}
 
             return Fe;
             
@@ -121,29 +121,30 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             double Fcr = 0.0;
             double Fy = Section.Material.YieldStress;
 
+            FlexuralBucklingCriticalStressCalculator fcalc = new FlexuralBucklingCriticalStressCalculator();
+            return fcalc.GetCriticalStressFcr(Fe, Fy, Q);
+            //if (Fe != double.PositiveInfinity)
+            //{
+            //    double stressRatio = Q * Fy / Fe;
 
-            if (Fe != double.PositiveInfinity)
-            {
-                double stressRatio = Q * Fy / Fe;
-
-                if (stressRatio > 2.25)
-                {
-                    Fcr = 0.877 * Fe; // (E3-3) if Q<1 then (E7-3)
-                }
-                else
-                {
-                    Fcr = Q * Math.Pow(0.658, stressRatio) * Fy; //(E3-2)  if Q<1 then (E7-2)
-                }  
-            }
-            else
-            {
-                Fcr = Fy;
-            }
+            //    if (stressRatio > 2.25)
+            //    {
+            //        Fcr = 0.877 * Fe; // (E3-3) if Q<1 then (E7-3)
+            //    }
+            //    else
+            //    {
+            //        Fcr = Q * Math.Pow(0.658, stressRatio) * Fy; //(E3-2)  if Q<1 then (E7-2)
+            //    }  
+            //}
+            //else
+            //{
+            //    Fcr = Fy;
+            //}
 
 
-            
 
-            return Fcr;
+
+            //return Fcr;
         }
 
         public double GetCriticalStressFcr_Y()

@@ -75,7 +75,28 @@ namespace Kodestruct.Common.Section.SectionTypes
         public double h_web
         {
             get { return _h_web; }
-        } 
+        }
+
+
+
+        public double CornerRadiusOutside
+        {
+            get { return 0; }
+            set {   }
+        }
+
+        private double _t_des;
+
+        public double t_des
+        {
+            get {
+                _t_des = Math.Min(t_f, t_w);
+                return _t_des; }
+            set { _t_des = value; }
+        }
+
+
+
         #endregion
 
 

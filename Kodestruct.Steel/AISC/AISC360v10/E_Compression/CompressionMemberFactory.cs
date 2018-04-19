@@ -48,12 +48,17 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             CalcLog log = new CalcLog();
             SteelMaterial Material = new SteelMaterial(F_y, E);
 
+            if (Shape== null)
+            {
+                return new ColumnGeneral(null, L_ex, L_ey, L_ez);
+            }
+
             if (Shape is ISectionI)
             {
                 ISectionI IShape = Shape as ISectionI;
                 SteelSectionI SectionI = new SteelSectionI(IShape, Material);
                 IShapeFactory IShapeFactory = new IShapeFactory();
-                return IShapeFactory.GetIshape(SectionI, IsRolledShape, L_ex, L_ey, L_ez, log);
+                return IShapeFactory.GetIshape(SectionI, IsRolledShape, L_ex, L_ey, L_ez);
  
             }
 
@@ -81,7 +86,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
                 ISectionTube TubeShape = Shape as ISectionTube;
                 SteelRhsSection RectHSS_Section = new SteelRhsSection(TubeShape, Material);
                 RhsShapeFactory RhsFactory = new RhsShapeFactory();
-                return RhsFactory.GetRhsShape(RectHSS_Section, L_ex, L_ey, L_ez, log);
+                return RhsFactory.GetRhsShape(RectHSS_Section, L_ex, L_ey, L_ez);
  
             }
 
@@ -92,7 +97,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
                 SteelBoxSection BoxSection = new SteelBoxSection(BoxShape, Material);
 
                 RhsShapeFactory RhsFactory = new RhsShapeFactory();
-                return RhsFactory.GetRhsShape(BoxSection, L_ex, L_ey, L_ez, log);
+                return RhsFactory.GetRhsShape(BoxSection, L_ex, L_ey, L_ez);
  
             }
 
@@ -113,7 +118,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
                 }
 
 
-                CompressionMemberRectangle SolidShapeSection = new CompressionMemberRectangle(solidSec, L_ex, L_ey, L_ez, log);
+                CompressionMemberRectangle SolidShapeSection = new CompressionMemberRectangle(solidSec, L_ex, L_ey, L_ez);
                 return SolidShapeSection;
                 
 
@@ -125,6 +130,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
                 SteelTeeSection TeeSection = new SteelTeeSection(TeeShape, Material);
                 throw new Exception(DEFAULT_EXCEPTION_STRING);
             }
+
             else
             {
                 throw new Exception(DEFAULT_EXCEPTION_STRING);

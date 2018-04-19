@@ -31,7 +31,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 {
     public class IShapeFactory
     {
-        public ISteelCompressionMember GetIshape(ISteelSection Section, bool IsRolled, double L_x, double L_y, double L_z, ICalcLog CalcLog)
+        public ISteelCompressionMember GetIshape(ISteelSection Section, bool IsRolled, double L_x, double L_y, double L_z)
         {
 
             ISteelCompressionMember column = null;
@@ -47,7 +47,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             if (flangeCompactnessTop == CompactnessClassAxialCompression.NonSlender && webCompactness == CompactnessClassAxialCompression.NonSlender
                 && flangeCompactnessBot == CompactnessClassAxialCompression.NonSlender)
             {
-                column = new IShapeCompact(Section, IsRolled, L_x, L_y, L_z, Log);
+                column = new IShapeCompact(Section, IsRolled, L_x, L_y, L_z);
                 //if (IShape.b_fBot == IShape.b_fTop && IShape.t_fBot == IShape.t_fTop)
                 //{
                 //    return new IShapeCompact(SectionI, IsRolledShape, L_ex, L_ey, L_ez, log);
@@ -59,7 +59,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             }
             else
             {
-                column = new IShapeSlenderElements(Section, IsRolled, L_x, L_y, L_z, Log);
+                column = new IShapeSlenderElements(Section, IsRolled, L_x, L_y, L_z);
             }
             return column;
         }

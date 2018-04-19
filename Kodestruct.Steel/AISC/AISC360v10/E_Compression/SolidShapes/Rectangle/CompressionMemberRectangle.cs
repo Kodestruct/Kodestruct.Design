@@ -33,11 +33,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
     public partial class CompressionMemberRectangle: ColumnDoublySymmetric
     {
 
-            //    public CompressionMemberRectangle(ISteelSection Section, double L_x, double L_y, double K_x, double K_y, ICalcLog CalcLog) :
-            //base(Section, L_x,L_y,K_x,K_y, CalcLog)
 
-        public CompressionMemberRectangle(ISteelSection Section, double L_x, double L_y, double L_z,  ICalcLog CalcLog) :
-            base(Section, L_x,L_y, L_z, CalcLog)
+        public CompressionMemberRectangle(ISteelSection Section, double L_x, double L_y, double L_z) :
+            base(Section, L_x,L_y, L_z)
         {
 
         }
@@ -62,12 +60,17 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 
         public override SteelLimitStateValue GetFlexuralBucklingStrength()
         {
-            throw new NotImplementedException();
+            double FeFlexuralBuckling = GetFlexuralElasticBucklingStressFe();
+            double FcrFlexuralBuckling = GetCriticalStressFcr(FeFlexuralBuckling);
+            double phiP_n = GetDesignAxialStrength(FcrFlexuralBuckling);
+
+            SteelLimitStateValue ls = new SteelLimitStateValue(phiP_n, true);
+            return ls;
         }
 
         public override SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength()
         {
-            throw new NotImplementedException();
+            return new SteelLimitStateValue(-1, false);
         }
     }
 }

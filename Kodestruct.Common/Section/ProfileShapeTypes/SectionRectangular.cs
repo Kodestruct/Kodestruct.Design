@@ -103,7 +103,7 @@ namespace Kodestruct.Common.Section.SectionTypes
         public override List<CompoundShapePart> GetCompoundRectangleYAxisList()
         {
             List<CompoundShapePart> rectangles = new List<CompoundShapePart>();
-            rectangles.Add(new CompoundShapePart(B, H, centroid));
+            rectangles.Add(new CompoundShapePart(H, B, centroid));
             return rectangles;
         }
 

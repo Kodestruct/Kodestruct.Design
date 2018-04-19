@@ -64,8 +64,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 
         }
 
-        public ChsNonSlender(ISteelSection Section, double L_x, double L_y, double L_z, ICalcLog CalcLog)
-            : base(Section,L_x,L_y, L_z, CalcLog)
+        public ChsNonSlender(ISteelSection Section, double L_x, double L_y, double L_z)
+            : base(Section,L_x,L_y, L_z)
         {
             if (Section.Shape is ISectionPipe)
             {

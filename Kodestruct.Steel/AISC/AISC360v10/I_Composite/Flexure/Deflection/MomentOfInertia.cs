@@ -50,9 +50,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Composite
 
             double a = C_Slab / (0.85 * f_cPrime * SlabEffectiveWidth);
 
-            if (a>SlabSolidThickness)
+            if (a > SlabSolidThickness)
             {
-                d_1 = SlabSolidThickness / 2+SlabDeckThickness;
+                d_1 = SlabSolidThickness / 2 + SlabDeckThickness;
             }
             else
             {

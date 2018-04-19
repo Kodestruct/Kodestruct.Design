@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AISC\AISC360v10\B_General\Compactness\ShapeCompactness\ShapeCompactnessDoubleAngle.cs" />
+    <Compile Include="AISC\AISC360v10\E_Compression\BaseClasses\FlexuralBucking\FlexuralBucklingCriticalStressCalculator.cs" />
     <Compile Include="AISC\AISC360v10\E_Compression\CircularHss\ChsSlender.cs" />
     <Compile Include="AISC\AISC360v10\E_Compression\CircularHss\ChsShapeFactory.cs" />
     <Compile Include="AISC\AISC360v10\E_Compression\I\IShapeFactory.cs" />

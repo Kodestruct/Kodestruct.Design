@@ -18,7 +18,7 @@
 using System;
 namespace Kodestruct.Common.Section.Interfaces
 {
-    public interface ISectionBox : ISection, IWeakAxisCloneable
+    public interface ISectionBox : ISectionTube, IWeakAxisCloneable
     {
         double H { get; }
         double FlangeCentroidDistance { get; }

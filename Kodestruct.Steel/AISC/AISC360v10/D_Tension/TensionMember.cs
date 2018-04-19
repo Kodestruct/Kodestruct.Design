@@ -48,7 +48,6 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Tension
             double phiP_n=0.0;
             phiP_n = 0.9 * Ag * Fy;
 
-
             return phiP_n;
         }
 

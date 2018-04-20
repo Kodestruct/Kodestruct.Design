@@ -58,7 +58,7 @@ namespace Kodestruct.Steel.AISC360v10.Connections.AffectedElements
                     else
                     {
                         CompressionMemberRectangle rectangularColumn = new CompressionMemberRectangle(Section,L_e,L_e,L_e); //todo: update CalcLog
-                        phiP_n = rectangularColumn.CalculateDesignStrength();
+                        phiP_n = rectangularColumn.CalculateDesignStrength(false);
                     }
 
                     return phiP_n;

@@ -118,7 +118,37 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
 
+        /// <summary>
+        /// Torsional and Constrained-Axis Flexural-Torsional
+        /// Buckling Tables for Steel W-Shapes in Compression
+        /// DI LIU, BRAD DAVIS, LEIGH ARBER and RAFAEL SABELLI
+        /// Table 1
+        /// </summary>
+        [Test]
+        public void IShapeReturns_CATB_Strength()
+        {
+            CreateColumn("W24X104", 1.0 * 12.0, 1.0 * 12.0, 20.0 * 12);
+            SteelLimitStateValue colFlexure = column.GetTorsionalAndFlexuralTorsionalBucklingStrength(true);
+            double phiP_n = colFlexure.Value;
+            double refValue = 891.0;
+            double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
         }
+
+
+        private void CreateColumn(string ShapeName, double L_ex, double L_ey, double L_ez = 0 )
+        {
+            CompressionMemberFactory factory = new CompressionMemberFactory();
+            AiscShapeFactory AiscShapeFactory = new AiscShapeFactory();
+            ISection section = AiscShapeFactory.GetShape(ShapeName, ShapeTypeSteel.IShapeRolled);
+            SteelMaterial mat = new SteelMaterial(50.0, 29000);
+            L_ez = L_ez == 0 ? L_ex : L_ez;
+            column = factory.GetCompressionMember(section, mat, L_ex, L_ey, L_ez, true);
+
+        }
+
+    }
 
     
 }

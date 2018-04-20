@@ -22,7 +22,7 @@ using System.Text;
 using Kodestruct.Common.Entities; 
 using Kodestruct.Common.Section.Interfaces; 
 using Kodestruct.Steel.AISC.Interfaces;
-using Kodestruct.Steel.AISC.Interfaces;
+
 
 namespace Kodestruct.Steel.AISC.SteelEntities.Materials
 {
@@ -54,6 +54,8 @@ namespace Kodestruct.Steel.AISC.SteelEntities.Materials
         {
             this.YieldStress = YieldStress;
             this.ModulusOfElasticity = ModulusOfElasticity;
+            this.ShearModulus = 11200.0;
+            this.UltimateStress = YieldStress * 1.3;
         }
     }
 }

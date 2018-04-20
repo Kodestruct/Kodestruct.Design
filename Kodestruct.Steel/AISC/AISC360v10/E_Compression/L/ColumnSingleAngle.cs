@@ -49,7 +49,7 @@ namespace  Kodestruct.Steel.AISC360v10
 
 
 
-        public override double CalculateCriticalStress()
+        public override double CalculateCriticalStress(bool EccentricBrace)
         {
             throw new NotImplementedException();
         }
@@ -68,7 +68,7 @@ namespace  Kodestruct.Steel.AISC360v10
             return ls;
         }
 
-        public override SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength()
+        public override SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength(bool EccentricBrace)
         {
 
             SteelLimitStateValue ls;

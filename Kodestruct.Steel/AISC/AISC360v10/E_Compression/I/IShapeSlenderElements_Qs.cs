@@ -95,7 +95,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             double tf_bot = this.SectionI.t_fBot;
             double bf_top = this.SectionI.b_fTop;
             double bf_bot = this.SectionI.b_fBot;
-            double bt_Ratio = Math.Max(bf_top/ tf_bot, bf_bot/ tf_bot);
+            double bt_Ratio = Math.Max(bf_top / (tf_bot * 2.0), bf_bot / (tf_bot * 2.0));
 
             return bt_Ratio;
         }

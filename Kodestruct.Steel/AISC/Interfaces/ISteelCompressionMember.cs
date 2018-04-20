@@ -38,6 +38,6 @@ namespace Kodestruct.Steel.AISC.Interfaces
 
 
         SteelLimitStateValue GetFlexuralBucklingStrength();
-        SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength();
+        SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength(bool EccentricBrace);
     }
 }

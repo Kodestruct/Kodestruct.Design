@@ -35,7 +35,7 @@ namespace Kodestruct.Steel.AISC.SteelEntities.Members
     public abstract class SteelAxialMember : SteelMemberBase, ISteelCompressionMember, ISteelTensionMember
     {
         public abstract SteelLimitStateValue GetFlexuralBucklingStrength();
-        public abstract SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength();
+        public abstract SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength(bool EccentricBrace);
 
         public double L_ex { get; set; }
         public double L_ey { get; set; }
@@ -61,9 +61,9 @@ namespace Kodestruct.Steel.AISC.SteelEntities.Members
             this.L_ey = L_ey;
         }
 
-        public abstract double CalculateDesignStrength();
+        public abstract double CalculateDesignStrength(bool EccentricBrace);
 
-        public abstract double CalculateCriticalStress();
+        public abstract double CalculateCriticalStress(bool EccentricBrace);
 
 
     }

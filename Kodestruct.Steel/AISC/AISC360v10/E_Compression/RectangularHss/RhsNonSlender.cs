@@ -34,7 +34,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
     {
 
 
-        public override double CalculateCriticalStress()
+        public override double CalculateCriticalStress(bool EccentricBrace)
         {
             double Fcr = 0.0;
 
@@ -51,14 +51,14 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 
         public override SteelLimitStateValue GetFlexuralBucklingStrength()
         {
-            double FcrFlex = CalculateCriticalStress();
+            double FcrFlex = CalculateCriticalStress(false);
             double phiP_n = GetDesignAxialStrength(FcrFlex);
 
             SteelLimitStateValue ls = new SteelLimitStateValue(phiP_n, true);
             return ls;
         }
 
-        public override SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength()
+        public override SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength(bool EccentricBrace)
         {
             return new SteelLimitStateValue(-1, false);
 

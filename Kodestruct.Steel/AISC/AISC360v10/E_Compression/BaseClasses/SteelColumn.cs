@@ -53,10 +53,10 @@ namespace Kodestruct.Steel.AISC.AISC360v10
             double phiP_n = Pn * 0.90; //per section E1 of specification
             return phiP_n;
         }
-        public override double CalculateDesignStrength()
+        public override double CalculateDesignStrength(bool EccentricBrace)
         {
             double phiP_n = 0.0;
-            double Fcr = CalculateCriticalStress();
+            double Fcr = CalculateCriticalStress(EccentricBrace);
             phiP_n = GetDesignAxialStrength(Fcr);
             return phiP_n;
         }

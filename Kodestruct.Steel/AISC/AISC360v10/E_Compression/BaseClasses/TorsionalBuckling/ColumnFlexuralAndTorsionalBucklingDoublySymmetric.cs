@@ -33,13 +33,13 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
     {
         //public ColumnDoublySymmetric(ISteelSection Section, double L_x, double L_y, double K_x, double K_y, ICalcLog CalcLog)
         //    : base(Section,L_x,L_y,K_x,K_y, CalcLog)
-        public ColumnDoublySymmetric(ISteelSection Section, double L_x, double L_y, double L_z, bool IsEccentricallyLaterallyConstrained=false, ICalcLog CalcLog=null)
+        public ColumnDoublySymmetric(ISteelSection Section, double L_x, double L_y, double L_z,  ICalcLog CalcLog=null)
        : base(Section, L_x, L_y, L_z, CalcLog)
         {
-            this.IsExcentricallyLaterallyConstrained = IsEccentricallyLaterallyConstrained;
+            //this.IsExcentricallyLaterallyConstrained = IsEccentricallyLaterallyConstrained;
         }
-        public bool IsExcentricallyLaterallyConstrained { get; set; }
-        public double GetTorsionalElasticBucklingStressFe()
+        //public bool IsExcentricallyLaterallyConstrained { get; set; }
+        public double GetTorsionalElasticBucklingStressFe(bool IsEccentricallyLaterallyConstrained)
         {
             double pi2 = Math.Pow(Math.PI, 2);
             double E = Section.Material.ModulusOfElasticity;
@@ -63,7 +63,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             else
             {
                 Fe = (pi2 * E * C_w / Math.Pow(Lz, 2) + G * J) * 1 / (I_x + I_y); //(E4-4) 
-                if (IsExcentricallyLaterallyConstrained == false)
+                if (IsEccentricallyLaterallyConstrained == false)
                 {
                     return Fe;
                 }

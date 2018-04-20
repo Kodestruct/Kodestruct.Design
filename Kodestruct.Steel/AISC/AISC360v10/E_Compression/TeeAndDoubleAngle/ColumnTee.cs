@@ -45,7 +45,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             //(E4-2)
         }
 
-        public override double CalculateCriticalStress()
+        public override double CalculateCriticalStress(bool EccentricBrace)
         {
             throw new NotImplementedException();
         }

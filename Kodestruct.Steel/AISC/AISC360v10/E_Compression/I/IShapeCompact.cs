@@ -37,7 +37,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
 
 
 
-        public override double CalculateCriticalStress()
+        public override double CalculateCriticalStress(bool EccentricBrace)
         {
             double Fcr = 0.0;
 
@@ -48,7 +48,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             double Qflex = GetReductionFactorQ(FcrFlexuralBuckling);
             double FcrFlex = GetCriticalStressFcr(FeFlexuralBuckling, Qflex);
             
-            double FeTorsionalBuckling = GetTorsionalElasticBucklingStressFe();
+            double FeTorsionalBuckling = GetTorsionalElasticBucklingStressFe(EccentricBrace);
             double FcrTorsionalBuckling = GetCriticalStressFcr(FeTorsionalBuckling, 1.0);
             double Qtors = GetReductionFactorQ(FcrTorsionalBuckling);
             double FcrTors = GetCriticalStressFcr(FeTorsionalBuckling, Qtors);
@@ -92,7 +92,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             return ls;
         }
 
-        public override SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength()
+        public override SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength(bool EccentricBrace)
         {
             SteelLimitStateValue ls = new SteelLimitStateValue();
 
@@ -103,7 +103,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             }
             else
             {
-                double FeTorsionalBuckling = GetTorsionalElasticBucklingStressFe();
+                double FeTorsionalBuckling = GetTorsionalElasticBucklingStressFe(EccentricBrace);
                 double FcrTorsionalBuckling = GetCriticalStressFcr(FeTorsionalBuckling, 1.0);
                 double Qtors = GetReductionFactorQ(FcrTorsionalBuckling);
                 double FcrTors = GetCriticalStressFcr(FeTorsionalBuckling, Qtors);

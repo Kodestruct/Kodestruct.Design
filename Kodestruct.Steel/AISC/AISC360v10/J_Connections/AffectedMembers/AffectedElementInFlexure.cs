@@ -186,8 +186,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
             double A_fgB = ShapeIGross.b_fBot * ShapeIGross.t_fBot;
             double A_fgT = ShapeIGross.b_fTop * ShapeIGross.t_fTop;
 
-            double A_fnB = netSec.b_fBot * netSec.t_fBot- netSec.b_hole * netSec.N_holes;
-            double A_fnT = netSec.b_fTop * netSec.t_fTop- netSec.b_hole * netSec.N_holes;
+            double A_fnB = netSec.b_fBot * netSec.t_fBot- netSec.b_hole * netSec.N_holes* netSec.t_fBot;
+            double A_fnT = netSec.b_fTop * netSec.t_fTop- netSec.b_hole * netSec.N_holes*netSec.t_fTop;
 
             double Y_t = GetY_t();
 

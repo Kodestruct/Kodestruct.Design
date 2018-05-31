@@ -32,9 +32,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.Bolted
     public abstract partial class Bolt : BoltBase
     {
 
-        double d_hWidth;
-        double d_hLength;
-        bool BoltHoleSizeCalculated;
+       protected double d_hWidth  {get; set;}
+       protected double d_hLength { get; set; }
+       protected bool BoltHoleSizeCalculated { get; set; }
 
         public double GetBoltHoleWidth(BoltHoleType HoleType, bool IsTensionOrShearCalculation = true)
         {
@@ -58,7 +58,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.Bolted
 
         }
 
-        private void GetBoltHoleDimensions(BoltHoleType HoleType, bool IsTensionOrShearCalculation=true)
+        protected virtual void GetBoltHoleDimensions(BoltHoleType HoleType, bool IsTensionOrShearCalculation=true)
         {
 
             #region Read Table Data

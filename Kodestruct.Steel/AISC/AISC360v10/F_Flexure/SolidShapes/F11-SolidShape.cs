@@ -51,6 +51,10 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
                 {
                     throw new SectionWrongTypeException(typeof(ISolidShape));
                 }
+                else
+                {
+                    sectionSolid = s;
+                }
 
         }
 

@@ -196,7 +196,7 @@ namespace Kodestruct.Common.Section.SectionTypes
             {
                 rectY = new List<CompoundShapePart>()
                 {
-                    new CompoundShapePart(2*t_f,b_f-t_w, new Point2D(0, ((b_f -t_w)/2.0))),
+                    new CompoundShapePart(2*t_f,b_f-t_w, new Point2D(0, (t_w+(b_f -t_w)/2.0))),
                     new CompoundShapePart(d, t_w, new Point2D(0,(b_f -t_w)+t_w/2.0)),
                     
                 };

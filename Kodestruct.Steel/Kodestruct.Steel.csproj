@@ -40,12 +40,11 @@
       <HintPath>..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.10.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kodestruct.Common.0.0.10.2\lib\net45\Kodestruct.Common.dll</HintPath>
+    <Reference Include="Kodestruct.Common, Version=0.0.11.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kodestruct.Common.0.0.11.4\lib\net45\Kodestruct.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -87,6 +86,7 @@
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsLongitudinalPlate.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsTransversePlate.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\LimitStates\ChsCapPlateYielding.cs" />
+    <Compile Include="AISC\AISC360v16\J_Connections\Bolt\Base\BoltGeneral.cs" />
     <Compile Include="AISC\Entities\Connections\Bolts\BoltThreadChecker.cs" />
     <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltNutCondition.cs" />
     <Compile Include="AISC\Entities\Enums\HssPlateConnection\HssConcentratedForceType.cs" />
@@ -510,6 +510,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="LICENSE" />
     <None Include="NOTICE" />
     <None Include="packages.config" />
@@ -552,6 +553,9 @@
     <EmbeddedResource Include="Resources\AISC_DG11_ModalDamping.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AISC360_16TableJ3_3NominalHoleDimensions.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

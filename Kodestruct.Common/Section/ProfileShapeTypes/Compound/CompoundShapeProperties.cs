@@ -499,8 +499,11 @@ double distanceFromBottomToPNA = sectionHeight - PNACoordinate;
         double xpl;
         public double x_pBar
         {
-            get { 
-                
+            get {
+                if (plasticPropertiesCalculated == false)
+                {
+                    CalculatePlasticProperties();
+                }
                 return xpl;
             }
         }

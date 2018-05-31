@@ -60,5 +60,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
 
              Assert.AreEqual(39.3, Math.Round(phi_R_n, 1));
          }
+
+
     }
 }

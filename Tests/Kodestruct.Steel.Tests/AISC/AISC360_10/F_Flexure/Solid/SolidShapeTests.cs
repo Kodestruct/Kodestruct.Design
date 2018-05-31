@@ -50,8 +50,8 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
         {
             FlexuralMemberFactory factory = new FlexuralMemberFactory();
 
-            ISection section = new SectionRectangular(0.5, 30.0);
-            SteelMaterial mat = new SteelMaterial(36.0, 29000);
+            ISection section = new SectionRectangular(0.75, 14.5);
+            SteelMaterial mat = new SteelMaterial(50.0, 29000);
             beam = factory.GetBeam(section, mat, null, MomentAxis.XAxis, FlexuralCompressionFiberPosition.Top);
 
         }
@@ -61,10 +61,26 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             SteelLimitStateValue Y =
              beam.GetFlexuralYieldingStrength(FlexuralCompressionFiberPosition.Top);
             double phiM_n = Y.Value;
-            double refValue = 0.5*(30.0*30.0)/4.0 * 36 * 0.9; // Z_x*F_y*0.9
+            double refValue = 0.75*(14.5*14.5)/4.0 * 50 * 0.9; // Z_x*F_y*0.9
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
+
+        /// <summary>
+        /// AISC Design example EXAMPLE II.A-19B  EXTENDED SINGLE-PLATE CONNECTION SUBJECT TO AXIAL AND SHEAR LOADING
+        /// </summary>
+        [Test]
+        public void RectangularSolidShapeReturnsLateralTorsionalBucklingStrength()
+        {
+            SteelLimitStateValue LTB =
+             beam.GetFlexuralLateralTorsionalBucklingStrength(2.04, 9.75, FlexuralCompressionFiberPosition.Top, Steel.AISC.FlexuralAndTorsionalBracingType.NoLateralBracing);
+            double phiM_n = LTB.Value;
+            double refValue = 3750*0.9;
+            double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
     }
 }

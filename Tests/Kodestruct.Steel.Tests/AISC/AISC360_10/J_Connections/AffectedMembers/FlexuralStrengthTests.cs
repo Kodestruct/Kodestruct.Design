@@ -31,8 +31,16 @@ using Kodestruct.Steel.AISC.SteelEntities.Materials;
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 {
     [TestFixture]
-    public class FlexuralStrengthTests
+    public class FlexuralStrengthTests : ToleranceTestBase
     {
+        public FlexuralStrengthTests()
+        {
+            tolerance = 0.05; //5% can differ from rounding
+        }
+    
+
+        double tolerance;
+    
         [Test]
         public void ConnectedPlateReturnsFlexuralStrength()
         {
@@ -43,6 +51,23 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 
             double phiM_n = element.GetFlexuralStrength(0);
             Assert.AreEqual(360.0, phiM_n);
+        }
+        [Test]
+        public void ConnectedIShapeInFlexureReturnsStrength()
+        {
+            ICalcLog log = new CalcLog();
+ 
+            SectionI sI = new SectionI(null, 18, 7.5, 0.570, 0.355);
+            SectionIWithFlangeHoles sIh = new SectionIWithFlangeHoles(null, 18, 7.5, 0.570, 0.355, 1.0, 2);
+
+            AffectedElementInFlexure element = new AffectedElementInFlexure(sI, sIh, 50, 65, true);
+            double phiM_n = element.GetFlexuralStrength(0);
+
+            double refValue = 318*12;
+            double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+
         }
     }
 }

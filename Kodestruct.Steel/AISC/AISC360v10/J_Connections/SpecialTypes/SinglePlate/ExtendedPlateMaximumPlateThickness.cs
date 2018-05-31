@@ -33,9 +33,10 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
             //the manual refers to F_v but table gives F_nv
             double M_max = GetM_max(F_nv,d_b,C_prime);
             double t_max1 = 6 * M_max / (F_yp * Math.Pow(d_pl, 2)); //AISC manual Equation 10-3
-            double t_max, t_max2;
 
-            t_max2 = 2 * d_b + 1 / 16.0;
+
+            double t_max = t_max1;
+            double t_max2 = 2 * d_b + 1 / 16.0;
 
             if (N_cols == 1)
             {
@@ -59,7 +60,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
                 }
                 
             }
-            return t_max1;
+            return t_max;
         }
 
         private double GetM_max(double F_nv, double d_b, double C_prime)

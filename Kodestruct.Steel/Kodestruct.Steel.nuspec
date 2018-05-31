@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>Kodestruct.Steel</id>
-    <version>0.0.11.2</version>
+    <version>0.0.11.5</version>
     <title>Kodestruct.Steel</title>
     <authors>Konstantin Udilovich</authors>
     <description>Structural engineering automation library. Components for structural steel element and connection design for buildings and other structures, per AISC 360 standard.</description>
@@ -11,12 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/Kodestruct/Kodestruct.Design/master/Kodestruct.Steel/LOGOS_nuget_Steel_small.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <developmentDependency>true</developmentDependency>
-    <releaseNotes>Miscellaneous updates</releaseNotes>
-    <copyright>Copyright Kodestruct Inc © 2015</copyright>
+    <releaseNotes>Updated Net section flexure /AISC360-16 hole sizes</releaseNotes>
+    <copyright>Copyright Konstantin Udilovich © 2015-2018</copyright>
     <frameworkAssemblies />
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="Kodestruct.Common" version="0.0.11.0" />
+        <dependency id="Kodestruct.Common" version="0.0.11.4" />
       </group>
     </dependencies>
   </metadata>

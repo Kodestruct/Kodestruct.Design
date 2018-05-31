@@ -33,7 +33,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
 
         public SlipCriticalBoltTests()
         {
-            tolerance = 0.02; //2% can differ from rounding in the manual
+            tolerance = 0.03; //3% can differ from rounding in the manual
         }
 
         double tolerance;
@@ -47,6 +47,17 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             BoltHoleType.SSL_Perpendicular, BoltFillerCase.One, 2, null);
             double phiR_n = bolt.GetSlipResistance();
             double refValue = 19.0; // from Design Examples
+            double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
+
+        [Test]
+        public void BoltSlipCritical_OVS_ReturnsSlipResistance()
+        {
+            BoltSlipCriticalGroupA bolt = new BoltSlipCriticalGroupA(0.875, BoltThreadCase.Included, BoltFayingSurfaceClass.ClassA,
+            BoltHoleType.OVS, BoltFillerCase.One, 1, null);
+            double phiR_n = bolt.GetSlipResistance();
+            double refValue = 11.2378; 
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
             Assert.LessOrEqual(actualTolerance, tolerance);
         }

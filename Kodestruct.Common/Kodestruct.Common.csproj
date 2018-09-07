@@ -191,7 +191,6 @@
     <Compile Include="Section\SectionTypes\Predefined\PredefinedSectionRHS.cs" />
     <Compile Include="Section\SectionTypes\Predefined\SectionPredefinedBase.cs" />
     <Compile Include="Section\SectionBase.cs" />
-    <Compile Include="Section\SectionFactory.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionAngle.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionBox.cs" />
     <Compile Include="Section\ProfileShapeTypes\SectionChannel.cs" />
@@ -213,9 +212,12 @@
     <None Include="NOTICE" />
     <None Include="packages.config" />
     <None Include="Resources\AISCShapeDatabaseImperial.txt" />
+    <None Include="Resources\AISCShapeDatabaseDetailingImperial.txt" />
     <Content Include="Section\Resources\AISCShapeDatabaseImperial.txt" />
     <None Include="Kodestruct.Common.licenseheader" />
-    <None Include="Kodestruct.Common.nuspec" />
+    <None Include="Kodestruct.Common.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

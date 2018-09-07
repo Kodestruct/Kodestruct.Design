@@ -41,6 +41,13 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double d_h = b.GetBoltHoleWidth(BoltHoleType.STD, false);
             Assert.AreEqual(13.0 / 16.0, d_h);
         }
+        [Test]
+        public void BoltHoleSTD1InReturnsSize()
+        {
+            b.BoltGeneral b = new b.BoltGeneral(1.0, 0, 0);
+            double d_h = b.GetBoltHoleWidth(BoltHoleType.STD, false);
+            Assert.AreEqual(17.0 / 16.0, d_h);
+        }
 
         [Test]
         public void BoltHoleOVSReturnsSize()

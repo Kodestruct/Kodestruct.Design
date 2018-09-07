@@ -75,6 +75,7 @@
     <Compile Include="AISC\AISC360_10\F_Flexure\Angle\AngleTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Channel\F2_Channel_DoublySymmetricCompactTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW12.cs" />
+    <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F3_I_DoublySymmetricNonCompactTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\W18WeakAxis.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Pipe\F8-CircularHssTests.cs" />
     <Compile Include="AISC\AISC360_10\F_Flexure\Solid\SolidShapeTests.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="AISC\AISC360_10\K_HSS\ConcentratedForces\HssRhsConcentratedForceTests.cs" />
     <Compile Include="AISC\AISC360_10\K_HSS\TrussConnections\RhsKconnectionTests.cs" />
     <Compile Include="AISC\AISC360_10\K_HSS\TrussConnections\RhsXconnectionTests.cs" />
+    <Compile Include="AISC\AISC360_16\J_Connections\SpecialType\ExtendedSinglePlateTests.cs" />
     <Compile Include="AISC\FloorVibrations\FloorVibrationTests.cs" />
     <Compile Include="AISC\UFM\UFMGeneralTests.cs" />
     <Compile Include="AISC\Materials\SteelMaterialCatalogA992ErrorTests.cs" />
@@ -135,7 +137,6 @@
     <Folder Include="AISC\AISC360_10\C_Stability\" />
     <Folder Include="AISC\AISC360_10\I_Composite\Axial\" />
     <Folder Include="AISC\AISC360_10\K_HSS\MomentConnections\" />
-    <Folder Include="AISC\AISC360_16\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

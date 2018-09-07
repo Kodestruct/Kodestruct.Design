@@ -33,7 +33,7 @@ namespace Kodestruct.Steel.AISC
         double GetphiP_p();
         double A_1 { get; set; }
         double A_2 { get; set; }
-
+        double Get_l_tension(BendingAxis Axis);
         double  F_y { get; set; }
         double f_c { get; set; }
     }

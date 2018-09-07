@@ -35,7 +35,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
             this.Material = Material;
         }
 
-        public double GetFlexuralStrength()
+        public virtual double GetFlexuralStrength()
         {
             double phiM_n_Rupture = GetRuptureStrength();
             double phiM_n_Buckling = GetBucklingStrength();

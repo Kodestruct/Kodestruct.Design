@@ -197,21 +197,32 @@ namespace Kodestruct.Concrete.ACI318_14.Materials
 		}
 
 
-	public override double beta1
-	{
-		get 
-		
-		{
-			double fc = base.SpecifiedCompressiveStrength;
-			double _beta1 = 0.85 - 0.05 * ((fc - 4000.0) / 1000.0);
-			double beta1_corrected;
-			beta1_corrected = _beta1 <= 0.65 ? 0.65 : _beta1;
-			beta1_corrected = _beta1 >= 0.85 ? 0.85 : _beta1;
-			return beta1_corrected;
-		
-		}
-	}
-	private double epsilon_u;
+        public override double beta1
+        {
+            get
+
+            {
+                double fc = base.SpecifiedCompressiveStrength;
+                double _beta1 = 0.85 - 0.05 * ((fc - 4000.0) / 1000.0);
+                double beta1_corrected;
+                if (_beta1 <= 0.65)
+                {
+                    beta1_corrected = 0.65;
+                }
+                else if (_beta1 >= 0.85)
+                {
+                    beta1_corrected = 0.85;
+                }
+                else
+                {
+                    beta1_corrected = _beta1;
+                }
+
+                return beta1_corrected;
+
+            }
+        }
+        private double epsilon_u;
 
 	public double  ConcreteUltimateStrain
 	{

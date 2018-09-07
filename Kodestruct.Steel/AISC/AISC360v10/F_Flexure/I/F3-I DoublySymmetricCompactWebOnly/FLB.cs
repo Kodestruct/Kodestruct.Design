@@ -38,7 +38,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
         {
             double M_n = 0.0;
             double phiM_n = 0.0;
-            ISectionI sectionI = Section as ISectionI;
+            ISectionI sectionI = Section.Shape as ISectionI;
             if (sectionI!=null)
 	            {
                 ShapeCompactness.IShapeMember compactness = new ShapeCompactness.IShapeMember(Section, IsRolledMember,FlexuralCompressionFiberPosition.Top);

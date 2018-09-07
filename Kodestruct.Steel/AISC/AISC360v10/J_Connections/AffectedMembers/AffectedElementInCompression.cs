@@ -53,7 +53,7 @@ namespace Kodestruct.Steel.AISC360v10.Connections.AffectedElements
                     if (KLr <= 25) // per J4.4
 	                {
                         double A_g = Section.Shape.A;
-                        phiP_n = A_g * F_y;  // (J4-6)
+                        phiP_n = 0.9* A_g * F_y;  // (J4-6)
 	                }
                     else
                     {

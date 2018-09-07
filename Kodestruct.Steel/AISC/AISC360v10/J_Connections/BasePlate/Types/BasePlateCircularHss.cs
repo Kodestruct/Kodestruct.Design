@@ -26,8 +26,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
     public class BasePlateCircularHss : BasePlateTypeBase
     {
 
-        public BasePlateCircularHss(double B_bp, double N_bp, double D, double f_c, double F_y, double A_2)
-            :base(B_bp,N_bp, f_c, F_y, A_2)
+        public BasePlateCircularHss(double B_bp, double N_bp, double D, double f_c, double F_y, double A_2, double f_anchor)
+            :base(B_bp,N_bp, f_c, F_y, A_2, f_anchor)
         {
             this.D = D;
         }
@@ -43,6 +43,11 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
             double diag = Math.Sqrt(Math.Pow(N_bp, 2) + Math.Pow(B_bp, 2));
             double m = ((diag - 0.8 * D) / (2.0));
             return m;
+        }
+
+        public override double Get_l_tension(BendingAxis Axis)
+        {
+            return f_anchor / 2.0 - D / 4.0;
         }
 
         public override double Get_n()

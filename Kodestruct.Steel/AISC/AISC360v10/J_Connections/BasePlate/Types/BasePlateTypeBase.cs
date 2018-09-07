@@ -25,7 +25,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
 {
     public abstract class BasePlateTypeBase : IBasePlate
     {
-        public BasePlateTypeBase(double B_bp, double N_bp, double f_c, double F_y, double A_2)
+
+        public BasePlateTypeBase(double B_bp, double N_bp, double f_c, double F_y, double A_2, double f_anchor)
         {
             this.B_bp = B_bp;
             this.N_bp = N_bp;
@@ -40,6 +41,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
             }
             this.f_c = f_c;
             this.F_y = F_y;
+            this.f_anchor = f_anchor;
         }
 
         public double GetphiP_p()
@@ -53,7 +55,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
         public double F_y { get; set; }
         public double A_1 { get; set; }
 
-
+        public double f_anchor { get; set; }
         private double _A_2;
 
         public double A_2
@@ -73,6 +75,9 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
 
         public abstract double Get_m();
         public abstract double Get_n();
+
+        public abstract double Get_l_tension(BendingAxis Axis);
+
 
     }
 }

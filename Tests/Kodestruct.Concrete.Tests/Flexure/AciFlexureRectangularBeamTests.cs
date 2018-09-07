@@ -58,9 +58,38 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
 
         }
 
+        [Test]
+        public void BeamReturnsphiMn()
+        {
+            var ConcreteMaterial =new Kodestruct.Concrete.ACI318_14.Materials.ConcreteMaterial(6000,  ACI.Entities.ConcreteTypeByWeight.Normalweight,null);
+
+            FlexuralSectionFactory flexureFactory = new FlexuralSectionFactory();
+            double b = 16;
+            double h = 40;
+            double f_y = 60000;
+            RebarMaterialGeneral LongitudinalRebarMaterial = new RebarMaterialGeneral(f_y);
+
+            List<RebarPoint> LongitudinalBars = new List<RebarPoint>();
+
+             Rebar TopRebar = new Rebar(4, LongitudinalRebarMaterial);
+             RebarPoint TopPoint = new RebarPoint(TopRebar, new RebarCoordinate() { X = 0, Y = h / 2.0 - 3 });
+            LongitudinalBars.Add(TopPoint);
+
+            Rebar BottomRebar = new Rebar(4, LongitudinalRebarMaterial);
+            RebarPoint BottomPoint = new RebarPoint(BottomRebar, new RebarCoordinate() { X = 0, Y = -h / 2.0 + 3 });
+            LongitudinalBars.Add(BottomPoint);
+
+            CrossSectionRectangularShape shape = new CrossSectionRectangularShape(ConcreteMaterial, null, b, h);
+
+            IConcreteFlexuralMember fs = new ConcreteSectionFlexure(shape, LongitudinalBars, null,
+                ConfinementReinforcementType.Ties);
+
+            ConcreteFlexuralStrengthResult result = fs.GetDesignFlexuralStrength(FlexuralCompressionFiberPosition.Top);
+
+        }
 
 
-         [Test]
+        [Test]
         public void SimpleBeamFlexuralCapacityCompressionBottomReturnsNominalValue()
         {
             ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, false, new RebarInput(1, 1));

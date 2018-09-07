@@ -86,7 +86,11 @@
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsLongitudinalPlate.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\ChsTransversePlate.cs" />
     <Compile Include="AISC\AISC360v10\K_HSS\ConcentratedForces\Chs\LimitStates\ChsCapPlateYielding.cs" />
+    <Compile Include="AISC\AISC360v16\J_Connections\AffectedMembers\BeamCope\BeamCopeBase.cs" />
+    <Compile Include="AISC\AISC360v16\J_Connections\AffectedMembers\BeamCope\BeamCopeDouble.cs" />
+    <Compile Include="AISC\AISC360v16\J_Connections\AffectedMembers\BeamCope\BeamCopeSingle.cs" />
     <Compile Include="AISC\AISC360v16\J_Connections\Bolt\Base\BoltGeneral.cs" />
+    <Compile Include="AISC\AISC360v16\J_Connections\SpecialType\SinglePlate\ExtendedSinglePlate.cs" />
     <Compile Include="AISC\Entities\Connections\Bolts\BoltThreadChecker.cs" />
     <Compile Include="AISC\Entities\Enums\Connections\Bolts\BoltNutCondition.cs" />
     <Compile Include="AISC\Entities\Enums\HssPlateConnection\HssConcentratedForceType.cs" />

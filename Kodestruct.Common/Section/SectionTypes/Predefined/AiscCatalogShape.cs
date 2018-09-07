@@ -361,10 +361,72 @@ namespace Kodestruct.Common.Section.Predefined
         public double PA          {get; set;}
         public double PB          { get; set; }
 
+        bool detailingParametersAvailable;
+        private double _T;
 
-        //public override Interfaces.ISection Clone()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public double T
+        {
+            get {
+                if (detailingParametersAvailable == false)
+                {
+                    ReadDetailingParameters();
+                }
+                return _T; }
+            set { _T = value; }
+        }
+
+        private double _k_det;
+
+        public double k_det
+        {
+            get {
+                if (detailingParametersAvailable == false)
+                {
+                    ReadDetailingParameters();
+                }
+                return _k_det; }
+            set { _k_det = value; }
+        }
+
+        private double _WG;
+
+        public double WG
+        {
+            get {
+                if (detailingParametersAvailable == false)
+                {
+                    ReadDetailingParameters();
+                }
+                return _WG; }
+            set { _WG = value; }
+        }
+
+        private void ReadDetailingParameters()
+        {
+            using (StringReader reader = new StringReader(Resources.AISCShapeDatabaseDetailingImperial))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] Vals = line.Split(',');
+                    if (Vals.Count() == 4)
+                    {
+                        string thisShapeId = Vals[0];
+                        double WG_ = double.Parse(Vals[1], CultureInfo.InvariantCulture);
+                        double T_ = double.Parse(Vals[2], CultureInfo.InvariantCulture);
+                        double k_det_ = double.Parse(Vals[3], CultureInfo.InvariantCulture);
+
+                        if (thisShapeId == base.Name)
+                        {
+
+                            WG = WG_;
+                            T = T_;
+                            k_det = k_det_;
+                        }
+                    }
+                }
+            }
+            detailingParametersAvailable = true;
+        }
     }
 }

@@ -25,16 +25,18 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
 {
     public class BasePlateRectangularHss : BasePlateTypeBase
     {
-         public BasePlateRectangularHss(double B_bp, double N_bp, double B, double H,double f_c, double F_y, double A_2)
-         :base(B_bp,N_bp,f_c,F_y, A_2)
+         public BasePlateRectangularHss(double B_bp, double N_bp, double B, double H, double t, double f_c, double F_y, double A_2, double f_anchor)
+         :base(B_bp,N_bp,f_c,F_y, A_2, f_anchor)
         {
             this.B = B;
             this.H = H;
+            this.t = t;
         }
          public double H { get; set; }
 
          public double B { get; set; }
 
+        public double t { get; set; }
 
         public override double GetLength(double P_u=0)
         {
@@ -55,6 +57,18 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
         {
             double n = ((B_bp - 0.95 * B) / (2.0));
             return n;
+        }
+
+        public override double Get_l_tension(BendingAxis Axis)
+        {
+            if (Axis == BendingAxis.Major)
+            {
+                return f_anchor - H / 2.0 + t/ 2.0;
+            }
+            else
+            {
+                return f_anchor - B / 2.0 + t / 2.0;
+            }
         }
     }
 }

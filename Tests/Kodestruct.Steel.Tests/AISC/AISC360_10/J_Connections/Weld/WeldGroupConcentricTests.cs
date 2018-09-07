@@ -66,6 +66,20 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.Weld
         }
 
         [Test]
+        public void WeldConcentricCShapeLinesReturnsValue66Hu()
+        {
+            FilletWeldGroup wg = new FilletWeldGroup(WeldGroupPattern.C, 41.0, 14.5, 7.0 / 8.0, 70.0);
+            double phiR_n = wg.GetConcentricLoadStrenth(0);
+            double phiRn = 14 * 1.392;
+            double ws1 = (41.0*2)+14.5;
+            double ws2 = 0.85 * 2*(41.0)* phiRn +  1.5 * phiRn * 14.5;
+            double refValue = Math.Max(ws1, ws2);
+            double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+        }
+
+        [Test]
         public void WeldConcentricCShapeLinesReturnsValue45Degrees()
         {
             FilletWeldGroup wg = new FilletWeldGroup(WeldGroupPattern.C, 1.0, 2.0, 1.0 / 16.0, 70.0);

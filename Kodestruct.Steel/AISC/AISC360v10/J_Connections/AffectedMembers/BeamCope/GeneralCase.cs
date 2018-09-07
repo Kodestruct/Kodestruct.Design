@@ -39,29 +39,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
 
 
             throw new NotImplementedException();
-            //AffectedElementInFlexure flexuralElement = new AffectedElementInFlexure(r, mat, log);
-            //return flexuralElement.GetPlateBucklingCriticalStress(c);
 
-            #region Obsolete
-            //double lambda = GetLambda();
-            //double F_y = Material.YieldStress;
 
-            //double Q;
-            //if (lambda<=0.7)
-            //{
-            //    Q = 1.0;
-            //}
-            //else if (lambda<=1.41)
-            //{
-            //    Q = (1.34 - 0.468 * lambda);
-            //}
-            //else
-            //{
-            //    Q = ((1.3) / (Math.Pow(lambda, 2)));
-            //}
-            //double F_cr = F_y * Q;
-            //return F_cr; 
-            #endregion
         }
         public abstract double Get_t_w();
 

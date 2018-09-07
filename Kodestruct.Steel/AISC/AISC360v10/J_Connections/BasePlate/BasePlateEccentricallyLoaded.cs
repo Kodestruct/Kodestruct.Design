@@ -80,6 +80,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
 
             double t_p;
 
+            //Check on the bearing side
             if (Y>=m) 
             {
                 //DG01 3.3.14a-2
@@ -92,7 +93,21 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
                 t_p = 2.11 * Math.Sqrt(((f_p * Y * (m - (Y / 2.0))) / F_y));
             }
 
-            return t_p;
+            //Check on the tension side
+            double t_p_tension = 0;
+            bool IsLargeMoment = GetIsLargeMoment(P_u, M_u, Y, Axis);
+
+            if (IsLargeMoment == true)
+            {
+                double T_u = GetTensionForceEccentricLoadStrongAxis(P_u, M_u, Axis, f_anchor);
+                double l_tens = this.Plate.Get_l_tension(BendingAxis.Major);
+
+                t_p_tension = 2.11 * Math.Sqrt((T_u * l_tens) / (B_bp * F_y));  // DG01(3.4.7a)
+            }
+
+
+            //Return larger of tension and bearing interfaces
+            return Math.Max( t_p, t_p_tension);
 
 
         }
@@ -100,9 +115,10 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
         private double Get_f_p(double P_u, double M_u, double Y, BendingAxis Axis)
         {
 
-            double f_p;  
-            double e_critical = Get_e_critical(P_u, M_u, Axis);
-            if (e <= e_critical)
+            double f_p;
+            //double e_critical = Get_e_critical(P_u, M_u, Axis);
+            bool IsLargeMoment = GetIsLargeMoment(P_u, M_u,Y, Axis);
+            if (IsLargeMoment == false)
             {
                 //Small moment base plate
                f_p= P_u / (B_bp * Y);
@@ -114,6 +130,24 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
             }
 
             return f_p;
+        }
+
+        private bool GetIsLargeMoment(double P_u, double M_u, double Y, BendingAxis Axis)
+        {
+
+            double f_p;
+            double e_critical = Get_e_critical(P_u, M_u, Axis);
+            if (e <= e_critical)
+            {
+                //Small moment base plate
+                return false;
+            }
+            else
+            {
+                //Large moment base plate
+                return true;
+            }
+
         }
 
 

@@ -29,6 +29,7 @@ namespace Kodestruct.Steel.AISC
         ParallelHorizontal,
         Rectangle,
         C,
-        L,      
+        L, 
+        U
     }
 }

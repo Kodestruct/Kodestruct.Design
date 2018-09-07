@@ -60,7 +60,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Flexure
             return base.GetFlexuralLateralTorsionalBucklingStrength(C_b, L_b, CompressionLocation, BracingType);
         }
 
-        public virtual SteelLimitStateValue GetFlexuralFlangeLocalBucklingStrength(FlexuralCompressionFiberPosition CompressionLocation)
+        public override SteelLimitStateValue GetFlexuralFlangeLocalBucklingStrength(FlexuralCompressionFiberPosition CompressionLocation)
         {
            double phiM_n =GetCompressionFlangeLocalBucklingCapacity();
            SteelLimitStateValue ls = new SteelLimitStateValue(phiM_n, true);

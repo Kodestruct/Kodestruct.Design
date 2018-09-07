@@ -26,20 +26,33 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate
     public class BasePlateIShape : BasePlateTypeBase
     {
 
-        public BasePlateIShape(double B_bp, double N_bp, double d_c, double b_f,
+        public BasePlateIShape(double B_bp, double N_bp, double d_c, double b_f, double t_f, double f_anchor,
              double f_c, double F_y, double A_2)
-            :base(B_bp,N_bp, f_c, F_y, A_2)
+            :base(B_bp,N_bp, f_c, F_y, A_2, f_anchor)
 
         {
             this.d_c = d_c;
             this.b_f = b_f;
+            this.t_f = t_f;
             //this.P_u = P_u;
         }
 
         double d_c;
         double b_f;
+        double t_f;
         //double P_u;
-       
+
+        public override double Get_l_tension(BendingAxis Axis)
+        {
+            if (Axis == BendingAxis.Major)
+            {
+                return f_anchor - d_c / 2.0 + t_f / 2.0;
+            }
+            else
+            {
+                return f_anchor - b_f / 4.0 ;
+            }
+        }
 
         public override double GetLength(double P_u)
         {

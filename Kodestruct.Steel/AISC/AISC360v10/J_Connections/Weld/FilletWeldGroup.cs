@@ -51,6 +51,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
                 case "Rectangle": AddRectangle(); pattern = WeldGroupPattern.Rectangle; break;
                 case "C": AddC(); pattern = WeldGroupPattern.C; break;
                 case "L": AddL(); pattern = WeldGroupPattern.L; break;
+                case "U": AddU(); pattern = WeldGroupPattern.U; break;
                 default: AddParallelVertical(); pattern = WeldGroupPattern.ParallelVertical; break;                                            
 	        }
 
@@ -132,6 +133,40 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
                 new FilletWeldLine(p1,p2,leg,F_EXX,Nsub,0,IsLoadedOutOfPlane),
                 new FilletWeldLine(p2,p3,leg,F_EXX,Nsub,90.0,IsLoadedOutOfPlane),
                 new FilletWeldLine(p1,p4,leg,F_EXX,Nsub,90.0,IsLoadedOutOfPlane),
+            };
+            Lines = lines;
+        }
+
+        private void AddU()
+        {
+            CharacteristicDimension = l_vertical;
+
+            Point2D p1_temp = new Point2D(-l_horizontal/2.0, -l_vertical / 2.0);
+            Point2D p2_temp = new Point2D(-l_horizontal / 2.0, l_vertical / 2.0);
+            Point2D p3_temp = new Point2D(l_horizontal / 2.0, -l_vertical / 2.0);
+            Point2D p4_temp = new Point2D(l_horizontal / 2.0, l_vertical / 2.0);
+
+
+            List<FilletWeldLine> templines = new List<FilletWeldLine>()
+            {
+                new FilletWeldLine(p2_temp,p1_temp,leg,F_EXX,Nsub,0,IsLoadedOutOfPlane),
+                new FilletWeldLine(p1_temp,p3_temp,leg,F_EXX,Nsub,0,IsLoadedOutOfPlane),
+                new FilletWeldLine(p3_temp,p4_temp,leg,F_EXX,Nsub,0,IsLoadedOutOfPlane),
+            };
+            FilletWeldLoadDeformationGroupBase tempGroup = new FilletWeldLoadDeformationGroupBase(templines);
+            var centroid = tempGroup.GetElasticCentroid();
+
+            Point2D p1 = new Point2D(p1_temp.X - centroid.X, p1_temp.Y - centroid.Y);
+            Point2D p2 = new Point2D(p2_temp.X - centroid.X, p2_temp.Y - centroid.Y);
+            Point2D p3 = new Point2D(p3_temp.X - centroid.X, p3_temp.Y - centroid.Y);
+            Point2D p4 = new Point2D(p4_temp.X - centroid.X, p4_temp.Y - centroid.Y);
+
+
+            List<FilletWeldLine> lines = new List<FilletWeldLine>()
+            {
+                new FilletWeldLine(p2,p1,leg,F_EXX,Nsub,0,IsLoadedOutOfPlane),
+                new FilletWeldLine(p1,p3,leg,F_EXX,Nsub,90.0,IsLoadedOutOfPlane),
+                new FilletWeldLine(p3,p4,leg,F_EXX,Nsub,90.0,IsLoadedOutOfPlane),
             };
             Lines = lines;
         }

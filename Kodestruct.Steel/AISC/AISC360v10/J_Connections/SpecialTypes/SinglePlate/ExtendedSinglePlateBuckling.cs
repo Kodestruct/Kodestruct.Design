@@ -30,15 +30,15 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections
 {
     public partial class ExtendedSinglePlate : AnalyticalElement 
     {
-        public double GetExtendedSinglePlateFlexuralBucklingStrength(double F_y, double t_pl, double d_pl, double L_pl)
-        {
-            SectionRectangular r = new SectionRectangular(t_pl, d_pl);
-            SteelMaterial mat = new SteelMaterial(F_y);
-            CalcLog log = new CalcLog();
+        //public double GetExtendedSinglePlateFlexuralBucklingStrength(double F_y, double t_pl, double d_pl, double L_pl)
+        //{
+        //    SectionRectangular r = new SectionRectangular(t_pl, d_pl);
+        //    SteelMaterial mat = new SteelMaterial(F_y);
+        //    CalcLog log = new CalcLog();
 
-            throw new NotImplementedException();
-            //AffectedElementInFlexure flexuralElement = new AffectedElementInFlexure(r,mat,log);
-            //return flexuralElement.GetPlateFlexuralBucklingStrength(L_pl);
-        }
+        //    throw new NotImplementedException();
+        //    //AffectedElementInFlexure flexuralElement = new AffectedElementInFlexure(r,mat,log);
+        //    //return flexuralElement.GetPlateFlexuralBucklingStrength(L_pl);
+        //}
     }
 }

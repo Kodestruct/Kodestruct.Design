@@ -38,13 +38,14 @@ namespace Kodestruct.Common.Tests.Section.Predefined
 
         double tolerance;
 
-        //[Test]
-        //public void ShapeFactoryReturnsValueForDoubleAngle()
-        //{
-        //    AiscShapeFactory factory = new AiscShapeFactory();
-        //    ISection section = factory.GetShape("2L4X4X3/8X3/4", Entities.ShapeTypeSteel.DoubleAngle);
-        //    Assert.IsTrue(section != null);
-        //}
+        [Test]
+        public void ShapeFactoryReturnsDetailingParameters()
+        {
+            AiscShapeFactory factory = new AiscShapeFactory();
+            AiscCatalogShape cs = new AiscCatalogShape("W24X55", null);
+            var WG = cs.WG;
+            Assert.AreEqual(WG,3.5);
+        }
 
         [Test]
         public void ShapeFactoryReturnsValueForIBeam()

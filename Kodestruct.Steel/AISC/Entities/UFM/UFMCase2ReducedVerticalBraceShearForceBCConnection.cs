@@ -31,8 +31,8 @@ namespace Kodestruct.Steel.AISC.UFM
             double M_d, double A_ub)
             : base(d_b, d_c, theta, alpha, beta, P_u, R_beam, IncludeDistortionalMomentForces, M_d, A_ub)
         {
-            alpha_bar = this.alpha_bar;
-            beta_bar = this.beta_bar;
+            this.alpha_bar =  alpha_bar;
+            this. beta_bar =  beta_bar;
             this.DeltaV_b = DeltaV_b;
             CalculateForces();
         }
@@ -47,14 +47,14 @@ namespace Kodestruct.Steel.AISC.UFM
 	        }
             else
             {
-                if (DeltaV_b > V_b)
-                {
-                    DeltaV_bAdjusted = V_b;
-                }
-                else
-                {
+                //if (DeltaV_b > V_b)
+                //{
+                //    DeltaV_bAdjusted = V_b;
+                //}
+                //else
+                //{
                     DeltaV_bAdjusted = DeltaV_b;
-                }
+                //}
             }
             _V_uc = V_c + DeltaV_b;
             _V_ub = V_b - DeltaV_bAdjusted - R_beam;

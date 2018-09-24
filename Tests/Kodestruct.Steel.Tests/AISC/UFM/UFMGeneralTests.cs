@@ -109,5 +109,17 @@ namespace Kodestruct.Steel.Tests.AISC
 
 
         }
+
+        [Test]
+        public void GeneralMomentAtBeamGussetInterface()
+        {
+ 
+            UFMGeneralMomentAtBeamGussetInterface ufmCase = new UFMGeneralMomentAtBeamGussetInterface(16, 0, 53, 34.5, 18.0, 34.5, 330, 0, false, 0, 0);
+            double V_ubc = ufmCase.V_bc;
+            double refValueH_ubc = 220.0;
+            double actualToleranceV_c = EvaluateActualTolerance(V_ubc, refValueH_ubc);
+            Assert.LessOrEqual(actualToleranceV_c, tolerance);
+        }
+ 
     }
 }

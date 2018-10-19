@@ -118,11 +118,18 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers
             //Lateral Stability
             if (L_b != 0)
             {
-                double S = NetSectionShape == null? Math.Min(GrossSectionShape.S_xBot, GrossSectionShape.S_xTop) :   Math.Min(NetSectionShape.S_xBot, NetSectionShape.S_xTop); 
+                double S = Math.Min(GrossSectionShape.S_xBot, GrossSectionShape.S_xTop); 
                 double lambda = this.GetLambda(L_b);
                 double Q = this.GetBucklingReductionCoefficientQ(lambda);
                 double F_cr = F_y * Q;
-                phiM_nLTB = 0.9 * S * F_cr;
+                if (Q<1.0)
+                {
+                    phiM_nLTB = 0.9 * S * F_cr; 
+                }
+                else
+                {
+                    phiM_nLTB = double.PositiveInfinity;
+                }
             }
             else
             {

@@ -52,6 +52,19 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
             double phiM_n = element.GetFlexuralStrength(0);
             Assert.AreEqual(360.0, phiM_n);
         }
+
+        [Test]
+        public void ConnectedPlateReturnsFlexuralStrengthWithLTB()
+        {
+            ICalcLog log = new CalcLog();
+            SectionRectangular Section = new SectionRectangular(0.875, 28);
+            SectionOfPlateWithHoles NetSection = new SectionOfPlateWithHoles("", 0.875, 28, 8, 1.25, 1.75, 1.75, new Common.Mathematics.Point2D(0, 0));
+            AffectedElementInFlexure element = new AffectedElementInFlexure(Section, NetSection, 50, 65.0);
+
+            double phiM_n = element.GetFlexuralStrength(9.75);
+            Assert.AreEqual(360.0, phiM_n);
+        }
+
         [Test]
         public void ConnectedIShapeInFlexureReturnsStrength()
         {

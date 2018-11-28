@@ -105,6 +105,7 @@
     <Compile Include="AISC\AISC360_10\J_Connections\Bolt\ModifiedBoltShearStrengthTests.cs" />
     <Compile Include="AISC\AISC360_10\J_Connections\Bolt\SlipCriticalBoltTests.cs" />
     <Compile Include="AISC\AISC360_10\J_Connections\SpecialType\ExtendedSinglePlateTests.cs" />
+    <Compile Include="AISC\AISC360_10\J_Connections\Splices\ColumnSpliceTests.cs" />
     <Compile Include="AISC\AISC360_10\J_Connections\Weld\WeldGroupConcentricTests.cs" />
     <Compile Include="AISC\AISC360_10\J_Connections\Weld\WeldGroupElasticCenterTests.cs" />
     <Compile Include="AISC\AISC360_10\J_Connections\Weld\WeldGroupInstantaneousCenterTests.cs" />

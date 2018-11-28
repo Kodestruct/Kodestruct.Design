@@ -73,6 +73,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AISC\AISC360v10\G_Shear\ShearMemberBox.cs" />
+    <Compile Include="AISC\AISC360v10\J_Connections\AffectedMembers\Splices\ColumnFlangeSplice.cs" />
     <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\BasePlateEccentricallyLoaded.cs" />
     <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\BasePlateTensionLoaded.cs" />
     <Compile Include="AISC\AISC360v10\J_Connections\BasePlate\Types\BasePlateCircularHss.cs" />

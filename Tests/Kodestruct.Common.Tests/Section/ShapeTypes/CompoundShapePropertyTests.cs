@@ -186,5 +186,19 @@ namespace Kodestruct.Common.Tests.Section.ShapeTypes
             double actualTolerance = EvaluateActualTolerance(Z_net, refValue);
             Assert.LessOrEqual(actualTolerance, tolerance);
         }
+
+        [Test]
+        public void CompoundShapeReturnsZ_netWith9Holes()
+        {
+            double t_p = 1;
+            double d_pl = 31.5;
+            double n = 9;
+            double d_hole = 1.25;
+            SectionOfPlateWithHoles plate = new SectionOfPlateWithHoles("", t_p, d_pl, n, d_hole, 1.75, 1.75, new Point2D(0, 0));
+            double Z_net = plate.Z_x;
+            double refValue = 160.6;
+            double actualTolerance = EvaluateActualTolerance(Z_net, refValue);
+            Assert.LessOrEqual(actualTolerance, tolerance);
+        }
     }
 }

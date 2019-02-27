@@ -25,7 +25,9 @@ using Kodestruct.Common.Entities;
 using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Common.Section.Predefined;
 using Kodestruct.Common.Section.SectionTypes;
+using Kodestruct.Steel.AISC.AISC360v10.B_General;
 using Kodestruct.Steel.AISC.AISC360v10.Compression;
+using Kodestruct.Steel.AISC.AISC360v10.General.Compactness;
 using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities.Sections;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
@@ -128,7 +130,22 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             {
                 ISectionTee TeeShape = Shape as ISectionTee;
                 SteelTeeSection TeeSection = new SteelTeeSection(TeeShape, Material);
-                throw new Exception(DEFAULT_EXCEPTION_STRING);
+
+
+                IShapeCompactness compactnessTee = new ShapeCompactness.TeeMember(TeeSection);
+                CompactnessClassAxialCompression flangeCompactness = compactnessTee.GetFlangeCompactnessCompression();
+                CompactnessClassAxialCompression stemCompactness = compactnessTee.GetWebCompactnessCompression();
+
+                if (flangeCompactness == CompactnessClassAxialCompression.NonSlender && stemCompactness == CompactnessClassAxialCompression.NonSlender)
+                {
+                    return new ColumnTee(TeeSection, IsRolledShape, L_ex, L_ey, L_ez);
+                }
+                else
+                {
+                    throw new Exception(DEFAULT_EXCEPTION_STRING);
+                }
+
+ 
             }
 
             else

@@ -62,9 +62,11 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
         public IShapeCompact(ISteelSection Section, bool IsRolled, double L_x, double L_y, double L_z)
             : base(Section,L_x,L_y, L_z)
         {
-            if (Section.Shape is ISectionI)
+
+            bool IsValidShape = CheckValidShape(Section.Shape);
+            if (IsValidShape == true)
             {
-            SectionI = Section.Shape as ISectionI;
+                SetShape(Section.Shape);
             }
             else
             {
@@ -74,7 +76,22 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             this.IsRolled = IsRolled;
         }
 
+        protected virtual bool CheckValidShape(ISection Shape)
+        {
+            if (Shape is ISectionI)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        protected virtual void SetShape(ISection Shape)
+        {
+            SectionI =  Shape as ISectionI;
+        }
 
         protected ISectionI SectionI;
 
@@ -95,8 +112,8 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
         public override SteelLimitStateValue GetTorsionalAndFlexuralTorsionalBucklingStrength(bool EccentricBrace)
         {
             SteelLimitStateValue ls = new SteelLimitStateValue();
-
-            if (this.L_ez <= L_ex && this.L_ez <= L_ey)
+            bool TorsionalBucklingApplicable = CheckIfTorsionalBucklingApplicable(L_ex, L_ey, L_ez);
+            if (TorsionalBucklingApplicable == false)
             {
                 ls.Value = -1;
                 ls.IsApplicable = false;
@@ -115,6 +132,18 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             }
             return ls;
 
+        }
+
+        protected virtual bool CheckIfTorsionalBucklingApplicable(double L_ex, double L_ey, double L_ez)
+        {
+            if (this.L_ez <= L_ex && this.L_ez <= L_ey)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

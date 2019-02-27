@@ -36,8 +36,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.General.Compactness
 
         public class TeeMember : ShapeCompactnessBase
        {
-           ICompactnessElement FlangeCompactness;
-           ICompactnessElement WebCompactness;
+
 
            public TeeMember(ISteelSection Section)
             {

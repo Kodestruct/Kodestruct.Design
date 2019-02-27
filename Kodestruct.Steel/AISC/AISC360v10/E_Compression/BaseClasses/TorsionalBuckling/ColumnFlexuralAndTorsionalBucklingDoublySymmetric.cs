@@ -39,7 +39,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             //this.IsExcentricallyLaterallyConstrained = IsEccentricallyLaterallyConstrained;
         }
         //public bool IsExcentricallyLaterallyConstrained { get; set; }
-        public double GetTorsionalElasticBucklingStressFe(bool IsEccentricallyLaterallyConstrained)
+        public virtual double GetTorsionalElasticBucklingStressFe(bool IsEccentricallyLaterallyConstrained)
         {
             double pi2 = Math.Pow(Math.PI, 2);
             double E = Section.Material.ModulusOfElasticity;

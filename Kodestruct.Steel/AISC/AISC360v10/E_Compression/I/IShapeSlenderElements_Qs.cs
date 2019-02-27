@@ -89,7 +89,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Compression
             return 4.0 / GetWebLambda();
         }
 
-        private double GetFlangeLambda()
+        protected virtual double GetFlangeLambda()
         {
             double tf_top = this.SectionI.t_fTop;
             double tf_bot = this.SectionI.t_fBot;

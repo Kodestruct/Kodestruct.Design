@@ -44,7 +44,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.General.Compactness
             double bf=s.b_f;
             double tf=s.t_f;
 
-            base.Overhang = bf;
+            base.Overhang = bf/2.0;
             base.Thickness = tf;
         }
     }

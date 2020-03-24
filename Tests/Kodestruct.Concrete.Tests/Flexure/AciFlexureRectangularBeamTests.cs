@@ -45,6 +45,22 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         }
 
         [Test]
+        public void SimpleBeamFlexuralCapacityTopReturnsDesignValueWRI()
+        {
+            ConcreteSectionFlexure beam = GetConcreteBeam(12, 4.5, 7500, true, new RebarInput(0.3, 1));
+            ConcreteFlexuralStrengthResult MResult = beam.GetDesignFlexuralStrength(FlexuralCompressionFiberPosition.Top);
+            double M_n = MResult.phiM_n / 1000 / 12.0;
+
+            double refValue = 4.53;
+            double actualTolerance = EvaluateActualTolerance(M_n, refValue);
+
+            Assert.LessOrEqual(actualTolerance, tolerance);
+
+        }
+
+
+
+        [Test]
         public void SimpleBeamFlexuralCapacityCompressionTopBarsReturnsNominalValue()
         {
             ConcreteSectionFlexure beam = GetConcreteBeam(12, 12, 4000, true, new RebarInput(1, 1));

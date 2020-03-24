@@ -68,7 +68,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
             double K_F = 2.54;
             double phi = 0.85;
             return F_b * C_M_Fb * C_t_Fb * C_F_Fb * C_i_Fb * C_r*K_F*phi*lambda; //from Table 4.3.1
-            return F_b;
+
         }
 
     }

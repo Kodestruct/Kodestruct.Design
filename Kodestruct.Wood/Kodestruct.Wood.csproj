@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NDS\Entities\CLT\CltLayup.cs" />
     <Compile Include="NDS\Entities\CommercialGrade.cs" />
     <Compile Include="NDS\Entities\CommercialGradeSouthern.cs" />
     <Compile Include="NDS\Entities\FastenerEdgeBearingType.cs" />
@@ -78,6 +79,16 @@
     <Compile Include="NDS\Interfaces\IWoodSolidMaterial.cs" />
     <Compile Include="NDS\Interfaces\IWoodSolidSection.cs" />
     <Compile Include="NDS\Entities\Material\CommercialGradeStringConverter.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\AdjustmentFactor\BeamStabilityFactor.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\AdjustmentFactor\ColumnStabilityFactor.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\AdjustmentFactor\FormatConversionFactor.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\AdjustmentFactor\LoadDurationFactor.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\AdjustmentFactor\ResistanceFactor.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\AdjustmentFactor\TemperatureFactor.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\AdjustmentFactor\TimeEffectFactor.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\AdjustmentFactor\WetServiceFactor.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\CltMember.cs" />
+    <Compile Include="NDS\NDS_2015\CLT\CltSection.cs" />
     <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\BeamStabilityFactor.cs" />
     <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\EffectiveLength.cs" />
     <Compile Include="NDS\NDS_2015\Entities\GeneralFactors\StabilityFactor\Beam\LateralBracingCondition.cs" />
@@ -104,6 +115,7 @@
     <Compile Include="NDS\NDS_2015\Fasteners\WoodFastener.cs" />
     <Compile Include="NDS\NDS_2015\Material\Solid\4A_VisuallyGradedDimensionLumber.cs" />
     <Compile Include="NDS\NDS_2015\Material\Solid\4B_SouthernPine.cs" />
+    <Compile Include="NDS\Entities\CLT\LaminationDirection.cs" />
     <Compile Include="NDS\NDS_2015\Material\Solid\WoodSolidMaterial.cs" />
     <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\BeamStability.cs" />
     <Compile Include="NDS\NDS_2015\SawnLumber\AdjustmentFactors\BucklingStiffness.cs" />

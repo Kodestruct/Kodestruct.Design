@@ -1,14 +1,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Analysis", "Kodestruct.Analysis\Kodestruct.Analysis.csproj", "{A031EF5A-ED61-4003-A4C1-C8611114EB46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Steel", "Kodestruct.Steel\Kodestruct.Steel.csproj", "{6CC168AC-FF6F-433E-A338-49D8D5C82570}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Concrete", "Kodestruct.Concrete\Kodestruct.Concrete.csproj", "{5774FABD-0F85-451D-AB52-9CC1EF9ED518}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Common", "Kodestruct.Common\Kodestruct.Common.csproj", "{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Wood", "Kodestruct.Wood\Kodestruct.Wood.csproj", "{69A15B6B-BFC5-455C-A080-A994F503AD35}"
 EndProject
@@ -43,6 +41,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Aluminum", "Kodestruct.Aluminum\Kodestruct.Aluminum.csproj", "{F7F82708-2E42-41FF-A2A7-4DD831251CCE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodestruct.Aluminum.Tests", "Tests\Kodestruct.Aluminum.Tests\Kodestruct.Aluminum.Tests.csproj", "{95BB907C-C86D-4DFA-AD86-EBAEB9B34EE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodestruct.Common", "Kodestruct.Common\Kodestruct.Common.csproj", "{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,16 +84,6 @@ Global
 		{5774FABD-0F85-451D-AB52-9CC1EF9ED518}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5774FABD-0F85-451D-AB52-9CC1EF9ED518}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5774FABD-0F85-451D-AB52-9CC1EF9ED518}.Release|x86.ActiveCfg = Release|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}.Release|x86.ActiveCfg = Release|Any CPU
 		{69A15B6B-BFC5-455C-A080-A994F503AD35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{69A15B6B-BFC5-455C-A080-A994F503AD35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69A15B6B-BFC5-455C-A080-A994F503AD35}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -194,6 +184,18 @@ Global
 		{95BB907C-C86D-4DFA-AD86-EBAEB9B34EE9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{95BB907C-C86D-4DFA-AD86-EBAEB9B34EE9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{95BB907C-C86D-4DFA-AD86-EBAEB9B34EE9}.Release|x86.ActiveCfg = Release|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Debug|x86.Build.0 = Debug|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Release|x86.ActiveCfg = Release|Any CPU
+		{08E2E2E3-03DC-4C08-9EAA-59F8F64F063F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -206,5 +208,8 @@ Global
 		{381FDBB2-3657-41D3-967F-E9C1F2649FD9} = {DD8BF506-8438-4F6C-A97B-C3C8247A369F}
 		{EBE63C35-56DD-4F0D-9A74-26DBDA049ED0} = {DD8BF506-8438-4F6C-A97B-C3C8247A369F}
 		{95BB907C-C86D-4DFA-AD86-EBAEB9B34EE9} = {DD8BF506-8438-4F6C-A97B-C3C8247A369F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {834DBBB8-7935-498E-BAE1-E2FB27E06246}
 	EndGlobalSection
 EndGlobal

@@ -10,12 +10,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Kodestruct.Concrete.ACI318_14.Tests</RootNamespace>
     <AssemblyName>Kodestruct.Concrete.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -105,10 +106,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Kodestruct.Common\Kodestruct.Common.csproj">
-      <Project>{ce5fab55-3050-40b3-8c2d-d273a825e9d6}</Project>
-      <Name>Kodestruct.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Kodestruct.Concrete\Kodestruct.Concrete.csproj">
       <Project>{5774fabd-0f85-451d-ab52-9cc1ef9ed518}</Project>
       <Name>Kodestruct.Concrete</Name>

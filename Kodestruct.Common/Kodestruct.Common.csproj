@@ -1,248 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CE5FAB55-3050-40B3-8C2D-D273A825E9D6}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kodestruct.Common</RootNamespace>
-    <AssemblyName>Kodestruct.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageId>Kodestruct.Common</PackageId>
+    <Authors>Kodestruct</Authors>
+    <Product>Kodestruct.Design</Product>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Data\MoreLinq\DistinctBy.cs" />
-    <Compile Include="Data\MoreLinq\MaxBy.cs" />
-    <Compile Include="Data\MoreLinq\MinBy.cs" />
-    <Compile Include="Data\MoreLinq\MoreEnumerable.cs" />
-    <Compile Include="Data\MoreLinq\OrderBy.cs" />
-    <Compile Include="Data\MoreLinq\OrderByDirection.cs" />
-    <Compile Include="Entities\AngleOrientation.cs" />
-    <Compile Include="Entities\AngleRotation.cs" />
-    <Compile Include="Exceptions\ShapeTypeNotSupportedException.cs" />
-    <Compile Include="Interfaces\ILocationArrayElement.cs" />
-    <Compile Include="Maps\Location.cs" />
-    <Compile Include="Maps\LocationCollection.cs" />
-    <Compile Include="Maps\MapAnalyticalElement.cs" />
-    <Compile Include="Maps\MapAnalyticalPolygon.cs" />
-    <Compile Include="Maps\MapMultiPolygon.cs" />
-    <Compile Include="Maps\MapPolyline.cs" />
-    <Compile Include="Maps\PolylineReader.cs" />
-    <Compile Include="Mathematics\Line2D.cs" />
-    <Compile Include="Mathematics\Point2D.cs" />
-    <Compile Include="Mathematics\Point2DList.cs" />
-    <Compile Include="Mathematics\Polygon2D.cs" />
-    <Compile Include="Mathematics\PolygonLineIntersectionFinder.cs" />
-    <Compile Include="Mathematics\PolygonLocationChecking.cs" />
-    <Compile Include="Mathematics\Vector2d.cs" />
-    <Compile Include="Reports\CalcLog.cs" />
-    <Compile Include="Reports\CalcLogEntry.cs" />
-    <Compile Include="Reports\CalculationLogger.cs" />
-    <Compile Include="Data\ListFactory.cs" />
-    <Compile Include="Data\Lookup\CurrentIncrementDirection.cs" />
-    <Compile Include="Data\Lookup\MapDataElement.cs" />
-    <Compile Include="Data\Lookup\MapDataFilePointSearch.cs" />
-    <Compile Include="Data\Lookup\MapDataFileReader.cs" />
-    <Compile Include="Data\Lookup\ReadPointValueDelegate.cs" />
-    <Compile Include="Entities\AnalysisOptions\BucklingGlobalMode.cs" />
-    <Compile Include="Entities\AnalysisOptions\LateralBucklingAxis.cs" />
-    <Compile Include="Entities\AnalysisOptions\StabilityMemberType.cs" />
-    <Compile Include="Entities\AnalyticalElement.cs" />
-    <Compile Include="Entities\AnalyticalElementForceBased.cs" />
-    <Compile Include="Entities\CatalogSectionDoubleAngle.cs" />
-    <Compile Include="Entities\CombinationResult.cs" />
-    <Compile Include="Exceptions\ElementNotFoundInResourceTableException.cs" />
-    <Compile Include="Entities\Force.cs" />
-    <Compile Include="Entities\IAllowableStressElement.cs" />
-    <Compile Include="Entities\IResistanceElement.cs" />
-    <Compile Include="Reports\Interfaces\ICalcLog.cs" />
-    <Compile Include="Reports\Interfaces\ICalcLogEntry.cs" />
-    <Compile Include="Reports\Interfaces\ICalculationLogger.cs" />
-    <Compile Include="Reports\Interfaces\ILoggable.cs" />
-    <Compile Include="Entities\MomentAxis.cs" />
-    <Compile Include="Entities\ShapeTypeSteel.cs" />
-    <Compile Include="Interfaces\Forces\ForceType.cs" />
-    <Compile Include="Interfaces\Forces\ICombinationResult.cs" />
-    <Compile Include="Interfaces\Forces\IForce.cs" />
-    <Compile Include="Interfaces\Forces\IForceBased.cs" />
-    <Compile Include="Interfaces\IMaterial.cs" />
-    <Compile Include="Interfaces\IMemberForce.cs" />
-    <Compile Include="Interfaces\IParameterExtractor.cs" />
-    <Compile Include="Interfaces\IStructuralCapacity.cs" />
-    <Compile Include="Interfaces\IStructuralMember.cs" />
-    <Compile Include="Maps\IMapData.cs" />
-    <Compile Include="Maps\MapDataInfo.cs" />
-    <Compile Include="Mathematics\DataPoint2D.cs" />
-    <Compile Include="Mathematics\Extensions\DoubleExtensions.cs" />
-    <Compile Include="Mathematics\FloorAndCeilingExtensionMethods.cs" />
-    <Compile Include="Mathematics\IMultipleValueDataPoint2D.cs" />
-    <Compile Include="Mathematics\Interpolation.cs" />
-    <Compile Include="Mathematics\Quad.cs" />
-    <Compile Include="Mathematics\RootFinding.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportElementAttribute.cs" />
-    <Compile Include="Section\Interfaces\IDoubleFlangeMember.cs" />
-    <Compile Include="Section\Interfaces\IFirstMomentOfAreaCalculatable.cs" />
-    <Compile Include="Section\Interfaces\IMeasurableAreaSection.cs" />
-    <Compile Include="Exceptions\FailedToCalculateSectionPropertiesException.cs" />
-    <Compile Include="Section\Interfaces\ISliceableShapeProvider.cs" />
-    <Compile Include="Section\Interfaces\ISolidShape.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Angle\AnglePrincialAxisProperties.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\CompoundShapeSlicing.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\PartWithSingleFillet.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShape.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShapeCentroid.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Polygon\PolygonShapeSlicing.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionCompoundStacked.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionIWithFlangeHoles.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionIWithReinfWebOpening.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionOfPlateWithHoles.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionTeeRolled.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionDoubleStacked.cs" />
-    <Compile Include="Section\ProfileShapeTypes\ThinWall\SectionThinWall.cs" />
-    <Compile Include="Section\ProfileShapeTypes\ThinWall\ThinWallSegment.cs" />
-    <Compile Include="Section\SectionTypes\General\SectionGeneralProperties.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\ArbitraryCompoundShape.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\CompoundShape.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\CompoundShapePart.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\CompoundShapeProperties.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\PartWithDoubleFillet.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\RoundWall.cs" />
-    <Compile Include="Section\ProfileShapeTypes\Compound\SectionSlice.cs" />
-    <Compile Include="Section\Interfaces\ISectionSlice.cs" />
-    <Compile Include="Entities\CatalogNames.cs" />
-    <Compile Include="Entities\FlexuralCompressionFiberPosition.cs" />
-    <Compile Include="Section\Interfaces\IAsymmetricalShearCenter.cs" />
-    <Compile Include="Section\Interfaces\IHollowSection.cs" />
-    <Compile Include="Section\Interfaces\IMoveableSection.cs" />
-    <Compile Include="Section\Interfaces\ISection.cs" />
-    <Compile Include="Section\Interfaces\ISectionAngle.cs" />
-    <Compile Include="Section\Interfaces\ISectionBox.cs" />
-    <Compile Include="Section\Interfaces\ISectionChannel.cs" />
-    <Compile Include="Section\Interfaces\ISectionChannelRolled.cs" />
-    <Compile Include="Section\Interfaces\ISectionDoubleAngle.cs" />
-    <Compile Include="Section\Interfaces\ISectionFactoryService.cs" />
-    <Compile Include="Section\Interfaces\ISectionI.cs" />
-    <Compile Include="Section\Interfaces\ISectionIRolled.cs" />
-    <Compile Include="Section\Interfaces\ISectionPipe.cs" />
-    <Compile Include="Section\Interfaces\ISectionRectangular.cs" />
-    <Compile Include="Section\Interfaces\ISectionRound.cs" />
-    <Compile Include="Section\Interfaces\ISectionTee.cs" />
-    <Compile Include="Section\Interfaces\ISectionTube.cs" />
-    <Compile Include="Section\Interfaces\ISliceableSection.cs" />
-    <Compile Include="Section\Interfaces\IWeakAxisCloneable.cs" />
-    <Compile Include="Entities\SlicingPlaneOffsetType.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\AiscCatalogShape.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\AiscShapeFactory.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\AiscShapeType.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\PredefinedSectionAngle.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\PredefinedSectionChannel.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\PredefinedSectionCHS.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\PredefinedSectionI.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\PredefinedSectionRectangle.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\PredefinedSectionRHS.cs" />
-    <Compile Include="Section\SectionTypes\Predefined\SectionPredefinedBase.cs" />
-    <Compile Include="Section\SectionBase.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionAngle.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionBox.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionChannel.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionChannelRolled.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionDoubleAngle.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionI.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionIRolled.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionPipe.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionRectangular.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionRound.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionTee.cs" />
-    <Compile Include="Section\ProfileShapeTypes\SectionTube.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="Section\Exceptions\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LICENSE" />
-    <None Include="NOTICE" />
-    <None Include="packages.config" />
-    <None Include="Resources\AISCShapeDatabaseImperial.txt" />
-    <None Include="Resources\AISCShapeDatabaseDetailingImperial.txt" />
-    <Content Include="Section\Resources\AISCShapeDatabaseImperial.txt" />
-    <None Include="Kodestruct.Common.licenseheader" />
-    <None Include="Kodestruct.Common.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <Folder Include="Clipper\" />
+  </ItemGroup>
+
 </Project>

@@ -83,16 +83,16 @@ namespace Kodestruct.Concrete.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to NP-CIP-SLAB OR JOIST-CastAgainstEarth,All,All,3,3,3
-        ///NP-CIP-SLAB OR JOIST-ExposedToEarth,0.75,0.75,1.5,2,2
-        ///NP-CIP-SLAB OR JOIST-Protected,1.375,1.375,0.75,1.5,1.5
+        ///NP-CIP-SLAB OR JOIST-ExposedToWeather,5,5,1.5,2,2
+        ///NP-CIP-SLAB OR JOIST-Protected,11,11,0.75,1.5,1.5
         ///NP-CIP-WALL-CastAgainstEarth,All,All,3,3,3
-        ///NP-CIP-WALL-ExposedToEarth,0.75,0.75,1.5,2,2
-        ///NP-CIP-WALL-Protected,1.375,1.375,0.75,1.5,1.5
+        ///NP-CIP-WALL-ExposedToWeather,5,5,1.5,2,2
+        ///NP-CIP-WALL-Protected,11,11,0.75,1.5,1.5
         ///NP-CIP-BEAM-CastAgainstEarth,All,All,3,3,3
-        ///NP-CIP-BEAM-ExposedToEarth,0.75,0.75,1.5,2,2
+        ///NP-CIP-BEAM-ExposedToWeather,5,5,1.5,2,2
         ///NP-CIP-BEAM-Protected,All,All,1.5,1.5,1.5
         ///NP-CIP-COLUMN OR PEDESTAL-CastAgainstEarth,All,All,3,3,3
-        ///NP-CIP-COLUMN OR P [rest of string was truncated]&quot;;.
+        ///NP-CIP-COLUMN OR PEDESTAL-ExposedToWeather [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ACI_RebarCover {
             get {

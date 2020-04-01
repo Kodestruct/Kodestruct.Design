@@ -10,12 +10,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Kodestruct.Aluminum.Tests</RootNamespace>
     <AssemblyName>Kodestruct.Aluminum.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,7 +63,7 @@
       <Name>Kodestruct.Aluminum</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Kodestruct.Common\Kodestruct.Common.csproj">
-      <Project>{ce5fab55-3050-40b3-8c2d-d273a825e9d6}</Project>
+      <Project>{08e2e2e3-03dc-4c08-9eaa-59f8f64f063f}</Project>
       <Name>Kodestruct.Common</Name>
     </ProjectReference>
   </ItemGroup>

@@ -15,22 +15,25 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10.Connections;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections
 {
 
-    [TestFixture]
+    //[TestFixture]
     public class PryingActionDesignTests
     {
-        [Test]
+     [Fact]
         public void PryingActionReturnsAvailableTension()
         {
            
@@ -49,7 +52,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections
             
             double t_p=0.5;
             double T =pac.GetMaximumBoltTensionForce(t_p);
-            Assert.AreEqual(Math.Ceiling(6.96), Math.Ceiling(T));
+            Assert.True(Math.Ceiling(6.96)== Math.Ceiling(T));
 
         }
     }

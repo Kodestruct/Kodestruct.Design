@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -121,6 +121,24 @@
   <data name="ASCE7_10F26_5_1WindZones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ASCE7-10F26_5-1WindZones.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="ASCE7_10F26_6_1Kd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10F26_6_1Kd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ASCE7_10F26_8_1Gamma" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10F26_8_1Gamma.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ASCE7_10F26_8_1K1OverHToLh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10F26_8_1K1OverHToLh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ASCE7_10F26_8_1Mu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10F26_8_1Mu.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ASCE7_10Figure29_4_1Signs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10Figure29_4_1Signs.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ASCE7_10Figure29_4_1SignsCaseC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10Figure29_4_1SignsCaseC.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="ASCE7_10T11_4_1AND2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ASCE7_10T11_4_1AND2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -133,8 +151,20 @@
   <data name="ASCE7_10T12_8_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ASCE7_10T12_8_2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="ASCE7_10T1_5_1RiskCategories" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10T1_5_1RiskCategories.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="ASCE7_10T26_9_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ASCE7_10T26_9_1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ASCE7_10T4_1LiveLoads" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10T4_1LiveLoads.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ASCE7_10T7_2SnowCe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10T7_2SnowCe.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="ASCE7_10T7_3SnowCt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ASCE7_10T7_3SnowCt.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="DeadLoadClayBrick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DeadLoadClayBrick.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -159,35 +189,5 @@
   </data>
   <data name="DeadLoadWoodFraming" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DeadLoadWoodFraming.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10F26_6_1Kd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10F26_6_1Kd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10F26_8_1Gamma" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10F26_8_1Gamma.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10F26_8_1K1OverHToLh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10F26_8_1K1OverHToLh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10F26_8_1Mu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10F26_8_1Mu.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10T4_1LiveLoads" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10T4_1LiveLoads.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10T7_2SnowCe" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10T7_2SnowCe.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10T7_3SnowCt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10T7_3SnowCt.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10T1_5_1RiskCategories" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10T1_5_1RiskCategories.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10Figure29_4_1SignsCaseAB" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10Figure29_4_1Signs.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="ASCE7_10Figure29_4_1SignsCaseC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ASCE7_10Figure29_4_1SignsCaseC.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

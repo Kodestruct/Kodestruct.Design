@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +28,14 @@ using Kodestruct.Steel.AISC.Entities;
 using Kodestruct.Steel.AISC.Steel.Entities.Sections;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
 using Kodestruct.Steel.AISC.SteelEntities.Sections;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
 {
 
-    [TestFixture]
+    //[TestFixture]
     public class HssTrussRhsKConnectionTests : ToleranceTestBase
     {
 
@@ -40,7 +43,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
         /// AISC DG 24
         /// Example 8.4—Overlapped K-Connection with Rectangular HSS
         /// </summary>
-        [Test]
+     [Fact]
         public void HssOverlappedKConnectionReturnsYieldingOfBranchesFromUnevenDistributionValue()
         {
             SectionTube ch = new SectionTube(null, 8, 8, 0.5, 0.465);
@@ -63,12 +66,12 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
             double phiP_nMain = con.GetBranchYieldingFromUnevenLoadDistributionStrength(true).Value;
             double refValueMain = 236; 
             double actualToleranceMain = EvaluateActualTolerance(phiP_nMain, refValueMain);
-            Assert.LessOrEqual(actualToleranceMain, tolerance);
+            Assert.True(actualToleranceMain<= tolerance);
 
             double phiP_nSec = con.GetBranchYieldingFromUnevenLoadDistributionStrength(false).Value;
             double refValueSec = 151;
             double actualToleranceSec = EvaluateActualTolerance(phiP_nSec, refValueSec);
-            Assert.LessOrEqual(actualToleranceSec, tolerance);
+            Assert.True(actualToleranceSec<= tolerance);
         }
 
         /// <summary>
@@ -76,7 +79,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
         /// Example 8.5—Gapped K-Connection with Square HSS and Unbalanced Branch Loads
         /// </summary>
         
-        [Test]
+     [Fact]
         public void HssGappedKConnectionReturnsYieldingOfBranchesFromUnevenDistributionValue()
         {
             SectionTube ch = new SectionTube(null, 12, 12, 0.625, 0.581);
@@ -98,12 +101,12 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
             double phiP_nMain = con.GetChordWallPlastificationStrength(true).Value;
             double refValueMain = 415;
             double actualToleranceMain = EvaluateActualTolerance(phiP_nMain, refValueMain);
-            Assert.LessOrEqual(actualToleranceMain, tolerance);
+            Assert.True(actualToleranceMain<= tolerance);
 
             double phiP_nSec = con.GetBranchYieldingFromUnevenLoadDistributionStrength(false).Value;
             double refValueSec = 415;
             double actualToleranceSec = EvaluateActualTolerance(phiP_nSec, refValueSec);
-            Assert.LessOrEqual(actualToleranceSec, tolerance);
+            Assert.True(actualToleranceSec<= tolerance);
         }
 
         public HssTrussRhsKConnectionTests()

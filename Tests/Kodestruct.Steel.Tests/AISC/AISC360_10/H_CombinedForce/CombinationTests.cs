@@ -15,25 +15,28 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10.Combination;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.CombinedForce
 {
-    [TestFixture]
+    //[TestFixture]
     public class CombinationTests
     {
-        [Test]
+     [Fact]
         public void CombinationEllipticNandVReturnsValue()
         {
             Combination combo = new Combination();
             double IR = combo.GetInteractionRatio(Steel.AISC.CombinationCaseId.Elliptical,1,0,0,0,1.5,2,0,0,0,2);
-            Assert.AreEqual(0.8125, IR);
+            Assert.True(0.8125== IR);
         }
     }
 }

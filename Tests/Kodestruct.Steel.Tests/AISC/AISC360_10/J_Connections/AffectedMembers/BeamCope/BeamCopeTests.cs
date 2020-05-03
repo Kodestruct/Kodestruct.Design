@@ -15,17 +15,20 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10.Connections;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.AffectedMembers.BeamCope
 {
-    [TestFixture]
+    //[TestFixture]
     public class BeamCopeTests: ToleranceTestBase
     {
         public BeamCopeTests()
@@ -33,7 +36,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.AffectedMembers.B
             tolerance = 0.05;
         }
         double tolerance;
-        [Test]
+     [Fact]
         public void BeamCopeReturnsValue()
         {
             //AISC Live Webinar:  FUNDAMENTALS OF CONNECTION DESIGN.  Tom Murray
@@ -55,10 +58,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.AffectedMembers.B
             double refValue = 377; // from Lecture slides
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void BeamUncopedCopeReturnsValue()
         {
             //AISC Live Webinar:  FUNDAMENTALS OF CONNECTION DESIGN.  Tom Murray
@@ -80,7 +83,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.AffectedMembers.B
             double refValue = 2128; 
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
     }

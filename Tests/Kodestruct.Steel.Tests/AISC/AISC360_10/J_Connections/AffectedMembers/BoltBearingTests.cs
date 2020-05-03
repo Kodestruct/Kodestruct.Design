@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +24,13 @@ using System.Threading.Tasks;
 using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.SteelEntities.Bolts;
 using Kodestruct.Steel.AISC360v10.Connections.AffectedElements;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 {
-    [TestFixture]
+    //[TestFixture]
     public class BoltBearingTests : ToleranceTestBase
     {
         public BoltBearingTests()
@@ -41,24 +44,24 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
         /// AISC Design Guide 29
         /// Example 5.1 page 50
         /// </summary>
-         [Test]
+      [Fact]
         public void BoltBearingInnerBoltsReturnsValue()
         {
             AffectedElementWithHoles element = new AffectedElementWithHoles();
             double phiR_n = element.GetBearingStrengthAtBoltHole(2.06, 7.0 / 8.0, 1, 50.0, 65.0,BoltHoleType.STD, BoltHoleDeformationType.ConsideredUnderServiceLoad, false);
             double refValue = 102.0;
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-         [Test]
+      [Fact]
          public void BoltBearingEndBoltsReturnsValue()
          {
              AffectedElementWithHoles element = new AffectedElementWithHoles();
              double phiR_n = element.GetBearingStrengthAtBoltHole(1.03, 7.0 / 8.0, 1, 50.0, 65.0, BoltHoleType.STD, BoltHoleDeformationType.ConsideredUnderServiceLoad, false);
              double refValue = 60.3;
              double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-             Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<= tolerance);
          }
     }
 }

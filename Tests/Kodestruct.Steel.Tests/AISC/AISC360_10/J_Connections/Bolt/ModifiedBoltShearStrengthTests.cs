@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,16 +24,19 @@ using System.Threading.Tasks;
 using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.Bolted;
 using Kodestruct.Steel.AISC.Interfaces;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
 {
-    [TestFixture]
+    //[TestFixture]
     public class ModifiedBoltShearStrengthTests
     {
         //AISC Design Examples V14
         //EXAMPLE J.3 COMBINED TENSION AND SHEAR IN BEARING TYPE CONNECTIONS 
 
-         [Test]
+      [Fact]
         public void GetNominalTensileStrengthModifiedToIncludeTheEffectsOfShearStress()
         {
             BoltFactory bf = new BoltFactory("A325");
@@ -42,14 +45,14 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double V = 8.0;
             double phi_R_n = bolt.GetAvailableTensileStrength(V);
 
-            Assert.AreEqual(25.4, Math.Round(phi_R_n,1));
+            Assert.Equal(25.4, Math.Round(phi_R_n,1));
         }
 
         //AISC Desin guide 29
         //Example 5.4 
         //Page 110
 
-         [Test]
+      [Fact]
          public void GetNominalTensileStrengthModifiedToIncludeTheEffectsOfShearStressDG29()
          {
              BoltFactory bf = new BoltFactory("A325");
@@ -58,9 +61,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
              double V = 8.05;
              double phi_R_n = bolt.GetAvailableTensileStrength(V);
 
-             Assert.AreEqual(39.3, Math.Round(phi_R_n, 1));
+             Assert.Equal(39.3, Math.Round(phi_R_n, 1));
          }
-
-
     }
 }

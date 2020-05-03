@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +30,14 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
 
-    [TestFixture]
+    //[TestFixture]
     public partial class SteelBeamFactoryTests : ToleranceTestBase
     {
         public SteelBeamFactoryTests()
@@ -45,7 +48,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
          double tolerance;
 
                
-        [Test]
+     [Fact]
         public void DoublySymmetricIReturnsLateralTorsionalStrength () 
         {
 
@@ -64,10 +67,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void IShapeReturnsYieldStrength()
         {
 
@@ -86,10 +89,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void IShapeReturnsWeakAxisYieldStrength()
         {
 
@@ -108,10 +111,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void PipeShapeBeam()
         {
 
@@ -123,10 +126,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             SteelMaterial mat = new SteelMaterial(35.0, 29000);
             ISteelBeamFlexure beam12 = factory.GetBeam(r, mat, null, MomentAxis.YAxis, FlexuralCompressionFiberPosition.Left);
 
-            Assert.IsTrue(beam12 !=null);
+            Assert.True(beam12 !=null);
         }
 
-        [Test]
+     [Fact]
         public void RectangleShapeReturnsYieldStrength()
         {
 
@@ -144,10 +147,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<=tolerance);
         }
 
-        [Test]
+     [Fact]
         public void TubeReturnsWeakAxisYieldStrength()
         {
 
@@ -167,10 +170,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void FactoryReturnsChannel()
         {
 
@@ -182,7 +185,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             SteelMaterial mat = new SteelMaterial(50.0, 29000);
             ISteelBeamFlexure beam12 = factory.GetBeam(r, mat, null, MomentAxis.XAxis, FlexuralCompressionFiberPosition.Top);
 
-            Assert.IsTrue(true);
+            Assert.True(true);
         }
     }
 }

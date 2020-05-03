@@ -46,7 +46,7 @@ namespace Kodestruct.Analysis.Torsion
 
         public override double Get_theta_1()
         {
-            double theta_1 = c_1 * a * (((L) / (2.0 * a)) * (1 - ((2.0 * z) / (L))) + Math.Sinh(((z) / (a))) - Math.Tanh(((L) / (2.0 * a))) * Math.Cosh(((z) / (a))));
+            double theta_1 = c_1 * a * (((L) / (2 * a)) * (1 - ((2 * z) / (L))) + Math.Sinh(((z) / (a))) - Math.Tanh(((L) / (2 * a))) * Math.Cosh(((z) / (a))));
             return theta_1;
         }
 

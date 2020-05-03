@@ -19,7 +19,7 @@ namespace Kodestruct.Wood.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -85,9 +85,9 @@ namespace Kodestruct.Wood.Properties {
         ///SingleSpan,Concentrated,Unbraced,2,2.06,0,1.63,3,1.84,0
         ///SingleSpan,Concentrated,BracedAt [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string NDS2015_Table3_3_3EffectiveLength {
+        internal static string NDS2015_Table3_3_3Effective_Length {
             get {
-                return ResourceManager.GetString("NDS2015_Table3_3_3EffectiveLength", resourceCulture);
+                return ResourceManager.GetString("NDS2015_Table3_3_3Effective_Length", resourceCulture);
             }
         }
         

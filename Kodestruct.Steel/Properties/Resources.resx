@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -119,9 +119,9 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="AISC360_10TableJ3_3NominalHoleDimensions" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AISC360_10TableJ3_3NominalHoleDimensions.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+    <value>..\Resources\AISC360_10TableJ3_3NominalHoleDimensions.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="AISC360_10TableJ3_4_MinimumEdgeDistance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="AISC360_10TableJ3_4_Minimum_Edge_Distance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AISC360_10TableJ3_4_Minimum Edge Distance.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="AISC360_10_MaterialProperties" type="System.Resources.ResXFileRef, System.Windows.Forms">

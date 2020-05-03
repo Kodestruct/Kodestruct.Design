@@ -19,7 +19,7 @@ namespace Kodestruct.Loads.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -154,9 +154,9 @@ namespace Kodestruct.Loads.Properties {
         ///1,1.8,1.7,1.65,1.55,1.45,1.4,1.35,1.35,1.3,1.3,1.3,1.3
         ///.
         /// </summary>
-        internal static string ASCE7_10Figure29_4_1SignsCaseAB {
+        internal static string ASCE7_10Figure29_4_1Signs {
             get {
-                return ResourceManager.GetString("ASCE7_10Figure29_4_1SignsCaseAB", resourceCulture);
+                return ResourceManager.GetString("ASCE7_10Figure29_4_1Signs", resourceCulture);
             }
         }
         

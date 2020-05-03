@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +26,13 @@ using Kodestruct.Common.Section.SectionTypes;
 using Kodestruct.Steel.AISC.AISC360v10.Connections;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.SpecialType
 {
-    [TestFixture]
+    //[TestFixture]
     public class ExtendedSinglePlateTests: ToleranceTestBase
     {
         public ExtendedSinglePlateTests()
@@ -48,7 +51,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.SpecialType
         }
 
         //Thornton Fortney AISC EJ 2011. Example1.
-        [Test]
+     [Fact]
         public void ExtendedPlateUnstiffenedReturnsBucklingStrength()
         {
             double d_pl = 24;
@@ -60,11 +63,11 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.SpecialType
 
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
 
         }
         //Thornton Fortney AISC EJ 2011. Example6.
-        [Test]
+     [Fact]
         public void ExtendedPlateReturnsTorsionalStrength()
         {
             double  R = 14; 
@@ -80,14 +83,14 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.SpecialType
 
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
 
         }
 
         //Tom Murray AISC webinar
         //Fundamentals of connection design
         //July 31, 2013 Part 4. Page 33.
-        [Test]
+     [Fact]
         public void ExtendedPlateBucklingFlexuralStrength()
         {
             double phiR_n;

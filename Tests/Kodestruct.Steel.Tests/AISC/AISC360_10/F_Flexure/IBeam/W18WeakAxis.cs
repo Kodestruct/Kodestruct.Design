@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,15 +29,18 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
 
-    [TestFixture]
+    //[TestFixture]
     public partial class DoublySymmetricICompactTests : ToleranceTestBase
     {
 
-        [Test]
+     [Fact]
         public void DoublySymmetricIReturnsFlexuralMinorAxisYieldingStrength                 () 
         {
             FlexuralMemberFactory factory = new FlexuralMemberFactory();
@@ -53,7 +56,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 0.9 * Math.Min(50.0 * 8.06, 1.6 * 50.0 * 5.12); 
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
     }

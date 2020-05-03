@@ -15,21 +15,24 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers.ConcentratedForces;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers.ConcentratedForces
 {
 
-    [TestFixture]
+    //[TestFixture]
     public class WebSideswayBucklingTests
     {
-        [Test]
+     [Fact]
         public void WebSideswayBucklingReturnsValueW18()
         {
             double t_w = 0.425;

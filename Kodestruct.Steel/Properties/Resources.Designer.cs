@@ -19,7 +19,7 @@ namespace Kodestruct.Steel.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -155,9 +155,9 @@ namespace Kodestruct.Steel.Properties {
         ///1.25,1.625
         ///.
         /// </summary>
-        internal static string AISC360_10TableJ3_4_MinimumEdgeDistance {
+        internal static string AISC360_10TableJ3_4_Minimum_Edge_Distance {
             get {
-                return ResourceManager.GetString("AISC360_10TableJ3_4_MinimumEdgeDistance", resourceCulture);
+                return ResourceManager.GetString("AISC360_10TableJ3_4_Minimum_Edge_Distance", resourceCulture);
             }
         }
         

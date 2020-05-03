@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +31,14 @@ using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
 using Kodestruct.Common.Section.SectionTypes;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
 {
 
-    [TestFixture]
+    //[TestFixture]
     public class CompressionIShapeNonCompactTests : ToleranceTestBase
     {
         public CompressionIShapeNonCompactTests()
@@ -63,7 +66,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
         /// <summary>
         /// AISC Design Examples E.2
         /// </summary>
-        [Test]
+     [Fact]
         public void IShapeReturnsAxialStrength() 
         {
             CreateColumn(15 * 12, 15 * 12);
@@ -72,7 +75,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
             double refValue = 508.0;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
 

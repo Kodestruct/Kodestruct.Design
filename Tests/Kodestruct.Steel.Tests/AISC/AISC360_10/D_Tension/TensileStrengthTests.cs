@@ -16,12 +16,15 @@
 #endregion
  
 using Kodestruct.Steel.AISC360v10.Connections.AffectedElements;
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360_10.D_Tension
 {
@@ -34,14 +37,14 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360_10.D_Tension
 
         double tolerance;
 
-        [Test]
+     [Fact]
         public void TensionAffectedElementReturnsValue()
         {
             AffectedElementInTension el = new AffectedElementInTension(50, 65);
             double phiRn = el.GetTensileCapacity(2.0, 1.0);
             double refValue = 0.75 * 65 * 1; 
             double actualTolerance = EvaluateActualTolerance(phiRn, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
     }
 }

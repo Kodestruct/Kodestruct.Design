@@ -15,17 +15,20 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Tension
 {
-    [TestFixture]
+    //[TestFixture]
     public class ShearLagFactorTests : ToleranceTestBase
     {
 
@@ -33,35 +36,35 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Tension
         /// Design Guide 29. Example 5.1 
         /// Page 46.
         /// </summary>
-        [Test]
+     [Fact]
         public void TensionShearLagFactorCase2ReturnsValue()
         {
             ShearLagFactor slf = new ShearLagFactor();
             double U = slf.GetShearLagFactor(ShearLagCase.Case2,1.65,0.0,18.0,0,0,0,0,true);
-            Assert.AreEqual(0.908,Math.Round(U,3));
+            Assert.True(0.908 == Math.Round(U,3));
         }
         //AISC Design Examples 14
         //EXAMPLE D.1 W-SHAPE TENSION MEMBER 
-        [Test]
+     [Fact]
         public void TensionShearLagFactorCase2ForIBeamReturnsValue()
         {
             ShearLagFactor slf = new ShearLagFactor();
             double U = slf.GetShearLagFactor(ShearLagCase.Case2,0.831,5.27,9,0,0,0,0,true);
             double refValue = 0.908;
             double actualTolerance = EvaluateActualTolerance(U, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         //AISC Design Examples 14
         //EXAMPLE D.1 W-SHAPE TENSION MEMBER 
-        [Test]
+     [Fact]
         public void TensionShearLagFactorCase7ForIBeamReturnsValue()
         {
             ShearLagFactor slf = new ShearLagFactor();
             double U = slf.GetShearLagFactor(ShearLagCase.Case7a, double.PositiveInfinity, 5.27, 9, 5.27, 8.28,0,0,true);
             double refValue = 0.85;
             double actualTolerance = EvaluateActualTolerance(U, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         public ShearLagFactorTests()

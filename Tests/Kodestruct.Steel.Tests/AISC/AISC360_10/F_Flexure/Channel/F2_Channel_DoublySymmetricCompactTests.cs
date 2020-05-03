@@ -15,7 +15,7 @@
    */
 #endregion
 
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +29,14 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
 
-    [TestFixture]
+    //[TestFixture]
     public partial class DoublySymmetricCompactChannelTests : ToleranceTestBase
     {
         public DoublySymmetricCompactChannelTests()
@@ -54,7 +57,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             beam = factory.GetBeam(section, mat, null, MomentAxis.XAxis, FlexuralCompressionFiberPosition.Top);
 
         }
-        [Test]
+     [Fact]
         public void DoublySymmetricChannelReturnsFlexuralYieldingStrength()
         {
             SteelLimitStateValue Y =
@@ -63,10 +66,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 137.0*12; // from AISC  design examples 13 F.2-1b
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void DoublySymmetricChannelReturnsFlexuralLateralTorsionalBucklingStrengthInelastic()
         {
             SteelLimitStateValue LTB =
@@ -75,7 +78,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 131 * 12; // from AISC Steel Manual Table 3-10
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
 

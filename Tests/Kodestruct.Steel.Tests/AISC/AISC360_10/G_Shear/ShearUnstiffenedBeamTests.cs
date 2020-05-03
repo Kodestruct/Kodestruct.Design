@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +24,13 @@ using System.Threading.Tasks;
 using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.AISC360v10.Shear;
 using aisc = Kodestruct.Steel.AISC;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Shear
 {
-    [TestFixture]
+    //[TestFixture]
     public class ShearUnstiffenedBeamTests: ToleranceTestBase
     {
         public ShearUnstiffenedBeamTests()
@@ -37,7 +40,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Shear
 
         double tolerance;
 
-        [Test]
+     [Fact]
         public void ShearBeamIShapeReturnsValue()
         {
                 double h = 26.3;
@@ -52,7 +55,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Shear
                 double refValue = 821.0;
                 double actualTolerance = EvaluateActualTolerance(phiV_n, refValue);
 
-                Assert.LessOrEqual(actualTolerance, tolerance);
+                Assert.True(actualTolerance<= tolerance);
 
         }
     }

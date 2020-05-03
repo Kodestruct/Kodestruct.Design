@@ -81,7 +81,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
             }; // sample
             var EffectiveLengthTableVals = ListFactory.MakeList(SampleValue);
 
-            using (StringReader reader = new StringReader(Resources.NDS2015_Table3_3_3EffectiveLength))
+            using (StringReader reader = new StringReader(Resources.NDS2015_Table3_3_3Effective_Length))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)

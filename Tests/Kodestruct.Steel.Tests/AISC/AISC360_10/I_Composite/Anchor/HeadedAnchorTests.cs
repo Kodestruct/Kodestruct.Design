@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +23,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.AISC360v10.Composite;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite
 {
 
-    [TestFixture]
+    //[TestFixture]
     public class HeadedAnchorTests: ToleranceTestBase
     {
         public HeadedAnchorTests()
@@ -37,7 +40,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite
 
         double tolerance;
 
-        [Test]
+     [Fact]
         public void HeadedAnchorNoDeckReturnsValue()
         {
             HeadedAnchor a =new HeadedAnchor();
@@ -45,10 +48,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite
             double refValue = 21.2;
             double actualTolerance = EvaluateActualTolerance(Q_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void HeadedAnchorParalleDeckReturnsValue()
         {
             HeadedAnchor a = new HeadedAnchor();
@@ -56,10 +59,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite
             double refValue = 21.2;
             double actualTolerance = EvaluateActualTolerance(Q_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void HeadedAnchorPerpendicularDeckReturnsValue()
         {
             HeadedAnchor a = new HeadedAnchor();
@@ -67,7 +70,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite
             double refValue = 18.3;
             double actualTolerance = EvaluateActualTolerance(Q_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
     }
 }

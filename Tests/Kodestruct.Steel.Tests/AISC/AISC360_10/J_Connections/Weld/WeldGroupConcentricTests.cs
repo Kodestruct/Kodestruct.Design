@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +24,13 @@ using System.Threading.Tasks;
 using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.AISC360v10.Connections;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.Weld;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.Weld
 {
-    [TestFixture]
+    //[TestFixture]
     public class WeldGroupConcentricTests : ToleranceTestBase
     {
 
@@ -42,17 +45,17 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.Weld
 
         //AISC Design Exaples V14
         //Example J.1 Fillet weld in longitudinal shear
-        [Test]
+     [Fact]
         public void WeldConcentricParallelLinesReturnsValue()
         {
             FilletWeldGroup wg = new FilletWeldGroup(WeldGroupPattern.ParallelVertical, 5.0, 28.0, 3.0 / 16.0, 70.0);
             double phiR_n = wg.GetConcentricLoadStrenth(0);
             double refValue = 0.75 * 5.57 * 2 * 28.0;
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
 
         }
-        [Test]
+     [Fact]
         public void WeldConcentricCShapeLinesReturnsValue()
         {
             FilletWeldGroup wg = new FilletWeldGroup(WeldGroupPattern.C, 1.0, 2.0, 1.0 / 16.0, 70.0);
@@ -61,32 +64,18 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.Weld
             double ws2 =0.85*2 * 1.392+2*1.5*1.392;
             double refValue = Math.Max(ws1, ws2);
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
 
         }
 
-        [Test]
-        public void WeldConcentricCShapeLinesReturnsValue66Hu()
-        {
-            FilletWeldGroup wg = new FilletWeldGroup(WeldGroupPattern.C, 41.0, 14.5, 7.0 / 8.0, 70.0);
-            double phiR_n = wg.GetConcentricLoadStrenth(0);
-            double phiRn = 14 * 1.392;
-            double ws1 = (41.0*2)+14.5;
-            double ws2 = 0.85 * 2*(41.0)* phiRn +  1.5 * phiRn * 14.5;
-            double refValue = Math.Max(ws1, ws2);
-            double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
-
-        }
-
-        [Test]
+     [Fact]
         public void WeldConcentricCShapeLinesReturnsValue45Degrees()
         {
             FilletWeldGroup wg = new FilletWeldGroup(WeldGroupPattern.C, 1.0, 2.0, 1.0 / 16.0, 70.0);
             double phiR_n = wg.GetConcentricLoadStrenth(45);
             double refValue = 4 * 1.392;
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
 
         }
     }

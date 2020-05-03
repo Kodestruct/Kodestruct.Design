@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,23 +24,26 @@ using System.Threading.Tasks;
 using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.Bolted;
 using Kodestruct.Steel.AISC.SteelEntities.Bolts;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
 {
-    [TestFixture]
+    //[TestFixture]
     public class SlipCriticalBoltTests : ToleranceTestBase
     {
 
         public SlipCriticalBoltTests()
         {
-            tolerance = 0.03; //3% can differ from rounding in the manual
+            tolerance = 0.02; //2% can differ from rounding in the manual
         }
 
         double tolerance;
         /// <summary>
         /// Example J.4A Slip-Critical Connection With Short-Slotted Holes
         /// </summary>
-        [Test]
+     [Fact]
         public void BoltSlipCritical_SSL_ReturnsSlipResistance()
         {
             BoltSlipCriticalGroupA bolt = new BoltSlipCriticalGroupA(0.75, BoltThreadCase.Included, BoltFayingSurfaceClass.ClassA,
@@ -48,24 +51,13 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double phiR_n = bolt.GetSlipResistance();
             double refValue = 19.0; // from Design Examples
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
-        }
-
-        [Test]
-        public void BoltSlipCritical_OVS_ReturnsSlipResistance()
-        {
-            BoltSlipCriticalGroupA bolt = new BoltSlipCriticalGroupA(0.875, BoltThreadCase.Included, BoltFayingSurfaceClass.ClassA,
-            BoltHoleType.OVS, BoltFillerCase.One, 1, null);
-            double phiR_n = bolt.GetSlipResistance();
-            double refValue = 11.2378; 
-            double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<=tolerance);
         }
 
         /// <summary>
         /// Example J.4B Slip-Critical Connection With Long-Slotted Holes
         /// </summary>
-        [Test]
+     [Fact]
         public void BoltSlipCritical_LSL_ReturnsSlipResistance()
         {
             BoltSlipCriticalGroupA bolt = new BoltSlipCriticalGroupA(0.75, BoltThreadCase.Included, BoltFayingSurfaceClass.ClassA,
@@ -73,13 +65,13 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double phiR_n = bolt.GetSlipResistance();
             double refValue = 13.3; // from Design Examples
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         /// <summary>
         /// Example J.5 Combined tension and shear in a slip-critical connection
         /// </summary>
-        [Test]
+     [Fact]
         public void BoltSlipCriticalSTDReturnsReducedSlipResistance()
         {
             BoltSlipCriticalGroupA bolt = new BoltSlipCriticalGroupA(0.75, BoltThreadCase.Included, BoltFayingSurfaceClass.ClassA,
@@ -88,7 +80,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double phiR_n = bolt.GetReducedSlipResistance(T_u);
             double refValue = 54.4/8.0; // from Design Examples
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
     }
 }

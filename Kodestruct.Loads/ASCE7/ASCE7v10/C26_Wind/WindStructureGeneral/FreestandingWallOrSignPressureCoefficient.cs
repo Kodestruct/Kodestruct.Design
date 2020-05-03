@@ -73,18 +73,18 @@ namespace Kodestruct.Loads.ASCE7.ASCE7_10.Wind
         private double GetCoefficientCaseAB(double h, double B, double s, double epsion_s)
         {
             throw new NotImplementedException();
-            using (StringReader reader = new StringReader(Resources.ASCE7_10Figure29_4_1SignsCaseAB))
-            {
-                List<double> B_sRatios = GetColumnHeaders(reader);
-                List<double> s_hRatios = GetRowHeaders(reader);
-                List<List<double>> Data = GetData(reader);
-                double ColumnValue = B / s;
-                double RowValue = s / h;
+            //using (StringReader reader = new StringReader(Resources.ASCE7_10Figure29_4_1SignsCaseAB))
+            //{
+            //    List<double> B_sRatios = GetColumnHeaders(reader);
+            //    List<double> s_hRatios = GetRowHeaders(reader);
+            //    List<List<double>> Data = GetData(reader);
+            //    double ColumnValue = B / s;
+            //    double RowValue = s / h;
 
-                Quad ValueQuad = GetQuad(ColumnValue, RowValue,B_sRatios,s_hRatios,  Data);
+            //    Quad ValueQuad = GetQuad(ColumnValue, RowValue,B_sRatios,s_hRatios,  Data);
 
-                return (double)ValueQuad.GetInterpolatedValue((decimal)ColumnValue, (decimal)RowValue);
-            }
+            //    return (double)ValueQuad.GetInterpolatedValue((decimal)ColumnValue, (decimal)RowValue);
+            //}
 
         }
 

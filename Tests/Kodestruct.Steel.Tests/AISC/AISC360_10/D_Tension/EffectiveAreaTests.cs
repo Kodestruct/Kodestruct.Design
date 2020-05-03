@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,17 +23,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10;
 using Kodestruct.Steel.AISC.AISC360v10.Tension;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Tension
 {
-    [TestFixture]
+    //[TestFixture]
     public class EffectiveAreaTests : ToleranceTestBase
     {
 
  
     //    //AISC Design Examples 14
     //    //EXAMPLE D.1 W-SHAPE TENSION MEMBER 
-    //    [Test]
+    // [Fact]
     //    public void EffectiveNetAreaOpenSectionReturnsValue()
     //    {
     //        TensionMember tm = new TensionMember();

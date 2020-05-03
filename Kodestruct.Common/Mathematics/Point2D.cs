@@ -29,6 +29,13 @@ namespace Kodestruct.Common.Mathematics
             this.X = X;
             this.Y = Y;
         }
+        public Point2D(string Name, double X, double Y)
+        {
+            this.X = X;
+            this.Y = Y;
+            this.Name = Name;
+        }
+        public string Name { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
 

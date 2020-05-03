@@ -46,7 +46,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Connections.Bolted
                     var SampleValue = new { Diameter = 0.0, EdgeDistance = 0.0};
                     var EdgeDistanceTableVals = ListFactory.MakeList(SampleValue);
 
-                    using (StringReader reader = new StringReader(Resources.AISC360_10TableJ3_4_MinimumEdgeDistance))
+                    using (StringReader reader = new StringReader(Resources.AISC360_10TableJ3_4_Minimum_Edge_Distance))
                     {
                         string line;
                         while ((line = reader.ReadLine()) != null)

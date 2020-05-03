@@ -28,7 +28,7 @@ using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Tension
 {
-    //[TestFixture]
+    // 
     public class ShearLagFactorTests : ToleranceTestBase
     {
 

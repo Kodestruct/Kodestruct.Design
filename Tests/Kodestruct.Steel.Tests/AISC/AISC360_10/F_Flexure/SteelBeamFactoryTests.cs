@@ -37,7 +37,7 @@ using Xunit;
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
 
-    //[TestFixture]
+    // 
     public partial class SteelBeamFactoryTests : ToleranceTestBase
     {
         public SteelBeamFactoryTests()

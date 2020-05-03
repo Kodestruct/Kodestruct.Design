@@ -38,7 +38,7 @@ using Xunit;
 namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
 {
 
-    //[TestFixture]
+    // 
     public class HssRhsConcentratedForceTests : ToleranceTestBase
     {
 

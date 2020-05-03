@@ -29,7 +29,7 @@ using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Tension
 {
-    //[TestFixture]
+    // 
     public class EffectiveAreaTests : ToleranceTestBase
     {
 
@@ -46,7 +46,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Tension
     //        double U = A_e/A_g;
     //        double refValue = 0.684;
     //        double actualTolerance = EvaluateActualTolerance(U, refValue);
-    //        Assert.LessOrEqual(actualTolerance, tolerance);
+    //         Assert.True(actualTolerance<=tolerance);
     //    }
 
     //    public EffectiveAreaTests()

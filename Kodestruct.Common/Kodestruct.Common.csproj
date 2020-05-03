@@ -5,6 +5,9 @@
     <PackageId>Kodestruct.Common</PackageId>
     <Authors>Kodestruct</Authors>
     <Product>Kodestruct.Design</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +31,13 @@
 
   <ItemGroup>
     <Folder Include="Clipper\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -29,7 +29,7 @@ using Xunit;
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
 {
 
-    //[TestFixture]
+    // 
     public class BoltGroupTests : ToleranceTestBase
     {
         public BoltGroupTests()
@@ -88,14 +88,14 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
         ///// <summary>
         ///// Elastic moment. Checked against spreadsheet calculation
         ///// </summary>
-        //[Test]
+        //[Fact]
         //public void BoltGroupElasticReturnsElasticMoment()
         //{
         //    BoltGroup bg = new BoltGroup(4, 2, 3, 3);
         //    double C = bg.CalculateElasticGroupMomentCoefficientC();
         //    double boltStrength = 4.39205;
         //    double MomentCapacity = C * boltStrength;
-        //    Assert.AreEqual(100.0, Math.Round(MomentCapacity));
+        //    Assert.Equal(100.0, Math.Round(MomentCapacity));
         //}
 
 

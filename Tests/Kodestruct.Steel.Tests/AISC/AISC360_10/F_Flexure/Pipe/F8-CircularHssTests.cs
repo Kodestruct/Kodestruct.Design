@@ -36,7 +36,7 @@ using Xunit;
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
 
-    //[TestFixture]
+    // 
     public class CircularHssTests : ToleranceTestBase
     {
         public CircularHssTests()

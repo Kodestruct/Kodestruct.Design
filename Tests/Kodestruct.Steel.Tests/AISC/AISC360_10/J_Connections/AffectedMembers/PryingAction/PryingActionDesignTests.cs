@@ -30,7 +30,7 @@ using Xunit;
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections
 {
 
-    //[TestFixture]
+    // 
     public class PryingActionDesignTests
     {
      [Fact]

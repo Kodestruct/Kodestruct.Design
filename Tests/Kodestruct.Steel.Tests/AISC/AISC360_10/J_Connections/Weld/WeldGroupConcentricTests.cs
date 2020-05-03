@@ -30,7 +30,7 @@ using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.Weld
 {
-    //[TestFixture]
+    // 
     public class WeldGroupConcentricTests : ToleranceTestBase
     {
 

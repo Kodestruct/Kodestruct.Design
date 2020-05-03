@@ -28,7 +28,7 @@ using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.J_Connections.AffectedMembers.BeamCope
 {
-    //[TestFixture]
+    // 
     public class BeamCopeTests: ToleranceTestBase
     {
         public BeamCopeTests()

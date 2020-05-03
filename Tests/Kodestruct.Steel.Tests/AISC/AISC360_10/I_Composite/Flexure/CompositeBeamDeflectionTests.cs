@@ -32,7 +32,7 @@ using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite.Flexure
 {
-    //[TestFixture]
+    // 
     public partial class CompositeBeamTests: ToleranceTestBase
     {
         public CompositeBeamTests()

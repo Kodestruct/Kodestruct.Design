@@ -33,7 +33,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
     /// <summary>
     /// Comparison to AISC Manual values
     /// </summary>
-    //[TestFixture]
+    // 
 
     public class BoltHoleTests
     {

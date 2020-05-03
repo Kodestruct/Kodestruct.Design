@@ -28,7 +28,7 @@ using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 {
-    //[TestFixture]
+    // 
     public class BlockShearTests : ToleranceTestBase
     {
         public BlockShearTests()

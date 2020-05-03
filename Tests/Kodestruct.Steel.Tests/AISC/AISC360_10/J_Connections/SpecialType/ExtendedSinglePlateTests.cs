@@ -32,7 +32,7 @@ using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.SpecialType
 {
-    //[TestFixture]
+    // 
     public class ExtendedSinglePlateTests: ToleranceTestBase
     {
         public ExtendedSinglePlateTests()
@@ -47,7 +47,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.SpecialType
             //double refValue = 5.79; // from AISC Steel Manual
             //double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            //Assert.LessOrEqual(actualTolerance, tolerance);
+            // Assert.True(actualTolerance<=tolerance);
         }
 
         //Thornton Fortney AISC EJ 2011. Example1.
@@ -106,7 +106,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.SpecialType
 
             //double actualTolerance = EvaluateActualTolerance(lambda, refValue);
 
-            //Assert.LessOrEqual(actualTolerance, tolerance);
+            // Assert.True(actualTolerance<=tolerance);
 
         }
 

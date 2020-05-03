@@ -31,7 +31,7 @@ using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.BasePlate
 {
-    //[TestFixture]
+    // 
     public class BasePlateTests : ToleranceTestBase
     {
         //AISC Night School

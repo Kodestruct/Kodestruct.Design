@@ -29,7 +29,7 @@ using Xunit;
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
 {
 
-    //[TestFixture]
+    // 
     public class WeldGroupInstantaneousCenterTests : ToleranceTestBase
     {
         public WeldGroupInstantaneousCenterTests()

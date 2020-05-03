@@ -5,6 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
+*.userosscache
 
 # Build results
 [Dd]ebug/
@@ -199,3 +200,24 @@ ModelManifest.xml
 .vs/Kodestruct.Design/v15/sqlite3/storage.ide
 .vs/Kodestruct.Design/v15/sqlite3/storage.ide
 .vs/Kodestruct.Design/v15/sqlite3/storage.ide
+
+
+
+#new 
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+
+# Visual Studio Code
+.vscode
+
+
+# Build results
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio 2015
+.vs/

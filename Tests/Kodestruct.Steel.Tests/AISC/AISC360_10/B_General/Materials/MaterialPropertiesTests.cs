@@ -42,7 +42,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.BasePlate
 
             //double refValue = 1.51;
             //double actualTolerance = EvaluateActualTolerance(t_pMin, refValue);
-            //Assert.LessOrEqual(actualTolerance, tolerance);
+            // Assert.True(actualTolerance<=tolerance);
  
         }
 

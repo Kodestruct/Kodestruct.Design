@@ -38,7 +38,7 @@ using Xunit;
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
 {
 
-    //[TestFixture]
+    // 
     public class CompressionIShapeNonCompactTests : ToleranceTestBase
     {
         public CompressionIShapeNonCompactTests()

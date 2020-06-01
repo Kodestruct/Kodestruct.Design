@@ -122,5 +122,18 @@ namespace Kodestruct.Wood.Properties {
                 return ResourceManager.GetString("NDS2015_Table4A_SizeFactor", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WoodStructuralPanels,Structural_I,5/16,1-1/4,6d,400,13,10,600,18,13,780,23,16,1020,35,22,560,840,1090,1430
+        ///WoodStructuralPanels,Structural_I,3/8,1-3/8,8d,460,19,14,720,24,17,920,30,20,1220,43,24,645,1010,1290,1710
+        ///WoodStructuralPanels,Structural_I,7/16,1-3/8,8d,510,16,13,790,21,16,1010,27,19,1340,40,24,715,1105,1415,1875
+        ///WoodStructuralPanels,Structural_I,15/32,1-3/8,8d,560,14,11,860,18,14,1100,24,17,1460,37,23,785,1205,1540,2045
+        ///WoodStructuralPanels,Structural_I,15/32,1-1/2,10d,680,22,16,1020,29,20,1330 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SDPWS2015Table4_3A {
+            get {
+                return ResourceManager.GetString("SDPWS2015Table4_3A", resourceCulture);
+            }
+        }
     }
 }

@@ -9,6 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\NDS2015_Suppl_Table4A.txt" />
+    <None Remove="Resources\NDS2015_Table3_3_3Effective Length.txt" />
+    <None Remove="Resources\NDS2015_Table4A_SizeFactor.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NDS2015_Suppl_Table4A.txt" />
+    <EmbeddedResource Include="Resources\NDS2015_Table3_3_3Effective Length.txt" />
+    <EmbeddedResource Include="Resources\NDS2015_Table4A_SizeFactor.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Kodestruct.Common\Kodestruct.Common.csproj" />
   </ItemGroup>
 
@@ -36,6 +48,11 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="NDS\NDS_2015\GluLam\AdjustmentFactors\" />
+    <Folder Include="NDS\NDS_2015\GluLam\Base\" />
   </ItemGroup>
 
 </Project>

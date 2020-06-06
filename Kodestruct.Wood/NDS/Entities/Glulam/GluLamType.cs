@@ -22,11 +22,11 @@ using System.Text;
 
 namespace Kodestruct.Wood.NDS.Entities
 {
-    public enum GluLamType
-    {
-        GluedLaminatedSoftwoodTimber,
-        GluedLaminatedSoftwoodTimberUnderAxialForce,
-        GluedLaminatedHardwoodTimber,
-        GluedLaminatedHardwoodTimberUnderAxialForce
-    }
+    //public enum GluLamType
+    //{
+    //    GluedLaminatedSoftwoodTimber,
+    //    GluedLaminatedSoftwoodTimberUnderAxialForce,
+    //    GluedLaminatedHardwoodTimber,
+    //    GluedLaminatedHardwoodTimberUnderAxialForce
+    //}
 }

@@ -15,7 +15,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.ShearWall
         {
 
    
-            #region Read Occupancy Data
+            #region Shear capacity data
 
             var SampleValue = new { PanelMaterial = "", Grade = "", Thickness = "", FastenerPenetration = "", Fastener = "", 
                 v_Seism6 = 0.0, G_Seism6Osb = 0.0, G_Seism6Ply = 0.0, 

@@ -44,7 +44,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
         {
             //determine lateral bracing requirements to skip stability checks
             //4.4.1 Stability of Bending Members
-            throw new NotImplementedException();
+            return false;
         }
 
         double d;

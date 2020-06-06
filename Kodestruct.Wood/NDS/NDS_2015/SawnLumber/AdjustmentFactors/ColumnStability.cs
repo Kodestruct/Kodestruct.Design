@@ -66,7 +66,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
 
 
         /// <summary>
-        /// Factor from NDS 2105 section 3.7.1.5 
+        /// Factor from NDS 2105 section 3.7.1.5 required for the column stability factor
         /// </summary>
         /// <returns></returns>
 

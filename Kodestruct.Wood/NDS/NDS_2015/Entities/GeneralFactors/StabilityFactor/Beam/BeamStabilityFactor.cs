@@ -26,9 +26,18 @@ namespace Kodestruct.Wood.NDS.NDS2015
 {
     public abstract partial class WoodMember : AnalyticalElement
     {
-        //3.3.3 Beam Stability Factor, C_L 
-
-
+        /// <summary>
+        /// 3.3.3 Beam Stability Factor, C_L
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="d"></param>
+        /// <param name="l_e"></param>
+        /// <param name="E_min"></param>
+        /// <param name="C_M_E"></param>
+        /// <param name="C_t_E"></param>
+        /// <param name="C_i_E"></param>
+        /// <param name="C_T"></param>
+        /// <returns></returns>
         protected double GetC_L(double b, 
             double d,
             double l_e, double E_min, double C_M_E, double C_t_E, double C_i_E, double C_T

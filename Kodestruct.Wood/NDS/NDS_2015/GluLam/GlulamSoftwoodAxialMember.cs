@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kodestruct.Wood.NDS.NDS2015.GluLam
 {
-    public class GlulamSoftwoodAxialMember : GluelamMember
+    public class GlulamSoftwoodAxialMember : GlulamMember
     {
     }
 }

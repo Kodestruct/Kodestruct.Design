@@ -5,8 +5,11 @@ using System.Text;
 
 namespace Kodestruct.Wood.NDS.NDS2015.GluLam
 {
-    public partial class GluelamMember: WoodMember
+    public partial class GlulamMember: WoodMember
     {
-        
+        public GlulamMember():base(null)
+        {
+
+        }
     }
 }

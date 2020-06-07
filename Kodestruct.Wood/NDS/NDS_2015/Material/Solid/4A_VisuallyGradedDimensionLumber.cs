@@ -49,23 +49,6 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material
         }
 
 
-        /// <summary>
-        /// Example of how to extract reference values
-        /// </summary>
-        //protected void ReadReferenceValues()
-        //{
-            
-        //      double Fb = F_b;
-        //      double Ft = F_t;
-        //      double Fv = F_v;
-        //      double FcPerp = F_cPerp;
-        //      double Fc = F_cParal;
-        //      double E = E;
-        //      double Emin = E_min;
-        //      string CommercialGradeString = CommercialGradeStringConverter.GetCommercialGradeString(Grade);
 
-              
-
-        //}
     }
 }

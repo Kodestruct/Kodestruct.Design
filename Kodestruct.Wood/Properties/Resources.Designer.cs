@@ -199,6 +199,22 @@ namespace Kodestruct.Wood.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1,1,DF,L3,1.5,0.79,560,950,1550,1250,1450,1250,1000,230,1250,265,0.5
+        ///2,2,DF,L2,1.6,0.85,560,1250,1950,1600,1800,1600,1300,230,1700,265,0.5
+        ///3,3,DF,L2D,1.9,1,650,1450,2300,1900,2100,1850,1550,230,2000,265,0.5
+        ///4,4,DF,L1CL,1.9,1,590,1400,2100,1950,2200,2000,1650,230,2100,265,0.5
+        ///5,5,DF,L1,2,1.06,650,1650,2400,2100,2400,2100,1800,230,2200,265,0.5
+        ///14,14,HF,L3,1.3,0.69,375,800,1100,1050,1200,1050,850,190,1100,215,0.43
+        ///15,15,HF,L2,1.4,0.74,375,1050,1350,1350,1500,1350,1100,190,1450,215,0.43
+        ///16,16,HF,L1,1.6,0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string NDS2015_Table5BSoftwoodAxialMembers {
+            get {
+                return ResourceManager.GetString("NDS2015_Table5BSoftwoodAxialMembers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WoodStructuralPanel,Structural_I,5/16,1-1/4,6d,400,13,10,600,18,13,780,23,16,1020,35,22,560,840,1090,1430
         ///WoodStructuralPanel,Structural_I,3/8,1-3/8,8d,460,19,14,720,24,17,920,30,20,1220,43,24,645,1010,1290,1710
         ///WoodStructuralPanel,Structural_I,7/16,1-3/8,8d,510,16,13,790,21,16,1010,27,19,1340,40,24,715,1105,1415,1875

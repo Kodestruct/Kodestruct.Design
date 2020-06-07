@@ -53,7 +53,6 @@
   <ItemGroup>
     <Folder Include="NDS\NDS_2015\Entities\Beam\" />
     <Folder Include="NDS\NDS_2015\Entities\Column\" />
-    <Folder Include="NDS\NDS_2015\Glulam\Base\" />
   </ItemGroup>
 
 </Project>

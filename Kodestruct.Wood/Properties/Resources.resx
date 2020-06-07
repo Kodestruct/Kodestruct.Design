@@ -142,6 +142,9 @@
   <data name="NDS2015_Table5ASimple_SP_Wane2s" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NDS2015_Table5ASimple_SP_Vane2s.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="NDS2015_Table5BSoftwoodAxialMembers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NDS2015_Table5BSoftwoodAxialMembers.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="SDPWS2015Table4_3A" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SDPWS2015Table4_3A.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>

@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Kodestruct.Tests.Common\Kodestruct.Tests.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NDS\Gluelam\" />
-  </ItemGroup>
-
 </Project>

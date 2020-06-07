@@ -13,6 +13,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
 {
     public class GluelamSoftwoodMaterialFlexureSimple
     {
+        public string StressClassId { get; set; }
         public GlulamSimpleFlexuralStressClass StressClass { get; set; }
         public GlulamWoodSpeciesSimple WoodSpecies { get; set; }
         public int NumberOfLaminations { get; set; }
@@ -34,9 +35,9 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
         }
         #endregion
 
-        #region F_bx_m
-        private double _F_bx_m;
-        public double F_bx_m
+        #region F_bx_n
+        private double _F_bx_n;
+        public double F_bx_n
         {
             get
             {
@@ -44,7 +45,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
                 {
                     CalulateValues();
                 }
-                return _F_bx_m;
+                return _F_bx_n;
             }
         }
         #endregion
@@ -231,7 +232,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
  
 
         public GluelamSoftwoodMaterialFlexureSimple( GlulamSimpleFlexuralStressClass StressClass, GlulamWoodSpeciesSimple WoodSpecies,
-            int NumberOfLaminations)
+            int NumberOfLaminations, bool AllowIncreasedValues =false)
         {
  
             this.NumberOfLaminations = NumberOfLaminations;
@@ -250,8 +251,9 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
             var SampleValue = new
             {
                 StressClass = "",
+                StressClassId = "",
                 F_bx_p = 0.0,
-                F_bx_m = 0.0,
+                F_bx_n = 0.0,
                 F_c_perp_x = 0.0,
                 F_vx = 0.0,
                 E_x = 0.0,
@@ -295,31 +297,33 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] Vals = line.Split(',');
-                    if (Vals.Length == 21)
+                    if (Vals.Length == 16)
                     {
                         string _StressClass = Vals[0];
-                        double _F_bx_p = Double.Parse(Vals[1]);
-                        double _F_bx_m = Double.Parse(Vals[2]);
-                        double _F_c_perp_x = Double.Parse(Vals[3]);
-                        double _F_vx = Double.Parse(Vals[4]);
-                        double _E_x = Double.Parse(Vals[5]);
-                        double _E_x_min = Double.Parse(Vals[6]);
-                        double _F_by = Double.Parse(Vals[7]);
-                        double _F_c_perp_y = Double.Parse(Vals[8]);
-                        double _F_vy = Double.Parse(Vals[9]);
-                        double _E_y = Double.Parse(Vals[10]);
-                        double _E_y_min = Double.Parse(Vals[11]);
-                        double _F_t = Double.Parse(Vals[12]);
-                        double _F_c = Double.Parse(Vals[13]);
-                        double _G = Double.Parse(Vals[14]);
+                        string _StressClassId = Vals[1];
+                        double _F_bx_p = Double.Parse(Vals[2]);
+                        double _F_bx_n = Double.Parse(Vals[3]);
+                        double _F_c_perp_x = Double.Parse(Vals[4]);
+                        double _F_vx = Double.Parse(Vals[5]);
+                        double _E_x = Double.Parse(Vals[6]);
+                        double _E_x_min = Double.Parse(Vals[7]);
+                        double _F_by = Double.Parse(Vals[8]);
+                        double _F_c_perp_y = Double.Parse(Vals[9]);
+                        double _F_vy = Double.Parse(Vals[10]);
+                        double _E_y = Double.Parse(Vals[11]);
+                        double _E_y_min = Double.Parse(Vals[12]);
+                        double _F_t = Double.Parse(Vals[13]);
+                        double _F_c = Double.Parse(Vals[14]);
+                        double _G = Double.Parse(Vals[15]);
 
 
                         glulamVals.Add
                         (new
                         {
                             StressClass = _StressClass,
+                            StressClassId = _StressClassId,
                             F_bx_p = _F_bx_p,
-                            F_bx_m = _F_bx_m,
+                            F_bx_n = _F_bx_n,
                             F_c_perp_x = _F_c_perp_x,
                             F_vx = _F_vx,
                             E_x = _E_x * Math.Pow(10, 6),
@@ -343,7 +347,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
 
             var thisStressVals = glulamVals.Where(g => g.StressClass == this.StressClass.ToString()).FirstOrDefault();
             this._F_bx_p = thisStressVals.F_bx_p;
-            this._F_bx_m = thisStressVals.F_bx_m;
+            this._F_bx_n = thisStressVals.F_bx_n;
             this._F_c_perp_x = thisStressVals.F_c_perp_x;
             this._F_vx = thisStressVals.F_vx;
             this._E_x = thisStressVals.E_x;

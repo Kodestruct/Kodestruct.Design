@@ -19,7 +19,8 @@ namespace Kodestruct.Wood.NDS.NDS2015.GluLam
         public ISectionRectangular Section { get; set; }
         public double b { get; set; }
         public double d { get; set; }
- 
+        public int NumberLaminations { get; set; }
+
 
         public GlulamSoftwoodFlexuralMemberSimple(double b, double d, int NumberLaminations, 
             GlulamSimpleFlexuralStressClass StressClass, GlulamWoodSpeciesSimple WoodSpecies)
@@ -28,7 +29,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.GluLam
             this.d = d;
             this.Material = new GluelamSoftwoodMaterialFlexureSimple(StressClass, WoodSpecies, NumberLaminations);
             this.Section = new SectionRectangular(b, d);
- 
+            this.NumberLaminations = NumberLaminations;
    
         }
 

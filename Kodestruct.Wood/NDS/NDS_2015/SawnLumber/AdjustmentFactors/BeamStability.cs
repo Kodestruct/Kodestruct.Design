@@ -65,8 +65,8 @@ namespace Kodestruct.Wood.NDS.NDS2015
 
         protected override double GetF_b_AdjustedForBeamStability()
         {
-            double K_F = 2.54;
-            double phi = 0.85;
+            double K_F = GetFormatConversionFactor_K_F(Entities.ReferenceDesignValueType.Bending);
+            double phi = GetStrengthReductionFactor_phi(Entities.ReferenceDesignValueType.Bending); //Table N.3.2;
             return F_b * C_M_Fb * C_t_Fb * C_F_Fb * C_i_Fb * C_r*K_F*phi*lambda; //from Table 4.3.1
             
         }

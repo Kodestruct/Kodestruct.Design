@@ -43,7 +43,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.GluLam
         /// <param name="lambda"></param>
         /// <param name="IsSouthernPine"></param>
         /// <returns></returns>
-        public double GetStabilityFactor (double b, double d, double F_b, double L,
+        public double GetStabilityFactorC_L (double b, double d, double F_b, double L,
             double l_e, double E_min, double C_M_Fb, double C_M_E, double C_t_Fb, double C_t_E,  double C_c, double C_I, double lambda,
             bool IsSouthernPine)
         {
@@ -64,18 +64,16 @@ namespace Kodestruct.Wood.NDS.NDS2015.GluLam
             this.lambda = lambda;
 
             double C_L = GetC_L(b, d, l_e, E_min, C_M_E, C_t_E, C_i_E, C_T);
-            double C_v = GetVolumeFactor_C_v(d, L, IsSouthernPine);
-            //The beam stability factor, CL, shall not apply simultaneously with the volume factor, CV, for structural glued laminated timber bending
-            //members.Therefore, the lesser of these adjustment factors shall apply.
 
-            return Math.Min(C_L, C_v); 
+
+            return C_L; 
         }
 
     
         protected override double GetF_b_AdjustedForBeamStability()
         {
-            double K_F = 2.54;
-            double phi = 0.85;
+            double K_F = GetFormatConversionFactor_K_F(Entities.ReferenceDesignValueType.Bending);
+            double phi = GetStrengthReductionFactor_phi(Entities.ReferenceDesignValueType.Bending); //Table N.3.2;
             //from Table 5.3.1  except the beam stability factor CL flat use factor Cfu and volume factor CV applied.
             return F_b * C_M_Fb * C_t_Fb * C_c * C_I * K_F * phi * lambda; 
         }

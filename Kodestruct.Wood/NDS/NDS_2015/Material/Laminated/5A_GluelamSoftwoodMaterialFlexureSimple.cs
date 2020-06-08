@@ -19,6 +19,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
         public int NumberOfLaminations { get; set; }
         public bool ValuesWereCalculated { get; set; }
 
+        public bool AllowIncreasedValues { get; set; }
 
         #region F_bx_p
         private double _F_bx_p;
@@ -238,7 +239,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
             this.NumberOfLaminations = NumberOfLaminations;
             this.StressClass = StressClass;
             this.WoodSpecies = WoodSpecies;
-
+            this.AllowIncreasedValues = AllowIncreasedValues;
         }
 
         void CalulateValues()
@@ -362,7 +363,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
             this._G = thisStressVals.G;
 
             //Special cases
-            if (WoodSpecies.ToString().StartsWith("28") || WoodSpecies.ToString().StartsWith("30"))
+            if (StressClass.ToString().StartsWith("SC_28") || StressClass.ToString().StartsWith("SC_30"))
             {
                 if (NumberOfLaminations > 15)
                 {
@@ -370,7 +371,22 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
                     _E_x_min = 1.06 * Math.Pow(10, 6);
                 }
             }
-
+            if (AllowIncreasedValues == true)
+            {
+                if (StressClass == GlulamSimpleFlexuralStressClass.SC_24F1_8E && WoodSpecies!= GlulamWoodSpeciesSimple.Other)
+                {
+                    _F_bx_n = WoodSpecies == GlulamWoodSpeciesSimple.DouglasFir ? 1850 : 1950;
+                }
+                if (StressClass == GlulamSimpleFlexuralStressClass.SC_24F1_8E || StressClass == GlulamSimpleFlexuralStressClass.SC_26F1_9E)
+                {
+                    if (WoodSpecies!= GlulamWoodSpeciesSimple.DouglasFir && WoodSpecies!= GlulamWoodSpeciesSimple.Other)
+                    {
+                        _F_vx = 300;
+                        _F_vy = 260;
+                        _G = 0.55;
+                    }
+                }
+            }
         }
 
     }

@@ -30,7 +30,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.GluLam
             this.Material = new GluelamSoftwoodMaterialFlexureSimple(StressClass, WoodSpecies, NumberLaminations);
             this.Section = new SectionRectangular(b, d);
             this.NumberLaminations = NumberLaminations;
-   
+ 
         }
 
     }

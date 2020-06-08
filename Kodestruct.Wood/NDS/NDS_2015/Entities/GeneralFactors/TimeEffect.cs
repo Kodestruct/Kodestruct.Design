@@ -23,9 +23,9 @@ using Kodestruct.Common.Entities;
 
 namespace Kodestruct.Wood.NDS.NDS2015
 {
-    public partial class SawnLumberMember : WoodMember
+    public abstract partial class WoodMember : AnalyticalElement
     {
- 
+
         /// <summary>
         /// Time effect factor from NDS 2015 section N.3.3 (lambda)
         /// </summary>
@@ -41,13 +41,10 @@ namespace Kodestruct.Wood.NDS.NDS2015
             {
                 case LoadCombinationType.DeadLoadOnly:
                     return 0.6;
-                    break;
                 case LoadCombinationType.FullLiveLoadStorage:
                     return 0.7;
-                    break;
                 case LoadCombinationType.FullLiveLoad:
                     return 0.8;
-                    break;
                 case LoadCombinationType.FullLiveLoadImpact:
                     if (!IsConnection && !IsTreated)
                     {
@@ -57,20 +54,15 @@ namespace Kodestruct.Wood.NDS.NDS2015
                     {
                         return 1.0;
                     }
-                    
-                    break;
+
                 case LoadCombinationType.FullLiveLoadWithWind:
                     return 0.8;
-                    break;
                 case LoadCombinationType.FullWind:
                     return 1.0;
-                    break;
                 case LoadCombinationType.FullEarthquake:
                     return 1.0;
-                    break;
                 default:
                     return 1.0;
-                    break;
             }
         }
     }

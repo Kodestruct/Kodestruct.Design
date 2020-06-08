@@ -19,7 +19,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.GluLam
 
             double x = IsSouthernPine ? 20 : 10;
             //NDS Eq. 5.3-1
-            double C_v = Math.Pow((((21.0) / (L_ft))), 1/x) * Math.Pow((((12.0) / (d))), 1/x) * Math.Pow((((5.125) / (d))), 1/x);
+            double C_v = Math.Pow((((21.0) / (L_ft))), 1/x) * Math.Pow((((12.0) / (d))), 1/x) * Math.Pow((((5.125) / (b))), 1/x);
             C_v = C_v > 1.0 ? 1.0 : C_v;
             
             return C_v;

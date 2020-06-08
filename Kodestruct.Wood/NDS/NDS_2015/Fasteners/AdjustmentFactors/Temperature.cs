@@ -30,7 +30,7 @@ namespace Kodestruct.Wood.NDS.NDS_2015.Fasteners
 
         public double GetTemperatureFactor(double Temperature, MoistureCondition MoistureCondition)
         {
-            if (MoistureCondition == Entities.MoistureCondition.Dry)
+            if (MoistureCondition == MoistureCondition.Dry)
             {
                 if (Temperature <= 100.0)
                 {

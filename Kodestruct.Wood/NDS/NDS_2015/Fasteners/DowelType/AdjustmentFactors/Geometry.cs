@@ -112,7 +112,7 @@ public partial class DowelFastenerBase : WoodFastener
             switch (LoadToGrainDirection)
             {
                 case LoadToGrainDirection.ParallelToGrain:
-                    if (FastenerEdgeBearingType == Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
+                    if (FastenerEdgeBearingType == Kodestruct.Wood.NDS.Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
                     {
                         return 2.0 * D;
                     }
@@ -127,13 +127,11 @@ public partial class DowelFastenerBase : WoodFastener
                             return 2.5 * D;
                         }
                     }
-                    break;
                 case LoadToGrainDirection.PerpendicularToGrain:
                     return 2.0 * D;
-                    break;
                 default:
                     throw new Exception("LoadToGrainDirection not recognized");
-                    break;
+
             }
 
         }
@@ -145,7 +143,7 @@ public partial class DowelFastenerBase : WoodFastener
             switch (LoadToGrainDirection)
             {
                 case LoadToGrainDirection.ParallelToGrain:
-                    if (FastenerEdgeBearingType == Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
+                    if (FastenerEdgeBearingType == Kodestruct.Wood.NDS.Entities.FastenerEdgeBearingType.CompressionBearingAwayFromEdge)
                     {
                         return 4.0 * D;
                     }

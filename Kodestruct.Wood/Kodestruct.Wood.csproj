@@ -50,8 +50,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NDS\NDS_2015\Entities\Column\" />
-  </ItemGroup>
-
 </Project>

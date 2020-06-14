@@ -7,7 +7,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.GluLam
 {
     public partial class GlulamMember : WoodMember
     {
-        public override double GetAdjustedMinimumModulusOfElasticityForStability(double E_min, double C_M_E, double C_t_E, double C_i_E, double C_T)
+        public override  double GetAdjustedMinimumModulusOfElasticityForStability(double E_min, double C_M_E, double C_t_E, double C_i_E=1, double C_T=1)
         {
             double K_F = GetFormatConversionFactor_K_F(Entities.ReferenceDesignValueType.ModulusOfElasticityMin);
             double phi = GetStrengthReductionFactor_phi(Entities.ReferenceDesignValueType.ModulusOfElasticityMin); //Table N.3.2;

@@ -50,7 +50,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
             this.lambda = lambda;
             double FcStar = Get_FcStar();
             double E_minPrime = GetAdjustedMinimumModulusOfElasticityForStability(E_min,C_M_E,C_t_E,C_i_E,C_T);
-            C_P = base.GetC_P(FcStar, E_minPrime, l_e,d);
+            C_P = base.GetColumnStabilityFactor_C_P(FcStar, E_minPrime, l_e,d);
 
             return C_P;
         }

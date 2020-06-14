@@ -38,10 +38,10 @@ namespace Kodestruct.Wood.NDS.NDS_2015.Entities.Beam
             this.Member = new GlulamSoftwoodFlexuralMemberSimple(b, d, NumberLaminations, StressClass, WoodSpecies);
         }
         
-        public double GetFlexuralStrengthMajorAxis(LoadCombinationType CombinationType)
+        public double GetFlexuralStrengthMajorAxis(LoadCombinationType LoadCombinationType)
         {
             double F_bx_plus = Member.Material.F_bx_p;
-            var f = GetAdjustmentFactors(F_bx_plus, CombinationType, true);
+            var f = GetAdjustmentFactors(F_bx_plus, LoadCombinationType, true);
 
             //The beam stability factor, CL, shall not apply simultaneously with the volume factor, CV, for structural glued laminated timber bending
             //members.Therefore, the lesser of these adjustment factors shall apply.

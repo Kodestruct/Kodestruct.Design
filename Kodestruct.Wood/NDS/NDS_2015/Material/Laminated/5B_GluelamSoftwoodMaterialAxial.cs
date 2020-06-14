@@ -357,7 +357,7 @@ namespace Kodestruct.Wood.NDS.NDS2015.Material.Laminated
             #endregion
 
 
-            var thisCombinationVals = glulamVals.Where(g => g.CombinationSymbol == this.CombinationSymbol.ToString()).FirstOrDefault();
+            var thisCombinationVals = glulamVals.Where(g => ("c"+ g.CombinationSymbol) == this.CombinationSymbol.ToString()).FirstOrDefault();
             this._CombinationSymbolId = thisCombinationVals.CombinationSymbolId;
             this._Species = thisCombinationVals.Species;
             this._Grade = thisCombinationVals.Grade;

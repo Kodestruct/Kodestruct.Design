@@ -14,5 +14,14 @@ namespace Kodestruct.Wood.NDS.NDS2015.GluLam
         {
             return 0.9;
         }
+
+        public double Get_FcStar(double F_c, double C_M_Fc, double C_t_Fc, double lambda)
+        {
+            double K_F = GetFormatConversionFactor_K_F(Entities.ReferenceDesignValueType.CompresionParallelToGrain);
+            double phi = GetStrengthReductionFactor_phi(Entities.ReferenceDesignValueType.CompresionParallelToGrain);
+            double FcStar = F_c * C_M_Fc * C_t_Fc * K_F * phi * lambda; //from Table 4.3.1
+            return FcStar;
+        }
+
     }
 }

@@ -26,7 +26,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
 {
     public abstract partial class WoodMember : AnalyticalElement
     {
-        public virtual double GetC_P(
+        public virtual double GetColumnStabilityFactor_C_P(
              double FcStar, double E_minPrime, double l_e, double d)
         {
             double FcE = GetFc_E(E_minPrime, l_e, d);

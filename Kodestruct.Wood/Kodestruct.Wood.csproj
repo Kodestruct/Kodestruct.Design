@@ -50,4 +50,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NDS\NDS_2015\Entities\BeamColumn\" />
+  </ItemGroup>
+
 </Project>

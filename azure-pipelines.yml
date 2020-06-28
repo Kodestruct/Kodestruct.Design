@@ -50,7 +50,8 @@ steps:
 - task: DotNetCoreCLI@2
   inputs: 
     command: 'pack'
-    projects: 'Kodestruct.Common/Kodestruct.Common.csproj'
+    packagesToPack: 'Kodestruct.Common/Kodestruct.Common.csproj'
+    nobuild: true
     outputDir: '$(Build.ArtifactStagingDirectory)/TestDir'
 
 # The last task is a nuget command, nuget push

@@ -24,7 +24,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Kodestruct.Common.Interfaces;
 using Kodestruct.Common.CalculationLogger.Interfaces;
-using Newtonsoft.Json;
+
 
 
 namespace Kodestruct.Common.CalculationLogger
@@ -71,7 +71,7 @@ namespace Kodestruct.Common.CalculationLogger
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return String.Empty; // JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
         #region Serialization
@@ -81,7 +81,7 @@ namespace Kodestruct.Common.CalculationLogger
         /// This constructor is required for the JSON deserializer to be able
         /// to identify concrete classes to use when deserializing the interface properties.
         /// </summary
-        [JsonConstructor]
+        //[JsonConstructor]
         public CalcLog(List<CalcLogEntry> entries)
         {
             this.entries = entries.Cast<ICalcLogEntry>().ToList();

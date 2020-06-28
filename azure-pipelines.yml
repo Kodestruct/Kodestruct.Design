@@ -48,13 +48,9 @@ steps:
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step
 - task: DotNetCoreCLI@2
-  displayName: "dotnet pack"
-  inputs:
+  inputs: 
     command: 'pack'
-    arguments: '--configuration $(buildConfiguration)'
-    packagesToPack: 'Kodestruct.Common/Kodestruct.Common.csproj'
-    nobuild: true
-    versioningScheme: 'off'
+    outputDir: '$(Build.ArtifactStagingDirectory)/TestDir'
 
 # The last task is a nuget command, nuget push
 # This will push any .nupkg files to the 'TestFeed' artifact feed

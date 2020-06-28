@@ -41,7 +41,15 @@ steps:
   inputs:
     command: 'build'
     arguments: '--configuration $(buildConfiguration)'
-    projects: 'Kodestruct.Common/Kodestruct.Common.csproj'
+    projects: |
+      'Kodestruct.Common/Kodestruct.Common.csproj'
+      'Kodestruct.Steel/Kodestruct.Steel.csproj'
+      'Kodestruct.Concrete/Kodestruct.Concrete.csproj'
+      'Kodestruct.Wood/Kodestruct.Wood.csproj'
+      'Kodestruct.Aluminum/Kodestruct.Aluminum.csproj'
+      'Kodestruct.Loads/Kodestruct.Loads.csproj'
+      'Kodestruct.Analysis/Kodestruct.Analysis.csproj'
+
 
     
 
@@ -50,9 +58,16 @@ steps:
 - task: DotNetCoreCLI@2
   inputs: 
     command: 'pack'
-    packagesToPack: 'Kodestruct.Common/Kodestruct.Common.csproj'
+    packagesToPack: |
+      'Kodestruct.Common/Kodestruct.Common.csproj'
+      'Kodestruct.Steel/Kodestruct.Steel.csproj'
+      'Kodestruct.Concrete/Kodestruct.Concrete.csproj'
+      'Kodestruct.Wood/Kodestruct.Wood.csproj'
+      'Kodestruct.Aluminum/Kodestruct.Aluminum.csproj'
+      'Kodestruct.Loads/Kodestruct.Loads.csproj'
+      'Kodestruct.Analysis/Kodestruct.Analysis.csproj'
     nobuild: true
-    outputDir: '$(Build.ArtifactStagingDirectory)/TestDir'
+    outputDir: '$(Build.ArtifactStagingDirectory)/Packages'
 
 # The last task is a nuget command, nuget push
 # This will push any .nupkg files to the 'TestFeed' artifact feed

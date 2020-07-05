@@ -49,7 +49,7 @@ stages:
         command: 'build'
         arguments: '--configuration $(buildConfiguration)'
         projects: |
-          Kodestruct.Common/Kodestruct.Common.csproj'
+          'Kodestruct.Common/Kodestruct.Common.csproj'
           'Kodestruct.Steel/Kodestruct.Steel.csproj'
           'Kodestruct.Concrete/Kodestruct.Concrete.csproj'
           'Kodestruct.Wood/Kodestruct.Wood.csproj'

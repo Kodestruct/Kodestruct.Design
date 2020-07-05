@@ -44,7 +44,7 @@ stages:
 
 # The first task is the dotnet command build, pointing to our csproj file
     - task: DotNetCoreCLI@2
-      displayName: 'dotnet build'
+      displayName: 'Build all projects'
       inputs:
         command: 'build'
         arguments: '--configuration $(buildConfiguration)'
@@ -53,16 +53,17 @@ stages:
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step
     - task: DotNetCoreCLI@2
+      displayName: 'Pack Nuget Packages'
       inputs: 
         command: 'pack'
         packagesToPack: |
-          '**/Kodestruct.Common/Kodestruct.Common.csproj'
-          '**/Kodestruct.Steel/Kodestruct.Steel.csproj'
-          '**/Kodestruct.Concrete/Kodestruct.Concrete.csproj'
-          '**/Kodestruct.Wood/Kodestruct.Wood.csproj'
-          '**/Kodestruct.Aluminum/Kodestruct.Aluminum.csproj'
-          '**/Kodestruct.Loads/Kodestruct.Loads.csproj'
-          '**/Kodestruct.Analysis/Kodestruct.Analysis.csproj'
+         Kodestruct.Common/Kodestruct.Common.csproj
+         Kodestruct.Steel/Kodestruct.Steel.csproj
+         Kodestruct.Concrete/Kodestruct.Concrete.csproj
+         Kodestruct.Wood/Kodestruct.Wood.csproj
+         Kodestruct.Aluminum/Kodestruct.Aluminum.csproj
+         Kodestruct.Loads/Kodestruct.Loads.csproj
+         Kodestruct.Analysis/Kodestruct.Analysis.csproj
         nobuild: true
         outputDir: '$(Build.ArtifactStagingDirectory)/Packages'
 

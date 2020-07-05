@@ -7,20 +7,28 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'windows-latest'
+
 
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-steps:
-- task: NuGetToolInstaller@1
+stages:
+- stage: Build
+  displayName: 'Build and pack project'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+  jobs:
+  - job: build
+    displayName: 'Build project'
+    pool:
+      vmImage: 'windows-latest'
+
+    steps:
+    - task: NuGetCommand@2
+      displayName: 'Restore solution'
+      inputs:
+        restoreSolution: '$(solution)'
 
 # - task: VSBuild@1
 #   inputs:
@@ -36,22 +44,22 @@ steps:
 
 
 # The first task is the dotnet command build, pointing to our csproj file
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build'
-  inputs:
-    command: 'build'
-    arguments: '--configuration $(buildConfiguration)'
-    projects: 'Kodestruct.Common/Kodestruct.Common.csproj'
-
-    
+    - task: DotNetCoreCLI@2
+      displayName: 'Build all projects'
+      inputs:
+        command: 'build'
+        arguments: '--configuration $(buildConfiguration)'
+        projects: '**/*.csproj'
 
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step
-- task: DotNetCoreCLI@2
-  inputs: 
-    command: 'pack'
-    projects: 'Kodestruct.Common/Kodestruct.Common.csproj'
-    outputDir: '$(Build.ArtifactStagingDirectory)/TestDir'
+    - task: DotNetCoreCLI@2
+      displayName: 'Pack Kodestruct.Common'
+      inputs: 
+        command: 'pack'
+        packagesToPack: Kodestruct.Common/Kodestruct.Common.csproj
+        nobuild: true
+        outputDir: '$(Build.ArtifactStagingDirectory)/Packages'
 
 # The last task is a nuget command, nuget push
 # This will push any .nupkg files to the 'TestFeed' artifact feed
@@ -67,3 +75,24 @@ steps:
 #    publishVstsFeed: 'TestFeed'
 #    versioningScheme: 'off'
 #    allowPackageConflicts: true
+
+- stage: 'PublishNugetNuGetPackage'
+  displayName: 'Publish Release NuGet Package'
+  dependsOn: 'Build'
+  condition: succeeded()
+  jobs:
+  - deployment:
+    pool:
+      vmImage: 'windows-latest'
+    environment: 'nuget-org'
+    strategy:
+     runOnce:
+       deploy:
+         steps:
+         - task: NuGetCommand@2
+           displayName: 'Push NuGet Package'
+           inputs:
+             command: 'push'
+             packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+             nuGetFeedType: 'external'
+             publishFeedCredentials: 'NuGet'

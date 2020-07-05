@@ -48,17 +48,7 @@ stages:
       inputs:
         command: 'build'
         arguments: '--configuration $(buildConfiguration)'
-        projects: |
-          'Kodestruct.Common/Kodestruct.Common.csproj'
-          'Kodestruct.Steel/Kodestruct.Steel.csproj'
-          'Kodestruct.Concrete/Kodestruct.Concrete.csproj'
-          'Kodestruct.Wood/Kodestruct.Wood.csproj'
-          'Kodestruct.Aluminum/Kodestruct.Aluminum.csproj'
-          'Kodestruct.Loads/Kodestruct.Loads.csproj'
-          'Kodestruct.Analysis/Kodestruct.Analysis.csproj'
-
-
-    
+        projects: '**/*.csproj'
 
 # The second task is dotnet pack command again pointing to the csproj file
 # The nobuild means the project will not be compiled before running pack, because its already built in above step

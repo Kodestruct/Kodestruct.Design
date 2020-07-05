@@ -59,7 +59,7 @@ stages:
         command: 'pack'
         packagesToPack: Kodestruct.Common/Kodestruct.Common.csproj
         nobuild: true
-        #outputDir: '$(Build.ArtifactStagingDirectory)/Packages'
+        outputDir: '$(Build.ArtifactStagingDirectory)/Packages'
 
 # The last task is a nuget command, nuget push
 # This will push any .nupkg files to the 'TestFeed' artifact feed
@@ -93,6 +93,6 @@ stages:
            displayName: 'Push NuGet Package'
            inputs:
              command: 'push'
-             packagesToPush: '$(Build.ArtifactStagingDirectory)/Packages/*.nupkg'
+             packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
              nuGetFeedType: 'external'
              publishFeedCredentials: 'NuGet'

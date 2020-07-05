@@ -9,6 +9,8 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
+    <IsPackable>true</IsPackable>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

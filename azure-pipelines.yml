@@ -56,13 +56,13 @@ stages:
       inputs: 
         command: 'pack'
         packagesToPack: |
-          'Kodestruct.Common/Kodestruct.Common.csproj'
-          'Kodestruct.Steel/Kodestruct.Steel.csproj'
-          'Kodestruct.Concrete/Kodestruct.Concrete.csproj'
-          'Kodestruct.Wood/Kodestruct.Wood.csproj'
-          'Kodestruct.Aluminum/Kodestruct.Aluminum.csproj'
-          'Kodestruct.Loads/Kodestruct.Loads.csproj'
-          'Kodestruct.Analysis/Kodestruct.Analysis.csproj'
+          '**/Kodestruct.Common/Kodestruct.Common.csproj'
+          '**/Kodestruct.Steel/Kodestruct.Steel.csproj'
+          '**/Kodestruct.Concrete/Kodestruct.Concrete.csproj'
+          '**/Kodestruct.Wood/Kodestruct.Wood.csproj'
+          '**/Kodestruct.Aluminum/Kodestruct.Aluminum.csproj'
+          '**/Kodestruct.Loads/Kodestruct.Loads.csproj'
+          '**/Kodestruct.Analysis/Kodestruct.Analysis.csproj'
         nobuild: true
         outputDir: '$(Build.ArtifactStagingDirectory)/Packages'
 

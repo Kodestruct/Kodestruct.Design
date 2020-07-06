@@ -61,6 +61,14 @@ stages:
         nobuild: true
         outputDir: '$(Build.ArtifactStagingDirectory)/Packages'
 
+    - task: NuGetAuthenticate@0
+      displayName: 'NuGet Authenticate Internal Feed'
+    - task: NuGetCommand@2
+      displayName: 'NuGet push Internal Feed'
+      inputs:
+        command: push
+        publishVstsFeed: 'Kodestruct.Design/Packages'
+        allowPackageConflicts: true
 # The last task is a nuget command, nuget push
 # This will push any .nupkg files to the 'TestFeed' artifact feed
 # allowPackageConflicts allows us to build the same version and not throw an error when trying to push

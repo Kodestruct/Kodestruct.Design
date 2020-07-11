@@ -70,15 +70,16 @@ stages:
         publishVstsFeed: 'Kodestruct.Design/Packages'
         allowPackageConflicts: true
 
-    - task: NuGetAuthenticate@0
-      displayName: 'NuGet Authenticate Internal Feed'
-      inputs:
-        nuGetServiceConnections: 'NuGet'
-    - task: NuGetCommand@2
-      displayName: 'Push NuGet.org Package'
-      inputs:
-          command: 'push'
-          nuGetFeedType: 'external'
+
+#    - task: NuGetAuthenticate@0
+#      displayName: 'NuGet Authenticate Internal Feed'
+#      inputs:
+#        nuGetServiceConnections: 'NuGet'
+#    - task: NuGetCommand@2
+#      displayName: 'Push NuGet.org Package'
+#      inputs:
+#          command: 'push'
+#          nuGetFeedType: 'external'
 
 # The last task is a nuget command, nuget push
 # This will push any .nupkg files to the 'TestFeed' artifact feed

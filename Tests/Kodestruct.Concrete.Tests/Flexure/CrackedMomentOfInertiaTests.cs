@@ -3,21 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Concrete.ACI318_14;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Concrete.ACI.Entities.FlexuralMember;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
 {
-    [TestFixture]
+     
     public partial class AciFlexureRectangularBeamTests : ToleranceTestBase
     {
         /// <summary>
         /// PCA notes on ACI 318-11 Example 10.1
         /// </summary>
-        [Test]
+        [Fact]
         public void CrackedMomentOfInertiaReturnsValue()
         {
             ConcreteSectionFlexure beam = GetConcreteBeam(12, 22, 3000, true, new RebarInput(1.8, 2.5), new RebarInput(0.6, 19.5));
@@ -26,13 +27,13 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             double refValue = 3770.0;
             double actualTolerance = EvaluateActualTolerance(Icr, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
         /// <summary>
         /// PCA notes on ACI 318-11 Example 10.1
         /// </summary>
-        [Test]
+        [Fact]
         public void CrackingMomentReturnsValue()
         {
             ConcreteSectionFlexure beam = GetConcreteBeam(12, 22, 3000,true, new RebarInput(1.8, 2.5), new RebarInput(0.6, 19.5));
@@ -41,13 +42,13 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             double refValue = 33.2*12;
             double actualTolerance = EvaluateActualTolerance(Mcr, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
         /// <summary>
         /// PCA notes on ACI 318-11 Example 10.1
         /// </summary>
-        [Test]
+        [Fact]
         public void EffectiveMomentOfInertiaReturnsValue()
         {
             double I_cr = 3770.0;
@@ -61,7 +62,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             double refValue = 7025.00;
             double actualTolerance = EvaluateActualTolerance(I_e, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
     }
     

@@ -1,5 +1,5 @@
  
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +10,18 @@ using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI.ACI318_14;
 using Kodestruct.Concrete.ACI.Entities;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
-    [TestFixture]
+     
     public partial class AciCompressionSquareColumnTests : ConcreteTestBase
     {
 
 
         //EXAMPLE 11-1 Calculation of an Interaction Diagram
 
-        [Test]
+        [Fact]
         public void ColumnInteractionReturnsM_n_Z_Neg1()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
@@ -30,15 +31,11 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double refValue = 4630*1000; //from MacGregor
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            //ConcreteCompressionStrengthResult result = new ConcreteCompressionStrengthResult(nominalResult, FlexuralCompressionFiberPosition.Top, col.Section.Material.beta1);
-            //StrengthReductionFactorFactory f = new StrengthReductionFactorFactory();
-            //FlexuralFailureModeClassification failureMode = f.GetFlexuralFailureMode(result.epsilon_t, result.epsilon_ty);
-
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
 
         }
 
-        [Test]
+        [Fact]
         public void ColumnInteractionReturnsM_n_Z_Neg2()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
@@ -47,10 +44,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double refValue = 4080 * 1000; //from MacGregor
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnInteractionReturnsM_n_Z_Neg4()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
@@ -59,10 +56,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double refValue = 257*12 * 1000; //from MacGregor
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsM_n_Z_Neg4()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumnWithDistributed();
@@ -71,7 +68,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double refValue = 257 * 12 * 1000; //from MacGregor
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
         public ConcreteSectionCompression GetConcreteExampleColumn()
@@ -123,7 +120,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
         {
             CalcLog log = new CalcLog();
             IConcreteSection Section = GetRectangularSection(Width, Height, fc);
-            //ConcreteSectionCompression column = new ConcreteSectionCompression(Section, LongitudinalBars,ConfinementReinforcementType, log);
+ 
             IConcreteFlexuralMember fs = new ConcreteSectionFlexure(Section, LongitudinalBars, new CalcLog(), ConfinementReinforcementType);
             ConcreteSectionCompression column = new ConcreteSectionCompression(fs as IConcreteSectionWithLongitudinalRebar, ConfinementReinforcementType, log);
             return column;

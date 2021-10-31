@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Concrete.ACI318_14;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI318_14.Tests.Prestressed;
@@ -15,19 +15,19 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Prestressed
 {
     //public class PrestressedRectangularBeamTests : PrestressedRectangularTestBase
     //{
-    //    [Test]
+    //    [Fact]
     //    public void GetSimpleBeamFlexuralCapacityTop()
     //    {
     //        PrestressedConcreteSection beam = GetRectangularPrestressedConcreteBeam(12, 12, 4000, 3500, new RebarInput(1, 1));
     //        SectionFlexuralAnalysisResult MResult = beam.GetNominalFlexuralCapacity(FlexuralCompressionFiberPosition.Top, FlexuralAnalysisType.StrainCompatibility);
     //        double phiMn = MResult.Moment;
-    //        Assert.AreEqual(615882, Math.Round(Mn, 0));
+    //        Assert.Equal(615882, Math.Round(Mn, 0));
     //    }
     //}
 
     //public class PrestressedGeneralBeamTests : PrestressedGeneralTestsBase
     //{
-        //[Test]
+        //[Fact]
         //public void CheckTeeServiceability()
         //{
             //from PCA notes on ACI examples
@@ -35,7 +35,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Prestressed
             //   (4000, 3500, new RebarInput(1, 1));
             //SectionFlexuralAnalysisResult MResult = beam.GetFlexuralCapacity(CompressionLocation.Top, FlexuralAnalysisType.StrainCompatibility);
             //double phiMn = MResult.Moment;
-            //Assert.AreEqual(615882, Math.Round(Mn, 0));
+            //Assert.Equal(615882, Math.Round(Mn, 0));
         //}
     //}
 }

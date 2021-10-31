@@ -3,23 +3,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Concrete.ACI318_14;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.Shear.TwoWay;
 using Kodestruct.Common.Mathematics;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 {
-    [TestFixture]
+     
     public partial class AciTwoWayShearTests : AciConcreteShearTestsBase
     {
         /// <summary>
         /// MacGregor, Wight. Reinforced concrete. 6th edition
         /// Example 13-11
         /// </summary>
-        [Test]
+        [Fact]
         public void SlabPunchingStrengthReturnsValue()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -36,7 +37,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 71.3/d/95.0; //from example
             double actualTolerance = EvaluateActualTolerance(phi_v_c, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
         
         }
@@ -44,7 +45,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         /// MacGregor, Wight. Reinforced concrete. 6th edition
         /// Example 13-13
         /// </summary>
-        [Test]
+        [Fact]
         public void SlabPunchingMomentAndShearReturnsStressMG()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -63,7 +64,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 0.144; //from example
             double actualTolerance = EvaluateActualTolerance(phi_v_c, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
 
 
         }
@@ -72,7 +73,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.1
         /// </summary>
-        [Test]
+        [Fact]
         public void InteriorSlabReturnsPerimeterJ_yProperty()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -88,14 +89,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 27474; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.2
         /// </summary>
-        [Test]
+        [Fact]
         public void EdgeSlabReturnsPerimeterJ_yPropertyFor3SidedPerimeterEdgeLeft()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -111,14 +112,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 17630; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.2
         /// </summary>
-        [Test]
+        [Fact]
         public void EdgeSlabReturnsPunchingShearStressFor3SidedPerimeterEdgeLeft()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -134,14 +135,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = -338; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.2
         /// </summary>
-        [Test]
+        [Fact]
         public void EdgeSlabReturnsPerimeterJ_yPropertyFor3SidedPerimeterEdgeRight()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -157,14 +158,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 17630; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.2
         /// </summary>
-        [Test]
+        [Fact]
         public void EdgeSlabReturnsPerimeterJ_yPropertyFor3SidedPerimeterEdgeTop()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -180,14 +181,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 17630; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.2
         /// </summary>
-        [Test]
+        [Fact]
         public void EdgeSlabReturnsPerimeterJ_yPropertyFor3SidedPerimeterEdgeBottom()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -203,14 +204,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 17630; //from example  (page 19)
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
         /// <summary>
         /// MacGregor
         /// Example 13-13
         /// </summary>
-        [Test]
+        [Fact]
         public void EdgeSlabReturnsPerimeterJ_yPropertyFor3SidedPerimeterMG()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3500, false);
@@ -226,7 +227,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 13200.0; 
             double actualTolerance = EvaluateActualTolerance(J_y, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
 
@@ -234,7 +235,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.1
         /// </summary>
-        [Test]
+        [Fact]
         public void InteriorSlabReturnsPerimeter_gamma_vy_Property()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -250,14 +251,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 0.36; //from example 
             double actualTolerance = EvaluateActualTolerance(gamma_vy, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.3
         /// </summary>
-        [Test]
+        [Fact]
         public void CornerSlabReturnsPunchingShearStress()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -276,14 +277,14 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 192.0; //from example 
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
         /// <summary>
         /// ACI 421.1R-19  SHEAR REINFORCEMENT FOR SLABS 
         /// Example D.1
         /// </summary>
-        [Test]
+        [Fact]
         public void InteriorSlabReturnsPunchingShearStress()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(3000, false);
@@ -301,12 +302,12 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 294; //from example 
             double actualTolerance = EvaluateActualTolerance(v_u, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
         }
 
 
 
-        [Test]
+        [Fact]
         public void CornerSlabReturnsPunchingShearStressEqualForConfigurations()
         {
             IConcreteMaterial mat = this.GetConcreteMaterial(4000, false);
@@ -337,9 +338,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             ConcreteSectionTwoWayShear sec_UpperLeft = new ConcreteSectionTwoWayShear(data_UpperLeft, d, cx, cy, PunchingPerimeterConfiguration.CornerLeftTop);
             double v_u_UpperLeft = sec_UpperLeft.GetCombinedShearStressDueToMomementAndShear(0 * 1000, 1326 * 1000, 0, 1.0, 1.0).v_max;
 
-            Assert.AreEqual(v_u_UpperRight, v_u_LowerLeft);
-            Assert.AreEqual(v_u_UpperRight, v_u_LowerRight);
-            Assert.AreEqual(v_u_UpperRight, v_u_UpperLeft);
+            Assert.Equal(v_u_UpperRight, v_u_LowerLeft);
+            Assert.Equal(v_u_UpperRight, v_u_LowerRight);
+            Assert.Equal(v_u_UpperRight, v_u_UpperLeft);
         }
 
 

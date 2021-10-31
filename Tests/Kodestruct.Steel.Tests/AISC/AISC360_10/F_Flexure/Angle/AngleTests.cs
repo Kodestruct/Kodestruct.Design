@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +29,14 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
 
-    [TestFixture]
+    // 
     public class AngleTests : ToleranceTestBase
     {
         public AngleTests()
@@ -60,7 +63,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
         //Example 1
 
 
-        [Test]
+     [Fact]
         public void AngleReturnsFlexuralYieldingStrength() 
         {
             SteelLimitStateValue Y=
@@ -69,14 +72,14 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 159.0*0.9;
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         //AISC Night School February 2, 2016
         //Steel Design 2: Selected Topics Session 1: Introduction and Single Angle Flexural Members
         //Example 2
 
-        [Test]
+     [Fact]
         public void AngleReturnsFlexuralLTBStrength()
         {
             SteelLimitStateValue LTB =
@@ -85,7 +88,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 88.9;
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
 
@@ -93,7 +96,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
         //Steel Design 2: Selected Topics Session 1: Introduction and Single Angle Flexural Members
         //Example 2
 
-        [Test]
+     [Fact]
         public void AngleReturnsFlexuralLLBStrength()
         {
             SteelLimitStateValue LLB =
@@ -102,10 +105,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 107.3*0.9;
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void AngleReturnsFlexuralLTBStrengthL3X3()
         {
             FlexuralMemberFactory factory = new FlexuralMemberFactory();
@@ -120,7 +123,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 88.9;
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<=tolerance);
         }
 
     }

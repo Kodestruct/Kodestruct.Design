@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
-using Rhino.Mocks;
+using Kodestruct.Tests.Common;
 using Kodestruct.Common.CalculationLogger.Interfaces;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI318_14;
@@ -14,7 +13,7 @@ using Kodestruct.Concrete.ACI318_14.Materials;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
-    [TestFixture]
+     
     public partial class AciTensionDevelopmentTests : ToleranceTestBase
     {
 
@@ -82,33 +81,22 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
     ConcreteTypeByWeight typeByWeight, TypeOfLightweightConcrete lightWeightType, double AverageSplitStrength,
     double ClearSpacing, double ClearCover, bool IsTopRebar, double ExcessRebarRatio, bool checkMinLength)
         {
-            MockRepository mocks = new MockRepository();
-
-            IRebarMaterial rebarMat = mocks.Stub<IRebarMaterial>();
-            Expect.Call(rebarMat.YieldStress).Return(60000);
-            //IRebarMaterial rebarMat = new MaterialAstmA706() as IRebarMaterial;
-
-            ICalcLogEntry entryStub = mocks.Stub<ICalcLogEntry>();
-            //entryStub.DependencyValues = new Dictionary<string, double>();
-            ICalcLog logStub = mocks.Stub<ICalcLog>();
-
+ 
+            IRebarMaterial rebarMat = new RebarMaterialGeneral(60000);
+ 
+ 
             //IConcreteMaterial ConcStub = mocks.Stub<IConcreteMaterial>();
             IConcreteMaterial ConcStub = new ConcreteMaterial(ConcStrength, typeByWeight, lightWeightType,
-                logStub) as IConcreteMaterial;
+                null) as IConcreteMaterial;
             ConcStub.SpecifiedCompressiveStrength = ConcStrength;
             ConcStub.TypeByWeight = typeByWeight;
             ConcStub.AverageSplittingTensileStrength = AverageSplitStrength;
 
-
-            using (mocks.Record())
-            {
-                logStub.CreateNewEntry();
-                LastCall.Return(entryStub);
-            }
+ 
 
             DevelopmentTension tensDev = new DevelopmentTension(ConcStub,
                             new Rebar(RebarDiameter, IsEpoxyCoated, rebarMat),
-                            ClearSpacing, ClearCover, IsTopRebar, ExcessRebarRatio, checkMinLength, logStub);
+                            ClearSpacing, ClearCover, IsTopRebar, ExcessRebarRatio, checkMinLength, null);
 
             return tensDev;
         }

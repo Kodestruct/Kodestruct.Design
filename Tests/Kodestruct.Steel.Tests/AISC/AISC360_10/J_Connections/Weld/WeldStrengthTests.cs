@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +23,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.Weld;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
 {
-    [TestFixture]
+    // 
     public class WeldStrengthTests : ToleranceTestBase
     {
 
@@ -40,35 +43,35 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
 
         //AISC Design Exaples V14
         //Example J.2 Fillet weld in longitudinal shear
-        [Test]
+     [Fact]
         public void WeldConcentricLoadAtAngleReturnsValue()
         {
             FilletWeld weld = new FilletWeld(50, 65, 70, 5.0 / 16.0, 2.0, 2.0); //L = 2 because Example uses 2 sided welds
             double phiF_nw = weld.GetStrength( WeldLoadType.WeldShear, 60.0, false);
             double refValue = 19.5;
             double actualTolerance = EvaluateActualTolerance(phiF_nw, refValue); 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
 
         }
-        [Test]
+     [Fact]
         public void FilletWeldReturnsUnitStrength()
         {
             FilletWeld weld = new FilletWeld(50, 65, 70, 1 / 16.0, 100, 1); 
             double phiF_nw = weld.GetStrength(WeldLoadType.WeldShear, 0, false);
             double refValue = 1.392;
             double actualTolerance = EvaluateActualTolerance(phiF_nw, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
 
         }
 
-        [Test]
+     [Fact]
         public void FilletWeldReturnsUnitStrengthWithoutBaseMetal()
         {
             FilletWeld weld = new FilletWeld(0, 0, 70, 1 / 16.0, 0, 1);
             double phiF_nw = weld.GetStrength(WeldLoadType.WeldShear, 0, true);
             double refValue = 1.392;
             double actualTolerance = EvaluateActualTolerance(phiF_nw, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
 
         }
     }

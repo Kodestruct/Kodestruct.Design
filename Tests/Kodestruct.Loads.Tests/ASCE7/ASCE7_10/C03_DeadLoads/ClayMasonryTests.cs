@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,18 +26,18 @@ using Kodestruct.Loads.ASCE.ASCE7_10.DeadLoads.Components;
 namespace Kodestruct.Loads.Tests.ASCE7.ASCE7_10.C03_DeadLoads
 {
 
-       [TestFixture]
+       
     public partial class AsceComponentDeadWeightTests
     {
     
 
-        [Test]
+        [Fact]
         public void ClayMasonryReturnsValue12In()
         {
             
             ComponentClayBrick brick = new ComponentClayBrick(2, 0, 0);
             var brickEntr = brick.Weight;
-            Assert.AreEqual(115.0, brickEntr);
+            Assert.Equal(115.0, brickEntr);
         }
        }
     

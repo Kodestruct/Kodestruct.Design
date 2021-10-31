@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,24 +25,24 @@ using Kodestruct.Loads.ASCE.ASCE7_10.LiveLoads;
 
 namespace Kodestruct.Loads.Tests
 {
-    [TestFixture]
+    
     public class LiveLoadTests
     {
-        [Test]
+        [Fact]
         public void  ReturnsValueOffice()
         {
             double q = 0;
             LiveLoadBuilding lb = new LiveLoadBuilding();
             q=lb.GetLiveLoad("Office", false);
-            Assert.AreEqual(50.0, q);
+            Assert.Equal(50.0, q);
         }
-        [Test]
+        [Fact]
         public void ReturnsValueHouseWithPartitions()
         {
             double q = 0;
             LiveLoadBuilding lb = new LiveLoadBuilding();
             q = lb.GetLiveLoad("House", true,15);
-            Assert.AreEqual(55.0, q);
+            Assert.Equal(55.0, q);
         }
     }
 }

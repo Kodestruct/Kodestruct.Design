@@ -15,18 +15,21 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10.Connections;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
 {
 
-    [TestFixture]
+    // 
     public class WeldGroupElasticCenterTests : ToleranceTestBase
     {
         public WeldGroupElasticCenterTests()
@@ -37,7 +40,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
         double tolerance;
 
 
-        [Test]
+     [Fact]
         public void WeldGroupChannelReturnsCG()
         {
             double L = 8;
@@ -46,7 +49,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
             double refValue = 1.8; // from Murray Connection Seminar Part 2
             double actualTolerance = EvaluateActualTolerance(x, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
 

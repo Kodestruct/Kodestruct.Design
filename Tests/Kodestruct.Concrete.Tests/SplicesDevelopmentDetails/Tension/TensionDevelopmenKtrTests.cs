@@ -3,17 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Concrete.ACI318_14;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
-    [TestFixture]
+     
     public partial class AciTensionDevelopmentTests
     {
 
 
-        [Test]
+        [Fact]
         public void GetKtr_NormalPCAValues_ReturnsCorrectValue()
         {
             //ACI318-08 PCA notes page 4-38
@@ -26,12 +27,12 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double ClearCover = 0;
             DevelopmentTension tensDev = this.CreateDevelopmentObject(RebarDiam, ClearSpacing, ClearCover);
             double Ktr = tensDev.GetKtr(Atr, s, n);
-            Assert.AreEqual(0.8, Ktr);
+            Assert.Equal(0.8, Ktr);
 
         }
 
 
-        [Test]
+        [Fact]
         public void GetKtr_ZeroSpacing_Returns0()
         {
             double Atr = 0.4;
@@ -42,10 +43,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double ClearCover = 0;
             DevelopmentTension tensDev = this.CreateDevelopmentObject(RebarDiam, ClearSpacing, ClearCover);
             double Ktr = tensDev.GetKtr(Atr, s, n);
-            Assert.AreEqual(0, Ktr);
+            Assert.Equal(0, Ktr);
         }
 
-        [Test]
+        [Fact]
         public void GetKtr_ZeroNumber_Returns0()
         {
             double Atr = 0.4;
@@ -56,9 +57,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double ClearCover = 0;
             DevelopmentTension tensDev = this.CreateDevelopmentObject(RebarDiam, ClearSpacing, ClearCover);
             double Ktr = tensDev.GetKtr(Atr, s, n);
-            Assert.AreEqual(0, Ktr);
+            Assert.Equal(0, Ktr);
         }
-        [Test]
+        [Fact]
         public void GetConfinementTerm_NormalPCAvalues_ReturnsValue()
         {
 
@@ -69,10 +70,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double ClearCover = 0;
             DevelopmentTension tensDev = this.CreateDevelopmentObject(RebarDiam, ClearSpacing, ClearCover);
             double ConfinementTerm = tensDev.GetConfinementTerm(cb, Ktr);
-            Assert.AreEqual(1.97, ConfinementTerm);
+            Assert.Equal(1.97, ConfinementTerm);
         }
 
-        [Test]
+        [Fact]
 
         public void GetConfinementTerm_HighValue_Returns2_5()
         {
@@ -84,10 +85,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double ClearCover = 0;
             DevelopmentTension tensDev = this.CreateDevelopmentObject(RebarDiam, ClearSpacing, ClearCover);
             double ConfinementTerm = tensDev.GetConfinementTerm(cb, Ktr);
-            Assert.AreEqual(2.5, ConfinementTerm);
+            Assert.Equal(2.5, ConfinementTerm);
         }
 
-        [Test]
+        [Fact]
 
         public void GetConfinementTerm_0RebarDiam_throws()
         {
@@ -100,7 +101,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             DevelopmentTension tensDev = this.CreateDevelopmentObject(RebarDiam, ClearSpacing, ClearCover);
 
             var ex = Assert.Throws<Exception>(() => tensDev.GetConfinementTerm(cb, Ktr));
-            Assert.That(ex.Message, Is.EqualTo("Rebar diameter cannot be 0.0. Check input"));
+            Assert.True(ex.Message == "Rebar diameter cannot be 0.0. Check input");
 
 
         }

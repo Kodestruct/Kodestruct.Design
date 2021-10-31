@@ -1,5 +1,5 @@
 ﻿
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +12,14 @@ using Kodestruct.Concrete.ACI.ACI318_14;
 using Kodestruct.Concrete.ACI.Entities;
 using System.IO;
 using Kodestruct.Concrete.ACI318_14.Tests.Output.CSV;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
-    [TestFixture]
+     
     public partial class AciCompressionSquareColumnTests : ConcreteTestBase
     {
-        [Test]
+        [Fact]
         public void ColumnReturnsNominalInteractionDiagram()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
@@ -39,7 +40,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             }
 
         }
-        [Test]
+        [Fact]
         public void ColumnReturnsReducedInteractionDiagram()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
@@ -61,7 +62,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
 
         }
 
-        [Test]
+        [Fact]
         public void ColumnReturnsNegativeNominalInteractionDiagram()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();

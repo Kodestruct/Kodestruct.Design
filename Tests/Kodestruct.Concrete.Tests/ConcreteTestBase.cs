@@ -8,6 +8,7 @@ using Kodestruct.Common.CalculationLogger;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI.Entities;
 using Kodestruct.Concrete.ACI318_14.Materials;
+using Kodestruct.Tests.Common;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {

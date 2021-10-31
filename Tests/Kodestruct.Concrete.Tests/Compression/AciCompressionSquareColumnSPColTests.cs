@@ -1,5 +1,5 @@
  
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +10,15 @@ using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI.ACI318_14;
 using Kodestruct.Concrete.ACI.Entities;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
-    [TestFixture]
+     
     public partial class AciCompressionSquareColumnTests : ConcreteTestBase
     {
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsSPCOL_Nominal0()
         {
             double b = 16;
@@ -48,17 +49,12 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double phiM_n_KipFt = M_n / 1000.0 / 12.0;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
-
-            //double P1 = 1220 * 1000;
-            //double refValue1 = 160 ; //from SP column software
-
-
-            //double M_n1 = col.GetNominalMomentResult(P1, FlexuralCompressionFiberPosition.Top).Moment/(12*1000.0);
+            Assert.True(actualTolerance<=tolerance);
+ 
         }
 
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsSPCOL_Nominal1()
         {
             double b = 16;
@@ -88,10 +84,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double phiM_n_KipFt = M_n / 1000.0 / 12.0;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsSPCOL_Nominal2()
         {
             double b = 16;
@@ -122,11 +118,11 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double phiM_n_KipFt = M_n / 1000.0 / 12.0;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsSPCOL_Nominal3()
         {
             double b = 16;
@@ -146,8 +142,6 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
                 CompressionMemberType.NonPrestressedWithTies);
 
 
-
-
             double P = 416.6 * 1000;
             double refValue = 385.7 * 12 * 1000; //from SP column software
 
@@ -157,10 +151,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double phiM_n_KipFt = M_n / 1000.0 / 12.0;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsSPCol1()
         {
             double b = 16;
@@ -190,10 +184,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double phiM_n_KipFt = phiM_n / 1000.0 / 12.0;
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsSPCol2()
         {
             double b = 16;
@@ -224,10 +218,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double phiM_n = col.GetDesignMomentWithCompressionStrength(phiP_n, FlexuralCompressionFiberPosition.Top).phiM_n/(12 * 1000);
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsSPCOL_Nominal0_Strains()
 
         {
@@ -256,14 +250,11 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double P = col.SectionAxialForceResultantFunction(SteelStrain)/1000.0;
             double actualTolerance = EvaluateActualTolerance(P, refForce);
 
-            //IStrainCompatibilityAnalysisResult momentResult = col.GetNominalMomentResult(refForce, FlexuralCompressionFiberPosition.Top);
-            //double M_n = momentResult.Moment / 12000.0;
-            
-
-            Assert.LessOrEqual(actualTolerance, tolerance);
+ 
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsSPCOL_Nominal1_Strains()
         {
             double b = 16;
@@ -291,11 +282,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double P = col.SectionAxialForceResultantFunction(SteelStrain) / 1000.0;
             double actualTolerance = EvaluateActualTolerance(P, refForce);
 
-            //IStrainCompatibilityAnalysisResult momentResult = col.GetNominalMomentResult(refForce, FlexuralCompressionFiberPosition.Top);
-            //double M_n = momentResult.Moment / 12000.0;
-
-
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
     }
 }

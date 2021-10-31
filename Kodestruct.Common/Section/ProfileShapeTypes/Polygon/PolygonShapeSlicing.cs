@@ -1,27 +1,29 @@
 #region Copyright
-   /*Copyright (C) 2015 Konstantin Udilovich
+/*Copyright (C) 2015 Konstantin Udilovich
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-   */
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 #endregion
- 
+
 using ClipperLib;
-using System;
-using System.Collections.Generic;
 using Kodestruct.Common.Mathematics;
 using Kodestruct.Common.Section.Interfaces;
+using System;
+using System.Collections.Generic;
+ 
 using Path = System.Collections.Generic.List<ClipperLib.IntPoint>;
 using Paths = System.Collections.Generic.List<System.Collections.Generic.List<ClipperLib.IntPoint>>;
+ 
 
 namespace Kodestruct.Common.Section.General
 {
@@ -107,8 +109,8 @@ namespace Kodestruct.Common.Section.General
 	        Paths solution = new Paths();
 
 	        Clipper c = new Clipper();
-	        c.AddPolygons(subj, PolyType.ptSubject);
-	        c.AddPolygons(clip, PolyType.ptClip);
+	        c.AddPaths(subj, PolyType.ptSubject,true);
+	        c.AddPaths(clip, PolyType.ptClip,true);
 	        c.Execute(ClipType.ctIntersection, solution, 
 	        PolyFillType.pftEvenOdd, PolyFillType.pftEvenOdd);
 

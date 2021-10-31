@@ -1,5 +1,5 @@
  
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +10,11 @@ using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI.ACI318_14;
 using Kodestruct.Concrete.ACI.Entities;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
-    [TestFixture]
+     
     public partial class AciCompressionSquareColumnTests : ConcreteTestBase
     {
 
@@ -26,7 +27,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
 
         //EXAMPLE 11-1 Calculation of an Interaction Diagram
 
-        [Test]
+        [Fact]
         public void ColumnInteractionReturnsM_n_Z_Neg1Factored()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
@@ -36,11 +37,11 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double phiM_n = col.GetDesignMomentWithCompressionStrength(phiP_n, FlexuralCompressionFiberPosition.Top).phiM_n;
             double actualTolerance = EvaluateActualTolerance(phiM_n, phiM_nRef);
 
-            
-            Assert.LessOrEqual(actualTolerance, tolerance);
+
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnInteractionReturnsM_n_Z_Neg2Factored()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
@@ -51,10 +52,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double actualTolerance = EvaluateActualTolerance(phiM_n, phiM_nRef);
 
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnInteractionReturnsM_n_Z_Neg4Factored()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumn();
@@ -67,10 +68,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
 
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void ColumnDistributedInteractionReturnsM_n_Z_Neg4Factored()
         {
             ConcreteSectionCompression col = GetConcreteExampleColumnWithDistributed();
@@ -82,7 +83,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
 
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
 

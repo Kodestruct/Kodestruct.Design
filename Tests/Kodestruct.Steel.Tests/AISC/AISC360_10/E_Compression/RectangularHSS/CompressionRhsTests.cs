@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +30,14 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
 {
 
-    [TestFixture]
+    // 
     public class CompressionRhsTests : ToleranceTestBase
     {
         public CompressionRhsTests()
@@ -58,7 +61,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
         /// <summary>
         /// AISC Steel Manual Table 4-3
         /// </summary>
-        [Test]
+     [Fact]
         public void RectangularHSSReturns_0ft_LengthAxialStrength() 
         {
             CreateColumn(0, 0);
@@ -67,12 +70,12 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
             double refValue = 480.0;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
         /// <summary>
         /// AISC Steel Manual Table 4-3
         /// </summary>
-        [Test]
+     [Fact]
         public void RectangularHSSReturns_6ft_LengthAxialStrength()
         {
             CreateColumn(6.0 * 12.0, 6.0 * 12.0);
@@ -81,12 +84,12 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
             double refValue = 456.0;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
         /// <summary>
         /// AISC Steel Manual Table 4-3
         /// </summary>
-        [Test]
+     [Fact]
         public void RectangularHSSReturns_16ft_LengthAxialStrength()
         {
             CreateColumn(16.0 * 12.0, 16.0 * 12.0);
@@ -95,13 +98,13 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
             double refValue = 303.0;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         /// <summary>
         /// AISC Steel Manual Table 4-3
         /// </summary>
-        [Test]
+     [Fact]
         public void RectangularHSSReturns_36ft_LengthAxialStrength()
         {
             CreateColumn(36.0 * 12.0, 36.0 * 12.0);
@@ -110,7 +113,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
             double refValue = 75.6;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
     }
 }

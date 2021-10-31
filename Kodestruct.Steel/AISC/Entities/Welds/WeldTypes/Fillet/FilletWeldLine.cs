@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+//using System.Numerics;
 using System.Text;
 using System.Windows;
 using Kodestruct.Common.Mathematics;
@@ -103,7 +104,7 @@ namespace Kodestruct.Steel.AISC.SteelEntities.Welds
             double dx = NodeJ.X - NodeI.X;
             double dy = NodeJ.Y - NodeI.Y;
             
-            Vector seg = new Vector(dx, dy);
+            Vector3 seg = new Vector3(dx, dy,0);
             int N = NumberOfSubdivisions;
 
             double segDx;

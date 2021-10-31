@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,14 +25,16 @@ using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.BasePlate;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.Bolted;
 using Kodestruct.Steel.AISC.SteelEntities.Bolts;
+using Kodestruct.Tests.Common;
+using Xunit;
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.BasePlate
 {
-    [TestFixture]
+
     public class MaterialPropertiesTests : ToleranceTestBase
     {
 
-         [Test]
+         [Fact]
         public void MaterialReturnsF_y()
         {
 
@@ -40,7 +42,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.BasePlate
 
             //double refValue = 1.51;
             //double actualTolerance = EvaluateActualTolerance(t_pMin, refValue);
-            //Assert.LessOrEqual(actualTolerance, tolerance);
+            // Assert.True(actualTolerance<=tolerance);
  
         }
 

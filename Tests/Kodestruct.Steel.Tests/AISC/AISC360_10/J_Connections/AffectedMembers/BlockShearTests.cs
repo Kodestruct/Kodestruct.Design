@@ -15,19 +15,20 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC360v10.Connections.AffectedElements;
-using Kodestruct.Steel.AISC;
-using Kodestruct.Steel.AISC.AISC360v10.J_Connections.AffectedMembers;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 {
-    [TestFixture]
+    // 
     public class BlockShearTests : ToleranceTestBase
     {
         public BlockShearTests()
@@ -41,32 +42,14 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
         /// AISC Design Guide 29
         /// Example 5.1 page 48
         /// </summary>
-         [Test]
+      [Fact]
         public void BlockShearReturnsValue()
         {
             AffectedElement element = new AffectedElement(36.0, 58.0);
             double phiR_n = element.GetBlockShearStrength(39.0, 26.0, 7.0, true);
             double refValue = 938.0;
             double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
-        [Test]
-        public void BlockShearAreaCalculatorReturnsValue()
-        {
-
-            ShearAreaCase shearCase = ShearAreaCase.TBlock;
-            ShearAreaCalculator c = new ShearAreaCalculator(shearCase, 4, 2,
-                3, 4, 1, 0.75, 1.5, 0);
-           double A_gv = c.GetGrossAreaShear();
-           double A_nv = c.GetNetAreaShear();
-           double A_nt = c.GetNetAreaTension();
-
-            AffectedElement element = new AffectedElement(36.0, 58.0);
-            double phiR_n = element.GetBlockShearStrength(39.0, 26.0, 7.0, true);
-            double refValue = 938.0;
-            double actualTolerance = EvaluateActualTolerance(phiR_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
-        }
-        //ShearAreaCalculator
     }
 }

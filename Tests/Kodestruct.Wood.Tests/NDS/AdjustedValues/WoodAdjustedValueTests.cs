@@ -1,5 +1,5 @@
  
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using Kodestruct.Wood.NDS.NDS2015;
 
 namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 {
-    [TestFixture]
+     
     public partial class WoodAdjustedValueTests : ToleranceTestBase
     {
         public WoodAdjustedValueTests()

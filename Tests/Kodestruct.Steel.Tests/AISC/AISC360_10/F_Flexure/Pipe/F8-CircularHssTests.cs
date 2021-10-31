@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +29,14 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
 
-    [TestFixture]
+    // 
     public class CircularHssTests : ToleranceTestBase
     {
         public CircularHssTests()
@@ -54,7 +57,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             beam = factory.GetBeam(section,mat,null, MomentAxis.XAxis, FlexuralCompressionFiberPosition.Top);
 
         }
-        [Test]
+     [Fact]
         public void CircularHSSReturnsFlexuralYieldingStrength                 () 
         {
             SteelLimitStateValue Y=
@@ -63,7 +66,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 31*46*0.9; // Z_x*F_y*0.9
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
     }

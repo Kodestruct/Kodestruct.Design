@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,15 +25,15 @@ using Kodestruct.Loads.ASCE.ASCE7_10.DeadLoads.Components;
 
 namespace Kodestruct.Loads.Tests.ASCE7.ASCE7_10.C03_DeadLoads
 {
-    [TestFixture]
+    
     public partial class AsceComponentDeadWeightTests
     {
-        [Test]
+        [Fact]
         public void PrecastPanel6InReturnsValue()
         {
             ComponentPrecastPanel precast = new ComponentPrecastPanel(1, 0, 0);
             var pcEntr = precast.Weight;
-            Assert.AreEqual(80, pcEntr);
+            Assert.Equal(80, pcEntr);
         }
     }
 }

@@ -86,7 +86,7 @@ namespace Kodestruct.Concrete.ACI
             double  dy = NodeJ.Y - NodeI.Y;
 
 
-            Vector seg = new Vector(dx, dy);
+            Vector2d seg = new Vector2d(dx, dy);
             int N = NumberOfSubdivisions;
             int NumberOfRebarPoints = NumberOfSubdivisions + 1;
 

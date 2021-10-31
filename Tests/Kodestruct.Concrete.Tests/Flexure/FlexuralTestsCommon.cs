@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Rhino.Mocks;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Common.CalculationLogger.Interfaces;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI318_14;
@@ -15,7 +14,7 @@ using Kodestruct.Concrete.ACI.Entities;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
 {
-    [TestFixture]
+     
     public partial class AciFlexureRectangularBeamTests
     {
         private ICalcLog log;
@@ -49,8 +48,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
         public AciFlexureRectangularBeamTests()
         {
             //ICalcLogEntry entryStub = mocks.Stub<ICalcLogEntry>();
-            MockRepository mocks = new MockRepository();
-            log = mocks.Stub<ICalcLog>();
+ 
             tolerance = 0.02; //2% can differ from rounding
         }
 

@@ -15,17 +15,20 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC360v10.Connections.AffectedElements;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 {
-    [TestFixture]
+    // 
     public class WhitmoreSectionTests : ToleranceTestBase
     {
         public WhitmoreSectionTests()
@@ -37,7 +40,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
         /// <summary>
         /// AISC Design Guide 29, Page 51
         /// </summary>
-        [Test]
+     [Fact]
         public void AffectedElementReturnsWhitmoreSectionWidth()
         {
             AffectedElement el = new AffectedElement();
@@ -45,7 +48,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
                 double b_Whitmore = el.GetWhitmoreSectionWidth(18.0, 3.0);
                 double refValue = 23.8;
                 double actualTolerance = EvaluateActualTolerance(b_Whitmore, refValue);
-                Assert.LessOrEqual(actualTolerance, tolerance);
+                Assert.True(actualTolerance<= tolerance);
             
         }
     }

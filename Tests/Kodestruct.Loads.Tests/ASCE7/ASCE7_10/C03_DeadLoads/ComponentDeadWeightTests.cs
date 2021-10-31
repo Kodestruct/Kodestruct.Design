@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,16 +25,16 @@ using Kodestruct.Loads.ASCE.ASCE7_10.DeadLoads;
 
 namespace Kodestruct.Loads.Tests.ASCE7.ASCE7_10.C03_DeadLoads
 {
-    [TestFixture]
+    
     public partial class AsceComponentDeadWeightTests
     {
-        [Test]
+        [Fact]
         public void ReturnsValueForCurtainwall()
         {
             BuildingElementComponent bec = new BuildingElementComponent("AluminumCurtainWall");
             ComponentReportEntry wEntr = bec.GetComponentWeight();
             double w = wEntr.LoadValue;
-            Assert.AreEqual(10.0, w);
+            Assert.Equal(10.0, w);
         }
     }
 }

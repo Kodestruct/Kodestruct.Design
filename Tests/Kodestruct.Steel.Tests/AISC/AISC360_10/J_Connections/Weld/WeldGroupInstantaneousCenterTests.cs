@@ -15,18 +15,21 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10.Connections;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
 {
 
-    [TestFixture]
+    // 
     public class WeldGroupInstantaneousCenterTests : ToleranceTestBase
     {
         public WeldGroupInstantaneousCenterTests()
@@ -37,7 +40,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
         double tolerance;
 
 
-        [Test]
+     [Fact]
         public void WeldGroupChannelReturnsValue()
         {
             double L = 10;
@@ -48,11 +51,11 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
             double spreadsheetPn = 20.4 / 0.75; //Yakpol.net version 2008.1
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
 
-        [Test]
+     [Fact]
         public void WeldGroup2LinesReturnsValue()
         {
             double L = 10;
@@ -63,10 +66,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
             double spreadsheetPn = 18.34 / 0.75; //Yakpol.net version 2008.1
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void WeldGroup2LinesHorizontalReturnsValue()
         {
             double L = 10;
@@ -76,10 +79,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
             double P_n = refValue * L;
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void WeldGroupRectangleReturnsValue()
         {
             double L = 10;
@@ -87,10 +90,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
             double C = wg.GetInstantaneousCenterCoefficient(10, 0);
             double refValue = 2.45; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(C, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void WeldGroupAngleReturnsValue()
         {
             double L = 10;
@@ -99,10 +102,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
             double refValue = 1.95; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void WeldGroup2LinesOutOfPlaneReturnsValue()
         {
             double L = 10;
@@ -112,7 +115,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Weld
             double P_n = refValue * L;
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
     }
 }

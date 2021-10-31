@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,21 +27,16 @@ using Kodestruct.Common.Section.SectionTypes;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.AffectedMembers;
 using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 {
-    [TestFixture]
-    public class FlexuralStrengthTests : ToleranceTestBase
+    // 
+    public class FlexuralStrengthTests
     {
-        public FlexuralStrengthTests()
-        {
-            tolerance = 0.05; //5% can differ from rounding
-        }
-    
-
-        double tolerance;
-    
-        [Test]
+     [Fact]
         public void ConnectedPlateReturnsFlexuralStrength()
         {
             ICalcLog log = new  CalcLog();
@@ -50,37 +45,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
             AffectedElementInFlexure element = new AffectedElementInFlexure(Section, NetSection, 50, 65.0);
 
             double phiM_n = element.GetFlexuralStrength(0);
-            Assert.AreEqual(360.0, phiM_n);
-        }
-
-        [Test]
-        public void ConnectedPlateReturnsFlexuralStrengthWithLTB()
-        {
-            ICalcLog log = new CalcLog();
-            SectionRectangular Section = new SectionRectangular(0.875, 28);
-            SectionOfPlateWithHoles NetSection = new SectionOfPlateWithHoles("", 0.875, 28, 8, 1.25, 1.75, 1.75, new Common.Mathematics.Point2D(0, 0));
-            AffectedElementInFlexure element = new AffectedElementInFlexure(Section, NetSection, 50, 65.0);
-
-            double phiM_n = element.GetFlexuralStrength(9.75);
-            Assert.AreEqual(360.0, phiM_n);
-        }
-
-        [Test]
-        public void ConnectedIShapeInFlexureReturnsStrength()
-        {
-            ICalcLog log = new CalcLog();
- 
-            SectionI sI = new SectionI(null, 18, 7.5, 0.570, 0.355);
-            SectionIWithFlangeHoles sIh = new SectionIWithFlangeHoles(null, 18, 7.5, 0.570, 0.355, 1.0, 2);
-
-            AffectedElementInFlexure element = new AffectedElementInFlexure(sI, sIh, 50, 65, true);
-            double phiM_n = element.GetFlexuralStrength(0);
-
-            double refValue = 318*12;
-            double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
-
-
+            Assert.True(360.0== phiM_n);
         }
     }
 }

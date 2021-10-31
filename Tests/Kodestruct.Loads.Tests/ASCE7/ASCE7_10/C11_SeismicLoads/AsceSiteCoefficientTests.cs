@@ -15,7 +15,7 @@ limitations under the License.
 */
 #endregion
 
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,7 @@ using Kodestruct.Loads.ASCE7.Entities;
 namespace Kodestruct.Loads.Tests.ASCE7_10.SeismicLoads
 {
 
-    [TestFixture]
+    
     public class AsceSiteCoefficientTests : ToleranceTestBase
     {
         public AsceSiteCoefficientTests()
@@ -38,7 +38,7 @@ namespace Kodestruct.Loads.Tests.ASCE7_10.SeismicLoads
 
         double tolerance;
 
-        [Test]
+        [Fact]
         public void CoefficientF_aReturnsValue1()
         {
             double S_S = 0.273;
@@ -50,10 +50,10 @@ namespace Kodestruct.Loads.Tests.ASCE7_10.SeismicLoads
             double refValue = 1.58;
             double actualTolerance = EvaluateActualTolerance(F_a, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void CoefficientF_aReturnsValue2()
         {
             double S_S = 1.2;
@@ -65,11 +65,11 @@ namespace Kodestruct.Loads.Tests.ASCE7_10.SeismicLoads
             double refValue = 1.02;
             double actualTolerance = EvaluateActualTolerance(F_a, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
 
-        [Test]
+        [Fact]
         public void CoefficientF_vReturnsValue1()
         {
             double S_1 = 0.15;
@@ -81,10 +81,10 @@ namespace Kodestruct.Loads.Tests.ASCE7_10.SeismicLoads
             double refValue = 2.2;
             double actualTolerance = EvaluateActualTolerance(F_v, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
-        [Test]
+        [Fact]
         public void CoefficientF_vReturnsValue2()
         {
             double S_1 = 0.45;
@@ -96,7 +96,7 @@ namespace Kodestruct.Loads.Tests.ASCE7_10.SeismicLoads
             double refValue = 1.55;
             double actualTolerance = EvaluateActualTolerance(F_v, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
     }

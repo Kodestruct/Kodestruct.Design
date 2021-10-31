@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,7 @@ using Kodestruct.Loads.ASCE.ASCE7_10.SeismicLoads;
 namespace Kodestruct.Loads.Tests.ASCE7_10.SeismicLoads
 {
 
-    [TestFixture]
+    
     public class AsceSeismicApproximatePeriodTests : ToleranceTestBase
     {
         public AsceSeismicApproximatePeriodTests()
@@ -38,7 +38,7 @@ namespace Kodestruct.Loads.Tests.ASCE7_10.SeismicLoads
 
         double tolerance;
 
-        //[Test]
+        //[Fact]
         //public void CoefficientForUpperBoundReturnsValue()
         //{
         //    double S_D1 = 0.01;

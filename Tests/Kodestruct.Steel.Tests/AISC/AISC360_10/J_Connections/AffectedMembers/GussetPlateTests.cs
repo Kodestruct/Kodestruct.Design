@@ -15,28 +15,31 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC360v10.Connections.AffectedElements;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 {
-    [TestFixture]
+    // 
     public class GussetPlateTests
     {
-        [Test]
+     [Fact]
         public void GussetSingleBraceReturnsEffectiveLength()
         {
             AffectedElement el = new AffectedElement();
             double KL = el.GetGussetPlateEffectiveCompressionLength(Steel.AISC.GussetPlateConfiguration.SingleBrace, 10, 10);
-            Assert.AreEqual(7,KL);
+            Assert.True(7==KL);
         }
 
-        [Test]
+     [Fact]
         public void GussetReturnsCompactness()
         {
             double t_g      =  0.5;
@@ -47,7 +50,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 
             AffectedElement el = new AffectedElement();
             bool IsGussetPlateConfigurationCompact = el.IsGussetPlateConfigurationCompact(t_g, c_Gusset, F_y, E, l_1);
-            Assert.AreEqual(true, IsGussetPlateConfigurationCompact);
+            Assert.True(true== IsGussetPlateConfigurationCompact);
         }
 
     }

@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +30,14 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
 {
 
-    [TestFixture]
+    // 
     public class CompressionCircularHssTests : ToleranceTestBase
     {
         public CompressionCircularHssTests()
@@ -55,7 +58,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
 
         }
 
-        [Test]
+     [Fact]
         public void PipeReturns_15ft_LengthAxialStrength() 
         {
             CreateColumn(15*12, 15*12);
@@ -64,7 +67,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Compression
             double refValue = 307.0;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         

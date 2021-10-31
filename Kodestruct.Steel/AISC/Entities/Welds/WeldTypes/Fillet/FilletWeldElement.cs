@@ -135,10 +135,11 @@ namespace Kodestruct.Steel.AISC.SteelEntities.Welds
                Point2D c = this.Location;
                double dx = Location.X;
                double dy = Location.Y;
-               Vector VI = new Vector(NodeI.X - dx, NodeI.Y - dy);
-               Vector VIC = new Vector(IC.X - dx, IC.Y - dy);
-               
-                double Angle= Vector.AngleBetween(VI, VIC);
+               Vector3 VI = new Vector3(NodeI.X - dx, NodeI.Y - dy,0);
+               Vector3 VIC = new Vector3(IC.X - dx, IC.Y - dy,0);
+
+                //double Angle= Vector.AngleBetween(VI, VIC);
+                double Angle = Vector3.Angle(VI, VIC);
                 return Angle;
         }
 

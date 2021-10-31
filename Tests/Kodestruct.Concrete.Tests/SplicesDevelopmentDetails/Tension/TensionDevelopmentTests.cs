@@ -3,16 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Concrete.ACI318_14;
 using Kodestruct.Concrete.ACI.Entities;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI318_14.Materials;
-
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests
 {
-    [TestFixture]
+     
     public partial class AciTensionDevelopmentTests : ToleranceTestBase
     {
 
@@ -34,7 +34,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
         // Nominal diameter of No. 9 bar = 1.128 in.
         // Clear spacing between spliced bars 21.7 in.
 
-        [Test]
+        [Fact]
         public void GetTensionDevelopmentLength_PCAExample_4_1_Case1_ReturnsValue()
         {
             double RebarDiam = 1.1280;
@@ -48,10 +48,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             DevelopmentTension tensDev = this.CreateDevelopmentObject(fc, RebarDiam, IsEpoxyCoated, type,
                 0.0, ClearSpacing, ClearCover, IsTopRebar, ExcessRebarRatio, true);
             double ld = Math.Round(tensDev.GetTensionDevelopmentLength(true), 1);
-            Assert.AreEqual(121.3, ld);
+            Assert.Equal(121.3, ld);
         }
 
-        [Test]
+        [Fact]
         public void GetTensionDevelopmentLength_PCAExample_4_1_Case2_ReturnsValue()
         {
             double RebarDiam = 1.1280;
@@ -65,10 +65,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             DevelopmentTension tensDev = this.CreateDevelopmentObject(fc, RebarDiam, IsEpoxyCoated, type,
                 0.0, ClearSpacing, ClearCover, IsTopRebar, ExcessRebarRatio, true);
             double ld = Math.Round(tensDev.GetTensionDevelopmentLength(100, 10, 2), 1);
-            Assert.AreEqual(72.8, ld);
+            Assert.Equal(72.8, ld);
         }
 
-        [Test]
+        [Fact]
         public void GetTensionDevelopmentLength_PCAExample_4_2_ReturnsValue()
         {
             //need to find way to add sand light weight
@@ -77,7 +77,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
         //  No. 8 bars fc' = 4000 psi (normalweight concrete) and
         //  fy = 60,000 psi, and uncoated bars. Stirrups provided satisfy the minimum code requirements for beam shear
         //  reinforcement.
-        [Test]
+        [Fact]
         public void GetTensionDevelopmentLength_PCAExample_4_3_Case1_ReturnsValue()
         {
             double RebarDiam = 1.0;
@@ -91,9 +91,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             DevelopmentTension tensDev = this.CreateDevelopmentObject(fc, RebarDiam, IsEpoxyCoated, type,
                 0.0, ClearSpacing, ClearCover, IsTopRebar, ExcessRebarRatio, true);
             double ld = Math.Round(tensDev.GetTensionDevelopmentLength(true), 1);
-            Assert.AreEqual(61.7, ld);
+            Assert.Equal(61.7, ld);
         }
-        [Test]
+        [Fact]
         public void GetTensionDevelopmentLength_PCAExample_4_3_Case2_ReturnsValue()
         {
             double RebarDiam = 1.0;
@@ -109,9 +109,9 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double ld = Math.Round(tensDev.GetTensionDevelopmentLength(0.4, 10, 2), 0);
 
 
-            Assert.AreEqual(47.0, ld);
+            Assert.Equal(47.0, ld);
         }
-        [Test]
+        [Fact]
         public void GetTensionDevelopmentLength_Basic()
         {
             double RebarDiam = 0.5;
@@ -130,7 +130,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests
             double refValue = 18.97;
             double actualTolerance = EvaluateActualTolerance(l_d, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
         }
 

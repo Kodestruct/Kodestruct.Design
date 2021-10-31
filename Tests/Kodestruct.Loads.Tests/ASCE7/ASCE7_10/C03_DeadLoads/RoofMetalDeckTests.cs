@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,15 +26,15 @@ using Kodestruct.Loads.ASCE.ASCE7_10.DeadLoads.Components;
 
 namespace Kodestruct.Loads.Tests.ASCE7.ASCE7_10.C03_DeadLoads
 {
-    [TestFixture]
+    
     public partial class AsceComponentDeadWeightTests
     {
-        [Test]
+        [Fact]
         public void RoofMetalDeckReturnsValue1_5In()
         {
             ComponentRoofDeck rd = new ComponentRoofDeck(0, 0, 0);
             var rdEntr = rd.Weight;
-            Assert.AreEqual(2.0, rdEntr);
+            Assert.Equal(2.0, rdEntr);
         }
     }
 }

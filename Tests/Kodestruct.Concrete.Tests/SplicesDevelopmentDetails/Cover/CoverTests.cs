@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Rhino.Mocks;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Common.CalculationLogger.Interfaces;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI318_14;
@@ -12,13 +11,11 @@ using Kodestruct.Concrete.ACI318_14.Materials;
 using Kodestruct.Concrete.ACI.Entities;
 using Kodestruct.Concrete.ACI318_14.Tests;
 using Kodestruct.Concrete.ACI.ACI318_14.Durability.Cover;
-
-
-
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Cover
 {
-    [TestFixture]
+     
     public partial class AciConcreteCoverTests : ToleranceTestBase
     {
         private ICalcLog log;
@@ -40,7 +37,7 @@ namespace Kodestruct.Concrete.ACI318_14.Cover
         }
 
 
-        [Test]
+        [Fact]
         public void ExposedWallCastAginstEartReturnsValue()
         {
 
@@ -49,7 +46,7 @@ namespace Kodestruct.Concrete.ACI318_14.Cover
             double refValue = 3; 
             double actualTolerance = EvaluateActualTolerance(cc, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
 
         }
 

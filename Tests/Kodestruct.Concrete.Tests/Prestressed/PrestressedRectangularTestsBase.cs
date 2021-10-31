@@ -1,6 +1,6 @@
  
 
-//using NUnit.Framework;
+//using Kodestruct.Tests.Common;
 //using Rhino.Mocks;
 //using System.Collections.Generic;
 //using Kodestruct.Analytics.ACI318_14.Tests.Flexure;
@@ -11,7 +11,7 @@
 
 //namespace Kodestruct.Analytics.ACI318_14.Tests.Prestressed
 //{
-//    [TestFixture]
+//     
 //    public partial class PrestressedRectangularTestBase : PrestressedBeamTestBase
 //    {
 

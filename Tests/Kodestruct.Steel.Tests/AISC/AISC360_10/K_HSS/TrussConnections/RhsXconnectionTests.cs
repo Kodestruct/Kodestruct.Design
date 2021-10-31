@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +28,14 @@ using Kodestruct.Steel.AISC.Entities;
 using Kodestruct.Steel.AISC.Steel.Entities.Sections;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
 using Kodestruct.Steel.AISC.SteelEntities.Sections;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
 {
 
-    [TestFixture]
+    // 
     public class HssTrussRhsXConnectionTests : ToleranceTestBase
     {
 
@@ -40,7 +43,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
         /// AISC DG24
         /// Example 8.3—Cross-Connection with Rectangular HSS
         /// </summary>
-        [Test]
+     [Fact]
         public void HssXConnectionReturnsYieldingOfChordSidewallsValue()
         {
             CreateElements();
@@ -51,14 +54,14 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
             double phiP_n = con.GetChordSidewallLocalYieldingStrength().Value;
             double refValue = 442;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         /// <summary>
         /// AISC DG24
         /// Example 8.3—Cross-Connection with Rectangular HSS
         /// </summary>
-        [Test]
+     [Fact]
         public void HssXConnectionReturnsCripplingOfChordSidewallsValue()
         {
             CreateElements();
@@ -69,14 +72,14 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
             double phiP_n = con.GetChordSidewallLocalCripplingStrength().Value;
             double refValue = 75.4;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         /// <summary>
         /// AISC DG24
         /// Example 8.3—Cross-Connection with Rectangular HSS
         /// </summary>
-        [Test]
+     [Fact]
         public void HssXConnectionReturnsLocalYieldingOfBranchesDueToUnevenDistributionValue()
         {
             CreateElements();
@@ -87,7 +90,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
             double phiP_n = con.GetBranchYieldingFromUnevenLoadDistributionStrength(true).Value;
             double refValue = 209;
             double actualTolerance = EvaluateActualTolerance(phiP_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         public HssTrussRhsXConnectionTests()

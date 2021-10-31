@@ -1,6 +1,6 @@
 ﻿using Kodestruct.Common.Mathematics;
 using Kodestruct.Concrete.ACI;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using KodestructAci = Kodestruct.Concrete.ACI;
@@ -14,14 +14,15 @@ using Kodestruct.Concrete.ACI318_14.Materials;
 using Kodestruct.Common.Section.Interfaces;
 using System.IO;
 using Kodestruct.Concrete.ACI318_14.Tests.Output.CSV;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
 {
 
-    [TestFixture]
-    class AciShearWallTests: ConcreteTestBase
+     
+    public class AciShearWallTests: ConcreteTestBase
     {
-        [Test]
+        [Fact]
         public void ShearWallCalculatesPMMDiagram()
         {
             double f_c_prime = 6;
@@ -43,7 +44,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
             FlexuralCompressionFiberPosition p = FlexuralCompressionFiberPosition.Top;
             ConcreteMaterial Concrete = new ConcreteMaterial(f_c_prime_psi, ConcreteTypeByWeight.Normalweight, null);
             ConfinementReinforcementType ConfinementReinforcementType = KodestructAci.ConfinementReinforcementType.Ties;
-            //CrossSectionIShape shape = GetIShape(Concrete, h_total, t_w, BoundaryZoneTop, BoundaryZoneBottom);
+ 
             CrossSectionRectangularShape shape = new CrossSectionRectangularShape(Concrete, null, t_w, h_total);
 
             List<KodestructAci.RebarPoint> LongitudinalBars = GetLongitudinalBars(shape.SliceableShape as ISectionRectangular, h_total, t_w, WallRebarSizeId, N_curtains, s, c_edge,
@@ -72,7 +73,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
         }
 
 
-        [Test]
+        [Fact]
         public void ShearWallCalculatesPMMDiagramMaxIteration()
         {
             double f_c_prime = 6;
@@ -85,7 +86,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Compression
             FlexuralCompressionFiberPosition p = FlexuralCompressionFiberPosition.Top;
             ConcreteMaterial Concrete = new ConcreteMaterial(f_c_prime_psi, ConcreteTypeByWeight.Normalweight, null);
             ConfinementReinforcementType ConfinementReinforcementType = KodestructAci.ConfinementReinforcementType.Ties;
-            //CrossSectionIShape shape = GetIShape(Concrete, h_total, t_w, BoundaryZoneTop, BoundaryZoneBottom);
+ 
             CrossSectionRectangularShape shape = new CrossSectionRectangularShape(Concrete, null, h, l_w);
 
             List<RebarPoint> LongitudinalBars = GetLongitudinalBarsFromCoordinates(LongitudinalRebarMaterial);

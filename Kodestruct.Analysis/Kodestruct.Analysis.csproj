@@ -1,220 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A031EF5A-ED61-4003-A4C1-C8611114EB46}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kodestruct.Analysis</RootNamespace>
-    <AssemblyName>Kodestruct.Analysis</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>Konstantin Udilovich</Authors>
+    <Product>Kodestruct</Product>
+    <PackageIcon>icon.png</PackageIcon>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.11.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kodestruct.Common.0.0.11.4\lib\net45\Kodestruct.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\Kodestruct.Common\Kodestruct.Common.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="BeamForces\Beam.cs" />
-    <Compile Include="BeamForces\Cases\BeamCantilever.cs" />
-    <Compile Include="BeamForces\Cases\BeamFixedFixed.cs" />
-    <Compile Include="BeamForces\Cases\BeamPinnedFixed.cs" />
-    <Compile Include="BeamForces\Cases\BeamSimple.cs" />
-    <Compile Include="BeamForces\Cases\BeamSimpleWithOverhang.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\BeamCantileverFactory.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\C5A_1ConcentratedLoadAtTip.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\C5A_2ConcentratedLoadAtAnyPoint.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\C5B_1UniformLoad.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\C5C_1_UniformPartialLoad.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\C5D_1DistributedUniformlyIncreasingToBase.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\C5D_2DistributedUniformlyDecreasingToBase.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\C5E_1MomentAtTip.cs" />
-    <Compile Include="BeamForces\Cases\Cantilever\PointLoadAtTip.cs" />
-    <Compile Include="BeamForces\Cases\Base\BeamCase.cs" />
-    <Compile Include="BeamForces\Data\BeamEntryFactory.cs" />
-    <Compile Include="BeamForces\Data\BeamForceAnalysisResult.cs" />
-    <Compile Include="BeamForces\Data\BeamTemplatePathLocator.cs" />
-    <Compile Include="BeamForces\Data\BeamTemplateType.cs" />
-    <Compile Include="BeamForces\Delegates\FindValueAtXDelegate.cs" />
-    <Compile Include="BeamForces\Cases\FixedFixed\BeamFixedFixedFactory.cs" />
-    <Compile Include="BeamForces\Cases\FixedFixed\C4A_1_ConcentratedLoadAtCenter.cs" />
-    <Compile Include="BeamForces\Cases\FixedFixed\C4A_2_ConcentratedLoadAnyPoint.cs" />
-    <Compile Include="BeamForces\Cases\FixedFixed\C4B_1_UniformlyDistributedLoad.cs" />
-    <Compile Include="BeamForces\Cases\FixedFixed\C4C_1_UniformPartialLoad.cs" />
-    <Compile Include="BeamForces\Cases\FixedFixed\C4E_2_MomentAtAnyPoint.cs" />
-    <Compile Include="BeamForces\Factories\BeamFactoryData.cs" />
-    <Compile Include="BeamForces\Interfaces\IAnalysisBeam.cs" />
-    <Compile Include="BeamForces\Interfaces\IBeamCaseFactory.cs" />
-    <Compile Include="BeamForces\Interfaces\IBeamLoadFactory.cs" />
-    <Compile Include="BeamForces\Interfaces\ISingleLoadCaseBeam.cs" />
-    <Compile Include="BeamForces\Interfaces\ISingleLoadCaseDeflectionBeam.cs" />
-    <Compile Include="BeamForces\Loads\Base\LoadBeam.cs" />
-    <Compile Include="BeamForces\Loads\Base\LoadConcentrated.cs" />
-    <Compile Include="BeamForces\Loads\Base\LoadDistributed.cs" />
-    <Compile Include="BeamForces\Loads\Base\LoadMoment.cs" />
-    <Compile Include="BeamForces\Loads\Base\LoadPartial.cs" />
-    <Compile Include="BeamForces\Loads\Base\LoadVarying.cs" />
-    <Compile Include="BeamForces\Loads\ConcentratedLoadType.cs" />
-    <Compile Include="BeamForces\Loads\Enums\LoadConcentratedSpecialCase.cs" />
-    <Compile Include="BeamForces\Loads\Enums\LoadDistributedSpecialCase.cs" />
-    <Compile Include="BeamForces\Loads\ForceDataPoint.cs" />
-    <Compile Include="BeamForces\Loads\LoadConcentratedCenter.cs" />
-    <Compile Include="BeamForces\Loads\LoadConcentratedCenterWithEndMoments.cs" />
-    <Compile Include="BeamForces\Loads\LoadConcentratedDoubleSymmetrical.cs" />
-    <Compile Include="BeamForces\Loads\LoadConcentratedDoubleUnsymmetrical.cs" />
-    <Compile Include="BeamForces\Loads\LoadConcentratedGeneral.cs" />
-    <Compile Include="BeamForces\Loads\LoadDistributedDoubleTriangle.cs" />
-    <Compile Include="BeamForces\Loads\LoadDistributedGeneral.cs" />
-    <Compile Include="BeamForces\Loads\LoadDistributedTrapezoid.cs" />
-    <Compile Include="BeamForces\Loads\LoadDistributedTriangular.cs" />
-    <Compile Include="BeamForces\Loads\LoadDistributedUniform.cs" />
-    <Compile Include="BeamForces\Loads\LoadDistributedUniformWithEndMoments.cs" />
-    <Compile Include="BeamForces\Loads\LoadMomentBothEnds.cs" />
-    <Compile Include="BeamForces\Loads\LoadMomentGeneral.cs" />
-    <Compile Include="BeamForces\Loads\LoadMomentLeftEnd.cs" />
-    <Compile Include="BeamForces\Loads\LoadMomentRightEnd.cs" />
-    <Compile Include="BeamForces\Cases\PinnedFixed\BeamPinnedFixedFactory.cs" />
-    <Compile Include="BeamForces\Cases\PinnedFixed\C3A_1_ConcentratedLoadAtCenter.cs" />
-    <Compile Include="BeamForces\Cases\PinnedFixed\C3A_2_ConcentratedLoadAtAnyPoint.cs" />
-    <Compile Include="BeamForces\Cases\PinnedFixed\C3B_1_UniformlyDistributedLoad.cs" />
-    <Compile Include="BeamForces\Cases\PinnedFixed\C3C_1_UniformPartialLoad.cs" />
-    <Compile Include="BeamForces\Cases\PinnedFixed\C3E_1_MomentAtFreeEnd.cs" />
-    <Compile Include="BeamForces\Cases\SimpleWithOverhang\BeamSimpleWithOverhangFactory.cs" />
-    <Compile Include="BeamForces\Cases\SimpleWithOverhang\C2A_1ConcentratedLoadBetweenSupports.cs" />
-    <Compile Include="BeamForces\Cases\SimpleWithOverhang\C2A_2ConcentratedLoadOverhang.cs" />
-    <Compile Include="BeamForces\Cases\SimpleWithOverhang\C2B_1UniformLoadFull.cs" />
-    <Compile Include="BeamForces\Cases\SimpleWithOverhang\C2C_1DistributedLoadBetweenSupports.cs" />
-    <Compile Include="BeamForces\Cases\SimpleWithOverhang\C2C_2DistributedLoadOverhang.cs" />
-    <Compile Include="BeamForces\Cases\Simple\BeamSimpleFactory.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1A_1ConcentratedLoadAtCenter.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1A_2ConcentratedLoadAtAnyPoint.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1A_3TwoConcentratedLoadsSymmetrical.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1A_4TwoConcentratedLoadsUnsymmetrical.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1A_5ConcentratedLoadAtCenterAndVarEndMoments.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1B_1UniformLoad.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1B_2UniformLoadAndEndMoments.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1C_1UniformPartialLoad.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1D_1DistributedUniformlyIncreasingToEnd.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1D_2DistributedDoubleTriangle.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1E_1MomentAtOneEnd.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1E_2MomentAtAnyPoint.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1E_3MomentAtBothEnds.cs" />
-    <Compile Include="BeamForces\Cases\Simple\C1E_4MomentAtFarEnd.cs" />
-    <Compile Include="Common\Exceptions\CustomException.cs" />
-    <Compile Include="Common\Exceptions\LoadLocationOutOfBoundsException.cs" />
-    <Compile Include="Common\Exceptions\LoadLocationParametersException.cs" />
-    <Compile Include="Common\Exceptions\StationOutOfBoundsException.cs" />
-    <Compile Include="BeamForces\Factories\BeamCantileverLoadFactory.cs" />
-    <Compile Include="BeamForces\Factories\BeamInstanceFactory.cs" />
-    <Compile Include="BeamForces\Factories\BeamLoadFactory.cs" />
-    <Compile Include="BeamForces\Factories\BeamLoadFactoryLocator.cs" />
-    <Compile Include="BeamForces\Factories\BeamWithOverhangLoadFactory.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\ITorsionalFunction.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionBase.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase1.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase10.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase11.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase12.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase2.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase3.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase4.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase5.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase6.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase7.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase8.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionCase9.cs" />
-    <Compile Include="BeamTorsion\TorsionalFunctions\TorsionalFunctionFactory.cs" />
-    <Compile Include="Section\NormalStressDueToAxialLoad.cs" />
-    <Compile Include="Section\NormalStressDueToBending.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Section\NormalStressDueToWarping.cs" />
-    <Compile Include="Section\PureTorsionStress.cs" />
-    <Compile Include="Section\ShearStressDueToAppliedShear.cs" />
-    <Compile Include="Section\ShearStressDueToWarping.cs" />
-    <Compile Include="Section\TorsionalParameter_a.cs" />
-    <Compile Include="Vibration\SDOF\ArbitraryForcingFunction.cs" />
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="LICENSE" />
-    <None Include="packages.config" />
-    <None Include="Kodestruct.Analysis.licenseheader" />
-    <None Include="Kodestruct.Analysis.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="NOTICE" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BeamTorsion\Enums\" />
-    <Folder Include="BeamTorsion\Interfaces\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

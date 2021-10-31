@@ -3,23 +3,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Concrete.ACI318_14;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Common.Mathematics;
 using Kodestruct.Concrete.ACI.Entities;
 using Kodestruct.Concrete.ACI318_14.Materials;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
 {
-    [TestFixture]
+     
     public partial class AciFlexureRectangularBeamTests: ToleranceTestBase
     {
         /// <summary>
         /// Wight. Reinforced concrete. 7th edition
         /// </summary>
-        [Test]
+        [Fact]
         public void ShearWallFlexuralCapacityTopReturnsNominalValue()
         {
             ConcreteSectionFlexure beam = GetShearWall();
@@ -29,10 +30,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             double refValue = 7182.546387 * 1000.0 * 12.0;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
 
         }
-        [Test]
+        [Fact]
 
         public void StrainDistributionReturnsValue()
         {
@@ -44,7 +45,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Flexure
             double refValue = 7182.546387;
             double actualTolerance = EvaluateActualTolerance(M_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance <= tolerance);
         }
 
         ConcreteSectionFlexure GetShearWall()

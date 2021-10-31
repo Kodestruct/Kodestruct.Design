@@ -1,328 +1,42 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5774FABD-0F85-451D-AB52-9CC1EF9ED518}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kodestruct.Concrete</RootNamespace>
-    <AssemblyName>Kodestruct.Concrete</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>Konstantin Udilovich</Authors>
+    <Product>Kodestruct</Product>
+    <PackageIcon>icon.png</PackageIcon>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
-    </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.11.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kodestruct.Common.0.0.11.4\lib\net45\Kodestruct.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
+    <ProjectReference Include="..\Kodestruct.Common\Kodestruct.Common.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="ACI\ACI318_14\C09_Beams\BeamMinimumFlexuralReinforcementNonPrestressed.cs" />
-    <Compile Include="ACI\ACI318_14\C09_Beams\BeamMinimumTransverseReinforcementNonPrestressed.cs" />
-    <Compile Include="ACI\ACI318_14\C09_Beams\ReinforcedConcreteBeamNonprestressed.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Base\AnchorageConcreteLimitState.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Base\AnchorageLimitState.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Base\AnchorageSteelLimitState.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Base\ConcreteAnchorageElement.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Base\EffectiveEmbedmentDepth.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Base\MinimumEdgeDistance.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Base\CriticalEdgeDistance.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Base\Interaction.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\CastInPlaceAnchor.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\AnchorageType.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\AnchorLimitState.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\AnchorLoadType.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\AnchorQualification.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\AnchorReliabilityAndSensitivityCategory.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\AnchorSteelElementFailureType.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\AnchorInstallationType.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\CastInAnchorageType.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\ConcreteCrackingCondition.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\LoadingAxis.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\SupplementalReinforcementAtAnchor.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\SupplementaryReinforcmentCondition.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Entities\TypeOfAnchorSleeve.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\LimitStates\Shear\5.1AnchorSteelShear.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\LimitStates\Shear\5.2ConcreteBreakoutShear.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\LimitStates\Shear\5.3ConcretePryoutShear.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\LimitStates\Tension\4.1AnchorSteelTension.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\LimitStates\Tension\4.2ConcreteBreakoutTension.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\LimitStates\Tension\4.3AnchorPulloutTension.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\LimitStates\Tension\4.4ConcreteSideFaceBlowoutTension.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\LimitStates\Tension\4.5Bond.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\PostInstalledAdhesiveAnchor.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\PostInstalledMechanicalAnchor.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\Program.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\StrengthReductionFactor\StrengthReductionFactorBase.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\StrengthReductionFactor\StrengthReductionFactorCastIn.cs" />
-    <Compile Include="ACI\ACI318_14\C17_Anchorage\StrengthReductionFactor\StrengthReductionFactorPostInstalled.cs" />
-    <Compile Include="ACI\ACI318_14\C20_Durability\Cover\RebarCoverFactory.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\ConcreteSectionCompression.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\InteractionDiagram.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\FlexuralSectionFactory.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Compression\CompressionMemberType.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Section\CompressionSectionFactory.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shapes\CrossSectionIShape.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\ShearFriction\ConcreteSectionShearFriction.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\UpperLimitOnShearStrength.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\ConcreteOneWayShearStrength.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\ConcreteSectionOneWayShearNonPrestressed.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\OneWayShearReinforcedSectionNonPrestressed.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\NonPrestressed\TotalOneWayShearStrength.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\ConcentricPunchingStress.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\ConcreteSectionTwoWayShear.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PerimeterFactory.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PerimeterLineSegment.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PunchingPerimeterConfiguration.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\Perimeter\PunchingPerimeterData.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\PunchingReinforcementType.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\PunchingShearStrength.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\ReinforcedSectionTwoWayShear.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\CriticalSectionProperties.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\FractionOfUnbalancedMoment.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\PrincipalAxis.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shear\TwoWay\WithUnbalancedMoment\PunchingShearWithMoment.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\ConcreteSectionTorsion.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionGeneric.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionSectionRectangularNonPrestressed.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Torsion\SectionTypes\TorsionShapeFactory.cs" />
-    <Compile Include="ACI\Entities\CompressionMember\PMRatioFinder.cs" />
-    <Compile Include="ACI\Entities\ConcreteSectionLongitudinalReinforcedBaseCentroid.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralIteractionDiagram.cs" />
-    <Compile Include="ACI\Entities\General\PMPair.cs" />
-    <Compile Include="ACI\Entities\ShearAndTorsion\ShearFrictionSurfaceType.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteTorsionalShape.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionLapSplice.cs" />
-    <Compile Include="ACI\ACI530\ReinforcedCMU\CMUSectionLongitunallyReinforced.cs" />
-    <Compile Include="ACI\Entities\ConcreteCompressionMaterialSectionBase.cs" />
-    <Compile Include="ACI\Entities\Concrete\CMUMaterial.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseI_cracked.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseM_cr.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\EffectiveMomentOfInertia.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\RebarMaterialGeneral.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarLine.cs" />
-    <Compile Include="ACI\Entities\ShearAndTorsion\ResultOfShearStressDueToMoment.cs" />
-    <Compile Include="ACI\Entities\ShearAndTorsion\ShearPerimeterConfigurationType.cs" />
-    <Compile Include="ACI\Entities\ShearAndTorsion\TorsionalPropertyCalculator.cs" />
-    <Compile Include="ACI\ACI318_14\C21_StrengthReductionFactors\StrengthReductionFactorFactory.cs" />
-    <Compile Include="ACI\Entities\ShearAndTorsion\TorsionalElementType.cs" />
-    <Compile Include="ACI\Entities\ShearAndTorsion\TorsionalReinforcementType.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteCompressionMaterial.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteCompressionSection.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteCompressionMember.cs" />
-    <Compile Include="ACI\Interfaces\IStrainCompatibilityAnalysisResult.cs" />
-    <Compile Include="ACI\Entities\CompressionMember\ConcreteCompressionStrengthResult.cs" />
-    <Compile Include="ACI\Entities\CompressionMember\ConcreteSectionCompressionAnalysisResult.cs" />
-    <Compile Include="ACI\Entities\Common\ConcreteSectionFlexuralAnalysisResult.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Flexure\ConcreteSectionFlexure.cs" />
-    <Compile Include="ACI\ACI318_14\C02_Notations\GeneralStrings.cs" />
-    <Compile Include="ACI\ACI318_14\C19_Concrete\Concrete.cs" />
-    <Compile Include="ACI\ACI318_14\C19_Concrete\ConcretePrestressed.cs" />
-    <Compile Include="ACI\Entities\Common\ConcreteFlexuralStrengthResult.cs" />
-    <Compile Include="ACI\Entities\Common\FlexuralFailureModeClassification.cs" />
-    <Compile Include="ACI\Entities\Rebar\ConfinementReinforcementType.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\RebarMaterialFactory.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteSectionWithTransverseRebar.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteSectionWithLongitudinalRebar.cs" />
-    <Compile Include="ACI\Interfaces\IShearSection.cs" />
-    <Compile Include="ACI\Entities\ConcreteSectionBase.cs" />
-    <Compile Include="ACI\Entities\ConcreteSectionLongitudinalReinforcedBaseConcrete.cs" />
-    <Compile Include="ACI\Entities\ConcreteSectionLongitudinalReinforcedBaseIteration.cs" />
-    <Compile Include="ACI\Entities\ConcreteSectionLongitudinalReinforcedBase.cs" />
-    <Compile Include="ACI\Entities\ConcreteSectionLongitudinalReinforcedBaseStrains.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\A416.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\A416Grade.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\A615.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\A706.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\StrandType.cs" />
-    <Compile Include="ACI\Entities\Concrete\TypeOfLightweightConcrete.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Prestressed\CrossSectionLocationType.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Prestressed\MemberClass.cs" />
-    <Compile Include="ACI\ACI318_14\C24_Serviceability\PrestressedConcreteBeamSection.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shapes\CrossSectionGeneralShape.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shapes\CrossSectionRectangularShape.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shapes\PrestressedConcreteSectionGeneral.cs" />
-    <Compile Include="ACI\ACI318_14\C22_SectionalStrength\Shapes\PrestressedConcreteSectionRectangular.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Common\Development.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Common\ExcessReinforcement.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Common\LambdaCheck.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Common\Splice.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionDevelopment.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Compression\CompressionDevelopmentLength.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\SpacingOrCoverDimension-cb.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionConfinement-Ktr.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionDevelopment.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionDevelopmentLength.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionHook-Standard.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionHookDevelopmentLength.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionHookKsiFactors.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionHookLambda.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionHookModifiers.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionKsiFactors.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionLapSplice.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionLapSpliceClass.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\Tension\TensionLapSpliceLength.cs" />
-    <Compile Include="ACI\Analysis\Section\RebarPointResult.cs" />
-    <Compile Include="ACI\Analysis\Section\SectionAnalysisResult.cs" />
-    <Compile Include="ACI\Analysis\Section\SectionFlexuralAnalysisResult.cs" />
-    <Compile Include="ACI\Entities\Concrete\ConcreteTypeByWeight.cs" />
-    <Compile Include="ACI\Entities\Common\ReinforcementArrangement.cs" />
-    <Compile Include="ACI\Entities\Common\SectionType.cs" />
-    <Compile Include="ACI\Entities\Common\MemberPrestressClassification.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\A615Grade.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarDesignation.cs" />
-    <Compile Include="ACI\Entities\Rebar\StirrupConfiguration.cs" />
-    <Compile Include="ACI\Entities\ShearAndTorsion\ShearForceState.cs" />
-    <Compile Include="ACI\Entities\Concrete\ConcreteConstants.cs" />
-    <Compile Include="ACI\Entities\CompressionMember\ConcreteCompressionSectionBase.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBase.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionBaseStrains.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\ConcreteFlexuralSectionSinglyReinforcedBase.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Prestressed\LoadType.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Prestressed\PrestressedBeamSectionBase.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Prestressed\PSBmSectionBaseIteration.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Prestressed\PSBmSectionBasePrestressing.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Prestressed\PSBmSectionBaseService.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Prestressed\StageType.cs" />
-    <Compile Include="ACI\Entities\Common\TCIterationBound.cs" />
-    <Compile Include="ACI\Entities\Concrete\ConcreteMaterialBase.cs" />
-    <Compile Include="ACI\Entities\Concrete\ConcreteUltimateStrain.cs" />
-    <Compile Include="ACI\Entities\ForceMomentContribution.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\DevelopmentType.cs" />
-    <Compile Include="ACI\ACI318_14\C25_ReinforcementDetails\SpliceAndEmbedment\HookTypes.cs" />
-    <Compile Include="ACI\Entities\Rebar\Rebar.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarCoordinate.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarElement.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarSectionFactory.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarPoint.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarPrestressed.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarPrestressingType.cs" />
-    <Compile Include="ACI\Entities\Rebar\RebarSection.cs" />
-    <Compile Include="ACI\Entities\Rebar\Material\RebarStrain.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Strains\ConcreteSectionIterationData.cs" />
-    <Compile Include="ACI\Entities\FlexuralMember\Strains\LinearStrainDistribution.cs" />
-    <Compile Include="ACI\Exceptions\ApproximateAnalysisNotApplicableException.cs" />
-    <Compile Include="ACI\Exceptions\CompressionFiberPositionException.cs" />
-    <Compile Include="ACI\Exceptions\InvalidStageException.cs" />
-    <Compile Include="ACI\Exceptions\NoRebarException.cs" />
-    <Compile Include="ACI\Exceptions\NotPrestressedBeamException.cs" />
-    <Compile Include="ACI\Exceptions\SectionAnalysisFailedToConvergeException.cs" />
-    <Compile Include="ACI\Exceptions\SectionFailedToConvergeException.cs" />
-    <Compile Include="ACI\Exceptions\UltimateConcreteStrainExceededException.cs" />
-    <Compile Include="ACI\Exceptions\WrongPositionOfPrestressingCentroidException.cs" />
-    <Compile Include="ACI\Interfaces\FlexuralAnalysisType.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteColumn.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteFlexuralMember.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteMaterial.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteMember.cs" />
-    <Compile Include="ACI\Interfaces\IConcretePrestressedFlexuralMember.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteSection.cs" />
-    <Compile Include="ACI\Interfaces\IConcreteSectionRectangular.cs" />
-    <Compile Include="ACI\Interfaces\IDevelopment.cs" />
-    <Compile Include="ACI\Interfaces\INonPrestressedReinforcement.cs" />
-    <Compile Include="ACI\Interfaces\IPrestressedConcreteMaterial_.cs" />
-    <Compile Include="ACI\Interfaces\IPrestressedConcreteSection.cs" />
-    <Compile Include="ACI\Interfaces\IPrestressedRebarMaterial.cs" />
-    <Compile Include="ACI\Interfaces\IPrestressedReinforcement.cs" />
-    <Compile Include="ACI\Interfaces\IRebar.cs" />
-    <Compile Include="ACI\Interfaces\IRebarMaterial.cs" />
-    <Compile Include="ACI\Interfaces\IReinforcedConcreteMember.cs" />
-    <Compile Include="ACI\Interfaces\ISplice.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="ACI\ACI318_14\C10_Columns\" />
-    <Folder Include="ACI\ACI318_14\C22_SectionalStrength\Shear\OneWay\Prestressed\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="LICENSE" />
-    <None Include="NOTICE" />
-    <None Include="packages.config" />
-    <None Include="Resources\ACI_MildRebarProperties.txt" />
-    <None Include="Kodestruct.Concrete.licenseheader" />
-    <None Include="Kodestruct.Concrete.nuspec">
-      <SubType>Designer</SubType>
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AnchorAreas.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ACI_RebarCover.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

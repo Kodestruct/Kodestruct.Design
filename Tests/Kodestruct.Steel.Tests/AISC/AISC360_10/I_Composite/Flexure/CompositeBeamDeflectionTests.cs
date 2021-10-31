@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +26,13 @@ using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Common.Section.Predefined;
 using Kodestruct.Common.Section.SectionTypes;
 using Kodestruct.Steel.AISC.AISC360v10.Composite;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite.Flexure
 {
-    [TestFixture]
+    // 
     public partial class CompositeBeamTests: ToleranceTestBase
     {
         public CompositeBeamTests()
@@ -57,7 +60,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite.Flexure
             return cs;
         }
 
-        [Test]
+     [Fact]
         public void CompositeBeamSectionReturnsLowerBoundMomentOfInertia()
         {
             double SumQ_n = 387;
@@ -67,7 +70,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Composite.Flexure
             double refValue = 1360; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(I_LB, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
     }
 }

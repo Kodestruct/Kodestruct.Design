@@ -1,5 +1,5 @@
  
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using Kodestruct.Wood.NDS.NDS2015;
 
 namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 {
-    [TestFixture]
+     
     public partial class WoodAdjustmentFactorTests : ToleranceTestBase
     {
 
@@ -21,7 +21,7 @@ namespace Kodestruct.Wood.Tests.NDS.SawnLumber
         /// <summary>
         /// 2005 Example problems. Problem 5 LRFD
         /// </summary>
-        //[Test]
+        //[Fact]
         //public void ReturnColumnStabilityFactorDimensionalLumber()
         //{
         //    CalcLog log = new CalcLog();
@@ -45,7 +45,7 @@ namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 
         //    double refValue = 0.342;
         //    double actualTolerance = EvaluateActualTolerance(C_P, refValue);
-        //    Assert.LessOrEqual(actualTolerance, tolerance);
+        //     Assert.True(actualTolerance<=tolerance);
 
         //}
 

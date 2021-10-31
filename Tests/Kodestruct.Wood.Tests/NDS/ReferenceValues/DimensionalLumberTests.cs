@@ -1,5 +1,5 @@
  
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 using Kodestruct.Common.CalculationLogger;
 using Kodestruct.Wood.NDS.NDS2015;
 using Kodestruct.Wood.NDS.NDS2015.Material;
-
-
-
+using Xunit;
 
 namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 {
-    [TestFixture]
+     
     public partial class WoodVisuallyGradedDimensionLumberTests : ToleranceTestBase
     {
 
@@ -26,7 +24,7 @@ namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 
         double tolerance;
 
-        [Test]
+        [Fact]
         public void DougFirReturnsBendingReferenceValue()
         {
             CalcLog log = new CalcLog();
@@ -38,7 +36,7 @@ namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 
             double refValue = 650.0;
             double actualTolerance = EvaluateActualTolerance(F_b, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
         }
 

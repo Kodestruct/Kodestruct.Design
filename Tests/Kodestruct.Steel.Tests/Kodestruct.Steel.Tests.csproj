@@ -1,167 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\..\packages\NUnit.3.10.1\build\NUnit.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6406BD7F-A9B9-458F-BCBE-5DDC0EDCFA35}</ProjectGuid>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kodestruct.Steel.Tests</RootNamespace>
-    <AssemblyName>Kodestruct.Steel.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Kodestruct.Common, Version=0.0.11.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Kodestruct.Common.0.0.11.4\lib\net45\Kodestruct.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="AISC\AISC360_10\B_General\Materials\MaterialPropertiesTests.cs" />
-    <Compile Include="AISC\AISC360_10\D_Tension\EffectiveAreaTests.cs" />
-    <Compile Include="AISC\AISC360_10\D_Tension\ShearLagFactorTests.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="AISC\AISC360_10\D_Tension\TensileStrengthTests.cs" />
-    <Compile Include="AISC\AISC360_10\E_Compression\CircularHss\CompressionCircularHssTests.cs" />
-    <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeNonCompactTests.cs" />
-    <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeSlenderTests.cs" />
-    <Compile Include="AISC\AISC360_10\E_Compression\IShape\CompressionIShapeNonSlenderTests.cs" />
-    <Compile Include="AISC\AISC360_10\E_Compression\RectangularHSS\CompressionRhsTests.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\Angle\AngleTests.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\Channel\F2_Channel_DoublySymmetricCompactTests.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW12.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F3_I_DoublySymmetricNonCompactTests.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\W18WeakAxis.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\Pipe\F8-CircularHssTests.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\Solid\SolidShapeTests.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\SteelBeamFactoryTests.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\IBeam\F2_I_DoublySymmetricCompactTestsW18.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\RectangularHSS\F7-RectangularHssTests.cs" />
-    <Compile Include="AISC\AISC360_10\F_Flexure\Tee\TeeShapeTests.cs" />
-    <Compile Include="AISC\AISC360_10\G_Shear\ShearUnstiffenedBeamTests.cs" />
-    <Compile Include="AISC\AISC360_10\H_CombinedForce\CombinationTests.cs" />
-    <Compile Include="AISC\AISC360_10\I_Composite\Anchor\HeadedAnchorTests.cs" />
-    <Compile Include="AISC\AISC360_10\I_Composite\Flexure\CompositeBeamDeflectionTests.cs" />
-    <Compile Include="AISC\AISC360_10\I_Composite\Flexure\CompositeBeamFlexureTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\BeamCope\BeamCopeTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\BlockShearTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\BoltBearingTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\ConcentratedForces\WebSideswayBucklingTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\FlexuralStrengthTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\GussetPlateTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\PryingAction\PryingActionDesignTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\ShearAreaCalculatorTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\AffectedMembers\WhitmoreSectionTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\BasePlate\BasePlateTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Bolt\BearingBoltTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Bolt\BoltGroupTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Bolt\BoltHoleTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Bolt\BoltNominalStressTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Bolt\ModifiedBoltShearStrengthTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Bolt\SlipCriticalBoltTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\SpecialType\ExtendedSinglePlateTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Splices\ColumnSpliceTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Weld\WeldGroupConcentricTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Weld\WeldGroupElasticCenterTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Weld\WeldGroupInstantaneousCenterTests.cs" />
-    <Compile Include="AISC\AISC360_10\J_Connections\Weld\WeldStrengthTests.cs" />
-    <Compile Include="AISC\AISC360_10\K_HSS\ConcentratedForces\HssRhsConcentratedForceTests.cs" />
-    <Compile Include="AISC\AISC360_10\K_HSS\TrussConnections\RhsKconnectionTests.cs" />
-    <Compile Include="AISC\AISC360_10\K_HSS\TrussConnections\RhsXconnectionTests.cs" />
-    <Compile Include="AISC\AISC360_16\J_Connections\SpecialType\ExtendedSinglePlateTests.cs" />
-    <Compile Include="AISC\FloorVibrations\FloorVibrationTests.cs" />
-    <Compile Include="AISC\UFM\UFMGeneralTests.cs" />
-    <Compile Include="AISC\Materials\SteelMaterialCatalogA992ErrorTests.cs" />
-    <Compile Include="AISC\Materials\SteelMaterialCatalogA572Tests.cs" />
-    <Compile Include="AISC\Materials\SteelMaterialCatalogA992Tests.cs" />
-    <Compile Include="AISC\UFM\UFMSpecialCase2Tests.cs" />
-    <Compile Include="AISC\WebOpenings\DetailingTests.cs" />
-    <Compile Include="AISC\WebOpenings\SteelWebOpeningTests.cs" />
-    <Compile Include="AISC\WebOpenings\ReinforcedWebOpeningTests.cs" />
-    <Compile Include="AISC\WebOpenings\UnreinforcedCompositeWebOpeningTests.cs" />
-    <Compile Include="AISC\WebOpenings\ReinforcedCompositeWebOpeningTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ToleranceTestBase.cs" />
+    <ProjectReference Include="..\..\Kodestruct.Common\Kodestruct.Common.csproj" />
+    <ProjectReference Include="..\..\Kodestruct.Steel\Kodestruct.Steel.csproj" />
+    <ProjectReference Include="..\Kodestruct.Tests.Common\Kodestruct.Tests.Common.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Kodestruct.Steel\Kodestruct.Steel.csproj">
-      <Project>{6cc168ac-ff6f-433e-a338-49d8d5c82570}</Project>
-      <Name>Kodestruct.Steel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AISC\AISC360_10\B_General\Compactness\" />
-    <Folder Include="AISC\AISC360_10\C_Stability\" />
-    <Folder Include="AISC\AISC360_10\I_Composite\Axial\" />
-    <Folder Include="AISC\AISC360_10\K_HSS\MomentConnections\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="Kodestruct.Steel.Tests.licenseheader" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\NUnit.3.10.1\build\NUnit.props'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

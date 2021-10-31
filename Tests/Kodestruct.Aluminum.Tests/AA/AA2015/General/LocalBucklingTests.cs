@@ -5,18 +5,18 @@ using Kodestruct.Aluminum.AA.AA2015.Flexure;
 using Kodestruct.Aluminum.AA.Entities.Enums;
 using Kodestruct.Aluminum.AA.Entities.Section;
 using Kodestruct.Common.Section.SectionTypes;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace Kodestruct.Aluminum.Tests.AA.AA2015.General
 {
  
 
-        [TestFixture]
     public class AluminumLocalBucklingTests : ToleranceTestBase
     {
 
@@ -28,7 +28,7 @@ namespace Kodestruct.Aluminum.Tests.AA.AA2015.General
         double tolerance;
 
 
-        [Test]
+        [Fact]
         public void AluminumShapeReturnsBucklingConstant_C_p()
         {
             AluminumMaterial mat = new AluminumMaterial("6061","T6","0.062 or greater","std structural profile");
@@ -36,10 +36,10 @@ namespace Kodestruct.Aluminum.Tests.AA.AA2015.General
             double C_p = bcf.C;
             double refValue = 66.9; // from Design Manual
             double actualTolerance = EvaluateActualTolerance(C_p, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<=tolerance);
         }
 
-        [Test]
+        [Fact]
         public void AluminumElementReturnsLocalBucklingStressF_b()
         {
             //6063,T6,Up to 1,extrusion
@@ -53,10 +53,10 @@ namespace Kodestruct.Aluminum.Tests.AA.AA2015.General
 
             double refValue = 9.95; 
             double actualTolerance = EvaluateActualTolerance(F_b, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<=tolerance);
         }
 
-        [Test]
+        [Fact]
         public void AluminumShapeReturnsLocalBucklingStressF_b()
         {
             //6063,T6,Up to 1,extrusion
@@ -72,7 +72,7 @@ namespace Kodestruct.Aluminum.Tests.AA.AA2015.General
 
             double refValue = 9.95;
             double actualTolerance = EvaluateActualTolerance(F_b, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<=tolerance);
         }
 
      }

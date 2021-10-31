@@ -3,22 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using Kodestruct.Concrete.ACI318_14;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Common.Section.Interfaces;
 using Kodestruct.Concrete.ACI.ACI318_14.C22_SectionalStrength.ShearFriction;
 using Kodestruct.Concrete.ACI.Entities;
+using Xunit;
 
 namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
 {
-    [TestFixture]
+     
     public partial class AciConcreteShearRectangularBeamTests : AciConcreteShearTestsBase
     {
         /// <summary>
         /// MacGregor, Wight. Reinforced concrete. 6th edition
         /// </summary>
-        [Test]
+        [Fact]
         public void RectangularBeamReturnsBasicConcreteShearValue()
         {
             double h = 24.0 + 2.0;
@@ -39,7 +40,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 36.4*0.75; //Example 6-1
             double actualTolerance = EvaluateActualTolerance(phiV_c, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
         }
 
@@ -47,7 +48,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         /// PCA notes on ACI318-11
         /// Example 12.2
         /// </summary>
-        [Test]
+        [Fact]
         public void RectangularBeamReturnsAxialForceConcreteShearValue()
         {
             double h = 18.0;
@@ -68,11 +69,11 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 9.2; //Example 6-1
             double actualTolerance = EvaluateActualTolerance(phiV_c, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
         }
 
-        [Test]
+        [Fact]
         public void RectangularBeamReturnsAxialForceCompressionConcreteShearValue()
         {
             double h = 24.0;
@@ -93,7 +94,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 93.0;
             double actualTolerance = EvaluateActualTolerance(phiV_c, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
         }
 
@@ -101,7 +102,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
         /// MacGregor, Wight. Reinforced concrete. 6th edition
         /// Example 7-2
         /// </summary>
-        [Test]
+        [Fact]
         public void RectangularBeamReturnsRequiredShearRebarAreaValue()
         {
             double h = 24.0;
@@ -121,10 +122,10 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue =  0.0334 ; 
             double actualTolerance = EvaluateActualTolerance(A_v, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
         }
-        [Test]
+        [Fact]
         public void RectangularBeamReturnsDetailedConcreteShearValue()
         {
             double h = 36.0;
@@ -144,12 +145,12 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             //double refValue = 9.2; //Example 6-1
             //double actualTolerance = EvaluateActualTolerance(phiV_c, refValue);
 
-            //Assert.LessOrEqual(actualTolerance, tolerance);
+            // Assert.True(actualTolerance<=tolerance);
             Assert.True(true);
 
         }
 
-        [Test]
+        [Fact]
         public void ShearFrictionReturnsValue()
         {
             IConcreteMaterial matC = GetConcreteMaterial(4000, false);
@@ -163,7 +164,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Shear
             double refValue = 130.68;
             double actualTolerance = EvaluateActualTolerance(phiV_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
 
         }

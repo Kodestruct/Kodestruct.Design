@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,16 +25,16 @@ using Kodestruct.Loads.ASCE.ASCE7_10.DeadLoads;
 
 namespace Kodestruct.Loads.Tests.ASCE7.ASCE7_10.C03_DeadLoads
 {
-    [TestFixture]
+    
     public partial class SolidConcreteTests
     {
-        [Test]
+        [Fact]
         public void ReturnsValueFor24()
         {
             BuildingElementComponent bec = new BuildingElementComponent("SolidConcreteSlab",1,2,24,"");
             ComponentReportEntry wEntr = bec.GetComponentWeight();
             double w = wEntr.LoadValue;
-            Assert.AreEqual(300.0, w);
+            Assert.Equal(300.0, w);
         }
     }
 }

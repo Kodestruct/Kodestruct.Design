@@ -1,7 +1,7 @@
  
 
 //using System.Collections.Generic;
-//using NUnit.Framework;
+//using Kodestruct.Tests.Common;
 //using Kodestruct.Analytics.ACI318_14.Tests.Prestressed;
 //using Kodestruct.Concrete.ACI;
 //using Kodestruct.Concrete.ACI.Infrastructure.Entities.Rebar;
@@ -12,7 +12,7 @@
 
 //namespace Kodestruct.Analytics.ACI318_14.Tests.Prestressed
 //{
-//    [TestFixture]
+//     
 //    public class PrestressedGeneralTestsBase : PrestressedBeamTestBase
 //    {
 

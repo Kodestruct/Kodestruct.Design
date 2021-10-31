@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,11 +29,14 @@ using Kodestruct.Steel.AISC.Interfaces;
 using Kodestruct.Steel.AISC.Steel.Entities;
 using Kodestruct.Steel.AISC.SteelEntities;
 using Kodestruct.Steel.AISC.SteelEntities.Materials;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
 {
 
-    [TestFixture]
+    // 
     public partial class DoublySymmetricICompactTests : ToleranceTestBase
     {
         public DoublySymmetricICompactTests()
@@ -54,7 +57,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             beam = factory.GetBeam(section,mat,null, MomentAxis.XAxis, FlexuralCompressionFiberPosition.Top);
 
         }
-        [Test]
+     [Fact]
         public void DoublySymmetricIReturnsFlexuralYieldingStrength                 () 
         {
             SteelLimitStateValue Y=
@@ -63,10 +66,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 249*12.0; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void DoublySymmetricIReturnsFlexuralLateralTorsionalBucklingStrengthInelastic ()
         {
             SteelLimitStateValue LTB =
@@ -75,10 +78,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 192*12; // from AISC Steel Manual Table 3-10
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void DoublySymmetricIReturnsFlexuralLateralTorsionalBucklingStrengthElastic()
         {
             SteelLimitStateValue LTB =
@@ -87,7 +90,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double refValue = 123*12; // from AISC Steel Manual Table 3-10
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
 
@@ -98,9 +101,9 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double phiM_n = FLB.Value;
             double refValue = -1; // Limit state not applicable
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
-         [Test]
+      [Fact]
         public void DoublySymmetricIReturnsFlexuralCompressionFlangeYieldingStrength()
         {
             SteelLimitStateValue CFY =
@@ -108,9 +111,9 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double phiM_n = CFY.Value;
             double refValue = -1; // Limit state not applicable
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<=tolerance);
         }
-         [Test]
+      [Fact]
         public void DoublySymmetricIReturnsFlexuralTensionFlangeYieldingStrength    ()
         {
             SteelLimitStateValue TFY =
@@ -118,9 +121,9 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double phiM_n = TFY.Value;
             double refValue = -1; // Limit state not applicable
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
-         [Test]
+      [Fact]
         public void DoublySymmetricIReturnsFlexuralWebOrWallBucklingStrength        ()
         {
             SteelLimitStateValue WLB =
@@ -128,9 +131,9 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double phiM_n = WLB.Value;
             double refValue = -1; // Limit state not applicable
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
-         [Test]
+      [Fact]
         public void DoublySymmetricIReturnsFlexuralLegOrStemBucklingStrength        () 
         {
             SteelLimitStateValue LSLB =
@@ -138,9 +141,9 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double phiM_n = LSLB.Value;
             double refValue = -1; // Limit state not applicable
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
-         [Test]
+      [Fact]
         public void DoublySymmetricIReturnsLimitingLengthForInelasticLTB_Lr         () 
         {
             SteelLimitStateValue L_r =
@@ -148,9 +151,9 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double phiM_n = L_r.Value;
             double refValue = 12.3*12; // AISC manual table 3.2
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
-         [Test]
+      [Fact]
         public void DoublySymmetricIReturnsLimitingLengthForFullYielding_Lp() 
         {
             SteelLimitStateValue L_p =
@@ -158,7 +161,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Flexure
             double phiM_n = L_p.Value;
             double refValue = 4.31*12; // AISC manual table 3.2
             double actualTolerance = EvaluateActualTolerance(phiM_n, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
     }
 }

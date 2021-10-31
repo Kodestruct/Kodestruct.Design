@@ -50,15 +50,15 @@ namespace Kodestruct.Wood.NDS.NDS2015
             this.lambda = lambda;
             double FcStar = Get_FcStar();
             double E_minPrime = GetAdjustedMinimumModulusOfElasticityForStability(E_min,C_M_E,C_t_E,C_i_E,C_T);
-            C_P = base.GetC_P(FcStar, E_minPrime, l_e,d);
+            C_P = base.GetColumnStabilityFactor_C_P(FcStar, E_minPrime, l_e,d);
 
             return C_P;
         }
 
         private double Get_FcStar()
         {
-            double K_F = 2.4;
-            double phi = 0.9;
+            double K_F = GetFormatConversionFactor_K_F(Entities.ReferenceDesignValueType.CompresionParallelToGrain);
+            double phi = GetStrengthReductionFactor_phi(Entities.ReferenceDesignValueType.CompresionParallelToGrain);
             double FcStar = F_c * C_M_Fc * C_t_Fc * C_F_Fc * C_i_Fc *K_F * phi * lambda; //from Table 4.3.1
             return FcStar;
         }
@@ -66,7 +66,7 @@ namespace Kodestruct.Wood.NDS.NDS2015
 
 
         /// <summary>
-        /// Factor from NDS 2105 section 3.7.1.5 
+        /// Factor from NDS 2105 section 3.7.1.5 required for the column stability factor
         /// </summary>
         /// <returns></returns>
 

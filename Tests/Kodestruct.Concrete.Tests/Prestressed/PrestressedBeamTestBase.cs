@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Rhino.Mocks;
 using Kodestruct.Common.CalculationLogger.Interfaces;
 using Kodestruct.Concrete.ACI;
 using Kodestruct.Concrete.ACI318_14.Materials;
@@ -22,8 +21,7 @@ namespace Kodestruct.Concrete.ACI318_14.Tests.Prestressed
         }
         public PrestressedBeamTestBase()
         {
-            MockRepository mocks = new MockRepository();
-            log = mocks.Stub<ICalcLog>();
+ 
         }
 
         protected IPrestressedConcreteMaterial GetPrestressedConcreteMaterial(double fc, double fci)

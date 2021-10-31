@@ -15,18 +15,21 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10.Connections;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
 {
 
-    [TestFixture]
+    // 
     public class BoltGroupTests : ToleranceTestBase
     {
         public BoltGroupTests()
@@ -38,7 +41,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
         /// <summary>
         /// AISC manual 14th Edition Table 7-6
         /// </summary>
-        [Test]
+     [Fact]
         public void BoltGroupSingleLine0DegreesReturnsCValue()
         {
             BoltGroup bg = new BoltGroup(4, 1, 0, 3);
@@ -46,10 +49,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double refValue = 1.34; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(C,refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void BoltGroupSingleLine45DegreesReturnsC()
         {
             BoltGroup bg = new BoltGroup(4, 1, 0, 3);
@@ -57,10 +60,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double refValue = 1.64; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void BoltGroup4X4ReturnsCValue()
         {
             BoltGroup bg = new BoltGroup(2, 2, 3, 3);
@@ -68,10 +71,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double refValue = 0.78; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void BoltGroup4X4NegativeEccentricitySameCValue()
         {
             BoltGroup bg = new BoltGroup(2, 2, 3, 3);
@@ -79,24 +82,24 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double refValue = 0.78; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
         ///// <summary>
         ///// Elastic moment. Checked against spreadsheet calculation
         ///// </summary>
-        //[Test]
+        //[Fact]
         //public void BoltGroupElasticReturnsElasticMoment()
         //{
         //    BoltGroup bg = new BoltGroup(4, 2, 3, 3);
         //    double C = bg.CalculateElasticGroupMomentCoefficientC();
         //    double boltStrength = 4.39205;
         //    double MomentCapacity = C * boltStrength;
-        //    Assert.AreEqual(100.0, Math.Round(MomentCapacity));
+        //    Assert.Equal(100.0, Math.Round(MomentCapacity));
         //}
 
 
-        [Test]
+     [Fact]
         public void BoltGroupTripleLine0DegreesReturnsCValue()
         {
             BoltGroup bg = new BoltGroup(3, 3, 3, 3);
@@ -104,10 +107,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double refValue = 5.79; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(C, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void BoltGroup3X2ReturnsC_primePureMomentValue()
         {
             BoltGroup bg = new BoltGroup(3, 2, 3, 3);
@@ -115,7 +118,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
             double refValue = 15.8; // from AISC Steel Manual
             double actualTolerance = EvaluateActualTolerance(C_prime, refValue);
 
-            Assert.LessOrEqual(actualTolerance, tolerance);
+            Assert.True(actualTolerance<= tolerance);
         }
 
     }

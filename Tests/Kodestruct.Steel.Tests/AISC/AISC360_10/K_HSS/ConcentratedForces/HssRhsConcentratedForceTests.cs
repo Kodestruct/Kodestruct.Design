@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,11 +31,14 @@ using Kodestruct.Steel.AISC.SteelEntities.Materials;
 using Kodestruct.Steel.AISC.SteelEntities.Sections;
 using Kodestruct.Steel.AISC360v10.HSS.ConcentratedForces;
 using Kodestruct.Steel.AISC.SteelEntities;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
 {
 
-    [TestFixture]
+    // 
     public class HssRhsConcentratedForceTests : ToleranceTestBase
     {
 
@@ -43,7 +46,7 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
         /// AISC DG 24
         /// Example 8.4—Overlapped K-Connection with Rectangular HSS
         /// </summary>
-        [Test]
+     [Fact]
         public void HssRhsConcentratedForceThroughPlateReturnsValue()
         {
             SectionTube ch = new SectionTube(null, 8, 8, 0.25,0.93*0.25,1.5*0.25);
@@ -61,10 +64,10 @@ namespace Kodestruct.Steel.Tests.AISC.AISC36010.HSSTrussConnections
 
             double refValueSec = 46.2;
             double actualToleranceSec = EvaluateActualTolerance(phiR_n, refValueSec);
-            Assert.LessOrEqual(actualToleranceSec, tolerance);
+            Assert.True(actualToleranceSec<= tolerance);
         }
 
-        [Test]
+     [Fact]
         public void HssRhsConcentratedForceLongitudinalPlateReturnsValue()
         {
             SectionTube ch = new SectionTube(null, 8, 8, 0.25, 0.93 * 0.25, 1.5 * 0.25);

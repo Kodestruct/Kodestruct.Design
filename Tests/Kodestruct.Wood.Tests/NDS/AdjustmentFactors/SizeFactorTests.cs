@@ -1,5 +1,5 @@
  
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Common.CalculationLogger;
 using Kodestruct.Wood.NDS.NDS2015;
-
-
-
+using Xunit;
 
 namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 {
-    [TestFixture]
+     
     public partial class WoodAdjustmentFactorTests : ToleranceTestBase
     {
-        [Test]
+        [Fact]
         public void ReturnsSizeFactorDimensionalLumber()
         {
             CalcLog log = new CalcLog();
@@ -30,7 +28,7 @@ namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 
             double refValue = 1.3;
             double actualTolerance = EvaluateActualTolerance(C_F, refValue);
-            Assert.LessOrEqual(actualTolerance, tolerance);
+             Assert.True(actualTolerance<=tolerance);
 
         }
 

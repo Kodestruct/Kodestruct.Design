@@ -1,5 +1,5 @@
  
-using NUnit.Framework;
+using Kodestruct.Tests.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +13,14 @@ using Kodestruct.Wood.NDS.NDS2015;
 
 namespace Kodestruct.Wood.Tests.NDS.SawnLumber
 {
-    [TestFixture]
+     
     public partial class WoodAdjustedValueTests : ToleranceTestBase
     {
 
         ///// <summary>
         ///// 2005 Example problems. Problem 15 LRFD
         ///// </summary>
-        //[Test]
+        //[Fact]
         //public void ReturnsTensionValueDimensionalLumber()
         //{
         //    CalcLog log = new CalcLog();
@@ -41,7 +41,7 @@ namespace Kodestruct.Wood.Tests.NDS.SawnLumber
         //    double F_b_prime = m.GetAdjustedBendingDesignValue(F_b,C_M, C_t, C_L, C_F, C_fu, C_i, C_r, lambda);
         //    double refValue = 2.087;
         //    double actualTolerance = EvaluateActualTolerance(F_b_prime, refValue);
-        //    Assert.LessOrEqual(actualTolerance, tolerance);
+        //     Assert.True(actualTolerance<=tolerance);
 
         //}
 

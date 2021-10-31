@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,15 +25,15 @@ using Kodestruct.Loads.ASCE.ASCE7_10.DeadLoads.Components;
 
 namespace Kodestruct.Loads.Tests.ASCE7.ASCE7_10.C03_DeadLoads
 {
-    [TestFixture]
+    
     public partial class AsceComponentDeadWeightTests
     {
-        [Test]
+        [Fact]
         public void WoodDoubleFloor2X10_16OCReturnsValue()
         {
             ComponentDoubleWoodFloor wood = new ComponentDoubleWoodFloor(2, 1, 0);
             var woodEntr = wood.Weight;
-            Assert.AreEqual(6, woodEntr);
+            Assert.Equal(6, woodEntr);
         }
     }
 }

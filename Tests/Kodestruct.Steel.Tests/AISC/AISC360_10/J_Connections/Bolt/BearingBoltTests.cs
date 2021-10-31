@@ -15,7 +15,7 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +24,13 @@ using System.Threading.Tasks;
 using Kodestruct.Steel.AISC;
 using Kodestruct.Steel.AISC.AISC360v10.Connections.Bolted;
 using Kodestruct.Steel.AISC.SteelEntities.Bolts;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
 {
-    [TestFixture]
+    // 
     public class BearingBoltTests
     {
 
@@ -35,12 +38,12 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
         //Example 5.1
 
         //Page 45
-         [Test]
+      [Fact]
         public void BearingBoltGroupAReturnsTensileStrengthA325()
         {
             BoltBearingGroupA bolt = new BoltBearingGroupA(7.0 / 8.0, BoltThreadCase.Included,  null);
             double phi_r_nt = bolt.GetAvailableTensileStrength();
-            Assert.AreEqual(40.6, Math.Round(phi_r_nt, 1));    
+            Assert.Equal(40.6, Math.Round(phi_r_nt, 1));    
         }
 
 
@@ -48,21 +51,21 @@ namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.Bolt
         //Page 45
         //and
         //AISC Steel Manual 14th Edition Table 7-1
-         [Test]
+      [Fact]
         public void BearingBoltGroupAReturnsShearStrengthA325()
         {
             BoltBearingGroupA bolt = new BoltBearingGroupA(7.0 / 8.0, BoltThreadCase.Excluded,  null);
             double phi_r_nv = bolt.GetAvailableShearStrength(2.0, false);
-            Assert.AreEqual(61.3, Math.Round(phi_r_nv,1));        
+            Assert.Equal(61.3, Math.Round(phi_r_nv,1));        
          }
 
          //AISC Steel Manual 14th Edition Table 7-1
-         [Test]
+      [Fact]
          public void BearingBoltGroupAReturnsShearStrengthA490()
          {
              BoltBearingGroupB bolt = new BoltBearingGroupB(1.0, BoltThreadCase.Included, null);
              double phi_r_nv = bolt.GetAvailableShearStrength(1,false);
-             Assert.AreEqual(40, Math.Floor(phi_r_nv));
+             Assert.Equal(40, Math.Floor(phi_r_nv));
          }                                   
      
 

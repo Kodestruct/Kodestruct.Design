@@ -15,46 +15,49 @@
    */
 #endregion
  
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodestruct.Steel.AISC.AISC360v10.J_Connections.AffectedMembers;
+using Kodestruct.Tests.Common;
+using Xunit;
+
 
 namespace Kodestruct.Steel.Tests.AISC.AISC360v10.Connections.AffectedMembers
 {
-    [TestFixture]
+    // 
     public class ShearAreaCalculatorTests
     {
         /// <summary>
         /// AISC Design guide 29. Page47
         /// </summary>
         /// 
-        [Test]
+     [Fact]
         public void ShearAreaCalculatorCalculatesA_gv()
         {
             ShearAreaCalculator c = GetShearAreaCalc();
             double A_gv = c.GetGrossAreaShear();
             double refValue = 39.0;
-            Assert.AreEqual(refValue, A_gv);
+            Assert.Equal(refValue, A_gv);
         }
-        [Test]
+     [Fact]
         public void ShearAreaCalculatorCalculatesA_nv()
         {
             ShearAreaCalculator c = GetShearAreaCalc();
             double A_nv = c.GetNetAreaShear();
             double refValue = 26.0;
-            Assert.AreEqual(refValue, A_nv);
+            Assert.Equal(refValue, A_nv);
         }
-        [Test]
+     [Fact]
         public void ShearAreaCalculatorCalculatesA_nt()
         {
             ShearAreaCalculator c = GetShearAreaCalc();
             double A_nt = c.GetNetAreaTension();
             double refValue = 7.0;
-            Assert.AreEqual(refValue, A_nt);
+            Assert.Equal(refValue, A_nt);
         }
 
         private ShearAreaCalculator GetShearAreaCalc()

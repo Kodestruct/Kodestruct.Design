@@ -66,16 +66,16 @@ namespace Kodestruct.Common.Section.SectionTypes
             double d = D;
             double t = t_des;
 
-            double R_i = (D-2*t_des)/2;
+            double R_i = (D-2.0*t_des)/2.0;
             _H = D;
             B = D;
             _A =Math.PI * (R * R - R_i*R_i);
             _I_x = ((Math.PI) / (4)) * (Math.Pow(R, 4) - Math.Pow(R_i, 4));
             _I_y = _I_x;
-            _Z_x = ((4) / (3))*(((Math.Pow(R, 4)-Math.Pow(R_i, 3)*R) / (Math.Pow(R, 4)-Math.Pow(R_i, 4)))) ;
+            _Z_x = ((4.0) / (3.0))*(Math.Pow(R, 3)-Math.Pow(R_i, 3)) ;
             _Z_y = _Z_x;
             _C_w = 0.0;
-            _J = ((Math.PI) / (32)) * (Math.Pow(d, 4) - Math.Pow((d - 2 * t), 4));
+            _J = ((Math.PI) / (32.0)) * (Math.Pow(d, 4.0) - Math.Pow((d - 2 * t), 4.0));
             _x_Bar = R;
             _x_pBar = R;
             _y_Bar = R;

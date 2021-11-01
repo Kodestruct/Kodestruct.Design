@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2</TargetFramework>
     <PackageId>Kodestruct.Common</PackageId>
     <Authors>Kodestruct</Authors>
     <Product>Kodestruct.Design</Product>

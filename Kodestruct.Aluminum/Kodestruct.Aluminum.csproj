@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2</TargetFramework>
     <Authors>Konstantin Udilovich</Authors>
     <Product>Kodestruct</Product>
     <PackageIcon>icon.png</PackageIcon>

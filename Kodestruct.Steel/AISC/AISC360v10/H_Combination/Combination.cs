@@ -70,7 +70,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Combination
                     }
                         if (InteractionRatioV!=0)
                         {
-                            InteractionRatio = Math.Min(Math.Abs(InteractionRatioPMM), Math.Abs(InteractionRatioV));
+                            InteractionRatio = Math.Max(Math.Abs(InteractionRatioPMM), Math.Abs(InteractionRatioV));
                         }
                         else
                         {
@@ -83,7 +83,7 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Combination
                  InteractionRatioV = T + V;
                          if (InteractionRatioV != 0)
                          {
-                             InteractionRatio = Math.Min(Math.Abs(InteractionRatioPMM), Math.Abs(InteractionRatioV));
+                             InteractionRatio = Math.Max(Math.Abs(InteractionRatioPMM), Math.Abs(InteractionRatioV));
                          }
                          else
                          {
@@ -110,11 +110,11 @@ namespace Kodestruct.Steel.AISC.AISC360v10.Combination
                   // BO DOWSWELL
                  //Plastic Strength of Connection Elements
                  //ENGINEERING JOURNAL / FIRST QUARTER / 2015 
-                 InteractionRatio = Math.Pow(N, 2) + Math.Pow(Mx, 1.7) + Math.Pow(My,1.7) + Math.Pow(V, 4) + Math.Pow(T, 2);
+                 InteractionRatio = Math.Pow(N, 2) + Math.Pow((Math.Pow(Mx, 1.7) + Math.Pow(My,1.7)),0.59) + Math.Pow(V, 4) + Math.Pow(T, 2);
                  break;
                 default:
-                 InteractionRatio = Math.Pow(N, 2) + Math.Pow(Mx, 1.7) + Math.Pow(My, 1.7) + Math.Pow(V, 4) + Math.Pow(T, 2);
-                 break;
+                    InteractionRatio = Math.Pow(N, 2) + Math.Pow((Math.Pow(Mx, 1.7) + Math.Pow(My, 1.7)), 0.59) + Math.Pow(V, 4) + Math.Pow(T, 2);
+                    break;
 	        }
 
             List<double> IndividualIRs = new List<double>

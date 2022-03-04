@@ -38,7 +38,10 @@ namespace Kodestruct.Steel.AISC360v10.Connections.AffectedElements
             public AffectedElementInCompression(double F_y, double b,double t)
             {
                 SteelMaterial material = new SteelMaterial(F_y, double.PositiveInfinity, SteelConstants.ModulusOfElasticity, SteelConstants.ShearModulus);
-                SectionRectangular section = new SectionRectangular(b,t);
+                double width = Math.Max(b, t);
+                double height = Math.Min(b, t);
+
+                SectionRectangular section = new SectionRectangular(width, height);
                 Section = new SteelPlateSection(section, material);
             }
 
@@ -47,7 +50,7 @@ namespace Kodestruct.Steel.AISC360v10.Connections.AffectedElements
 
              
                     double F_y = Section.Material.YieldStress;
-                    double r = Section.Shape.r_y;
+                    double r = Section.Shape.r_x;
                     double phiP_n = 0.0;
                     double KLr = L_e/r;
                     if (KLr <= 25) // per J4.4

@@ -39,4 +39,8 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(ProjectDir)bin\Debug\netstandard2\*.dll&quot; &quot;$(AppData)\Dynamo\Dynamo Core\2.13\packages\Kodestruct\bin&quot;" />
+  </Target>
+
 </Project>

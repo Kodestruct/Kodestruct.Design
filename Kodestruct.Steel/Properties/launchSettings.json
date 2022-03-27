@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Kodestruct.Steel": {
+      "commandName": "Project"
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\Dynamo\\DynamoCoreRuntime2.13.1\\DynamoSandbox.exe"
+    }
+  }
+}
